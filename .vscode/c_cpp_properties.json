@@ -1,0 +1,54 @@
+{
+    "configurations": [
+        {
+            "name": "hyperdog_ai-uros-controller-stm32f4",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/App/Inc",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
+                "${workspaceFolder}/micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include",
+                "/usr/lib/arm-none-eabi/include",
+                "/usr/lib/arm-none-eabi/include/c++/9.2.1",
+                "/usr/lib/arm-none-eabi/include/machine",
+                "/usr/lib/arm-none-eabi/include/sys",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Core/Inc"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F407xx"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${workspaceFolder}/App/Inc",
+                    "${workspaceFolder}/Core/Inc",
+                    "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                    "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                    "${workspaceFolder}/Drivers/CMSIS/Include",
+                    "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
+                    "/usr/lib/arm-none-eabi/include",
+                    "/usr/lib/arm-none-eabi/include/c++/9.2.1"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceRoot}/.vscode/browser.vc.db"
+            },
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
