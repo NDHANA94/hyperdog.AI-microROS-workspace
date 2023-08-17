@@ -3,4 +3,4 @@ browser.vc.db-shm
 browser.vc.db-wal
 build/*.o
 build/*.d
-build/.lst
+build/*.lst
