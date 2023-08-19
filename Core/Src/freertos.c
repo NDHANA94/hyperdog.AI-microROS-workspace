@@ -25,6 +25,8 @@
 
 #include "uros_tasks.h"
 #include "error_indicator.h"
+#include "can.h"
+
 
 
 
@@ -36,7 +38,7 @@
 /* Private typedef -----------------------------------------------------------*/
 typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
-
+HAL_StatusTypeDef can_status;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -74,13 +76,25 @@ const osThreadAttr_t errorIndicatorTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Private function prototypes -----------------------------------------------*/
-/* USER CODE BEGIN FunctionPrototypes */
 
+
+/* Definitions for CAN */
+osThreadId_t CANTaskHandle;
+const osThreadAttr_t CANTask_attributes = {
+  .name = "canTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh1,
+};
+
+/* Private function prototypes -----------------------------------------------*/
+
+/* USER CODE BEGIN FunctionPrototypes */
+void StartErrorIndicatorTask(void *argument);
+void StartCANTask(void* argument);
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
-void StartErrorIndicatorTask(void *argument);
+
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -114,6 +128,7 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
   errorIndicatorTaskHandle = osThreadNew(StartErrorIndicatorTask, NULL, &errorIndicatorTask_attributes);
+  CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -140,7 +155,7 @@ void StartDefaultTask(void *argument)
   // micro-ROS configuration
 
   init_uros_node();  
-  spin_uros_node(0);
+  spin_uros_node(2);
   
   /* USER CODE END 5 */
 }
@@ -154,6 +169,20 @@ void StartErrorIndicatorTask(void *argument)
   error_indicator();
   
   /* USER CODE END 5 */
+}
+
+void StartCANTask(void* argument)
+{
+
+  can_rx_init();
+  can_tx_init();
+  
+  while(1){
+      send_can_test();
+      osDelay(100);
+  }
+  
+
 }
 
 /* Private application code --------------------------------------------------*/

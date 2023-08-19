@@ -41,28 +41,26 @@ extern CAN_HandleTypeDef hcan1;
 void MX_CAN1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-extern CAN_TxHeaderTypeDef TxCanHeader;
-extern CAN_RxHeaderTypeDef RxCanHeader;
-extern uint8_t TxData[8];
-extern uint32_t TxMailBox;
+
 
 typedef struct{
-  uint8_t id;
   uint8_t data[8];
-  CAN_TxHeaderTypeDef tx_header;
+  CAN_TxHeaderTypeDef header;
+  uint32_t TxMailBox;
 }CANTxMessage;
 
 typedef struct{
-  uint8_t id;
   uint8_t data[7];
-  CAN_RxHeaderTypeDef rx_header;
+  CAN_RxHeaderTypeDef header;
+  CAN_FilterTypeDef filter;
 }CANRxMessage;
 
-void init_can_rx();
-void init_can_tx();
-void can_send(uint8_t id, uint8_t* tx_data);
 
-
+extern CANRxMessage can_rxMsg;
+extern CANTxMessage can_txMsg;
+HAL_StatusTypeDef can_rx_init();
+void can_tx_init();
+void send_can_test();
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

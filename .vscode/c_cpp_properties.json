@@ -19,16 +19,25 @@
                 "/usr/lib/arm-none-eabi/include/machine",
                 "/usr/lib/arm-none-eabi/include/sys",
                 "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/App/Inc",
+                "${workspaceFolder}/App/Inc",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include",
+                "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Core/Inc"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32F407xx"
             ],
-            "compilerPath": "/usr/bin/gcc",
+            "compilerPath": "/usr/bin/arm-none-eabi-g++",
             "cStandard": "c11",
             "cppStandard": "c++20",
-            "intelliSenseMode": "linux-gcc-x64",
+            "intelliSenseMode": "linux-gcc-arm",
             "browse": {
                 "path": [
                     "${workspaceFolder}",

@@ -25,7 +25,7 @@ extern "C"{
 #include <std_msgs/msg/float32_multi_array.h>
 
 #include "error_indicator.h"
-
+// #include "minicheetah_motor.h"
 
 bool cubemx_transport_open(struct uxrCustomTransport * transport);
 bool cubemx_transport_close(struct uxrCustomTransport * transport);

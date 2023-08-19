@@ -25,10 +25,15 @@
         "cstdio": "c",
         "*.tcc": "c",
         "usart.h": "c",
-        "error_indicator.h": "c",
+        "error_indicator.h": "cpp",
         "float64_multi_array.h": "c",
         "types.h": "c",
-        "float32_multi_array.h": "c"
+        "float32_multi_array.h": "c",
+        "config.h": "c",
+        "uros_tasks.hpp": "c",
+        "error_indicator.hpp": "c"
     },
+    "C_Cpp.errorSquiggles": "enabled",
+    "cortex-debug.variableUseNaturalFormat": false,
     
 }

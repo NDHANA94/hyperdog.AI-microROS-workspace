@@ -1,0 +1,127 @@
+# Toolchain prefix
+TOOLCHAIN_PREFIX = arm-none-eabi-
+
+# Toolchain commands
+CC = $(TOOLCHAIN_PREFIX)gcc
+CXX = $(TOOLCHAIN_PREFIX)g++
+OBJCPY = $(TOOLCHAIN_PREFIX)objcopy
+SIZE = $(TOOLCHAIN_PREFIX)size
+
+# Source files
+C_SOURCES = \
+Core/Src/main.c \
+Core/Src/gpio.c \
+Core/Src/freertos.c \
+Core/Src/can.c \
+Core/Src/dma.c \
+Core/Src/i2c.c \
+Core/Src/spi.c \
+Core/Src/usart.c \
+Core/Src/usb_otg.c \
+Core/Src/stm32f4xx_it.c \
+Core/Src/stm32f4xx_hal_msp.c \
+Core/Src/syscalls.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
+Core/Src/system_stm32f4xx.c \
+Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
+Middlewares/Third_Party/FreeRTOS/Source/list.c \
+Middlewares/Third_Party/FreeRTOS/Source/queue.c \
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c \
+Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
+Middlewares/Third_Party/FreeRTOS/Source/timers.c \
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c \
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
+Core/Src/stm32f4xx_hal_timebase_tim.c
+
+CXX_SOURCES = \
+App/Src/uros_tasks.cpp \
+App/Src/error_indicator.cpp \
+App/Src/minicheetah_motor.cpp \
+
+# Compiler flags
+COMMON_FLAGS = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard
+CFLAGS = $(COMMON_FLAGS) -std=c11 -Wall -Wextra
+CXXFLAGS = $(COMMON_FLAGS) -std=c++14 -Wall -Wextra
+
+# Include directories
+INCLUDE_DIRS = /
+-ICore/Inc \
+-IApp/Inc
+
+# Linker flags
+LDSCRIPT = STM32F407VG.ld
+LDFLAGS = $(COMMON_FLAGS) -T$(LDSCRIPT)
+
+# Output files
+PROJECT_NAME = your_project_name
+BUILD_DIR = build
+BIN_DIR = bin
+
+# Generate object file names from source file names
+C_OBJECTS = $(addprefix $(BUILD_DIR)/, $(C_SOURCES:.c=.o))
+CXX_OBJECTS = $(addprefix $(BUILD_DIR)/, $(CXX_SOURCES:.cpp=.o))
+
+# Default rule
+all: $(BIN_DIR)/$(PROJECT_NAME).bin
+
+# Clean rule
+clean:
+    @rm -rf $(BUILD_DIR) $(BIN_DIR)
+
+# Create object directory
+$(BUILD_DIR):
+    @mkdir -p $@
+
+# Linking
+$(BIN_DIR)/$(PROJECT_NAME).elf: $(C_OBJECTS) $(CXX_OBJECTS) | $(BIN_DIR)
+    @echo "Linking $@"
+    @$(CXX) $(LDFLAGS) $(C_OBJECTS) $(CXX_OBJECTS) -o $@
+    @echo ""
+    @echo "Size:"
+    @$(SIZE) $@
+    @echo ""
+
+# Binary generation
+$(BIN_DIR)/$(PROJECT_NAME).bin: $(BIN_DIR)/$(PROJECT_NAME).elf | $(BIN_DIR)
+    @echo "Generating $@"
+    @$(OBJCPY) -O binary $< $@
+
+# C compilation rule
+$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
+    @echo "Compiling $<"
+    @$(CC) $(CFLAGS) $(INCLUDE_DIRS) -c $< -o $@
+
+# C++ compilation rule
+$(BUILD_DIR)/%.o: %.cpp | $(BUILD_DIR)
+    @echo "Compiling $<"
+    @$(CXX) $(CXXFLAGS) $(INCLUDE_DIRS) -c $< -o $@
+
+# Ensure necessary directories are created
+$(BIN_DIR) $(BUILD_DIR):
+    @mkdir -p $@
+
+# Default suffixes rule
+.SUFFIXES:
+
+.PHONY: all clean

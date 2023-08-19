@@ -3,6 +3,7 @@
 #include "usart.h"
 
 #include "uros_tasks.h"
+#include "minicheetah_motor.h"
 
 
 rcl_allocator_t allocator;
@@ -14,6 +15,8 @@ std_msgs__msg__Float32MultiArray motor_feedback_msg;
 
 rmw_ret_t ret_rmw;
 rcl_ret_t ret_rcl;
+
+Motor m;
 
 void init_uros_node()
 {
@@ -45,6 +48,10 @@ void init_uros_node()
     // create node
     rcl_err_code = rclc_node_init_default(&node, "motor_node", "", &support);
 
+    // create msg
+    motor_feedback_msg.data.capacity = 10; // to allocate memory
+    motor_feedback_msg.data.data = (float*) malloc(motor_feedback_msg.data.capacity * sizeof(float));
+
     // create publisher
     rcl_err_code = rclc_publisher_init_default(
                     &publisher,
@@ -58,18 +65,22 @@ void init_uros_node()
 void spin_uros_node(int os_delay)
 {
     msg.data = 0;
+    
     while(1)
     {
+        
+        motor_feedback_msg.data.size = 6;
+        for(int i=0; i<6; i++){
+            motor_feedback_msg.data.data[i] = 10.0; // can_rx_data[i]
+        }
+
         rcl_err_code = rcl_publish(&publisher, &motor_feedback_msg, NULL);
         if (rcl_err_code != RCL_RET_OK)
         {
         printf("Error publishing (line %d)\n", __LINE__); 
         }
-        motor_feedback_msg.data.size = 6;
-        for(int i=0; i<6; i++){
-            motor_feedback_msg.data.data[i] = 10.0; // can_rx_data[i]
-        }
-        
+        printf("microros\n");
+        // motor.send_heartbeat();
         osDelay(os_delay);
     }
 }

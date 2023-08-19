@@ -36,9 +36,6 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-App/Src/uros_tasks.c \
-App/Src/error_indicator.c \
-App/Src/minicheetah_motor.c \
 Core/Src/main.c \
 Core/Src/gpio.c \
 Core/Src/freertos.c \
@@ -88,6 +85,11 @@ Core/Src/stm32f4xx_hal_timebase_tim.c
 ASM_SOURCES =  \
 startup_stm32f407xx.s
 
+# ***** CPP Sources *******
+CPP_SOURCES = \
+App/Src/uros_tasks.cpp \
+App/Src/error_indicator.cpp \
+App/Src/minicheetah_motor.cpp \
 
 #######################################
 # binaries
@@ -97,11 +99,13 @@ PREFIX = arm-none-eabi-
 # either it can be added to the PATH environment variable.
 ifdef GCC_PATH
 CC = $(GCC_PATH)/$(PREFIX)gcc
+CPP = $(GCC_PATH)/$(PREFIX)g++
 AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
 CP = $(GCC_PATH)/$(PREFIX)objcopy
 SZ = $(GCC_PATH)/$(PREFIX)size
 else
 CC = $(PREFIX)gcc
+CPP = $(PREFIX)g++
 AS = $(PREFIX)gcc -x assembler-with-cpp
 CP = $(PREFIX)objcopy
 SZ = $(PREFIX)size
@@ -151,11 +155,16 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include
 
+# ******* CPP includes *******
+CPP_INCLUDES = \
+-IApp/Inc 
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 
 CFLAGS += $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
+
+CPPFLAGS += $(CPP_INCLUDES) -std=c++17 -Wno-register # *******
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2
@@ -209,6 +218,13 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 # list of ASM program objects
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
+
+# ********CPP*************
+OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(CPP_SOURCES:.cpp=.o)))
+vpath %.cpp $(sort $(dir $(CPP_SOURCES)))
+
+$(BUILD_DIR)/%.o: %.cpp Makefile | $(BUILD_DIR)
+	$(CPP) -c $(CFLAGS) $(CPPFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cpp=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) 
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
