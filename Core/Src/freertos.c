@@ -26,6 +26,7 @@
 #include "uros_tasks.h"
 #include "error_indicator.h"
 #include "can.h"
+#include "minicheetah_motor.h"
 
 
 
@@ -39,6 +40,9 @@
 typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
 HAL_StatusTypeDef can_status;
+// Motor_TypeDef motor[NUM_OF_MOTORS];
+// uint16_t motor_error_code;
+// uint8_t motor_status;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -174,11 +178,17 @@ void StartErrorIndicatorTask(void *argument)
 void StartCANTask(void* argument)
 {
 
-  can_rx_init();
-  can_tx_init();
+  MOTOR_setInit(FR_HIP, 1);
+  MOTOR_setParams(FR_HIP, 12.5, 60, 500, 5, 18);
+  MOTOR_configCAN(FR_HIP, &hcan1, 0);
+  
+
+  // can_rx_init();
+  // can_tx_init();
   
   while(1){
-      send_can_test();
+      // send_can_test();
+      MOTOR_sendHeatbeat(FR_HIP);
       osDelay(100);
   }
   

@@ -36,6 +36,9 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+App/Src/uros_tasks.c \
+App/Src/error_indicator.c \
+App/Src/minicheetah_motor.c \
 Core/Src/main.c \
 Core/Src/gpio.c \
 Core/Src/freertos.c \
@@ -87,9 +90,7 @@ startup_stm32f407xx.s
 
 # ***** CPP Sources *******
 CPP_SOURCES = \
-App/Src/uros_tasks.cpp \
-App/Src/error_indicator.cpp \
-App/Src/minicheetah_motor.cpp \
+
 
 #######################################
 # binaries

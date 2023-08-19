@@ -1,19 +1,15 @@
 #ifndef MOTOR_TYPEDEFS_H__
 #define MOTOR_TYPEDEFS_H__
 
-#if __cplusplus
-extern "C"
-{
+
+#ifdef __cplusplus
+extern "C"{
 #endif
 
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include "can.h"
-
-#if __cplusplus
-}
-
 #include "motor_defs.h"
 
 /** Motor Status flag TypeDef
@@ -25,8 +21,8 @@ extern "C"
  * \param bit_5 motor in range
  * \param bit_6 motor ready
  */
-typedef uint8_t  Motor_StatusTypeDef ;
-typedef uint8_t  Motor_ErrorCodeTypeDef;
+typedef uint8_t  motor_status_t ;
+typedef uint16_t  motor_errorcode_t;
 
 
 // ________________________________________
@@ -107,17 +103,23 @@ struct{
 
 
 
+struct {
+    uint8_t                 id;
+    motor_param_t           params;
+    motor_ctrl_limits_t     limit;
+    motor_cmd_t             cmd;
+    motor_current_states_t  states;
+    motor_status_t          status;
+    motor_errorcode_t       error_code;
+    CAN_HandleTypeDef*      hcan_ptr;
+    CANRxMessage            canRx;
+    CANTxMessage            canTx;
+}typedef Motor_TypeDef;
 
 
 
-// struct {
-//     uint8_t id;
-//     motor_status_t  status;
-//     motor_cmd_t     cmd;
-//     motor_current_states_t states;
-// }typedef motor_t;
 
-
-
+#ifdef __cplusplus
+}
 #endif
 #endif // MOTOR_TYPEDEFS_H__

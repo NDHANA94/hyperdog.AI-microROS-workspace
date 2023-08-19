@@ -16,7 +16,6 @@ std_msgs__msg__Float32MultiArray motor_feedback_msg;
 rmw_ret_t ret_rmw;
 rcl_ret_t ret_rcl;
 
-Motor m;
 
 void init_uros_node()
 {

@@ -7,35 +7,51 @@
 extern "C"{
 #endif
 
-#ifdef __cplusplus
-}
-#endif
 
+#define NUM_OF_MOTORS           12
 
-#define NUM_OF_MOTORS          12
-#define CAN_H                  hcan1
-#define NUM_OF_TX_BYETS         8
-#define NUM_OF_RX_BYTES         7
+#define MOTOR_ID_FR_HIP         1
+#define MOTOR_ID_FR_THIGH       2
+#define MOTOR_ID_FR_CALF        3
+#define MOTOR_ID_FL_HIP         4
+#define MOTOR_ID_FL_THIGH       5
+#define MOTOR_ID_FL_CALF        6
+#define MOTOR_ID_BR_HIP         7
+#define MOTOR_ID_BR_THIGH       8
+#define MOTOR_ID_BR_CALF        9
+#define MOTOR_ID_BL_HIP         10
+#define MOTOR_ID_BL_THIGH       11
+#define MOTOR_ID_BL_CALF        12
 
-/* Motor error codes */
-#define MOTOR_OK                0
-#define MOTOR_CAN_FAILED        1
-#define MOTOR_NOT_AVAILABLE     2
-#define MOTOR_OUT_OF_RANGE      3
-#define MOTOR_OVER_HEATED       4
-#define MOTOR_OVER_CURRENT      5
-#define MOTOR_INIT_ERROR        -1
- 
+#define CAN_H                   hcan1
+#define NUM_OF_CAN_TX_BYETS         8
+#define NUM_OF_CAN_RX_BYTES         7
 
-// motor status
-#define MOTOR_ID_SET            0b00000001
-#define MOTOR_CAN_SET           0b00000010
-#define MOTOR_ONLINE            0b00000100
-#define MOTOR_ENABLED           0b00001000
-#define MOTOR_PARAMS_SET        0b00010000
-#define MOTOR_CTRL_LIMITS_SET   0b00100000
-#define MOTOR_IN_RANGE          0b01000000
-#define MOTOR_READY             0b01111111
+/* Motor error codes 11 bits*/
+#define MOTOR_ERROR_NONE            0b00000000000 /*!< No error                                      */
+#define MOTOR_ERROR_NOT_INITIALIZED 0b00000000001 /*!< motor is not initialized                      */
+#define MOTOR_ERROR_PARAM           0b00000000010 /*!< motor parameter error                         */
+#define MOTOR_ERROR_CAN_CONFIG      0b00000000100 /*!< motor CAN is not configed.                    */
+#define MOTOR_ERROR_OFFLINE         0b00000001000 /*!< motor is offline / not connected              */
+#define MOTOR_ERROR_OOR             0b00000010000 /*!< Out Of Range error                            */
+#define MOTOR_ERROR_OH              0b00000100000 /*!< Over-Heat error                               */
+#define MOTOR_ERROR_OC              0b00001000000 /*!< Over-Current error                            */
+#define MOTOR_ERROR_EN              0b00010000000 /*!< Failed to enable the motor                    */
+#define MOTOR_ERROR_DIS             0b00100000000 /*!< Failed to diable the motor                    */
+#define MOTOR_ERROR_SZ              0b01000000000 /*!< Failed to set motor zero position             */
+#define MOTOR_ERROR_NOT_READY       0b10000000000 /*!< Motor is not ready to be operated             */
+#define MOTOR_ERROR_INITIAL         0b00000000111 /*!< initial state of the error code               */
+
+// motor status 8 bits
+#define MOTOR_STATUS_ID_SET            0b00000001 /*!< motor id is set                               */
+#define MOTOR_STATUS_PARAMS_SET        0b00000010 /*!< motor parameters are set                      */
+#define MOTOR_STATUS_LIMITS_SET        0b00000100 /*!< motor control limits are set                  */
+#define MOTOR_STATUS_CAN_SET           0b00001000 /*!< motor CAN is configured                       */
+#define MOTOR_STATUS_ONLINE            0b00010000 /*!< motor is online                               */
+#define MOTOR_STATUS_ENABLED           0b00100000 /*!< motor is enabled                              */
+#define MOTOR_STATUS_IN_RANGE          0b01000000 /*!< motor position is in limited range            */
+#define MOTOR_STATUS_INITIALIZED       0b00001011 /*!< motor id, params and CAN are initialized      */
+#define MOTOR_STATUS_READY             0b01111111 /*!< motor is ready to be operated                 */
 
 
 // special  motor commands
@@ -44,6 +60,21 @@ extern "C"{
 #define MOTOR_SETZERO_CMD        {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE}
 #define MOTOR_HEARTBEAT          {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
 
+enum MOTORS{
+    FR_HIP,
+    FR_THIGH,
+    FR_CALF,
+    FL_HIP,
+    FL_THIGH,
+    BR_HIP,
+    BR_THIGH,
+    BR_CALF,
+    BL_HIP,
+    BL_THIGH,
+    BL_CALF
+};
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif

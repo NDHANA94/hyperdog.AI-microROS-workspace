@@ -1,6 +1,34 @@
 #ifndef MINICHEETAH_MOTOR_H__
 #define MINICHEETAH_MOTOR_H__
 
+/** This library consists with necessary functions for controlling 12 minicheetah actuators 
+ * using one CAN bus.
+ * 
+ * (#) How to setup:
+ *      (##) 1. Set motor IDs for each 12 motors using MOTOR_setID method.
+ *      (##) 2. Set motor parameters of each 12 motors using MOTOR_setParams method.
+ *      (##) 3. Configure CAN communication using MOTOR_configCAN
+ *      (##) 4. strat watchdog to update status and states of each motors
+ * 
+ * (#) How to control:
+ *      (##)
+ *      (##) 
+ *      (##)
+ *      (##)
+ *      (##)
+ * 
+ * (#) Error Code: 
+ *      (##) Error code related with CAN bus is indicated by the LD5
+ *          (###) 
+ *          (###)
+ * 
+ *      (##) Error code related with motors is indicated by the LD6
+ *          (###) Slow blink indicates the motor index which has an error:
+ *                  exmample: 1 slow blink -> 0 motor index (NOT ID)
+ *          (###) Flast blink indicates the error:
+ *                  (####) 1 fast blink: motor is offline
+ *                  (####) 2 fast blinks
+ */
 
 #ifdef __cplusplus
 extern "C"{
@@ -16,56 +44,32 @@ extern "C"{
 
 
 
-class Motor
-{
-public:
-    Motor();
-    Motor(uint8_t id, CAN_HandleTypeDef* hcan, uint8_t rx_filterbank);
-    ~Motor();
+extern Motor_TypeDef motor[NUM_OF_MOTORS];
+extern uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t motor_heartbeat_cmd[NUM_OF_CAN_TX_BYETS];
 
-    void set_id(uint8_t motor_id);
-    void config_CAN(CAN_HandleTypeDef* hcan, uint8_t rx_filterbank);
-    void set_motor_params(float p_max, float v_max, float kp_max, float kd_max, float iff_max);
-    void set_motor_control_limits(float p_min, float p_max, float v_max, float i_max);
-    void send_heartbeat();
-
-    void enable();
-    void disable();
-    void setzero(); 
+extern uint16_t motor_error_code;
+extern uint8_t motor_status;
 
 
+void MOTOR_setInit(enum MOTORS m, uint8_t id);
+void MOTOR_setParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax);
+void MOTOR_setCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vDesMax, float vMax, float iMax);
+void MOTOR_configCAN(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);
+void MOTOR_enable(enum MOTORS m);
+void MOTOR_disable(enum MOTORS m);
+void MOTOR_setZero(enum MOTORS m);
+void MOTOR_sendHeatbeat(enum MOTORS m);
+void MOTOR_startWatchdog();
 
-private:
-    uint8_t id;
-    motor_cmd_t cmd;
-    motor_param_t params;
-    motor_ctrl_limits_t ctrl_limit;
-    motor_current_states_t current_states;
-
-    CANRxMessage rx_msg;
-    CANTxMessage tx_msg;
-    CAN_HandleTypeDef* hcan_ptr;
-
-    Motor_StatusTypeDef motor_status = 0;
-    Motor_ErrorCodeTypeDef error_code = MOTOR_INIT_ERROR;
-
-    uint8_t enable_cmd_[8] = MOTOR_ENABLE_CMD;
-    uint8_t disbale_cmd_[8] = MOTOR_DISABLE_CMD;
-    uint8_t setzero_cmd_[8] = MOTOR_SETZERO_CMD;
-    uint8_t heartbeat_cmd_[8] = MOTOR_HEARTBEAT;
-
-
-    void _init_can_rx(uint8_t rxMsg_filterbank);
-    void _init_can_tx();
-    
-    void pack_cmd();
-    void unpack_reply();
-
-    void can_send();
-    void can_read();
-
-    
-};
+void _update_motor_states();
+void _update_motor_status();
+void _pack_cmd(enum MOTORS m);
+void _unpack_reply(enum MOTORS m);
+void _can_read();
+void _can_send();
 
 #ifdef __cplusplus
 }
