@@ -15,15 +15,15 @@ graph TD;
     Motor-->params;
     params-->p.min;
     params-->p.max;
-    params-->v;
-    v-->min;
-    v-->max;
-    params-->kp;
-    kp-->min;
-    kp-->max;
-    params-->kd;
-    kd-->min;
-    kd-->max;
+    params-->v.min;
+    params-->v.max;
+    params-->kp.min;
+    params-->kp.max;
+    params-->kd.min;
+    params-->kd.max;
+    params-->i_ff.min;
+    params-->i_ff.max;
+
     ;
 ```
 
