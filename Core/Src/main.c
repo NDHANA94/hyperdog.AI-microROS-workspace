@@ -102,7 +102,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   HAL_CAN_Start(&hcan1);
-  HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+  // HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING); //// Stopped CAN rx and tx interupts
 
 
   /* USER CODE END 2 */

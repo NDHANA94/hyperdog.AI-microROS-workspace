@@ -24,8 +24,11 @@ extern "C"{
 #define MOTOR_ID_BL_CALF        12
 
 #define CAN_H                   hcan1
+#define CAN_CMD_FREQUENCY         100 // Hz
+#define CAN_HEARTBEAT_FREQUENCY     1 // Hz
 #define NUM_OF_CAN_TX_BYETS         8
 #define NUM_OF_CAN_RX_BYTES         7
+#define MAX_MOTOR_NO_RESPONSE_COUNT     5 /*!< after this number of times motor doesn't response repeatedly, motor status will be updated as MOTOR_OFFLINE  */
 
 /* Motor error codes 11 bits*/
 #define MOTOR_ERROR_NONE            0b00000000000 /*!< No error                                      */
@@ -50,7 +53,8 @@ extern "C"{
 #define MOTOR_STATUS_ONLINE            0b00010000 /*!< motor is online                               */
 #define MOTOR_STATUS_ENABLED           0b00100000 /*!< motor is enabled                              */
 #define MOTOR_STATUS_IN_RANGE          0b01000000 /*!< motor position is in limited range            */
-#define MOTOR_STATUS_INITIALIZED       0b00001011 /*!< motor id, params and CAN are initialized      */
+#define MOTOR_STATUS_ERROR             0b10000000 /*!< motor has an error */
+#define MOTOR_STATUS_INITIALIZED       0b00001111 /*!< motor id, params and CAN are initialized      */
 #define MOTOR_STATUS_READY             0b01111111 /*!< motor is ready to be operated                 */
 
 

@@ -104,16 +104,17 @@ struct{
 
 
 struct {
-    uint8_t                 id;
-    motor_param_t           params;
-    motor_ctrl_limits_t     limit;
-    motor_cmd_t             cmd;
-    motor_current_states_t  states;
-    motor_status_t          status;
+    uint8_t                 id; /*!< Identifier of the motor */
+    motor_param_t           params; /* motor parameters: max position, max velocity, max kp, max kd, max i_ff */
+    motor_ctrl_limits_t     limit; /*!< to limit controlable range of the motor; max position, min position, max velocity, max current */
+    motor_cmd_t             cmd; /*!< Command to the motor: p_des, v_des, kp, kd, i_ff */
+    motor_current_states_t  states; /*!< Motor feedback of current states: position, velocity, current */
+    motor_status_t          status; /*!< Motor status */
     motor_errorcode_t       error_code;
-    CAN_HandleTypeDef*      hcan_ptr;
-    CANRxMessage            canRx;
-    CANTxMessage            canTx;
+    CAN_HandleTypeDef*      hcan_ptr; /*!< Pointer hcan1*/
+    CANRxMessage            canRx; /*Rx CAN message structure */
+    CANTxMessage            canTx; /*!< Tx CAN message structure */
+    uint8_t                 noResp_counter; /*!< to count number of times motor didn't response to the heartbeat */
 }typedef Motor_TypeDef;
 
 

@@ -180,6 +180,7 @@ void StartCANTask(void* argument)
 
   MOTOR_setInit(FR_HIP, 1);
   MOTOR_setParams(FR_HIP, 12.5, 60, 500, 5, 18);
+  MOTOR_setCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
   MOTOR_configCAN(FR_HIP, &hcan1, 0);
   
 
@@ -189,7 +190,7 @@ void StartCANTask(void* argument)
   while(1){
       // send_can_test();
       MOTOR_sendHeatbeat(FR_HIP);
-      osDelay(100);
+      osDelay(10);
   }
   
 

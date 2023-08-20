@@ -56,7 +56,7 @@ extern uint8_t motor_status;
 
 void MOTOR_setInit(enum MOTORS m, uint8_t id);
 void MOTOR_setParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax);
-void MOTOR_setCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vDesMax, float vMax, float iMax);
+void MOTOR_setCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);
 void MOTOR_configCAN(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);
 void MOTOR_enable(enum MOTORS m);
 void MOTOR_disable(enum MOTORS m);
