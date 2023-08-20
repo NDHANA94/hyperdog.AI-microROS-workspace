@@ -1,5 +1,5 @@
 # hyperdogAI_microROS_controller
-Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller
+Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next Generation of HyperDog 
 
 ### $${\color{red}{Work \space \space in \space \space Progress}}$$ 
 ### $${\color{red}{NOT \space \space  YET \space \space READY \space \space FOR \space \space USING}}$$ 
