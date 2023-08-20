@@ -1,7 +1,8 @@
 # hyperdogAI_microROS_controller
 Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller
 
-
+### $${\color{red}{Work \space \space in \space \space Progress}}$$ 
+### $${\color{red}{NOT \space \space  YET \space \space READY \space \space FOR \space \space USING}}$$ 
 
 
 Create Cube Mx project:
@@ -38,13 +39,18 @@ CAN Interface:
 
 gitignore:
     ```
-    git rm --cached .vscode/browser.vc.db
-    git rm --cached .vscode/browser.vc.db-shm
-    git rm --cached .vscode/browser.vc.db-wal
-    touch .gitignore
-    echo .vscade/browser.vc.db >> .gitignore
-    echo .vscade/browser.vc.db-shm >> .gitignore
-    echo .vscade/browser.vc.db-wal >> .gitignore
+    browser.vc.db 
+    browser.vc.db-shm 
+    browser.vc.db-wal
+    build/*.o
+    build/*.d
+    build/*.lst
+    ```
+gitattributes:
+    ```
+    Drivers/** filter=lfs diff=lfs merge=lfs -text
+    Drivers/CMSIS filter=lfs diff=lfs merge=lfs -text
+    Drivers/STM32F4xx_HAL_Driver filter=lfs diff=lfs merge=lfs -text
     ```
 
 git lfs:
