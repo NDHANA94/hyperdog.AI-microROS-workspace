@@ -9,7 +9,15 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 - MicroROS is established.
 - Motor struct was developed;
-        
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
         - TypeDef struct Motor:
                             - id (uint8_t)
 
