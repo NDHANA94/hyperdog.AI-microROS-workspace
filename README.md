@@ -107,36 +107,36 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
         
 - Following method were created for controling:
 
-    `void MOTOR_initId(enum MOTORS m, uint8_t id);`
-    `void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax);`
-    `void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);`
-    `void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);`
-    `void MOTOR_enable(enum MOTORS m);`
-    `void MOTOR_disable(enum MOTORS m);`
-    `void MOTOR_setZero(enum MOTORS m);`
-    `void MOTOR_sendTxGetRx(enum MOTORS m);`
-    `void MOTOR_sendHeatbeat(enum MOTORS m);`
-    `void MOTOR_startWatchdog(); // @todo`
+    - `void MOTOR_initId(enum MOTORS m, uint8_t id);`
+    - `void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax);`
+    - `void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);`
+    - `void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);`
+    - `void MOTOR_enable(enum MOTORS m);`
+    - `void MOTOR_disable(enum MOTORS m);`
+    - `void MOTOR_setZero(enum MOTORS m);`
+    - `void MOTOR_sendTxGetRx(enum MOTORS m);`
+    - `void MOTOR_sendHeatbeat(enum MOTORS m);`
+    - `void MOTOR_startWatchdog(); // @todo`
 
 
-    `void _pack_cmd(enum MOTORS m); // @todo`
-    `void _unpack_canRx(enum MOTORS m); // @todo`
+    - `void _pack_cmd(enum MOTORS m); // @todo`
+    - `void _unpack_canRx(enum MOTORS m); // @todo`
 
-    `bool _is_motor_error(enum MOTORS m, uint8_t error_word);`
+    - `bool _is_motor_error(enum MOTORS m, uint8_t error_word);`
 
-    `float fminf(float x, float y);`
-    `float fmaxf(float x, float y);`
-    `int float2uint(float x, float x_min, float x_max, int bits);`
-    `float uint2float(int x_int, float x_min, float x_max, int bits);`
+    - `float fminf(float x, float y);`
+    - `float fmaxf(float x, float y);`
+    - `int float2uint(float x, float x_min, float x_max, int bits);`
+    - `float uint2float(int x_int, float x_min, float x_max, int bits);`
 
 - Error indicator using 4 LEDs is partially developed.
-    `orange LED`: micro-ROS errors
+    - `orange LED`: micro-ROS errors
             - `1 blink`: rmw error
             - `2 blinks`: rcl error
     
-    `red LED`: CAN bus errors
-    `blue LED`: Motor errors (Not implemented yet)
-    `green LED`: -
+    - `red LED`: CAN bus errors
+    - `blue LED`: Motor errors (Not implemented yet)
+    - `green LED`: -
 
 - Tested `micro-ROS node`, `CAN communication` and `error indicator` on 3 seperate `FreeRTOS` tasks.
 - tested micro-ROS topics over 200 Hz frequency.
