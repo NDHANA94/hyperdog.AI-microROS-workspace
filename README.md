@@ -105,7 +105,7 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
                                                 - state -> ERROR
                                                 - error_code -> motor offline
         
-- Following method were created for controling:
+- Following method were created for controlling the motor:
 
 ```c
     void MOTOR_initId(enum MOTORS m, uint8_t id);
