@@ -5,6 +5,110 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 ### $${\color{red}{NOT \space \space  YET \space \space READY \space \space FOR \space \space USE}}$$ 
 
 
+### DONE:
+    - MicroROS is established.
+    - Motor struct was developed;
+        ```
+        - TypeDef struct Motor:
+                            - id (uint8_t)
+
+                            - params:
+                                    - p:
+                                        - min (float)
+                                        - max (float)
+                                    - v:
+                                        - min (float)
+                                        - max (float)
+                                    - kp: 
+                                        - min (float)
+                                        - max (float)
+                                    - kd: 
+                                        - min (float)
+                                        - max (float)
+                                    - i_ff: 
+                                        - min (float)
+                                        - max (float)
+                                    - vb: 
+                                        - min (float)
+                                        - max (float)
+
+                            - limit:
+                                    - position:
+                                        - min (float)
+                                        - max (float)
+                                    - velocity:
+                                        - min (float)
+                                        - max (float)
+                                    - current: 
+                                        - min (float)
+                                        - max (float)
+
+                            - cmd:
+                                    - p_des:
+                                        - min (float)
+                                        - max (float)
+                                    - v_des:
+                                        - min (float)
+                                        - max (float)
+                                    - kp: 
+                                        - min (float)
+                                        - max (float)
+
+                            - feedback:
+                                    - position (float)
+                                    - velocity (float)
+                                    - current  (float)
+
+                            - init_state: 4-bits value
+                                    - 0b0000: nothing initialized
+                                    - 0b0001: motor id is set
+                                    - 0b0010: motor params are set
+                                    - 0b0100: motor limits are set
+                                    - 0b1000: CAN comunication is configured 
+                            
+                            - state: enum MOTOR_State
+                                    - MOTOR_READY        = 0b00
+                                    - MOTOR_INITIALIZING = 0b01
+                                    - MOTOR_ENABLED      = 0b10
+                                    - MOTOR_ERROR        = 0b11
+
+                            - error_code: 11-bits
+                                    - 0b00000000000: No error
+                                    - 0b00000000001: motor is not initialized
+                                    - 0b00000000010: motor parameter error
+                                    - 0b00000000100: HAL_CAN error
+                                    - 0b00000001000: motor is offline
+                                    - 0b00000010000: current motor position is out of range
+                                    - 0b00000100000: motor is over-heated
+                                    - 0b00001000000: motor takes over-currunt
+                                    - 0b00010000000: failed to enable the motor
+                                    - 0b00100000000: failed to disable the motor
+                                    - 0b01000000000: failed to set motor zero position
+                                    - 0b10000000000: motor is not ready to be operated
+                                    - 0b00000000111: initial state of the motor error_code
+
+                            - hcan_ptr (CAN_HandleTypeDef*): pointer to hcan1
+                            
+                            - canTX: CAN tx message
+                                    - data[8]   (uint8_t)
+                                    - header    (CAN_TxHeaderTypeDef)
+                                    - TxMailBox (uint32_t)
+
+                            - canRx: CAN rx message
+                                    - data[7]   (uint8_t)
+                                    - header    (CAN_TxHeaderTypeDef)
+                                    - filter    (CAN_FilterTypeDef)
+
+                            - noResp_counter: to count times of no response from the motor
+                                            if more than 5 times a motor response is not received:
+                                                - state -> ERROR
+                                                - error_code -> motor offline
+        ```
+        
+
+
+### TODO:
+
 Create Cube Mx project:
 
 1. Create a new CubeMX project for stm32f407

@@ -79,7 +79,7 @@ enum MOTORS{
 
 
 enum MOTOR_State{
-    MOTOR_READY            = 0b00,
+    MOTOR_READY         = 0b00,
     MOTOR_INITIALIZING  = 0b01,
     MOTOR_ENABLED       = 0b10,
     MOTOR_ERROR         = 0b11

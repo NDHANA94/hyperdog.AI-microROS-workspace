@@ -48,8 +48,8 @@ struct{
  * \param i_ff.max: Maximum value motor feed foward current
  */
 struct{
-    range_t p_des;
-    range_t v_des;
+    range_t p;
+    range_t v;
     range_t kp;
     range_t kd;
     range_t i_ff;

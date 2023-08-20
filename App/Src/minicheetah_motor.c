@@ -42,10 +42,10 @@ void MOTOR_initId(enum MOTORS m, uint8_t id)
  */
 void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax)
 {
-    motor[m].params.p_des.min = -pMax;
-    motor[m].params.p_des.max = pMax;
-    motor[m].params.v_des.min = -vMax;
-    motor[m].params.v_des.max = vMax;
+    motor[m].params.p.min = -pMax;
+    motor[m].params.p.max = pMax;
+    motor[m].params.v.min = -vMax;
+    motor[m].params.v.max = vMax;
     motor[m].params.kp.min    = 0;
     motor[m].params.kp.max    = kpMax;
     motor[m].params.kd.min    = 0;
@@ -370,15 +370,15 @@ void _pack_cmd(enum MOTORS m)
     */
 
     /* Limit data to be within bounds */
-    float p_des = fminf(fmaxf(motor[m].params.p_des.min, motor[m].cmd.p_des), motor[m].params.p_des.max);
-    float v_des = fminf(fmaxf(motor[m].params.v_des.min, motor[m].cmd.v_des), motor[m].params.v_des.max);
+    float p_des = fminf(fmaxf(motor[m].params.p.min, motor[m].cmd.p_des), motor[m].params.p.max);
+    float v_des = fminf(fmaxf(motor[m].params.v.min, motor[m].cmd.v_des), motor[m].params.v.max);
     float kp    = fminf(fmaxf(motor[m].params.kp.min,    motor[m].cmd.kp   ), motor[m].params.kp.max   );
     float kd    = fminf(fmaxf(motor[m].params.kd.min,    motor[m].cmd.kd   ), motor[m].params.kd.max   );
     float iff   = fminf(fmaxf(motor[m].params.i_ff.min,  motor[m].cmd.iff  ), motor[m].params.i_ff.max );
 
     /* Convert floats to unsigned ints */
-    int p_int   = float2uint(p_des, motor[m].params.p_des.min, motor[m].params.p_des.max, 16);
-    int v_int   = float2uint(v_des, motor[m].params.v_des.min, motor[m].params.v_des.max, 12);
+    int p_int   = float2uint(p_des, motor[m].params.p.min, motor[m].params.p.max, 16);
+    int v_int   = float2uint(v_des, motor[m].params.v.min, motor[m].params.v.max, 12);
     int kp_int  = float2uint(kp,    motor[m].params.kp.min,    motor[m].params.kp.max   , 12);
     int kd_int  = float2uint(kd,    motor[m].params.kd.min,    motor[m].params.kd.max   , 12);
     int iff_int = float2uint(iff,   motor[m].params.i_ff.min,  motor[m].params.i_ff.max , 12);
@@ -422,8 +422,8 @@ void _unpack_canRx(enum MOTORS m)
     int i_int  = ((motor[m].canRx.data[4]&0xF)<<8) | motor[m].canRx.data[5];
 
     /* convert uints to float  and set them in `motor[x].feedback.X` */
-    motor[m].feedback.position = uint2float(p_int, motor[m].params.p_des.min, motor[m].params.p_des.max, 16);
-    motor[m].feedback.velocity = uint2float(v_int, motor[m].params.v_des.min, motor[m].params.v_des.max, 12);
+    motor[m].feedback.position = uint2float(p_int, motor[m].params.p.min, motor[m].params.p.max, 16);
+    motor[m].feedback.velocity = uint2float(v_int, motor[m].params.v.min, motor[m].params.v.max, 12);
     motor[m].feedback.current  = uint2float(i_int, motor[m].params.i_ff.min,  motor[m].params.i_ff.max,  12);
     if (NUM_OF_CAN_RX_BYTES == 7){
         motor[m].feedback.vb = uint2float(motor[m].canRx.data[6], motor[m].params.vb.min,  motor[m].params.vb.max,  8);
