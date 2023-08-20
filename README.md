@@ -13,18 +13,17 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 ```mermaid
 graph TD;
     Motor-->params;
-    params-->p;
-    p-->min(float);
-    p-->max(float);
+    params-->p.min;
+    params-->p.max;
     params-->v;
-    v-->min(float);
-    v-->max(float);
+    v-->min;
+    v-->max;
     params-->kp;
-    kp-->min(float);
-    kp-->max(float);
+    kp-->min;
+    kp-->max;
     params-->kd;
-    kd-->min(float);
-    kd-->max(float);
+    kd-->min;
+    kd-->max;
     ;
 ```
 
