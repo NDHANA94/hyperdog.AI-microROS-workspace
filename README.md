@@ -6,9 +6,10 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 
 ### DONE:
-    - MicroROS is established.
-    - Motor struct was developed;
-        ```
+
+- MicroROS is established.
+- Motor struct was developed;
+        
         - TypeDef struct Motor:
                             - id (uint8_t)
 
@@ -103,13 +104,55 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
                                             if more than 5 times a motor response is not received:
                                                 - state -> ERROR
                                                 - error_code -> motor offline
-        ```
+        
+- Following method were created for controling:
+
+    `void MOTOR_initId(enum MOTORS m, uint8_t id);`
+    `void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax);`
+    `void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);`
+    `void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);`
+    `void MOTOR_enable(enum MOTORS m);`
+    `void MOTOR_disable(enum MOTORS m);`
+    `void MOTOR_setZero(enum MOTORS m);`
+    `void MOTOR_sendTxGetRx(enum MOTORS m);`
+    `void MOTOR_sendHeatbeat(enum MOTORS m);`
+    `void MOTOR_startWatchdog(); // @todo`
+
+
+    `void _pack_cmd(enum MOTORS m); // @todo`
+    `void _unpack_canRx(enum MOTORS m); // @todo`
+
+    `bool _is_motor_error(enum MOTORS m, uint8_t error_word);`
+
+    `float fminf(float x, float y);`
+    `float fmaxf(float x, float y);`
+    `int float2uint(float x, float x_min, float x_max, int bits);`
+    `float uint2float(int x_int, float x_min, float x_max, int bits);`
+
+- Error indicator using 4 LEDs is partially developed.
+    `orange LED`: micro-ROS errors
+            - `1 blink`: rmw error
+            - `2 blinks`: rcl error
+    
+    `red LED`: CAN bus errors
+    `blue LED`: Motor errors (Not implemented yet)
+    `green LED`: -
+
+- Tested `micro-ROS node`, `CAN communication` and `error indicator` on 3 seperate `FreeRTOS` tasks.
+- tested micro-ROS topics over 200 Hz frequency.
         
 
 
 ### TODO:
+- Develope micro-ROS custom msgs and srv for controlling motors
+- Implement Inverse kinematics and control the leg using coordinate commands
+- calculate force vector within the microcontroller using motor current feedback
+- Implement impedence control for the legs within the microcontroller.
+- And MANY MORE............. XD
 
-Create Cube Mx project:
+
+
+### How I created CubeMX project:
 
 1. Create a new CubeMX project for stm32f407
 2. `System Core -> RCC -> High Speed Clock (HSE)` : Select `Crystal/Ceramic Resonator`
@@ -129,11 +172,12 @@ Create Cube Mx project:
     - Generate code by clicking `Generate Code`
 
 
-microROS agent must be connected via USART2:
+### Pinouts:
+ - USART2: microROS agent must be connected via 
     `USART2_TX ---> PA2`
     `USART2_RX ---> PA3`
 
-CAN Interface:
+- CAN Interface: 
     `CAN1_TX ---> PD1`
     `CAN1_RX ---> PD0`
 
