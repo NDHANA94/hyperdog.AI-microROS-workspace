@@ -122,7 +122,7 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
     void _pack_cmd(enum MOTORS m); 
     void _unpack_canRx(enum MOTORS m); 
     bool _is_motor_error(enum MOTORS m, uint8_t error_word);
-    
+
     float fminf(float x, float y);
     float fmaxf(float x, float y);
     int float2uint(float x, float x_min, float x_max, int bits);
@@ -131,8 +131,8 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 - Error indicator using 4 LEDs is partially developed.
     - `orange LED`: micro-ROS errors
-            - `1 blink`: rmw error
-            - `2 blinks`: rcl error
+        - `1 blink`: rmw error
+        - `2 blinks`: rcl error
     
     - `red LED`: CAN bus errors
     - `blue LED`: Motor errors (Not implemented yet)
