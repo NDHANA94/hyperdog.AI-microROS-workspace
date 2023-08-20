@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define A 0b00000000
 #define B 0b00000001
@@ -10,12 +11,15 @@
 
 #define F 0b00001011
 
+bool is_init(uint8_t a){
+    return (a&F) == F;
+}
 
 int main(){
 
     // uint8_t x;
-
-    printf("%i\n", (E&0xF) == F);
+    uint8_t a = 0b01011001;
+    printf("%i\n", is_init(a));
 
 
     return 0;

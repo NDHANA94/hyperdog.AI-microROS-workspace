@@ -124,15 +124,6 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
 
 /* USER CODE BEGIN 1 */
 HAL_StatusTypeDef can_rx_init(){
-  // can_rxMsg.filter.FilterActivation=ENABLE;
-  // can_rxMsg.filter.FilterMode = CAN_FILTERMODE_IDMASK;
-  // can_rxMsg.filter.FilterScale = CAN_FILTERSCALE_32BIT;
-  // can_rxMsg.filter.FilterFIFOAssignment = CAN_FilterFIFO0;
-  // can_rxMsg.filter.FilterIdHigh = 12<<5;
-  // can_rxMsg.filter.FilterIdLow = 0;
-  // can_rxMsg.filter.FilterMaskIdHigh = 0;
-  // can_rxMsg.filter.FilterMaskIdLow = 0;
-
   can_rxMsg.filter.FilterBank = 0;
   can_rxMsg.filter.FilterMode = CAN_FILTERMODE_IDMASK;
   can_rxMsg.filter.FilterScale = CAN_FILTERSCALE_32BIT;

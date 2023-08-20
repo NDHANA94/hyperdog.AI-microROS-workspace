@@ -22,6 +22,7 @@ extern "C"{
  * \param bit_6 motor ready
  */
 typedef uint8_t  motor_status_t ;
+typedef uint8_t  motor_init_state_t;
 typedef uint16_t  motor_errorcode_t;
 
 
@@ -99,7 +100,7 @@ struct{
     float position;
     float velocity;
     float current;
-}typedef motor_current_states_t;
+}typedef motor_feedback_t;
 
 
 
@@ -108,8 +109,9 @@ struct {
     motor_param_t           params; /* motor parameters: max position, max velocity, max kp, max kd, max i_ff */
     motor_ctrl_limits_t     limit; /*!< to limit controlable range of the motor; max position, min position, max velocity, max current */
     motor_cmd_t             cmd; /*!< Command to the motor: p_des, v_des, kp, kd, i_ff */
-    motor_current_states_t  states; /*!< Motor feedback of current states: position, velocity, current */
-    motor_status_t          status; /*!< Motor status */
+    motor_feedback_t        feedback; /*!< Motor feedback of current motor states: position, velocity, current */
+    motor_init_state_t      init_state;
+    enum MOTOR_State        state; /*!< Motor status */
     motor_errorcode_t       error_code;
     CAN_HandleTypeDef*      hcan_ptr; /*!< Pointer hcan1*/
     CANRxMessage            canRx; /*Rx CAN message structure */

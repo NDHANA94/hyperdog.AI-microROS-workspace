@@ -8,24 +8,39 @@ uint8_t motor_setzero_cmd[8] = MOTOR_SETZERO_CMD;
 uint8_t motor_heartbeat_cmd[8] = MOTOR_HEARTBEAT;
 
 uint16_t motor_error_code = MOTOR_ERROR_INITIAL;
-uint8_t motor_status = 0;
+uint8_t motor_state = 0;
 
-
-void MOTOR_setInit(enum MOTORS m, uint8_t id)
+/**
+ * @brief To initialize a motor Id.
+ * @brief To be fully initialized the motor, MOTOR_setParams, MOTOR_setCtrlLimits and MOTOR_configCAN methods must be called after this method.
+ * @param m motor instance 
+ * @param id CAN StdId of the motor
+ */
+void MOTOR_initId(enum MOTORS m, uint8_t id)
 {
-    // set init error and init status
-    motor[m].status = 0;
+    // set init_state, state and error_code to thier initial state
+    motor[m].state = MOTOR_INITIALIZING;
+    motor[m].init_state = MOTOR_INIT_NOT;
     motor[m].error_code = MOTOR_ERROR_INITIAL;
+
+    /* Set Id */
     motor[m].id = id;
-    motor[m].status |= MOTOR_STATUS_ID_SET; // set ID_SET bit of the status
 
-
-    if ((motor[m].status & 0xF) == MOTOR_STATUS_INITIALIZED){    
-        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error code
-    }
+    /* update motor init_state */
+    motor[m].init_state |= MOTOR_INIT_ID; // set ID_SET bit of the init state
 }
 
-void MOTOR_setParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax)
+
+/**
+ * @brief To set motor parameters of the motor
+ * @param m motor instance
+ * @param pMax maximum position of the motor
+ * @param vMax Maximum velocity of the motor
+ * @param kpMax maximum Kp value of the motor
+ * @param kdMax maximum Kd value of the motor
+ * @param iffMax maximum feed forwad current of the motor
+ */
+void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax)
 {
     motor[m].params.p_des.min = -pMax;
     motor[m].params.p_des.max = pMax;
@@ -38,15 +53,28 @@ void MOTOR_setParams(enum MOTORS m, float pMax, float vMax, float kpMax, float k
     motor[m].params.i_ff.min  = -iffMax;
     motor[m].params.i_ff.max  = iffMax;
     
-    motor[m].status |= MOTOR_STATUS_PARAMS_SET; // set PARAM_SET bit of the motor status.
-    motor[m].error_code &= ~ MOTOR_ERROR_PARAM; // reset PARAM_ERROR bit of motor error code.
+    /* update init_state and error_code */
+    motor[m].init_state |= MOTOR_INIT_PARAM; // set PARAM_SET bit of the motor init_state.
+    motor[m].error_code &= ~ MOTOR_ERROR_PARAM; // reset PARAM_ERROR bit of motor error_code.
 
-    if ((motor[m].status & 0xF)== MOTOR_STATUS_INITIALIZED){    
-        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error code
+    /* If motor is fully initialized update error_code and motor state */
+    if (motor[m].init_state == MOTOR_INIT_ALL)
+    {   
+        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
+        motor[m].state = MOTOR_READY;
     }
 }
 
-void MOTOR_setCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax)
+
+/** 
+ * @brief To set limit for the contral parameters and motor current
+ * @param m Motor instance
+ * @param pDesMax Higher limit for motor position
+ * @param pDesMin Lower limit for motor position
+ * @param vMax    Higher limit for motor velocity
+ * @param iMax    Highr limit for motor intake current
+ */
+void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax)
 {
     motor[m].limit.position.max = pDesMax;
     motor[m].limit.position.min = pDesMin;
@@ -55,27 +83,31 @@ void MOTOR_setCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax
     motor[m].limit.current.max  = iMax;
     motor[m].limit.current.min  = -iMax;
 
-    motor[m].status |= MOTOR_STATUS_LIMITS_SET; // set CTRL_LIMIT_SET bit of the motor status.
+    /* update motor init_state */
+    motor[m].init_state |= MOTOR_INIT_LIMITS; // set CTRL_LIMIT_SET bit of the motor init_state.
 
-    if ((motor[m].status & 0xF) == MOTOR_STATUS_INITIALIZED){    
-        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error code
+    /* If motor is fully initialized update error_code */
+    if (motor[m].init_state == MOTOR_INIT_ALL)
+    { 
+        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
+        motor[m].state = MOTOR_READY;
     }
 }
 
+
 /** Confiure rx/tx messages and rx filter of the motor.
- * *** Make sure to call this function after initialied the motor IDs. ***
+ * Make sure to call this function after initialied the motor IDs. *
  * \param m enum MOTOR
  * \param *hcan CAN interface pointer instance
  * \param filterbank filter bank id to use for rx filter
  *
  */
-void MOTOR_configCAN(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank)
+void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank)
 {
-    // copy hcan pointer to Motor struct
+    /* copy hcan pointer to motor instance */
     motor[m].hcan_ptr = hcan;
 
-    // config can rx filter
-    // motor[m].canRx.filter.FilterBank = filterbank;
+    /* config can rx filter */
     motor[m].canRx.filter.FilterMode = CAN_FILTERMODE_IDMASK;
     motor[m].canRx.filter.FilterScale = CAN_FILTERSCALE_32BIT;
     motor[m].canRx.filter.FilterIdHigh = 0 << 5; // motors sends can frame with Id number 0, 1st byte of data frame is the motor Id
@@ -84,88 +116,223 @@ void MOTOR_configCAN(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank)
     motor[m].canRx.filter.FilterMaskIdLow = 0;
     motor[m].canRx.filter.FilterFIFOAssignment = CAN_FilterFIFO0;
     motor[m].canRx.filter.FilterActivation = ENABLE;
+    // motor[m].canRx.filter.FilterBank = filterbank;
     HAL_CAN_ConfigFilter(hcan, &motor[m].canRx.filter);
 
-    // config can tx header
+    /* config can tx header */
     motor[m].canTx.header.StdId = motor[m].id;
     motor[m].canTx.header.IDE = CAN_ID_STD;
     motor[m].canTx.header.DLC = NUM_OF_CAN_TX_BYETS;
     motor[m].canTx.header.RTR = CAN_RTR_DATA;
 
-    if(motor[m].hcan_ptr->State != HAL_CAN_STATE_ERROR){
-        motor[m].status |= MOTOR_STATUS_CAN_SET;
-        motor[m].error_code &= ~ MOTOR_ERROR_CAN_CONFIG;
+    /* If there is a CAN state error, update motor init_state, state and error_code */
+    if(motor[m].hcan_ptr->ErrorCode == HAL_ERROR)
+    {
+        motor[m].init_state &= ~MOTOR_INIT_CAN;
+        motor[m].error_code |= MOTOR_ERROR_HAL_CAN;
+        motor[m].state = ERROR;
     }
-    else{
-        motor[m].error_code |= MOTOR_ERROR_CAN_CONFIG;
-        motor[m].status &= ~ MOTOR_STATUS_CAN_SET;
+
+    else
+    {
+        /* update motor init_state and error_code */
+        motor[m].init_state |= MOTOR_INIT_CAN;
+        motor[m].error_code &= ~MOTOR_ERROR_HAL_CAN; /* reset motor CAN_COFIG error in the error_code */
     }
-    if ((motor[m].status & 0xF) == MOTOR_STATUS_INITIALIZED){    
-        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error code
+
+    /* If motor is fully initialized update motor state and error_code */
+    if (motor[m].init_state == MOTOR_INIT_ALL)
+    { 
+        motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
+        motor[m].state = MOTOR_READY;
+    }
+       
+}
+
+
+/** 
+ * \brief To send a heartbeat to a motor and to update motor_state and error_code.
+ * Heartbeat will be sent although motor state is in ERROR. 
+ * 
+ * \param m enum name of the motor 
+ * 
+ */
+void MOTOR_sendHeatbeat(enum MOTORS m)
+{
+    /* Copy heatbeat comd to can_tx mesage */
+    memcpy(motor[m].canTx.data, motor_heartbeat_cmd, sizeof(motor_heartbeat_cmd));
+
+    /* send the heartbeat */
+    MOTOR_sendTxGetRx(m);
+
+    /* if motor response was received, update the motor feedback */
+    if(motor[m].noResp_counter == 0)
+    {
+        _unpack_canRx(m);
+    }
+
+    /* update error_code, if motor is onine */
+    if(!_is_motor_error(m, MOTOR_ERROR_OFFLINE))
+    {
+        /* @todo : Check for other errors (OOR, OH, OC) and update error_code */
+
+        motor[m].error_code &= ~ MOTOR_ERROR_NOT_READY;     /*!< Reset motor is not ready error */
+        motor[m].error_code &= ~ MOTOR_ERROR_OOR;           /* Reset motor out of range error */
+        motor[m].error_code &= ~ MOTOR_ERROR_OH;            /* Reset motor over-heated error */
+        motor[m].error_code &= ~ MOTOR_ERROR_OC;            /* Reset motor over-current error */
     }
 }
 
 
-void MOTOR_sendHeatbeat(enum MOTORS m)
+/**
+ * @brief This method is used to send the command to the motor and get the response from the motor.
+ * If HAL_CAN sent the Tx command and we loss the response from the motor, this method will count 
+ * how many time we missed the response. once the missed response times more than defined 
+ * MAX_MOTOR_NO_RESPONSE_COUNT, motor state is set to ERROR and error_code's MOTOR_OFFLINE bit will be set.
+ * If HAL_CAN will be failed to send or get message, motor state will be set to ERROR and error_code's
+ * MOTOR_ERROR_HAL_CAN bit will be set.
+ * 
+ * \param m enum name of the motor 
+ */
+void MOTOR_sendTxGetRx(enum MOTORS m)
 {
-    if((motor[m].status & 0xF) == MOTOR_STATUS_INITIALIZED){
-        memcpy(motor[m].canTx.data, motor_heartbeat_cmd, sizeof(motor_heartbeat_cmd));
-        // send the heartbeat
-        if(HAL_CAN_AddTxMessage(motor[m].hcan_ptr, &motor[m].canTx.header, motor[m].canTx.data, &motor[m].canTx.TxMailBox) == HAL_OK){
-            // get CAN rx message and cheack motor id
-            if(HAL_CAN_GetRxMessage(motor[m].hcan_ptr, CAN_RX_FIFO0, &motor[m].canRx.header, motor[m].canRx.data) == HAL_OK && motor[m].canRx.data[0] == motor[0].id){
-                // If rx message was sent by the desired motor ID, unpak data and update motor states and error code
-                _unpack_reply(m);
-                motor[m].noResp_counter = 0; /* if motor responsed, Reset noResp_counter */
-                motor[m].status |= MOTOR_STATUS_ONLINE; /*!< Set motor online status */
-                motor[m].error_code &= ~MOTOR_ERROR_OFFLINE; /*!< Reset motor offline error */
+    /* Send CanTx message to the motor */
+    if(HAL_CAN_AddTxMessage(motor[m].hcan_ptr, &motor[m].canTx.header, motor[m].canTx.data, &motor[m].canTx.TxMailBox) == HAL_OK)
+    {
+        /*  get CAN rx message and cheack motor id */
+        uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
+        if(HAL_CAN_GetRxMessage(motor[m].hcan_ptr, CAN_RX_FIFO0, &motor[m].canRx.header, rx_data) == HAL_OK && rx_data[0] == motor[0].id)
+        {
+            /* If rx msg was sent by the right motor, save rx data into canRx.data */
+            memcpy(motor[m].canRx.data, rx_data, NUM_OF_CAN_RX_BYTES);
 
-                /* @todo : Check for other errors (OOR, OH, OC) and update error_code */
+            /* reset motor noResp_counter */
+            motor[m].noResp_counter = 0;
 
-                motor[m].error_code &= ~ MOTOR_ERROR_NOT_READY; /*!< Reset motor is not ready error */
-                motor[m].error_code &= ~ MOTOR_ERROR_OOR; /* Reset motor out of range error */
-                motor[m].error_code &= ~ MOTOR_ERROR_OH; /* Reset motor over-heated error */
-                motor[m].error_code &= ~ MOTOR_ERROR_OC; /* Reset motor over-current error */
+            /* update motor error_code */
+            motor[m].error_code &= ~MOTOR_ERROR_OFFLINE; /*!< Reset motor offline error */
+            motor[m].error_code &= ~MOTOR_ERROR_HAL_CAN; /*!< Reset motor HAL_CAN error */
 
-                motor[m].status &= ~ MOTOR_STATUS_ERROR; /* Reset motor error status */
+            /* update motor state */
+            if(motor[m].state != MOTOR_ENABLED && !_is_motor_error(m, MOTOR_ERROR_NOT_INITIALIZED))
+            {
+                motor[m].state = MOTOR_READY; /*!< Reset motor error state */
             }
-            // if message was sent by another motor, no_response_counter++; 
-            else{
-                motor[m].noResp_counter ++;
-            }
-            // If motor repeatedly didn't response for MAX_MOTOR_NO_RESPONSE_COUNT times, update motor status and error code.
-            if(motor[m].noResp_counter == MAX_MOTOR_NO_RESPONSE_COUNT){
-                motor[m].status &= ~ MOTOR_STATUS_ONLINE; /*!< Reset motor online status */
-                motor[m].status |= MOTOR_ERROR_OFFLINE; /*!< Set motor offline status */
-                motor[m].status |=  MOTOR_STATUS_ERROR; /* set motor error status */
-                motor[m].error_code |= MOTOR_ERROR_NOT_READY; /*!< set motor is not ready error */
+        }
+
+         /* If tx msg was sent and rx msg was received, but rx msg was sent by another motor */
+        else if (motor[m].hcan_ptr->ErrorCode != HAL_ERROR)
+        {
+             /* count failiers of motor response */
+            motor[m].noResp_counter ++;
+
+            /* if motor response was no recived more than MAX_MOTOR_NO_RESPONSE_COUNT, update motoe state and error_code */
+            if(motor[m].noResp_counter > MAX_MOTOR_NO_RESPONSE_COUNT)
+            {
+                motor[m].error_code |= MOTOR_ERROR_OFFLINE; /*!< Set motor offline error */
+                motor[m].state = MOTOR_ERROR;
             }
         }
     }
-    else{
-        motor[m].status &= ~ MOTOR_STATUS_INITIALIZED; /* Reset motor initialized status */
-        motor[m].error_code |= MOTOR_ERROR_NOT_INITIALIZED; /*!< Set motor not initialized error */
-        motor[m].status &= ~ MOTOR_STATUS_ERROR; /* Reset motor error status */
+
+    /* If Send or Get msg was failed */
+    else
+    {
+        /* update motor error_code */
+        motor[m].error_code |= MOTOR_ERROR_HAL_CAN; /*!< set HAL_CAN error */
+
+        /* update motor state */
+        motor[m].state = MOTOR_ERROR; 
     }
 }
 
+
 void MOTOR_startWatchdog()
 {
-
+    
 }
 
+/**
+ *  @brief To send enable motor command and update motor state.
+ * Enable command can be sent only if there is no internal motor errors such as;
+ * over-current, over-heat. 
+ * @param m enum name of the motor 
+ * 
+ */
 void MOTOR_enable(enum MOTORS m)
 {
+    /* If motor is not over-heated or not over-current */
+    if(!_is_motor_error(m, 0b00001100000U))
+    {
+        /* set canTx data to enable command */
+        memcpy(motor[m].canTx.data, motor_enable_cmd, sizeof(motor_enable_cmd));
 
+        /* Send the cmd and get the response */
+        MOTOR_sendTxGetRx(m);
+
+        /* if response received from the motor m, update state and error_code */
+        if(motor[m].noResp_counter == 0){
+            motor[m].error_code &= ~MOTOR_ERROR_EN; /*!< reset */
+            motor[m].state = MOTOR_ENABLED;
+        }
+
+        /* else, update error_code and state */
+        else{
+            motor[m].error_code |= MOTOR_ERROR_EN; /*!< set `enbale error` bit of the error code*/
+            motor[m].state = MOTOR_ERROR;
+        }
+
+    }
+    
 }
 
+/**
+ * To send motor disable command
+ * @param m enum name of the motor 
+ */
 void MOTOR_disable(enum MOTORS m)
 {
+    
+    /* set canTx data to enable command */
+    memcpy(motor[m].canTx.data, motor_disable_cmd, sizeof(motor_disable_cmd));
+
+    /* Send the cmd and get the response */
+    MOTOR_sendTxGetRx(m);
+
+    /* if response received from the motor m, update state  and error_code */
+    if(motor[m].noResp_counter == 0){
+        motor[m].error_code &= ~MOTOR_ERROR_DIS;
+        motor[m].state = MOTOR_READY;
+    }
+
+    /* else, update error_code and state */
+    else{
+        motor[m].error_code |= MOTOR_ERROR_DIS;
+        motor[m].state = MOTOR_ERROR;
+    }
 
 }
 
+/**
+ * To send motor set_zero command.
+ * This command can be used for setting the motor current position as its zero position.
+ * @param m enum name of the motor 
+ * 
+ * @todo : when it's possible to set motor position zero ?
+ * @todo : make a condition to send this cmd, only when motor can set the zero position
+ */
 void MOTOR_setZero(enum MOTORS m)
 {
+    /* set canTx data to enable command */
+    memcpy(motor[m].canTx.data, motor_setzero_cmd, sizeof(motor_setzero_cmd));
+
+    /* Send the cmd and get the response */
+    MOTOR_sendTxGetRx(m);
+
+    /*  update error_code */
+    if(motor[m].noResp_counter != 0){
+        motor[m].error_code |= MOTOR_ERROR_SZ;
+    }
 
 }
 
@@ -174,17 +341,37 @@ void _pack_cmd(enum MOTORS m)
 {
 
 }
-void _unpack_reply(enum MOTORS m)
-{
 
+
+void _unpack_canRx(enum MOTORS m)
+{
+    printf("unpacking the reply\n");
 }
+
 
 void _can_send()
 {
 
 }
 
+
 void _can_read()
 {
     
+}
+
+
+
+
+
+/**
+ * @brief To check if one of the the error_code is set.
+ * \param m enum name of the motor 
+ * @param error_word which error bit(s) to be checked
+ * @retval bool:  1 if set, 0 else
+ */
+bool _is_motor_error(enum MOTORS m, uint8_t error_word)
+{
+    bool is_error_set = (motor[m].error_code & error_word) == error_word;
+    return is_error_set;
 }
