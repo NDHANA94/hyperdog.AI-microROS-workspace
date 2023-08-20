@@ -43,6 +43,8 @@ void MX_CAN1_Init(void);
 /* USER CODE BEGIN Prototypes */
 
 
+/** For CAN test purpose 
+
 typedef struct{
   uint8_t data[8];
   CAN_TxHeaderTypeDef header;
@@ -55,12 +57,16 @@ typedef struct{
   CAN_FilterTypeDef filter;
 }CANRxMessage;
 
-
 extern CANRxMessage can_rxMsg;
 extern CANTxMessage can_txMsg;
+
 HAL_StatusTypeDef can_rx_init();
 void can_tx_init();
 void send_can_test();
+
+*/
+
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

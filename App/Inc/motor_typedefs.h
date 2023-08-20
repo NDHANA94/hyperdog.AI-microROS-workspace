@@ -53,6 +53,7 @@ struct{
     range_t kp;
     range_t kd;
     range_t i_ff;
+    range_t vb;
 }typedef motor_param_t;
 
 
@@ -100,8 +101,23 @@ struct{
     float position;
     float velocity;
     float current;
+    float vb;
 }typedef motor_feedback_t;
 
+
+/*  */
+
+typedef struct{
+  uint8_t data[8];
+  CAN_TxHeaderTypeDef header;
+  uint32_t TxMailBox;
+}CANTxMessage;
+
+typedef struct{
+  uint8_t data[7];
+  CAN_RxHeaderTypeDef header;
+  CAN_FilterTypeDef filter;
+}CANRxMessage;
 
 
 struct {

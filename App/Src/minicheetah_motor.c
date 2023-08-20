@@ -40,7 +40,7 @@ void MOTOR_initId(enum MOTORS m, uint8_t id)
  * @param kdMax maximum Kd value of the motor
  * @param iffMax maximum feed forwad current of the motor
  */
-void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax)
+void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax)
 {
     motor[m].params.p_des.min = -pMax;
     motor[m].params.p_des.max = pMax;
@@ -52,6 +52,8 @@ void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float 
     motor[m].params.kd.max    = kdMax;
     motor[m].params.i_ff.min  = -iffMax;
     motor[m].params.i_ff.max  = iffMax;
+    motor[m].params.vb.min    = 0;
+    motor[m].params.vb.max    = vbMax;
     
     /* update init_state and error_code */
     motor[m].init_state |= MOTOR_INIT_PARAM; // set PARAM_SET bit of the motor init_state.
@@ -165,11 +167,9 @@ void MOTOR_sendHeatbeat(enum MOTORS m)
     /* send the heartbeat */
     MOTOR_sendTxGetRx(m);
 
-    /* if motor response was received, update the motor feedback */
-    if(motor[m].noResp_counter == 0)
-    {
-        _unpack_canRx(m);
-    }
+    /* update the motor feedback */
+    _unpack_canRx(m);
+    
 
     /* update error_code, if motor is onine */
     if(!_is_motor_error(m, MOTOR_ERROR_OFFLINE))
@@ -199,12 +199,15 @@ void MOTOR_sendTxGetRx(enum MOTORS m)
     /* Send CanTx message to the motor */
     if(HAL_CAN_AddTxMessage(motor[m].hcan_ptr, &motor[m].canTx.header, motor[m].canTx.data, &motor[m].canTx.TxMailBox) == HAL_OK)
     {
-        /*  get CAN rx message and cheack motor id */
+        /*  get CAN rx message and filter motor Id  */
         uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
         if(HAL_CAN_GetRxMessage(motor[m].hcan_ptr, CAN_RX_FIFO0, &motor[m].canRx.header, rx_data) == HAL_OK && rx_data[0] == motor[0].id)
         {
             /* If rx msg was sent by the right motor, save rx data into canRx.data */
             memcpy(motor[m].canRx.data, rx_data, NUM_OF_CAN_RX_BYTES);
+
+            /* unpack canRx data into motor feedback {position, velocity, currunt} */
+            _unpack_canRx(m);
 
             /* reset motor noResp_counter */
             motor[m].noResp_counter = 0;
@@ -247,10 +250,6 @@ void MOTOR_sendTxGetRx(enum MOTORS m)
 }
 
 
-void MOTOR_startWatchdog()
-{
-    
-}
 
 /**
  *  @brief To send enable motor command and update motor state.
@@ -285,6 +284,7 @@ void MOTOR_enable(enum MOTORS m)
     }
     
 }
+
 
 /**
  * To send motor disable command
@@ -330,42 +330,111 @@ void MOTOR_setZero(enum MOTORS m)
     MOTOR_sendTxGetRx(m);
 
     /*  update error_code */
-    if(motor[m].noResp_counter != 0){
+    if(motor[m].noResp_counter != 0)
+    {
         motor[m].error_code |= MOTOR_ERROR_SZ;
+    }
+}
+
+
+
+void MOTOR_startWatchdog()
+{
+    
+}
+
+/**
+ * Pack motor commands from `motor[x].cmd` into `motor[x].canTx` message 
+ * 
+*/
+void _pack_cmd(enum MOTORS m)
+{
+    /*  
+    * 
+    * CAN Command Packet Structure 
+    * 16 bit position command, between -4*pi and 4*pi
+    * 12 bit velocity command, between -30 and + 30 rad/s
+    * 12 bit kp, between 0 and 500 N-m/rad
+    * 12 bit kd, between 0 and 100 N-m*s/rad
+    * 12 bit feed forward torque, between -18 and 18 N-m
+    * CAN Packet is 8 8-bit words
+    * Formatted as follows.  For each quantity, bit 0 is LSB
+    * 0: [position[15-8]]
+    * 1: [position[7-0]]
+    * 2: [velocity[11-4]]
+    * 3: [velocity[3-0] , kp[11-8]]
+    * 4: [kp[7-0]]
+    * 5: [kd[11-4]]
+    * 6: [kd[3-0], torque[11-8]]
+    * 7: [torque[7-0]] 
+    */
+
+    /* Limit data to be within bounds */
+    float p_des = fminf(fmaxf(motor[m].params.p_des.min, motor[m].cmd.p_des), motor[m].params.p_des.max);
+    float v_des = fminf(fmaxf(motor[m].params.v_des.min, motor[m].cmd.v_des), motor[m].params.v_des.max);
+    float kp    = fminf(fmaxf(motor[m].params.kp.min,    motor[m].cmd.kp   ), motor[m].params.kp.max   );
+    float kd    = fminf(fmaxf(motor[m].params.kd.min,    motor[m].cmd.kd   ), motor[m].params.kd.max   );
+    float iff   = fminf(fmaxf(motor[m].params.i_ff.min,  motor[m].cmd.iff  ), motor[m].params.i_ff.max );
+
+    /* Convert floats to unsigned ints */
+    int p_int   = float2uint(p_des, motor[m].params.p_des.min, motor[m].params.p_des.max, 16);
+    int v_int   = float2uint(v_des, motor[m].params.v_des.min, motor[m].params.v_des.max, 12);
+    int kp_int  = float2uint(kp,    motor[m].params.kp.min,    motor[m].params.kp.max   , 12);
+    int kd_int  = float2uint(kd,    motor[m].params.kd.min,    motor[m].params.kd.max   , 12);
+    int iff_int = float2uint(iff,   motor[m].params.i_ff.min,  motor[m].params.i_ff.max , 12);
+
+    motor[m].canTx.data[0] = p_int >> 8;
+    motor[m].canTx.data[1] = p_int & 0xFF;
+    motor[m].canTx.data[2] = v_int >> 4;
+    motor[m].canTx.data[3] = ((v_int&0xF)<<4) | (kp_int>>8);
+    motor[m].canTx.data[4] = kp_int&0xFF;
+    motor[m].canTx.data[5] = kd_int>>4;
+    motor[m].canTx.data[6] = ((kd_int&0xF)<<4) | (iff_int>>8);
+    motor[m].canTx.data[7] = iff_int&0xFF;
+}
+
+
+/**
+ * unpack `motor[x].canRx` data to `motor[x].feedback` 
+ * \param m enum name of the motor
+*/
+void _unpack_canRx(enum MOTORS m)
+{
+    /** 
+     * CAN Reply Packet Structure
+     * \protocol  :
+	 * 16 bit position, between -4*pi and 4*pi
+	 * 12 bit velocity, between -30 and + 30 rad/s
+	 * 12 bit current, between -40 and 40;
+	 * CAN Packet is 5 8-bit words
+	 * Formatted as follows.  For each quantity, bit 0 is LSB
+     * 0: [id]
+	 * 1: [position[15-8]]
+	 * 2: [position[7-0]]
+	 * 3: [velocity[11-4]]
+	 * 4: [velocity[3-0] , current[11-8]]
+	 * 5: [current[7-0]]
+     */
+
+    /* unpack uints from motor[x].canRx.data */
+    int p_int  = (motor[m].canRx.data[1] << 8) | motor[m].canRx.data[2];
+    int v_int  = (motor[m].canRx.data[3] << 4) | motor[m].canRx.data[4]>>4;
+    int i_int  = ((motor[m].canRx.data[4]&0xF)<<8) | motor[m].canRx.data[5];
+
+    /* convert uints to float  and set them in `motor[x].feedback.X` */
+    motor[m].feedback.position = uint2float(p_int, motor[m].params.p_des.min, motor[m].params.p_des.max, 16);
+    motor[m].feedback.velocity = uint2float(v_int, motor[m].params.v_des.min, motor[m].params.v_des.max, 12);
+    motor[m].feedback.current  = uint2float(i_int, motor[m].params.i_ff.min,  motor[m].params.i_ff.max,  12);
+    if (NUM_OF_CAN_RX_BYTES == 7){
+        motor[m].feedback.vb = uint2float(motor[m].canRx.data[6], motor[m].params.vb.min,  motor[m].params.vb.max,  8);
     }
 
 }
 
 
-void _pack_cmd(enum MOTORS m)
-{
-
-}
-
-
-void _unpack_canRx(enum MOTORS m)
-{
-    printf("unpacking the reply\n");
-}
-
-
-void _can_send()
-{
-
-}
-
-
-void _can_read()
-{
-    
-}
-
-
-
-
 
 /**
- * @brief To check if one of the the error_code is set.
+ * @brief To check if a given `error_code` is set.
  * \param m enum name of the motor 
  * @param error_word which error bit(s) to be checked
  * @retval bool:  1 if set, 0 else
@@ -374,4 +443,27 @@ bool _is_motor_error(enum MOTORS m, uint8_t error_word)
 {
     bool is_error_set = (motor[m].error_code & error_word) == error_word;
     return is_error_set;
+}
+
+
+float fminf(float x, float y){
+    return (((x) < (y)) ? (x) : (y));
+}
+
+float fmaxf(float x, float y){
+    return (((x) > (y)) ? (x) : (y));
+}
+
+int float2uint(float x, float x_min, float x_max, int bits)
+{
+    float span = x_max - x_min;
+    float offset = x_min;
+    return (int) ((x - offset) * ((float)((1<<bits)-1))/span);
+}
+
+float uint2float(int x_int, float x_min, float x_max, int bits)
+{
+    float span = x_max = x_min;
+    float offset = x_min;
+    return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
 }

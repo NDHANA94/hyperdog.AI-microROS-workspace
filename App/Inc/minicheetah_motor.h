@@ -55,7 +55,7 @@ extern uint8_t motor_status;
 
 
 void MOTOR_initId(enum MOTORS m, uint8_t id);
-void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax);
+void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax);
 void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);
 void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);
 void MOTOR_enable(enum MOTORS m);
@@ -63,19 +63,21 @@ void MOTOR_disable(enum MOTORS m);
 void MOTOR_setZero(enum MOTORS m);
 void MOTOR_sendTxGetRx(enum MOTORS m);
 void MOTOR_sendHeatbeat(enum MOTORS m);
-void MOTOR_startWatchdog();
+void MOTOR_startWatchdog(); // @todo
 
 
-void _pack_cmd(enum MOTORS m);
-void _unpack_canRx(enum MOTORS m);
-void _can_read();
-void _can_send();
+void _pack_cmd(enum MOTORS m); // @todo
+void _unpack_canRx(enum MOTORS m); // @todo
 
 bool _is_motor_error(enum MOTORS m, uint8_t error_word);
+
+float fminf(float x, float y);
+float fmaxf(float x, float y);
+int float2uint(float x, float x_min, float x_max, int bits);
+float uint2float(int x_int, float x_min, float x_max, int bits);
 
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif /* MINICHEETAH_MOTOR_H__ */

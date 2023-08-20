@@ -25,8 +25,10 @@
 /* USER CODE END 0 */
 
 CAN_HandleTypeDef hcan1;
-CANRxMessage can_rxMsg;
-CANTxMessage can_txMsg;
+
+
+// CANRxMessage can_rxMsg; /*!< for CAN test purpose */ 
+// CANTxMessage can_txMsg; /*!< for CAN test purpose */
 
 /* CAN1 init function */
 void MX_CAN1_Init(void)
@@ -122,7 +124,12 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
   }
 }
 
+
+
 /* USER CODE BEGIN 1 */
+
+/* For CAN test purpose 
+
 HAL_StatusTypeDef can_rx_init(){
   can_rxMsg.filter.FilterBank = 0;
   can_rxMsg.filter.FilterMode = CAN_FILTERMODE_IDMASK;
@@ -155,5 +162,7 @@ void send_can_test(){
   HAL_CAN_AddTxMessage(&hcan1, &can_txMsg.header, can_txMsg.data, &can_txMsg.TxMailBox);
  
 }
+
+*/
 
 /* USER CODE END 1 */
