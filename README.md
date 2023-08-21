@@ -10,36 +10,8 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 - MicroROS is established.
 - Motor struct was developed;
 
-```mermaid
-graph TD;
-    Motor-->id;
-
-    Motor-->params;
-    params-->p;
-    p-->p_min;
-    p--p_max;
-    params-->v;
-    v-->v_min;
-    v-->v_max;
-    params-->kp;
-    kp-->kp_min;
-    kp-->kp_max;
-    params-->kd;
-    kd-->kd.min;
-    kd-->kd.max;
-    params-->i_ff;
-    i_ff-->i_min;
-    i_ff-->i_max;
-
-    
-
-
-    ;
-```
-
         - TypeDef struct Motor:
                             - id (uint8_t)
-
                             - params:
                                     - p:
                                         - min (float)
@@ -59,7 +31,6 @@ graph TD;
                                     - vb: 
                                         - min (float)
                                         - max (float)
-
                             - limit:
                                     - position:
                                         - min (float)
@@ -70,7 +41,6 @@ graph TD;
                                     - current: 
                                         - min (float)
                                         - max (float)
-
                             - cmd:
                                     - p_des:
                                         - min (float)
@@ -81,25 +51,21 @@ graph TD;
                                     - kp: 
                                         - min (float)
                                         - max (float)
-
                             - feedback:
                                     - position (float)
                                     - velocity (float)
                                     - current  (float)
-
                             - init_state: 4-bits value
                                     - 0b0000: nothing initialized
                                     - 0b0001: motor id is set
                                     - 0b0010: motor params are set
                                     - 0b0100: motor limits are set
                                     - 0b1000: CAN comunication is configured 
-                            
                             - state: enum MOTOR_State
                                     - MOTOR_READY        = 0b00
                                     - MOTOR_INITIALIZING = 0b01
                                     - MOTOR_ENABLED      = 0b10
                                     - MOTOR_ERROR        = 0b11
-
                             - error_code: 11-bits
                                     - 0b00000000000: No error
                                     - 0b00000000001: motor is not initialized
@@ -114,19 +80,15 @@ graph TD;
                                     - 0b01000000000: failed to set motor zero position
                                     - 0b10000000000: motor is not ready to be operated
                                     - 0b00000000111: initial state of the motor error_code
-
-                            - hcan_ptr (CAN_HandleTypeDef*): pointer to hcan1
-                            
+                            - hcan_ptr (CAN_HandleTypeDef*): pointer to hcan1 
                             - canTX: CAN tx message
                                     - data[8]   (uint8_t)
                                     - header    (CAN_TxHeaderTypeDef)
                                     - TxMailBox (uint32_t)
-
                             - canRx: CAN rx message
                                     - data[7]   (uint8_t)
                                     - header    (CAN_TxHeaderTypeDef)
                                     - filter    (CAN_FilterTypeDef)
-
                             - noResp_counter: to count times of no response from the motor
                                             if more than 5 times a motor response is not received:
                                                 - state -> ERROR
@@ -201,12 +163,12 @@ graph TD;
 
 ### Pinouts:
  - USART2: microROS agent must be connected via 
-    `USART2_TX ---> PA2`
-    `USART2_RX ---> PA3`
+    - `USART2_TX ---> PA2`
+    - `USART2_RX ---> PA3`
 
 - CAN Interface: 
-    `CAN1_TX ---> PD1`
-    `CAN1_RX ---> PD0`
+    - `CAN1_TX ---> PD1`
+    - `CAN1_RX ---> PD0`
 
 
 
