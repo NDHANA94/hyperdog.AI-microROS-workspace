@@ -129,6 +129,7 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 - Tested `micro-ROS node`, `CAN communication` and `error indicator` on 3 seperate `FreeRTOS` tasks.
 - tested micro-ROS topics over 200 Hz frequency.
+- Developed a mechanism to re-establishing the connection with micro-ros agent.
         
 
 
