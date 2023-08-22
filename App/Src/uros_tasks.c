@@ -40,29 +40,36 @@ void init_uros_node()
     /* config micro ros */
     if(_config_uros()){
         /* allocate memory for FreeRTOS */
-        if(_maloc4FreeRTOS()){
+        if(_maloc4FreeRTOS())
+        {
             /* init micro-ROS app */
             uros.allocator = rcl_get_default_allocator(); 
+
             /* create rcl support */
             a:  
-            if(_create_rcl_support()){
-                    /* create node */
-                    if(_create_uros_node()){
-                        /* create motor feedback publisher */
-                        _create_motor_feedback_pub();
-                    }
+            if(_create_rcl_support())
+            {
+                /* create node */
+                if(_create_uros_node())
+                {
+                    /* create motor feedback publisher */
+                    _create_motor_feedback_pub();
+                }
             }
+
             /* if failed to init support */
-            else{
-                    while((uros.status & UROS_STATUS_RCL_SUPPORT) != UROS_STATUS_RCL_SUPPORT)
-                    {
-                        uros.state = UROS_WAITING_FOR_AGENT;
-                        goto a;
-                    }
-                } 
+            else
+            {
+                while((uros.status & UROS_STATUS_RCL_SUPPORT) != UROS_STATUS_RCL_SUPPORT)
+                {
+                    uros.state = UROS_WAITING_FOR_AGENT;
+                    goto a;
+                }
+            } 
         }
     }
 }
+
 
 /**
  * @brief motor_node spin.
