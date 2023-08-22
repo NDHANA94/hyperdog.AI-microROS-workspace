@@ -63,6 +63,7 @@ void init_uros_node()
                 while((uros.status & UROS_STATUS_RCL_SUPPORT) != UROS_STATUS_RCL_SUPPORT)
                 {
                     uros.state = UROS_WAITING_FOR_AGENT;
+                    osDelay(100); /*!< othewise FreeRTOS has no time space to run other tasks*/
                     goto a;
                 }
             } 

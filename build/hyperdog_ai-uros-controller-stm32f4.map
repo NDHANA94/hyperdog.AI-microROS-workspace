@@ -3877,577 +3877,577 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/crtn.o
                 0x0000000008003878       0x80 build/uros_tasks.o
                 0x0000000008003878                _create_rcl_support
  .text.init_uros_node
-                0x00000000080038f8       0x58 build/uros_tasks.o
+                0x00000000080038f8       0x5c build/uros_tasks.o
                 0x00000000080038f8                init_uros_node
  .text.spin_uros_node
-                0x0000000008003950       0xac build/uros_tasks.o
-                0x0000000008003950                spin_uros_node
+                0x0000000008003954       0xac build/uros_tasks.o
+                0x0000000008003954                spin_uros_node
  .text.blink_error
-                0x00000000080039fc      0x174 build/error_indicator.o
-                0x00000000080039fc                blink_error
+                0x0000000008003a00      0x174 build/error_indicator.o
+                0x0000000008003a00                blink_error
  .text.no_error
-                0x0000000008003b70       0x94 build/error_indicator.o
-                0x0000000008003b70                no_error
+                0x0000000008003b74       0x94 build/error_indicator.o
+                0x0000000008003b74                no_error
  .text.error_indicator
-                0x0000000008003c04      0x114 build/error_indicator.o
-                0x0000000008003c04                error_indicator
+                0x0000000008003c08      0x114 build/error_indicator.o
+                0x0000000008003c08                error_indicator
  .text.MOTOR_initId
-                0x0000000008003d18       0x2c build/minicheetah_motor.o
-                0x0000000008003d18                MOTOR_initId
+                0x0000000008003d1c       0x2c build/minicheetah_motor.o
+                0x0000000008003d1c                MOTOR_initId
  .text.MOTOR_initParams
-                0x0000000008003d44       0x7c build/minicheetah_motor.o
-                0x0000000008003d44                MOTOR_initParams
+                0x0000000008003d48       0x7c build/minicheetah_motor.o
+                0x0000000008003d48                MOTOR_initParams
  .text.MOTOR_initCtrlLimits
-                0x0000000008003dc0       0x5c build/minicheetah_motor.o
-                0x0000000008003dc0                MOTOR_initCtrlLimits
+                0x0000000008003dc4       0x5c build/minicheetah_motor.o
+                0x0000000008003dc4                MOTOR_initCtrlLimits
  .text.MOTOR_initCANConfig
-                0x0000000008003e1c       0xdc build/minicheetah_motor.o
-                0x0000000008003e1c                MOTOR_initCANConfig
+                0x0000000008003e20       0xdc build/minicheetah_motor.o
+                0x0000000008003e20                MOTOR_initCANConfig
  .text._is_motor_error
-                0x0000000008003ef8       0x1c build/minicheetah_motor.o
-                0x0000000008003ef8                _is_motor_error
+                0x0000000008003efc       0x1c build/minicheetah_motor.o
+                0x0000000008003efc                _is_motor_error
  .text.uint2float
-                0x0000000008003f14       0x24 build/minicheetah_motor.o
-                0x0000000008003f14                uint2float
+                0x0000000008003f18       0x24 build/minicheetah_motor.o
+                0x0000000008003f18                uint2float
  .text._unpack_canRx
-                0x0000000008003f38       0x88 build/minicheetah_motor.o
-                0x0000000008003f38                _unpack_canRx
+                0x0000000008003f3c       0x88 build/minicheetah_motor.o
+                0x0000000008003f3c                _unpack_canRx
  .text.MOTOR_sendTxGetRx
-                0x0000000008003fc0      0x104 build/minicheetah_motor.o
-                0x0000000008003fc0                MOTOR_sendTxGetRx
+                0x0000000008003fc4      0x104 build/minicheetah_motor.o
+                0x0000000008003fc4                MOTOR_sendTxGetRx
  .text.MOTOR_enable
-                0x00000000080040c4       0x68 build/minicheetah_motor.o
-                0x00000000080040c4                MOTOR_enable
+                0x00000000080040c8       0x68 build/minicheetah_motor.o
+                0x00000000080040c8                MOTOR_enable
  .text.HAL_TIM_PeriodElapsedCallback
-                0x000000000800412c       0x18 build/main.o
-                0x000000000800412c                HAL_TIM_PeriodElapsedCallback
+                0x0000000008004130       0x18 build/main.o
+                0x0000000008004130                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x0000000008004144        0x4 build/main.o
-                0x0000000008004144                Error_Handler
+                0x0000000008004148        0x4 build/main.o
+                0x0000000008004148                Error_Handler
  .text.SystemClock_Config
-                0x0000000008004148       0xac build/main.o
-                0x0000000008004148                SystemClock_Config
- .text.main     0x00000000080041f4       0x40 build/main.o
-                0x00000000080041f4                main
+                0x000000000800414c       0xac build/main.o
+                0x000000000800414c                SystemClock_Config
+ .text.main     0x00000000080041f8       0x40 build/main.o
+                0x00000000080041f8                main
  .text.MX_GPIO_Init
-                0x0000000008004234      0x1e0 build/gpio.o
-                0x0000000008004234                MX_GPIO_Init
+                0x0000000008004238      0x1e0 build/gpio.o
+                0x0000000008004238                MX_GPIO_Init
  .text.StartDefaultTask
-                0x0000000008004414        0xe build/freertos.o
-                0x0000000008004414                StartDefaultTask
+                0x0000000008004418        0xe build/freertos.o
+                0x0000000008004418                StartDefaultTask
  .text.StartErrorIndicatorTask
-                0x0000000008004422        0x8 build/freertos.o
-                0x0000000008004422                StartErrorIndicatorTask
- *fill*         0x000000000800442a        0x2 
+                0x0000000008004426        0x8 build/freertos.o
+                0x0000000008004426                StartErrorIndicatorTask
+ *fill*         0x000000000800442e        0x2 
  .text.StartCANTask
-                0x000000000800442c       0x6c build/freertos.o
-                0x000000000800442c                StartCANTask
+                0x0000000008004430       0x6c build/freertos.o
+                0x0000000008004430                StartCANTask
  .text.MX_FREERTOS_Init
-                0x0000000008004498       0x54 build/freertos.o
-                0x0000000008004498                MX_FREERTOS_Init
+                0x000000000800449c       0x54 build/freertos.o
+                0x000000000800449c                MX_FREERTOS_Init
  .text.MX_CAN1_Init
-                0x00000000080044ec       0x40 build/can.o
-                0x00000000080044ec                MX_CAN1_Init
+                0x00000000080044f0       0x40 build/can.o
+                0x00000000080044f0                MX_CAN1_Init
  .text.HAL_CAN_MspInit
-                0x000000000800452c       0x70 build/can.o
-                0x000000000800452c                HAL_CAN_MspInit
+                0x0000000008004530       0x70 build/can.o
+                0x0000000008004530                HAL_CAN_MspInit
  .text.MX_DMA_Init
-                0x000000000800459c       0x44 build/dma.o
-                0x000000000800459c                MX_DMA_Init
+                0x00000000080045a0       0x44 build/dma.o
+                0x00000000080045a0                MX_DMA_Init
  .text.MX_I2C1_Init
-                0x00000000080045e0       0x3c build/i2c.o
-                0x00000000080045e0                MX_I2C1_Init
+                0x00000000080045e4       0x3c build/i2c.o
+                0x00000000080045e4                MX_I2C1_Init
  .text.HAL_I2C_MspInit
-                0x000000000800461c       0x74 build/i2c.o
-                0x000000000800461c                HAL_I2C_MspInit
+                0x0000000008004620       0x74 build/i2c.o
+                0x0000000008004620                HAL_I2C_MspInit
  .text.MX_SPI1_Init
-                0x0000000008004690       0x40 build/spi.o
-                0x0000000008004690                MX_SPI1_Init
+                0x0000000008004694       0x40 build/spi.o
+                0x0000000008004694                MX_SPI1_Init
  .text.HAL_SPI_MspInit
-                0x00000000080046d0       0x70 build/spi.o
-                0x00000000080046d0                HAL_SPI_MspInit
+                0x00000000080046d4       0x70 build/spi.o
+                0x00000000080046d4                HAL_SPI_MspInit
  .text.MX_USART2_UART_Init
-                0x0000000008004740       0x34 build/usart.o
-                0x0000000008004740                MX_USART2_UART_Init
+                0x0000000008004744       0x34 build/usart.o
+                0x0000000008004744                MX_USART2_UART_Init
  .text.HAL_UART_MspInit
-                0x0000000008004774      0x104 build/usart.o
-                0x0000000008004774                HAL_UART_MspInit
+                0x0000000008004778      0x104 build/usart.o
+                0x0000000008004778                HAL_UART_MspInit
  .text.MX_USB_OTG_FS_USB_Init
-                0x0000000008004878        0x2 build/usb_otg.o
-                0x0000000008004878                MX_USB_OTG_FS_USB_Init
+                0x000000000800487c        0x2 build/usb_otg.o
+                0x000000000800487c                MX_USB_OTG_FS_USB_Init
  .text.NMI_Handler
-                0x000000000800487a        0x2 build/stm32f4xx_it.o
-                0x000000000800487a                NMI_Handler
- .text.HardFault_Handler
-                0x000000000800487c        0x2 build/stm32f4xx_it.o
-                0x000000000800487c                HardFault_Handler
- .text.MemManage_Handler
                 0x000000000800487e        0x2 build/stm32f4xx_it.o
-                0x000000000800487e                MemManage_Handler
- .text.BusFault_Handler
+                0x000000000800487e                NMI_Handler
+ .text.HardFault_Handler
                 0x0000000008004880        0x2 build/stm32f4xx_it.o
-                0x0000000008004880                BusFault_Handler
- .text.UsageFault_Handler
+                0x0000000008004880                HardFault_Handler
+ .text.MemManage_Handler
                 0x0000000008004882        0x2 build/stm32f4xx_it.o
-                0x0000000008004882                UsageFault_Handler
- .text.DebugMon_Handler
+                0x0000000008004882                MemManage_Handler
+ .text.BusFault_Handler
                 0x0000000008004884        0x2 build/stm32f4xx_it.o
-                0x0000000008004884                DebugMon_Handler
- *fill*         0x0000000008004886        0x2 
+                0x0000000008004884                BusFault_Handler
+ .text.UsageFault_Handler
+                0x0000000008004886        0x2 build/stm32f4xx_it.o
+                0x0000000008004886                UsageFault_Handler
+ .text.DebugMon_Handler
+                0x0000000008004888        0x2 build/stm32f4xx_it.o
+                0x0000000008004888                DebugMon_Handler
+ *fill*         0x000000000800488a        0x2 
  .text.DMA1_Stream5_IRQHandler
-                0x0000000008004888       0x10 build/stm32f4xx_it.o
-                0x0000000008004888                DMA1_Stream5_IRQHandler
+                0x000000000800488c       0x10 build/stm32f4xx_it.o
+                0x000000000800488c                DMA1_Stream5_IRQHandler
  .text.DMA1_Stream6_IRQHandler
-                0x0000000008004898       0x10 build/stm32f4xx_it.o
-                0x0000000008004898                DMA1_Stream6_IRQHandler
+                0x000000000800489c       0x10 build/stm32f4xx_it.o
+                0x000000000800489c                DMA1_Stream6_IRQHandler
  .text.CAN1_RX0_IRQHandler
-                0x00000000080048a8       0x10 build/stm32f4xx_it.o
-                0x00000000080048a8                CAN1_RX0_IRQHandler
+                0x00000000080048ac       0x10 build/stm32f4xx_it.o
+                0x00000000080048ac                CAN1_RX0_IRQHandler
  .text.TIM1_UP_TIM10_IRQHandler
-                0x00000000080048b8       0x10 build/stm32f4xx_it.o
-                0x00000000080048b8                TIM1_UP_TIM10_IRQHandler
+                0x00000000080048bc       0x10 build/stm32f4xx_it.o
+                0x00000000080048bc                TIM1_UP_TIM10_IRQHandler
  .text.USART2_IRQHandler
-                0x00000000080048c8       0x10 build/stm32f4xx_it.o
-                0x00000000080048c8                USART2_IRQHandler
+                0x00000000080048cc       0x10 build/stm32f4xx_it.o
+                0x00000000080048cc                USART2_IRQHandler
  .text.HAL_MspInit
-                0x00000000080048d8       0x44 build/stm32f4xx_hal_msp.o
-                0x00000000080048d8                HAL_MspInit
- .text._getpid  0x000000000800491c        0x4 build/syscalls.o
-                0x000000000800491c                _getpid
- .text._kill    0x0000000008004920       0x10 build/syscalls.o
-                0x0000000008004920                _kill
- .text._exit    0x0000000008004930        0xc build/syscalls.o
-                0x0000000008004930                _exit
- .text._read    0x000000000800493c       0x20 build/syscalls.o
-                0x000000000800493c                _read
- .text._write   0x000000000800495c       0x1c build/syscalls.o
-                0x000000000800495c                _write
- .text._sbrk    0x0000000008004978       0x4c build/syscalls.o
-                0x0000000008004978                _sbrk
- .text._close   0x00000000080049c4        0x6 build/syscalls.o
-                0x00000000080049c4                _close
- .text._fstat   0x00000000080049ca        0xa build/syscalls.o
-                0x00000000080049ca                _fstat
- .text._isatty  0x00000000080049d4        0x4 build/syscalls.o
-                0x00000000080049d4                _isatty
- .text._lseek   0x00000000080049d8        0x4 build/syscalls.o
-                0x00000000080049d8                _lseek
+                0x00000000080048dc       0x44 build/stm32f4xx_hal_msp.o
+                0x00000000080048dc                HAL_MspInit
+ .text._getpid  0x0000000008004920        0x4 build/syscalls.o
+                0x0000000008004920                _getpid
+ .text._kill    0x0000000008004924       0x10 build/syscalls.o
+                0x0000000008004924                _kill
+ .text._exit    0x0000000008004934        0xc build/syscalls.o
+                0x0000000008004934                _exit
+ .text._read    0x0000000008004940       0x20 build/syscalls.o
+                0x0000000008004940                _read
+ .text._write   0x0000000008004960       0x1c build/syscalls.o
+                0x0000000008004960                _write
+ .text._sbrk    0x000000000800497c       0x4c build/syscalls.o
+                0x000000000800497c                _sbrk
+ .text._close   0x00000000080049c8        0x6 build/syscalls.o
+                0x00000000080049c8                _close
+ .text._fstat   0x00000000080049ce        0xa build/syscalls.o
+                0x00000000080049ce                _fstat
+ .text._isatty  0x00000000080049d8        0x4 build/syscalls.o
+                0x00000000080049d8                _isatty
+ .text._lseek   0x00000000080049dc        0x4 build/syscalls.o
+                0x00000000080049dc                _lseek
  .text.HAL_CAN_Init
-                0x00000000080049dc      0x14c build/stm32f4xx_hal_can.o
-                0x00000000080049dc                HAL_CAN_Init
+                0x00000000080049e0      0x14c build/stm32f4xx_hal_can.o
+                0x00000000080049e0                HAL_CAN_Init
  .text.HAL_CAN_ConfigFilter
-                0x0000000008004b28      0x130 build/stm32f4xx_hal_can.o
-                0x0000000008004b28                HAL_CAN_ConfigFilter
+                0x0000000008004b2c      0x130 build/stm32f4xx_hal_can.o
+                0x0000000008004b2c                HAL_CAN_ConfigFilter
  .text.HAL_CAN_Start
-                0x0000000008004c58       0x5c build/stm32f4xx_hal_can.o
-                0x0000000008004c58                HAL_CAN_Start
+                0x0000000008004c5c       0x5c build/stm32f4xx_hal_can.o
+                0x0000000008004c5c                HAL_CAN_Start
  .text.HAL_CAN_AddTxMessage
-                0x0000000008004cb4       0xec build/stm32f4xx_hal_can.o
-                0x0000000008004cb4                HAL_CAN_AddTxMessage
+                0x0000000008004cb8       0xec build/stm32f4xx_hal_can.o
+                0x0000000008004cb8                HAL_CAN_AddTxMessage
  .text.HAL_CAN_GetRxMessage
-                0x0000000008004da0      0x140 build/stm32f4xx_hal_can.o
-                0x0000000008004da0                HAL_CAN_GetRxMessage
+                0x0000000008004da4      0x140 build/stm32f4xx_hal_can.o
+                0x0000000008004da4                HAL_CAN_GetRxMessage
  .text.HAL_CAN_TxMailbox0CompleteCallback
-                0x0000000008004ee0        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ee0                HAL_CAN_TxMailbox0CompleteCallback
- .text.HAL_CAN_TxMailbox1CompleteCallback
-                0x0000000008004ee2        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ee2                HAL_CAN_TxMailbox1CompleteCallback
- .text.HAL_CAN_TxMailbox2CompleteCallback
                 0x0000000008004ee4        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ee4                HAL_CAN_TxMailbox2CompleteCallback
- .text.HAL_CAN_TxMailbox0AbortCallback
+                0x0000000008004ee4                HAL_CAN_TxMailbox0CompleteCallback
+ .text.HAL_CAN_TxMailbox1CompleteCallback
                 0x0000000008004ee6        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ee6                HAL_CAN_TxMailbox0AbortCallback
- .text.HAL_CAN_TxMailbox1AbortCallback
+                0x0000000008004ee6                HAL_CAN_TxMailbox1CompleteCallback
+ .text.HAL_CAN_TxMailbox2CompleteCallback
                 0x0000000008004ee8        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ee8                HAL_CAN_TxMailbox1AbortCallback
- .text.HAL_CAN_TxMailbox2AbortCallback
+                0x0000000008004ee8                HAL_CAN_TxMailbox2CompleteCallback
+ .text.HAL_CAN_TxMailbox0AbortCallback
                 0x0000000008004eea        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004eea                HAL_CAN_TxMailbox2AbortCallback
- .text.HAL_CAN_RxFifo0MsgPendingCallback
+                0x0000000008004eea                HAL_CAN_TxMailbox0AbortCallback
+ .text.HAL_CAN_TxMailbox1AbortCallback
                 0x0000000008004eec        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004eec                HAL_CAN_RxFifo0MsgPendingCallback
- .text.HAL_CAN_RxFifo0FullCallback
+                0x0000000008004eec                HAL_CAN_TxMailbox1AbortCallback
+ .text.HAL_CAN_TxMailbox2AbortCallback
                 0x0000000008004eee        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004eee                HAL_CAN_RxFifo0FullCallback
- .text.HAL_CAN_RxFifo1MsgPendingCallback
+                0x0000000008004eee                HAL_CAN_TxMailbox2AbortCallback
+ .text.HAL_CAN_RxFifo0MsgPendingCallback
                 0x0000000008004ef0        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ef0                HAL_CAN_RxFifo1MsgPendingCallback
- .text.HAL_CAN_RxFifo1FullCallback
+                0x0000000008004ef0                HAL_CAN_RxFifo0MsgPendingCallback
+ .text.HAL_CAN_RxFifo0FullCallback
                 0x0000000008004ef2        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ef2                HAL_CAN_RxFifo1FullCallback
- .text.HAL_CAN_SleepCallback
+                0x0000000008004ef2                HAL_CAN_RxFifo0FullCallback
+ .text.HAL_CAN_RxFifo1MsgPendingCallback
                 0x0000000008004ef4        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ef4                HAL_CAN_SleepCallback
- .text.HAL_CAN_WakeUpFromRxMsgCallback
+                0x0000000008004ef4                HAL_CAN_RxFifo1MsgPendingCallback
+ .text.HAL_CAN_RxFifo1FullCallback
                 0x0000000008004ef6        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ef6                HAL_CAN_WakeUpFromRxMsgCallback
- .text.HAL_CAN_ErrorCallback
+                0x0000000008004ef6                HAL_CAN_RxFifo1FullCallback
+ .text.HAL_CAN_SleepCallback
                 0x0000000008004ef8        0x2 build/stm32f4xx_hal_can.o
-                0x0000000008004ef8                HAL_CAN_ErrorCallback
+                0x0000000008004ef8                HAL_CAN_SleepCallback
+ .text.HAL_CAN_WakeUpFromRxMsgCallback
+                0x0000000008004efa        0x2 build/stm32f4xx_hal_can.o
+                0x0000000008004efa                HAL_CAN_WakeUpFromRxMsgCallback
+ .text.HAL_CAN_ErrorCallback
+                0x0000000008004efc        0x2 build/stm32f4xx_hal_can.o
+                0x0000000008004efc                HAL_CAN_ErrorCallback
  .text.HAL_CAN_IRQHandler
-                0x0000000008004efa      0x24a build/stm32f4xx_hal_can.o
-                0x0000000008004efa                HAL_CAN_IRQHandler
+                0x0000000008004efe      0x24a build/stm32f4xx_hal_can.o
+                0x0000000008004efe                HAL_CAN_IRQHandler
  .text.HAL_RCC_OscConfig
-                0x0000000008005144      0x3f8 build/stm32f4xx_hal_rcc.o
-                0x0000000008005144                HAL_RCC_OscConfig
+                0x0000000008005148      0x3f8 build/stm32f4xx_hal_rcc.o
+                0x0000000008005148                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x000000000800553c       0xcc build/stm32f4xx_hal_rcc.o
-                0x000000000800553c                HAL_RCC_GetSysClockFreq
+                0x0000000008005540       0xcc build/stm32f4xx_hal_rcc.o
+                0x0000000008005540                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x0000000008005608      0x160 build/stm32f4xx_hal_rcc.o
-                0x0000000008005608                HAL_RCC_ClockConfig
+                0x000000000800560c      0x160 build/stm32f4xx_hal_rcc.o
+                0x000000000800560c                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x0000000008005768        0xc build/stm32f4xx_hal_rcc.o
-                0x0000000008005768                HAL_RCC_GetHCLKFreq
+                0x000000000800576c        0xc build/stm32f4xx_hal_rcc.o
+                0x000000000800576c                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x0000000008005774       0x20 build/stm32f4xx_hal_rcc.o
-                0x0000000008005774                HAL_RCC_GetPCLK1Freq
+                0x0000000008005778       0x20 build/stm32f4xx_hal_rcc.o
+                0x0000000008005778                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x0000000008005794       0x20 build/stm32f4xx_hal_rcc.o
-                0x0000000008005794                HAL_RCC_GetPCLK2Freq
+                0x0000000008005798       0x20 build/stm32f4xx_hal_rcc.o
+                0x0000000008005798                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCC_GetClockConfig
-                0x00000000080057b4       0x3c build/stm32f4xx_hal_rcc.o
-                0x00000000080057b4                HAL_RCC_GetClockConfig
+                0x00000000080057b8       0x3c build/stm32f4xx_hal_rcc.o
+                0x00000000080057b8                HAL_RCC_GetClockConfig
  .text.HAL_GPIO_Init
-                0x00000000080057f0      0x1d4 build/stm32f4xx_hal_gpio.o
-                0x00000000080057f0                HAL_GPIO_Init
+                0x00000000080057f4      0x1d4 build/stm32f4xx_hal_gpio.o
+                0x00000000080057f4                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x00000000080059c4        0xc build/stm32f4xx_hal_gpio.o
-                0x00000000080059c4                HAL_GPIO_WritePin
+                0x00000000080059c8        0xc build/stm32f4xx_hal_gpio.o
+                0x00000000080059c8                HAL_GPIO_WritePin
  .text.DMA_SetConfig
-                0x00000000080059d0       0x2c build/stm32f4xx_hal_dma.o
+                0x00000000080059d4       0x2c build/stm32f4xx_hal_dma.o
  .text.DMA_CalcBaseAndBitshift
-                0x00000000080059fc       0x44 build/stm32f4xx_hal_dma.o
+                0x0000000008005a00       0x44 build/stm32f4xx_hal_dma.o
  .text.DMA_CheckFifoParam
-                0x0000000008005a40       0x8e build/stm32f4xx_hal_dma.o
- *fill*         0x0000000008005ace        0x2 
+                0x0000000008005a44       0x8e build/stm32f4xx_hal_dma.o
+ *fill*         0x0000000008005ad2        0x2 
  .text.HAL_DMA_Init
-                0x0000000008005ad0       0xcc build/stm32f4xx_hal_dma.o
-                0x0000000008005ad0                HAL_DMA_Init
+                0x0000000008005ad4       0xcc build/stm32f4xx_hal_dma.o
+                0x0000000008005ad4                HAL_DMA_Init
  .text.HAL_DMA_Start_IT
-                0x0000000008005b9c       0x6a build/stm32f4xx_hal_dma.o
-                0x0000000008005b9c                HAL_DMA_Start_IT
+                0x0000000008005ba0       0x6a build/stm32f4xx_hal_dma.o
+                0x0000000008005ba0                HAL_DMA_Start_IT
  .text.HAL_DMA_Abort
-                0x0000000008005c06       0x94 build/stm32f4xx_hal_dma.o
-                0x0000000008005c06                HAL_DMA_Abort
+                0x0000000008005c0a       0x94 build/stm32f4xx_hal_dma.o
+                0x0000000008005c0a                HAL_DMA_Abort
  .text.HAL_DMA_Abort_IT
-                0x0000000008005c9a       0x26 build/stm32f4xx_hal_dma.o
-                0x0000000008005c9a                HAL_DMA_Abort_IT
+                0x0000000008005c9e       0x26 build/stm32f4xx_hal_dma.o
+                0x0000000008005c9e                HAL_DMA_Abort_IT
  .text.HAL_DMA_IRQHandler
-                0x0000000008005cc0      0x1dc build/stm32f4xx_hal_dma.o
-                0x0000000008005cc0                HAL_DMA_IRQHandler
+                0x0000000008005cc4      0x1dc build/stm32f4xx_hal_dma.o
+                0x0000000008005cc4                HAL_DMA_IRQHandler
  .text.HAL_NVIC_SetPriorityGrouping
-                0x0000000008005e9c       0x24 build/stm32f4xx_hal_cortex.o
-                0x0000000008005e9c                HAL_NVIC_SetPriorityGrouping
+                0x0000000008005ea0       0x24 build/stm32f4xx_hal_cortex.o
+                0x0000000008005ea0                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x0000000008005ec0       0x68 build/stm32f4xx_hal_cortex.o
-                0x0000000008005ec0                HAL_NVIC_SetPriority
+                0x0000000008005ec4       0x68 build/stm32f4xx_hal_cortex.o
+                0x0000000008005ec4                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x0000000008005f28       0x1c build/stm32f4xx_hal_cortex.o
-                0x0000000008005f28                HAL_NVIC_EnableIRQ
+                0x0000000008005f2c       0x1c build/stm32f4xx_hal_cortex.o
+                0x0000000008005f2c                HAL_NVIC_EnableIRQ
  .text.HAL_Init
-                0x0000000008005f44       0x34 build/stm32f4xx_hal.o
-                0x0000000008005f44                HAL_Init
+                0x0000000008005f48       0x34 build/stm32f4xx_hal.o
+                0x0000000008005f48                HAL_Init
  .text.HAL_IncTick
-                0x0000000008005f78       0x18 build/stm32f4xx_hal.o
-                0x0000000008005f78                HAL_IncTick
+                0x0000000008005f7c       0x18 build/stm32f4xx_hal.o
+                0x0000000008005f7c                HAL_IncTick
  .text.HAL_GetTick
-                0x0000000008005f90        0xc build/stm32f4xx_hal.o
-                0x0000000008005f90                HAL_GetTick
+                0x0000000008005f94        0xc build/stm32f4xx_hal.o
+                0x0000000008005f94                HAL_GetTick
  .text.HAL_I2C_Init
-                0x0000000008005f9c      0x1bc build/stm32f4xx_hal_i2c.o
-                0x0000000008005f9c                HAL_I2C_Init
+                0x0000000008005fa0      0x1bc build/stm32f4xx_hal_i2c.o
+                0x0000000008005fa0                HAL_I2C_Init
  .text.HAL_SPI_Init
-                0x0000000008006158       0xbe build/stm32f4xx_hal_spi.o
-                0x0000000008006158                HAL_SPI_Init
+                0x000000000800615c       0xbe build/stm32f4xx_hal_spi.o
+                0x000000000800615c                HAL_SPI_Init
  .text.HAL_TIM_Base_MspInit
-                0x0000000008006216        0x2 build/stm32f4xx_hal_tim.o
-                0x0000000008006216                HAL_TIM_Base_MspInit
+                0x000000000800621a        0x2 build/stm32f4xx_hal_tim.o
+                0x000000000800621a                HAL_TIM_Base_MspInit
  .text.HAL_TIM_Base_Start_IT
-                0x0000000008006218       0x88 build/stm32f4xx_hal_tim.o
-                0x0000000008006218                HAL_TIM_Base_Start_IT
+                0x000000000800621c       0x88 build/stm32f4xx_hal_tim.o
+                0x000000000800621c                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x00000000080062a0        0x2 build/stm32f4xx_hal_tim.o
-                0x00000000080062a0                HAL_TIM_OC_DelayElapsedCallback
- .text.HAL_TIM_IC_CaptureCallback
-                0x00000000080062a2        0x2 build/stm32f4xx_hal_tim.o
-                0x00000000080062a2                HAL_TIM_IC_CaptureCallback
- .text.HAL_TIM_PWM_PulseFinishedCallback
                 0x00000000080062a4        0x2 build/stm32f4xx_hal_tim.o
-                0x00000000080062a4                HAL_TIM_PWM_PulseFinishedCallback
- .text.HAL_TIM_TriggerCallback
+                0x00000000080062a4                HAL_TIM_OC_DelayElapsedCallback
+ .text.HAL_TIM_IC_CaptureCallback
                 0x00000000080062a6        0x2 build/stm32f4xx_hal_tim.o
-                0x00000000080062a6                HAL_TIM_TriggerCallback
+                0x00000000080062a6                HAL_TIM_IC_CaptureCallback
+ .text.HAL_TIM_PWM_PulseFinishedCallback
+                0x00000000080062a8        0x2 build/stm32f4xx_hal_tim.o
+                0x00000000080062a8                HAL_TIM_PWM_PulseFinishedCallback
+ .text.HAL_TIM_TriggerCallback
+                0x00000000080062aa        0x2 build/stm32f4xx_hal_tim.o
+                0x00000000080062aa                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x00000000080062a8      0x17a build/stm32f4xx_hal_tim.o
-                0x00000000080062a8                HAL_TIM_IRQHandler
- *fill*         0x0000000008006422        0x2 
+                0x00000000080062ac      0x17a build/stm32f4xx_hal_tim.o
+                0x00000000080062ac                HAL_TIM_IRQHandler
+ *fill*         0x0000000008006426        0x2 
  .text.TIM_Base_SetConfig
-                0x0000000008006424       0xc8 build/stm32f4xx_hal_tim.o
-                0x0000000008006424                TIM_Base_SetConfig
+                0x0000000008006428       0xc8 build/stm32f4xx_hal_tim.o
+                0x0000000008006428                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x00000000080064ec       0x58 build/stm32f4xx_hal_tim.o
-                0x00000000080064ec                HAL_TIM_Base_Init
+                0x00000000080064f0       0x58 build/stm32f4xx_hal_tim.o
+                0x00000000080064f0                HAL_TIM_Base_Init
  .text.HAL_TIMEx_CommutCallback
-                0x0000000008006544        0x2 build/stm32f4xx_hal_tim_ex.o
-                0x0000000008006544                HAL_TIMEx_CommutCallback
+                0x0000000008006548        0x2 build/stm32f4xx_hal_tim_ex.o
+                0x0000000008006548                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x0000000008006546        0x2 build/stm32f4xx_hal_tim_ex.o
-                0x0000000008006546                HAL_TIMEx_BreakCallback
+                0x000000000800654a        0x2 build/stm32f4xx_hal_tim_ex.o
+                0x000000000800654a                HAL_TIMEx_BreakCallback
  .text.UART_EndTxTransfer
-                0x0000000008006548       0x20 build/stm32f4xx_hal_uart.o
+                0x000000000800654c       0x20 build/stm32f4xx_hal_uart.o
  .text.UART_EndRxTransfer
-                0x0000000008006568       0x5c build/stm32f4xx_hal_uart.o
+                0x000000000800656c       0x5c build/stm32f4xx_hal_uart.o
  .text.UART_Transmit_IT
-                0x00000000080065c4       0x60 build/stm32f4xx_hal_uart.o
+                0x00000000080065c8       0x60 build/stm32f4xx_hal_uart.o
  .text.UART_SetConfig
-                0x0000000008006624      0x11c build/stm32f4xx_hal_uart.o
+                0x0000000008006628      0x11c build/stm32f4xx_hal_uart.o
  .text.HAL_UART_Init
-                0x0000000008006740       0x5e build/stm32f4xx_hal_uart.o
-                0x0000000008006740                HAL_UART_Init
- *fill*         0x000000000800679e        0x2 
+                0x0000000008006744       0x5e build/stm32f4xx_hal_uart.o
+                0x0000000008006744                HAL_UART_Init
+ *fill*         0x00000000080067a2        0x2 
  .text.HAL_UART_Transmit_DMA
-                0x00000000080067a0       0x9c build/stm32f4xx_hal_uart.o
-                0x00000000080067a0                HAL_UART_Transmit_DMA
+                0x00000000080067a4       0x9c build/stm32f4xx_hal_uart.o
+                0x00000000080067a4                HAL_UART_Transmit_DMA
  .text.HAL_UART_DMAStop
-                0x000000000800683c       0x84 build/stm32f4xx_hal_uart.o
-                0x000000000800683c                HAL_UART_DMAStop
+                0x0000000008006840       0x84 build/stm32f4xx_hal_uart.o
+                0x0000000008006840                HAL_UART_DMAStop
  .text.HAL_UART_TxCpltCallback
-                0x00000000080068c0        0x2 build/stm32f4xx_hal_uart.o
-                0x00000000080068c0                HAL_UART_TxCpltCallback
+                0x00000000080068c4        0x2 build/stm32f4xx_hal_uart.o
+                0x00000000080068c4                HAL_UART_TxCpltCallback
  .text.UART_DMATransmitCplt
-                0x00000000080068c2       0x4c build/stm32f4xx_hal_uart.o
+                0x00000000080068c6       0x4c build/stm32f4xx_hal_uart.o
  .text.UART_EndTransmit_IT
-                0x000000000800690e       0x1a build/stm32f4xx_hal_uart.o
+                0x0000000008006912       0x1a build/stm32f4xx_hal_uart.o
  .text.HAL_UART_TxHalfCpltCallback
-                0x0000000008006928        0x2 build/stm32f4xx_hal_uart.o
-                0x0000000008006928                HAL_UART_TxHalfCpltCallback
+                0x000000000800692c        0x2 build/stm32f4xx_hal_uart.o
+                0x000000000800692c                HAL_UART_TxHalfCpltCallback
  .text.UART_DMATxHalfCplt
-                0x000000000800692a        0xa build/stm32f4xx_hal_uart.o
+                0x000000000800692e        0xa build/stm32f4xx_hal_uart.o
  .text.HAL_UART_RxCpltCallback
-                0x0000000008006934        0x2 build/stm32f4xx_hal_uart.o
-                0x0000000008006934                HAL_UART_RxCpltCallback
- .text.HAL_UART_RxHalfCpltCallback
-                0x0000000008006936        0x2 build/stm32f4xx_hal_uart.o
-                0x0000000008006936                HAL_UART_RxHalfCpltCallback
- .text.HAL_UART_ErrorCallback
                 0x0000000008006938        0x2 build/stm32f4xx_hal_uart.o
-                0x0000000008006938                HAL_UART_ErrorCallback
+                0x0000000008006938                HAL_UART_RxCpltCallback
+ .text.HAL_UART_RxHalfCpltCallback
+                0x000000000800693a        0x2 build/stm32f4xx_hal_uart.o
+                0x000000000800693a                HAL_UART_RxHalfCpltCallback
+ .text.HAL_UART_ErrorCallback
+                0x000000000800693c        0x2 build/stm32f4xx_hal_uart.o
+                0x000000000800693c                HAL_UART_ErrorCallback
  .text.UART_DMAError
-                0x000000000800693a       0x58 build/stm32f4xx_hal_uart.o
+                0x000000000800693e       0x58 build/stm32f4xx_hal_uart.o
  .text.UART_DMAAbortOnError
-                0x0000000008006992       0x10 build/stm32f4xx_hal_uart.o
+                0x0000000008006996       0x10 build/stm32f4xx_hal_uart.o
  .text.HAL_UARTEx_RxEventCallback
-                0x00000000080069a2        0x2 build/stm32f4xx_hal_uart.o
-                0x00000000080069a2                HAL_UARTEx_RxEventCallback
+                0x00000000080069a6        0x2 build/stm32f4xx_hal_uart.o
+                0x00000000080069a6                HAL_UARTEx_RxEventCallback
  .text.UART_Receive_IT
-                0x00000000080069a4       0xe2 build/stm32f4xx_hal_uart.o
- *fill*         0x0000000008006a86        0x2 
+                0x00000000080069a8       0xe2 build/stm32f4xx_hal_uart.o
+ *fill*         0x0000000008006a8a        0x2 
  .text.HAL_UART_IRQHandler
-                0x0000000008006a88      0x280 build/stm32f4xx_hal_uart.o
-                0x0000000008006a88                HAL_UART_IRQHandler
+                0x0000000008006a8c      0x280 build/stm32f4xx_hal_uart.o
+                0x0000000008006a8c                HAL_UART_IRQHandler
  .text.UART_DMARxHalfCplt
-                0x0000000008006d08       0x1a build/stm32f4xx_hal_uart.o
+                0x0000000008006d0c       0x1a build/stm32f4xx_hal_uart.o
  .text.UART_DMAReceiveCplt
-                0x0000000008006d22       0x96 build/stm32f4xx_hal_uart.o
+                0x0000000008006d26       0x96 build/stm32f4xx_hal_uart.o
  .text.UART_Start_Receive_DMA
-                0x0000000008006db8       0xa8 build/stm32f4xx_hal_uart.o
-                0x0000000008006db8                UART_Start_Receive_DMA
+                0x0000000008006dbc       0xa8 build/stm32f4xx_hal_uart.o
+                0x0000000008006dbc                UART_Start_Receive_DMA
  .text.HAL_UART_Receive_DMA
-                0x0000000008006e60       0x38 build/stm32f4xx_hal_uart.o
-                0x0000000008006e60                HAL_UART_Receive_DMA
+                0x0000000008006e64       0x38 build/stm32f4xx_hal_uart.o
+                0x0000000008006e64                HAL_UART_Receive_DMA
  .text.SystemInit
-                0x0000000008006e98       0x14 build/system_stm32f4xx.o
-                0x0000000008006e98                SystemInit
+                0x0000000008006e9c       0x14 build/system_stm32f4xx.o
+                0x0000000008006e9c                SystemInit
  .text.vListInitialise
-                0x0000000008006eac       0x16 build/list.o
-                0x0000000008006eac                vListInitialise
+                0x0000000008006eb0       0x16 build/list.o
+                0x0000000008006eb0                vListInitialise
  .text.vListInitialiseItem
-                0x0000000008006ec2        0x6 build/list.o
-                0x0000000008006ec2                vListInitialiseItem
+                0x0000000008006ec6        0x6 build/list.o
+                0x0000000008006ec6                vListInitialiseItem
  .text.vListInsertEnd
-                0x0000000008006ec8       0x16 build/list.o
-                0x0000000008006ec8                vListInsertEnd
+                0x0000000008006ecc       0x16 build/list.o
+                0x0000000008006ecc                vListInsertEnd
  .text.vListInsert
-                0x0000000008006ede       0x32 build/list.o
-                0x0000000008006ede                vListInsert
+                0x0000000008006ee2       0x32 build/list.o
+                0x0000000008006ee2                vListInsert
  .text.uxListRemove
-                0x0000000008006f10       0x26 build/list.o
-                0x0000000008006f10                uxListRemove
+                0x0000000008006f14       0x26 build/list.o
+                0x0000000008006f14                uxListRemove
  .text.prvIsQueueFull
-                0x0000000008006f36       0x1e build/queue.o
+                0x0000000008006f3a       0x1e build/queue.o
  .text.prvIsQueueEmpty
-                0x0000000008006f54       0x1a build/queue.o
+                0x0000000008006f58       0x1a build/queue.o
  .text.prvCopyDataToQueue
-                0x0000000008006f6e       0x76 build/queue.o
+                0x0000000008006f72       0x76 build/queue.o
  .text.prvCopyDataFromQueue
-                0x0000000008006fe4       0x24 build/queue.o
+                0x0000000008006fe8       0x24 build/queue.o
  .text.prvUnlockQueue
-                0x0000000008007008       0x6e build/queue.o
- *fill*         0x0000000008007076        0x2 
+                0x000000000800700c       0x6e build/queue.o
+ *fill*         0x000000000800707a        0x2 
  .text.xQueueGenericReset
-                0x0000000008007078       0x84 build/queue.o
-                0x0000000008007078                xQueueGenericReset
+                0x000000000800707c       0x84 build/queue.o
+                0x000000000800707c                xQueueGenericReset
  .text.prvInitialiseNewQueue
-                0x00000000080070fc       0x22 build/queue.o
+                0x0000000008007100       0x22 build/queue.o
  .text.xQueueGenericCreateStatic
-                0x000000000800711e       0x94 build/queue.o
-                0x000000000800711e                xQueueGenericCreateStatic
- *fill*         0x00000000080071b2        0x2 
+                0x0000000008007122       0x94 build/queue.o
+                0x0000000008007122                xQueueGenericCreateStatic
+ *fill*         0x00000000080071b6        0x2 
  .text.xQueueGenericSend
-                0x00000000080071b4      0x180 build/queue.o
-                0x00000000080071b4                xQueueGenericSend
+                0x00000000080071b8      0x180 build/queue.o
+                0x00000000080071b8                xQueueGenericSend
  .text.xQueueGenericSendFromISR
-                0x0000000008007334       0xd0 build/queue.o
-                0x0000000008007334                xQueueGenericSendFromISR
+                0x0000000008007338       0xd0 build/queue.o
+                0x0000000008007338                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x0000000008007404      0x15c build/queue.o
-                0x0000000008007404                xQueueReceive
+                0x0000000008007408      0x15c build/queue.o
+                0x0000000008007408                xQueueReceive
  .text.vQueueAddToRegistry
-                0x0000000008007560       0x28 build/queue.o
-                0x0000000008007560                vQueueAddToRegistry
+                0x0000000008007564       0x28 build/queue.o
+                0x0000000008007564                vQueueAddToRegistry
  .text.vQueueWaitForMessageRestricted
-                0x0000000008007588       0x52 build/queue.o
-                0x0000000008007588                vQueueWaitForMessageRestricted
- *fill*         0x00000000080075da        0x2 
+                0x000000000800758c       0x52 build/queue.o
+                0x000000000800758c                vQueueWaitForMessageRestricted
+ *fill*         0x00000000080075de        0x2 
  .text.prvResetNextTaskUnblockTime
-                0x00000000080075dc       0x2c build/tasks.o
+                0x00000000080075e0       0x2c build/tasks.o
  .text.prvInitialiseNewTask
-                0x0000000008007608       0x9a build/tasks.o
- *fill*         0x00000000080076a2        0x2 
+                0x000000000800760c       0x9a build/tasks.o
+ *fill*         0x00000000080076a6        0x2 
  .text.prvInitialiseTaskLists
-                0x00000000080076a4       0x68 build/tasks.o
+                0x00000000080076a8       0x68 build/tasks.o
  .text.prvAddNewTaskToReadyList
-                0x000000000800770c       0xac build/tasks.o
+                0x0000000008007710       0xac build/tasks.o
  .text.prvDeleteTCB
-                0x00000000080077b8       0x38 build/tasks.o
+                0x00000000080077bc       0x38 build/tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x00000000080077f0       0x4c build/tasks.o
+                0x00000000080077f4       0x4c build/tasks.o
  .text.prvIdleTask
-                0x000000000800783c       0x28 build/tasks.o
+                0x0000000008007840       0x28 build/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x0000000008007864       0x7c build/tasks.o
+                0x0000000008007868       0x7c build/tasks.o
  .text.xTaskCreateStatic
-                0x00000000080078e0       0x74 build/tasks.o
-                0x00000000080078e0                xTaskCreateStatic
+                0x00000000080078e4       0x74 build/tasks.o
+                0x00000000080078e4                xTaskCreateStatic
  .text.xTaskCreate
-                0x0000000008007954       0x68 build/tasks.o
-                0x0000000008007954                xTaskCreate
+                0x0000000008007958       0x68 build/tasks.o
+                0x0000000008007958                xTaskCreate
  .text.vTaskStartScheduler
-                0x00000000080079bc       0x94 build/tasks.o
-                0x00000000080079bc                vTaskStartScheduler
+                0x00000000080079c0       0x94 build/tasks.o
+                0x00000000080079c0                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x0000000008007a50       0x10 build/tasks.o
-                0x0000000008007a50                vTaskSuspendAll
+                0x0000000008007a54       0x10 build/tasks.o
+                0x0000000008007a54                vTaskSuspendAll
  .text.xTaskGetTickCount
-                0x0000000008007a60        0xc build/tasks.o
-                0x0000000008007a60                xTaskGetTickCount
+                0x0000000008007a64        0xc build/tasks.o
+                0x0000000008007a64                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x0000000008007a6c      0x11c build/tasks.o
-                0x0000000008007a6c                xTaskIncrementTick
+                0x0000000008007a70      0x11c build/tasks.o
+                0x0000000008007a70                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x0000000008007b88       0xf8 build/tasks.o
-                0x0000000008007b88                xTaskResumeAll
+                0x0000000008007b8c       0xf8 build/tasks.o
+                0x0000000008007b8c                xTaskResumeAll
  .text.vTaskDelay
-                0x0000000008007c80       0x4c build/tasks.o
-                0x0000000008007c80                vTaskDelay
+                0x0000000008007c84       0x4c build/tasks.o
+                0x0000000008007c84                vTaskDelay
  .text.vTaskSwitchContext
-                0x0000000008007ccc       0x98 build/tasks.o
-                0x0000000008007ccc                vTaskSwitchContext
+                0x0000000008007cd0       0x98 build/tasks.o
+                0x0000000008007cd0                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x0000000008007d64       0x30 build/tasks.o
-                0x0000000008007d64                vTaskPlaceOnEventList
+                0x0000000008007d68       0x30 build/tasks.o
+                0x0000000008007d68                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x0000000008007d94       0x38 build/tasks.o
-                0x0000000008007d94                vTaskPlaceOnEventListRestricted
+                0x0000000008007d98       0x38 build/tasks.o
+                0x0000000008007d98                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x0000000008007dcc       0x8c build/tasks.o
-                0x0000000008007dcc                xTaskRemoveFromEventList
+                0x0000000008007dd0       0x8c build/tasks.o
+                0x0000000008007dd0                xTaskRemoveFromEventList
  .text.vTaskSetTimeOutState
-                0x0000000008007e58       0x38 build/tasks.o
-                0x0000000008007e58                vTaskSetTimeOutState
+                0x0000000008007e5c       0x38 build/tasks.o
+                0x0000000008007e5c                vTaskSetTimeOutState
  .text.vTaskInternalSetTimeOutState
-                0x0000000008007e90       0x18 build/tasks.o
-                0x0000000008007e90                vTaskInternalSetTimeOutState
+                0x0000000008007e94       0x18 build/tasks.o
+                0x0000000008007e94                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x0000000008007ea8       0x84 build/tasks.o
-                0x0000000008007ea8                xTaskCheckForTimeOut
+                0x0000000008007eac       0x84 build/tasks.o
+                0x0000000008007eac                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x0000000008007f2c        0xc build/tasks.o
-                0x0000000008007f2c                vTaskMissedYield
+                0x0000000008007f30        0xc build/tasks.o
+                0x0000000008007f30                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x0000000008007f38       0x20 build/tasks.o
-                0x0000000008007f38                xTaskGetSchedulerState
+                0x0000000008007f3c       0x20 build/tasks.o
+                0x0000000008007f3c                xTaskGetSchedulerState
  .text.xTaskPriorityDisinherit
-                0x0000000008007f58       0x90 build/tasks.o
-                0x0000000008007f58                xTaskPriorityDisinherit
+                0x0000000008007f5c       0x90 build/tasks.o
+                0x0000000008007f5c                xTaskPriorityDisinherit
  .text.prvGetNextExpireTime
-                0x0000000008007fe8       0x20 build/timers.o
+                0x0000000008007fec       0x20 build/timers.o
  .text.prvInsertTimerInActiveList
-                0x0000000008008008       0x48 build/timers.o
+                0x000000000800800c       0x48 build/timers.o
  .text.prvCheckForValidListAndQueue
-                0x0000000008008050       0x70 build/timers.o
+                0x0000000008008054       0x70 build/timers.o
  .text.xTimerCreateTimerTask
-                0x00000000080080c0       0x64 build/timers.o
-                0x00000000080080c0                xTimerCreateTimerTask
+                0x00000000080080c4       0x64 build/timers.o
+                0x00000000080080c4                xTimerCreateTimerTask
  .text.xTimerGenericCommand
-                0x0000000008008124       0x6c build/timers.o
-                0x0000000008008124                xTimerGenericCommand
+                0x0000000008008128       0x6c build/timers.o
+                0x0000000008008128                xTimerGenericCommand
  .text.prvSwitchTimerLists
-                0x0000000008008190       0x7c build/timers.o
+                0x0000000008008194       0x7c build/timers.o
  .text.prvSampleTimeNow
-                0x000000000800820c       0x2c build/timers.o
+                0x0000000008008210       0x2c build/timers.o
  .text.prvProcessExpiredTimer
-                0x0000000008008238       0x6c build/timers.o
+                0x000000000800823c       0x6c build/timers.o
  .text.prvProcessTimerOrBlockTask
-                0x00000000080082a4       0x74 build/timers.o
+                0x00000000080082a8       0x74 build/timers.o
  .text.prvProcessReceivedCommands
-                0x0000000008008318      0x10c build/timers.o
+                0x000000000800831c      0x10c build/timers.o
  .text.prvTimerTask
-                0x0000000008008424       0x16 build/timers.o
- *fill*         0x000000000800843a        0x2 
+                0x0000000008008428       0x16 build/timers.o
+ *fill*         0x000000000800843e        0x2 
  .text.SysTick_Handler
-                0x000000000800843c       0x1c build/cmsis_os2.o
-                0x000000000800843c                SysTick_Handler
+                0x0000000008008440       0x1c build/cmsis_os2.o
+                0x0000000008008440                SysTick_Handler
  .text.osKernelInitialize
-                0x0000000008008458       0x24 build/cmsis_os2.o
-                0x0000000008008458                osKernelInitialize
+                0x000000000800845c       0x24 build/cmsis_os2.o
+                0x000000000800845c                osKernelInitialize
  .text.osKernelStart
-                0x000000000800847c       0x38 build/cmsis_os2.o
-                0x000000000800847c                osKernelStart
+                0x0000000008008480       0x38 build/cmsis_os2.o
+                0x0000000008008480                osKernelStart
  .text.osThreadNew
-                0x00000000080084b4       0xbc build/cmsis_os2.o
-                0x00000000080084b4                osThreadNew
- .text.osDelay  0x0000000008008570       0x1c build/cmsis_os2.o
-                0x0000000008008570                osDelay
+                0x00000000080084b8       0xbc build/cmsis_os2.o
+                0x00000000080084b8                osThreadNew
+ .text.osDelay  0x0000000008008574       0x1c build/cmsis_os2.o
+                0x0000000008008574                osDelay
  .text.vApplicationGetIdleTaskMemory
-                0x000000000800858c       0x18 build/cmsis_os2.o
-                0x000000000800858c                vApplicationGetIdleTaskMemory
+                0x0000000008008590       0x18 build/cmsis_os2.o
+                0x0000000008008590                vApplicationGetIdleTaskMemory
  .text.vApplicationGetTimerTaskMemory
-                0x00000000080085a4       0x18 build/cmsis_os2.o
-                0x00000000080085a4                vApplicationGetTimerTaskMemory
+                0x00000000080085a8       0x18 build/cmsis_os2.o
+                0x00000000080085a8                vApplicationGetTimerTaskMemory
  .text.prvHeapInit
-                0x00000000080085bc       0x64 build/heap_4.o
+                0x00000000080085c0       0x64 build/heap_4.o
  .text.prvInsertBlockIntoFreeList
-                0x0000000008008620       0x58 build/heap_4.o
+                0x0000000008008624       0x58 build/heap_4.o
  .text.pvPortMalloc
-                0x0000000008008678       0xfc build/heap_4.o
-                0x0000000008008678                pvPortMalloc
+                0x000000000800867c       0xfc build/heap_4.o
+                0x000000000800867c                pvPortMalloc
  .text.vPortFree
-                0x0000000008008774       0x7c build/heap_4.o
-                0x0000000008008774                vPortFree
+                0x0000000008008778       0x7c build/heap_4.o
+                0x0000000008008778                vPortFree
  .text.prvTaskExitError
-                0x00000000080087f0       0x40 build/port.o
+                0x00000000080087f4       0x40 build/port.o
  .text.prvPortStartFirstTask
-                0x0000000008008830       0x28 build/port.o
+                0x0000000008008834       0x28 build/port.o
  .text.vPortEnableVFP
-                0x0000000008008858       0x14 build/port.o
+                0x000000000800885c       0x14 build/port.o
  .text.pxPortInitialiseStack
-                0x000000000800886c       0x2c build/port.o
-                0x000000000800886c                pxPortInitialiseStack
- *fill*         0x0000000008008898        0x8 
+                0x0000000008008870       0x2c build/port.o
+                0x0000000008008870                pxPortInitialiseStack
+ *fill*         0x000000000800889c        0x4 
  .text.SVC_Handler
                 0x00000000080088a0       0x24 build/port.o
                 0x00000000080088a0                SVC_Handler
@@ -6743,193 +6743,193 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a
  .comment       0x00000000000000a7       0x4f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signalr.o)
  .comment       0x00000000000000a7       0x5a /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/crtend.o
 
-.debug_info     0x0000000000000000   0x102b60
- .debug_info    0x0000000000000000     0x2b9a build/uros_tasks.o
- .debug_info    0x0000000000002b9a     0x14ef build/error_indicator.o
- .debug_info    0x0000000000004089     0x2101 build/minicheetah_motor.o
- .debug_info    0x000000000000618a     0x1afe build/main.o
- .debug_info    0x0000000000007c88      0x764 build/gpio.o
- .debug_info    0x00000000000083ec     0x2960 build/freertos.o
- .debug_info    0x000000000000ad4c      0xa89 build/can.o
- .debug_info    0x000000000000b7d5      0x64d build/dma.o
- .debug_info    0x000000000000be22      0xc01 build/i2c.o
- .debug_info    0x000000000000ca23      0xbc9 build/spi.o
- .debug_info    0x000000000000d5ec      0xe9e build/usart.o
- .debug_info    0x000000000000e48a      0x180 build/usb_otg.o
- .debug_info    0x000000000000e60a     0x1031 build/stm32f4xx_it.o
- .debug_info    0x000000000000f63b      0x617 build/stm32f4xx_hal_msp.o
- .debug_info    0x000000000000fc52     0x12b5 build/syscalls.o
- .debug_info    0x0000000000010f07     0x1453 build/stm32f4xx_hal_can.o
- .debug_info    0x000000000001235a      0xc08 build/stm32f4xx_hal_rcc.o
- .debug_info    0x0000000000012f62      0x8fa build/stm32f4xx_hal_gpio.o
- .debug_info    0x000000000001385c      0xc67 build/stm32f4xx_hal_dma.o
- .debug_info    0x00000000000144c3     0x121a build/stm32f4xx_hal_cortex.o
- .debug_info    0x00000000000156dd      0xb3a build/stm32f4xx_hal.o
- .debug_info    0x0000000000016217     0x3bdd build/stm32f4xx_hal_i2c.o
- .debug_info    0x0000000000019df4     0x20b8 build/stm32f4xx_hal_spi.o
- .debug_info    0x000000000001beac     0x4120 build/stm32f4xx_hal_tim.o
- .debug_info    0x000000000001ffcc     0x1d33 build/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0000000000021cff     0x446b build/stm32f4xx_hal_uart.o
- .debug_info    0x000000000002616a      0x618 build/system_stm32f4xx.o
- .debug_info    0x0000000000026782      0xc8c build/list.o
- .debug_info    0x000000000002740e     0x32b2 build/queue.o
- .debug_info    0x000000000002a6c0     0x3c80 build/tasks.o
- .debug_info    0x000000000002e340     0x2523 build/timers.o
- .debug_info    0x0000000000030863     0x5802 build/cmsis_os2.o
- .debug_info    0x0000000000036065      0xf8b build/heap_4.o
- .debug_info    0x0000000000036ff0      0x5b0 build/port.o
- .debug_info    0x00000000000375a0      0xe25 build/stm32f4xx_hal_timebase_tim.o
- .debug_info    0x00000000000383c5     0x1021 build/custom_memory_manager.o
- .debug_info    0x00000000000393e6      0x34d build/microros_allocators.o
- .debug_info    0x0000000000039733      0xc6b build/microros_time.o
- .debug_info    0x000000000003a39e     0x172b build/dma_transport.o
- .debug_info    0x000000000003bac9       0x22 build/startup_stm32f407xx.o
- .debug_info    0x000000000003baeb      0x953 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-errno.o)
- .debug_info    0x000000000003c43e      0x92a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-impure.o)
- .debug_info    0x000000000003cd68      0x11a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-init.o)
- .debug_info    0x000000000003ce82      0x9b6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-malloc.o)
- .debug_info    0x000000000003d838       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcpy.o)
- .debug_info    0x000000000003d85e      0xf21 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memset.o)
- .debug_info    0x000000000003e77f      0xb85 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-freer.o)
- .debug_info    0x000000000003f304      0xc5a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_info    0x000000000003ff5e      0xd13 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-puts.o)
- .debug_info    0x0000000000040c71      0x9fb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-sbrkr.o)
- .debug_info    0x000000000004166c      0xc90 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wbuf.o)
- .debug_info    0x00000000000422fc      0xbfa /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wsetup.o)
- .debug_info    0x0000000000042ef6      0xd73 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fflush.o)
- .debug_info    0x0000000000043c69     0x11a8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-findfp.o)
- .debug_info    0x0000000000044e11      0xca4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fwalk.o)
- .debug_info    0x0000000000045ab5      0xf68 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-makebuf.o)
- .debug_info    0x0000000000046a1d      0x961 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-mlock.o)
- .debug_info    0x000000000004737e      0xb0f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-reent.o)
- .debug_info    0x0000000000047e8d      0xe67 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-stdio.o)
- .debug_info    0x0000000000048cf4      0xa2c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-writer.o)
- .debug_info    0x0000000000049720      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-closer.o)
- .debug_info    0x000000000004a0f8      0xc24 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fstatr.o)
- .debug_info    0x000000000004ad1c      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-isattyr.o)
- .debug_info    0x000000000004b6f4      0xa0d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-lseekr.o)
- .debug_info    0x000000000004c101      0xa25 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-readr.o)
- .debug_info    0x000000000004cb26     0x20ce micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
- .debug_info    0x000000000004ebf4      0xdaf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
- .debug_info    0x000000000004f9a3     0x26cc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
- .debug_info    0x000000000005206f     0x149e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
- .debug_info    0x000000000005350d     0x137d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
- .debug_info    0x000000000005488a     0x1754 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
- .debug_info    0x0000000000055fde      0xe6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
- .debug_info    0x0000000000056e4c      0xe9f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
- .debug_info    0x0000000000057ceb      0xc3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
- .debug_info    0x0000000000058925      0xdff micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
- .debug_info    0x0000000000059724      0xc0a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
- .debug_info    0x000000000005a32e      0xc98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
- .debug_info    0x000000000005afc6     0x1f68 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
- .debug_info    0x000000000005cf2e      0xb8b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
- .debug_info    0x000000000005dab9      0xe4c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
- .debug_info    0x000000000005e905      0xd78 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
- .debug_info    0x000000000005f67d      0xe0e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
- .debug_info    0x000000000006048b     0x2fc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
- .debug_info    0x0000000000063450     0x3471 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
- .debug_info    0x00000000000668c1     0x3236 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
- .debug_info    0x0000000000069af7     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
- .debug_info    0x000000000006d141     0x3446 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
- .debug_info    0x0000000000070587     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
- .debug_info    0x0000000000073bd1     0x3c8e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
- .debug_info    0x000000000007785f     0x4c64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
- .debug_info    0x000000000007c4c3      0xb44 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
- .debug_info    0x000000000007d007      0x1dc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_c-float32_multi_array__type_support.cpp.obj)
- .debug_info    0x000000000007d1e3     0x15a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-float32_multi_array__type_support_c.c.obj)
- .debug_info    0x000000000007e78a     0x151b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_layout__type_support_c.c.obj)
- .debug_info    0x000000000007fca5     0x4d52 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
- .debug_info    0x00000000000849f7     0x12fb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
- .debug_info    0x0000000000085cf2     0x2aa6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
- .debug_info    0x0000000000088798     0x15dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
- .debug_info    0x0000000000089d75     0x2db6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
- .debug_info    0x000000000008cb2b      0x1a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
- .debug_info    0x000000000008ccd2     0x153e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
- .debug_info    0x000000000008e210     0x665a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
- .debug_info    0x000000000009486a     0x1818 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
- .debug_info    0x0000000000096082      0x1f7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
- .debug_info    0x0000000000096279      0xaad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
- .debug_info    0x0000000000096d26      0x40f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
- .debug_info    0x0000000000097135      0xb4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
- .debug_info    0x0000000000097c83     0x2368 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
- .debug_info    0x0000000000099feb      0x3f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
- .debug_info    0x000000000009a3e4      0x363 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
- .debug_info    0x000000000009a747    0x17094 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
- .debug_info    0x00000000000b17db      0xb8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
- .debug_info    0x00000000000b2368     0x1255 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
- .debug_info    0x00000000000b35bd      0xcc7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
- .debug_info    0x00000000000b4284     0x1226 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
- .debug_info    0x00000000000b54aa     0x1995 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
- .debug_info    0x00000000000b6e3f     0x1319 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
- .debug_info    0x00000000000b8158     0x12c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
- .debug_info    0x00000000000b941e      0xc66 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
- .debug_info    0x00000000000ba084     0x13f1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
- .debug_info    0x00000000000bb475     0x22e1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
- .debug_info    0x00000000000bd756      0xdb3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
- .debug_info    0x00000000000be509      0xed3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
- .debug_info    0x00000000000bf3dc      0x5ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
- .debug_info    0x00000000000bf9c6      0xdbb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
- .debug_info    0x00000000000c0781      0xb40 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
- .debug_info    0x00000000000c12c1      0xc3f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
- .debug_info    0x00000000000c1f00      0x361 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
- .debug_info    0x00000000000c2261      0x315 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
- .debug_info    0x00000000000c2576      0xd57 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
- .debug_info    0x00000000000c32cd       0x6d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
- .debug_info    0x00000000000c333a      0xcf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
- .debug_info    0x00000000000c4030     0x3445 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
- .debug_info    0x00000000000c7475     0x2eae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
- .debug_info    0x00000000000ca323     0x2f9b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
- .debug_info    0x00000000000cd2be     0x38dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
- .debug_info    0x00000000000d0b9b     0x31b5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
- .debug_info    0x00000000000d3d50     0x2f4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
- .debug_info    0x00000000000d6c9e     0x304f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
- .debug_info    0x00000000000d9ced     0x14ab micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_dimension__type_support_c.c.obj)
- .debug_info    0x00000000000db198     0x577a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
- .debug_info    0x00000000000e0912      0xda4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
- .debug_info    0x00000000000e16b6      0x83e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
- .debug_info    0x00000000000e1ef4      0x18c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
- .debug_info    0x00000000000e2080     0x1b07 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
- .debug_info    0x00000000000e3b87      0x464 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
- .debug_info    0x00000000000e3feb     0x1e8a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
- .debug_info    0x00000000000e5e75      0x155 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
- .debug_info    0x00000000000e5fca     0x19e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
- .debug_info    0x00000000000e79b1     0x336f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
- .debug_info    0x00000000000ead20       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_ldivmod.o)
- .debug_info    0x00000000000ead46       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x00000000000ead6c      0xd7c /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
- .debug_info    0x00000000000ebae8       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_dvmd_tls.o)
- .debug_info    0x00000000000ebb0e      0x988 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-calloc.o)
- .debug_info    0x00000000000ec496      0xe91 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-ctype_.o)
- .debug_info    0x00000000000ed327      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv.o)
- .debug_info    0x00000000000edcff      0xaad /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv_r.o)
- .debug_info    0x00000000000ee7ac      0xafe /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-callocr.o)
- .debug_info    0x00000000000ef2aa      0xa76 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-rand.o)
- .debug_info    0x00000000000efd20      0x988 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-realloc.o)
- .debug_info    0x00000000000f06a8      0xd4a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-snprintf.o)
- .debug_info    0x00000000000f13f2      0x9b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strchr.o)
- .debug_info    0x00000000000f1dab       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcmp.o)
- .debug_info    0x00000000000f1dd1      0x943 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcpy.o)
- .debug_info    0x00000000000f2714       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strlen.o)
- .debug_info    0x00000000000f273a      0x995 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strncmp.o)
- .debug_info    0x00000000000f30cf      0xff2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strstr.o)
- .debug_info    0x00000000000f40c1     0x11df /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strtoul.o)
- .debug_info    0x00000000000f52a0      0xceb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-vsnprintf.o)
- .debug_info    0x00000000000f5f8b      0xa41 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-assert.o)
- .debug_info    0x00000000000f69cc      0x961 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-envlock.o)
- .debug_info    0x00000000000f732d      0xa7a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fprintf.o)
- .debug_info    0x00000000000f7da7      0x9c2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcmp.o)
- .debug_info    0x00000000000f8769      0xb77 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_info    0x00000000000f92e0     0x17e4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_info    0x00000000000faac4     0x176a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf.o)
- .debug_info    0x00000000000fc22e     0x1592 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_info    0x00000000000fd7c0      0x967 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strnlen.o)
- .debug_info    0x00000000000fe127      0x9b5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-abort.o)
- .debug_info    0x00000000000feadc      0xeed /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fvwrite.o)
- .debug_info    0x00000000000ff9c9       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memchr.o)
- .debug_info    0x00000000000ff9ef      0xf2b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memmove.o)
- .debug_info    0x000000000010091a      0xaa6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-msizer.o)
- .debug_info    0x00000000001013c0      0xd5c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signal.o)
- .debug_info    0x000000000010211c      0xa44 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signalr.o)
+.debug_info     0x0000000000000000   0x102b74
+ .debug_info    0x0000000000000000     0x2bae build/uros_tasks.o
+ .debug_info    0x0000000000002bae     0x14ef build/error_indicator.o
+ .debug_info    0x000000000000409d     0x2101 build/minicheetah_motor.o
+ .debug_info    0x000000000000619e     0x1afe build/main.o
+ .debug_info    0x0000000000007c9c      0x764 build/gpio.o
+ .debug_info    0x0000000000008400     0x2960 build/freertos.o
+ .debug_info    0x000000000000ad60      0xa89 build/can.o
+ .debug_info    0x000000000000b7e9      0x64d build/dma.o
+ .debug_info    0x000000000000be36      0xc01 build/i2c.o
+ .debug_info    0x000000000000ca37      0xbc9 build/spi.o
+ .debug_info    0x000000000000d600      0xe9e build/usart.o
+ .debug_info    0x000000000000e49e      0x180 build/usb_otg.o
+ .debug_info    0x000000000000e61e     0x1031 build/stm32f4xx_it.o
+ .debug_info    0x000000000000f64f      0x617 build/stm32f4xx_hal_msp.o
+ .debug_info    0x000000000000fc66     0x12b5 build/syscalls.o
+ .debug_info    0x0000000000010f1b     0x1453 build/stm32f4xx_hal_can.o
+ .debug_info    0x000000000001236e      0xc08 build/stm32f4xx_hal_rcc.o
+ .debug_info    0x0000000000012f76      0x8fa build/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000000000013870      0xc67 build/stm32f4xx_hal_dma.o
+ .debug_info    0x00000000000144d7     0x121a build/stm32f4xx_hal_cortex.o
+ .debug_info    0x00000000000156f1      0xb3a build/stm32f4xx_hal.o
+ .debug_info    0x000000000001622b     0x3bdd build/stm32f4xx_hal_i2c.o
+ .debug_info    0x0000000000019e08     0x20b8 build/stm32f4xx_hal_spi.o
+ .debug_info    0x000000000001bec0     0x4120 build/stm32f4xx_hal_tim.o
+ .debug_info    0x000000000001ffe0     0x1d33 build/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x0000000000021d13     0x446b build/stm32f4xx_hal_uart.o
+ .debug_info    0x000000000002617e      0x618 build/system_stm32f4xx.o
+ .debug_info    0x0000000000026796      0xc8c build/list.o
+ .debug_info    0x0000000000027422     0x32b2 build/queue.o
+ .debug_info    0x000000000002a6d4     0x3c80 build/tasks.o
+ .debug_info    0x000000000002e354     0x2523 build/timers.o
+ .debug_info    0x0000000000030877     0x5802 build/cmsis_os2.o
+ .debug_info    0x0000000000036079      0xf8b build/heap_4.o
+ .debug_info    0x0000000000037004      0x5b0 build/port.o
+ .debug_info    0x00000000000375b4      0xe25 build/stm32f4xx_hal_timebase_tim.o
+ .debug_info    0x00000000000383d9     0x1021 build/custom_memory_manager.o
+ .debug_info    0x00000000000393fa      0x34d build/microros_allocators.o
+ .debug_info    0x0000000000039747      0xc6b build/microros_time.o
+ .debug_info    0x000000000003a3b2     0x172b build/dma_transport.o
+ .debug_info    0x000000000003badd       0x22 build/startup_stm32f407xx.o
+ .debug_info    0x000000000003baff      0x953 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-errno.o)
+ .debug_info    0x000000000003c452      0x92a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-impure.o)
+ .debug_info    0x000000000003cd7c      0x11a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-init.o)
+ .debug_info    0x000000000003ce96      0x9b6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-malloc.o)
+ .debug_info    0x000000000003d84c       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcpy.o)
+ .debug_info    0x000000000003d872      0xf21 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memset.o)
+ .debug_info    0x000000000003e793      0xb85 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-freer.o)
+ .debug_info    0x000000000003f318      0xc5a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_info    0x000000000003ff72      0xd13 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-puts.o)
+ .debug_info    0x0000000000040c85      0x9fb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-sbrkr.o)
+ .debug_info    0x0000000000041680      0xc90 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wbuf.o)
+ .debug_info    0x0000000000042310      0xbfa /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wsetup.o)
+ .debug_info    0x0000000000042f0a      0xd73 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fflush.o)
+ .debug_info    0x0000000000043c7d     0x11a8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-findfp.o)
+ .debug_info    0x0000000000044e25      0xca4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fwalk.o)
+ .debug_info    0x0000000000045ac9      0xf68 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-makebuf.o)
+ .debug_info    0x0000000000046a31      0x961 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-mlock.o)
+ .debug_info    0x0000000000047392      0xb0f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-reent.o)
+ .debug_info    0x0000000000047ea1      0xe67 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-stdio.o)
+ .debug_info    0x0000000000048d08      0xa2c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-writer.o)
+ .debug_info    0x0000000000049734      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-closer.o)
+ .debug_info    0x000000000004a10c      0xc24 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fstatr.o)
+ .debug_info    0x000000000004ad30      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-isattyr.o)
+ .debug_info    0x000000000004b708      0xa0d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-lseekr.o)
+ .debug_info    0x000000000004c115      0xa25 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-readr.o)
+ .debug_info    0x000000000004cb3a     0x20ce micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
+ .debug_info    0x000000000004ec08      0xdaf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
+ .debug_info    0x000000000004f9b7     0x26cc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
+ .debug_info    0x0000000000052083     0x149e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
+ .debug_info    0x0000000000053521     0x137d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
+ .debug_info    0x000000000005489e     0x1754 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
+ .debug_info    0x0000000000055ff2      0xe6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
+ .debug_info    0x0000000000056e60      0xe9f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
+ .debug_info    0x0000000000057cff      0xc3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
+ .debug_info    0x0000000000058939      0xdff micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
+ .debug_info    0x0000000000059738      0xc0a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
+ .debug_info    0x000000000005a342      0xc98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
+ .debug_info    0x000000000005afda     0x1f68 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
+ .debug_info    0x000000000005cf42      0xb8b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
+ .debug_info    0x000000000005dacd      0xe4c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
+ .debug_info    0x000000000005e919      0xd78 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
+ .debug_info    0x000000000005f691      0xe0e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
+ .debug_info    0x000000000006049f     0x2fc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
+ .debug_info    0x0000000000063464     0x3471 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
+ .debug_info    0x00000000000668d5     0x3236 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
+ .debug_info    0x0000000000069b0b     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
+ .debug_info    0x000000000006d155     0x3446 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
+ .debug_info    0x000000000007059b     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
+ .debug_info    0x0000000000073be5     0x3c8e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
+ .debug_info    0x0000000000077873     0x4c64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
+ .debug_info    0x000000000007c4d7      0xb44 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
+ .debug_info    0x000000000007d01b      0x1dc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_c-float32_multi_array__type_support.cpp.obj)
+ .debug_info    0x000000000007d1f7     0x15a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-float32_multi_array__type_support_c.c.obj)
+ .debug_info    0x000000000007e79e     0x151b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_layout__type_support_c.c.obj)
+ .debug_info    0x000000000007fcb9     0x4d52 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
+ .debug_info    0x0000000000084a0b     0x12fb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
+ .debug_info    0x0000000000085d06     0x2aa6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
+ .debug_info    0x00000000000887ac     0x15dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
+ .debug_info    0x0000000000089d89     0x2db6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
+ .debug_info    0x000000000008cb3f      0x1a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
+ .debug_info    0x000000000008cce6     0x153e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
+ .debug_info    0x000000000008e224     0x665a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
+ .debug_info    0x000000000009487e     0x1818 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
+ .debug_info    0x0000000000096096      0x1f7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
+ .debug_info    0x000000000009628d      0xaad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
+ .debug_info    0x0000000000096d3a      0x40f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
+ .debug_info    0x0000000000097149      0xb4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
+ .debug_info    0x0000000000097c97     0x2368 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
+ .debug_info    0x0000000000099fff      0x3f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
+ .debug_info    0x000000000009a3f8      0x363 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
+ .debug_info    0x000000000009a75b    0x17094 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
+ .debug_info    0x00000000000b17ef      0xb8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
+ .debug_info    0x00000000000b237c     0x1255 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
+ .debug_info    0x00000000000b35d1      0xcc7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
+ .debug_info    0x00000000000b4298     0x1226 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
+ .debug_info    0x00000000000b54be     0x1995 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
+ .debug_info    0x00000000000b6e53     0x1319 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
+ .debug_info    0x00000000000b816c     0x12c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
+ .debug_info    0x00000000000b9432      0xc66 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
+ .debug_info    0x00000000000ba098     0x13f1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
+ .debug_info    0x00000000000bb489     0x22e1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
+ .debug_info    0x00000000000bd76a      0xdb3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
+ .debug_info    0x00000000000be51d      0xed3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
+ .debug_info    0x00000000000bf3f0      0x5ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
+ .debug_info    0x00000000000bf9da      0xdbb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
+ .debug_info    0x00000000000c0795      0xb40 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
+ .debug_info    0x00000000000c12d5      0xc3f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
+ .debug_info    0x00000000000c1f14      0x361 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
+ .debug_info    0x00000000000c2275      0x315 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
+ .debug_info    0x00000000000c258a      0xd57 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
+ .debug_info    0x00000000000c32e1       0x6d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
+ .debug_info    0x00000000000c334e      0xcf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
+ .debug_info    0x00000000000c4044     0x3445 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
+ .debug_info    0x00000000000c7489     0x2eae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
+ .debug_info    0x00000000000ca337     0x2f9b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
+ .debug_info    0x00000000000cd2d2     0x38dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
+ .debug_info    0x00000000000d0baf     0x31b5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
+ .debug_info    0x00000000000d3d64     0x2f4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
+ .debug_info    0x00000000000d6cb2     0x304f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
+ .debug_info    0x00000000000d9d01     0x14ab micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_dimension__type_support_c.c.obj)
+ .debug_info    0x00000000000db1ac     0x577a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
+ .debug_info    0x00000000000e0926      0xda4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
+ .debug_info    0x00000000000e16ca      0x83e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
+ .debug_info    0x00000000000e1f08      0x18c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
+ .debug_info    0x00000000000e2094     0x1b07 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
+ .debug_info    0x00000000000e3b9b      0x464 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
+ .debug_info    0x00000000000e3fff     0x1e8a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
+ .debug_info    0x00000000000e5e89      0x155 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
+ .debug_info    0x00000000000e5fde     0x19e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
+ .debug_info    0x00000000000e79c5     0x336f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
+ .debug_info    0x00000000000ead34       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_ldivmod.o)
+ .debug_info    0x00000000000ead5a       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x00000000000ead80      0xd7c /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+ .debug_info    0x00000000000ebafc       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x00000000000ebb22      0x988 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-calloc.o)
+ .debug_info    0x00000000000ec4aa      0xe91 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-ctype_.o)
+ .debug_info    0x00000000000ed33b      0x9d8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv.o)
+ .debug_info    0x00000000000edd13      0xaad /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv_r.o)
+ .debug_info    0x00000000000ee7c0      0xafe /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-callocr.o)
+ .debug_info    0x00000000000ef2be      0xa76 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-rand.o)
+ .debug_info    0x00000000000efd34      0x988 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-realloc.o)
+ .debug_info    0x00000000000f06bc      0xd4a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-snprintf.o)
+ .debug_info    0x00000000000f1406      0x9b9 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strchr.o)
+ .debug_info    0x00000000000f1dbf       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcmp.o)
+ .debug_info    0x00000000000f1de5      0x943 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcpy.o)
+ .debug_info    0x00000000000f2728       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strlen.o)
+ .debug_info    0x00000000000f274e      0x995 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strncmp.o)
+ .debug_info    0x00000000000f30e3      0xff2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strstr.o)
+ .debug_info    0x00000000000f40d5     0x11df /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strtoul.o)
+ .debug_info    0x00000000000f52b4      0xceb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-vsnprintf.o)
+ .debug_info    0x00000000000f5f9f      0xa41 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-assert.o)
+ .debug_info    0x00000000000f69e0      0x961 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-envlock.o)
+ .debug_info    0x00000000000f7341      0xa7a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fprintf.o)
+ .debug_info    0x00000000000f7dbb      0x9c2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcmp.o)
+ .debug_info    0x00000000000f877d      0xb77 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_info    0x00000000000f92f4     0x17e4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-svfprintf.o)
+ .debug_info    0x00000000000faad8     0x176a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf.o)
+ .debug_info    0x00000000000fc242     0x1592 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_info    0x00000000000fd7d4      0x967 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strnlen.o)
+ .debug_info    0x00000000000fe13b      0x9b5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-abort.o)
+ .debug_info    0x00000000000feaf0      0xeed /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fvwrite.o)
+ .debug_info    0x00000000000ff9dd       0x26 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memchr.o)
+ .debug_info    0x00000000000ffa03      0xf2b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memmove.o)
+ .debug_info    0x000000000010092e      0xaa6 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_info    0x00000000001013d4      0xd5c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signal.o)
+ .debug_info    0x0000000000102130      0xa44 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signalr.o)
 
 .debug_abbrev   0x0000000000000000    0x1d3dd
  .debug_abbrev  0x0000000000000000      0x36d build/uros_tasks.o
@@ -7807,193 +7807,193 @@ LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a
  .debug_ranges  0x000000000000b0e8       0x18 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fvwrite.o)
  .debug_ranges  0x000000000000b100       0x30 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signal.o)
 
-.debug_line     0x0000000000000000    0x5ca9e
- .debug_line    0x0000000000000000      0xc23 build/uros_tasks.o
- .debug_line    0x0000000000000c23      0x510 build/error_indicator.o
- .debug_line    0x0000000000001133      0x9e7 build/minicheetah_motor.o
- .debug_line    0x0000000000001b1a      0x3ea build/main.o
- .debug_line    0x0000000000001f04      0x319 build/gpio.o
- .debug_line    0x000000000000221d      0x76c build/freertos.o
- .debug_line    0x0000000000002989      0x2a7 build/can.o
- .debug_line    0x0000000000002c30      0x148 build/dma.o
- .debug_line    0x0000000000002d78      0x290 build/i2c.o
- .debug_line    0x0000000000003008      0x2aa build/spi.o
- .debug_line    0x00000000000032b2      0x375 build/usart.o
- .debug_line    0x0000000000003627      0x114 build/usb_otg.o
- .debug_line    0x000000000000373b      0x2e2 build/stm32f4xx_it.o
- .debug_line    0x0000000000003a1d      0x159 build/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000003b76      0x469 build/syscalls.o
- .debug_line    0x0000000000003fdf     0x108c build/stm32f4xx_hal_can.o
- .debug_line    0x000000000000506b      0xaac build/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000005b17      0x6a5 build/stm32f4xx_hal_gpio.o
- .debug_line    0x00000000000061bc      0xdc4 build/stm32f4xx_hal_dma.o
- .debug_line    0x0000000000006f80      0x718 build/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000007698      0x4db build/stm32f4xx_hal.o
- .debug_line    0x0000000000007b73     0x52f4 build/stm32f4xx_hal_i2c.o
- .debug_line    0x000000000000ce67     0x2471 build/stm32f4xx_hal_spi.o
- .debug_line    0x000000000000f2d8     0x4a6d build/stm32f4xx_hal_tim.o
- .debug_line    0x0000000000013d45     0x1c90 build/stm32f4xx_hal_tim_ex.o
- .debug_line    0x00000000000159d5     0x458a build/stm32f4xx_hal_uart.o
- .debug_line    0x0000000000019f5f      0x1fc build/system_stm32f4xx.o
- .debug_line    0x000000000001a15b      0x351 build/list.o
- .debug_line    0x000000000001a4ac     0x1fd7 build/queue.o
- .debug_line    0x000000000001c483     0x2cf1 build/tasks.o
- .debug_line    0x000000000001f174      0xeb5 build/timers.o
- .debug_line    0x0000000000020029     0x2a0b build/cmsis_os2.o
- .debug_line    0x0000000000022a34      0x6ac build/heap_4.o
- .debug_line    0x00000000000230e0      0x671 build/port.o
- .debug_line    0x0000000000023751      0x247 build/stm32f4xx_hal_timebase_tim.o
- .debug_line    0x0000000000023998      0x6b1 build/custom_memory_manager.o
- .debug_line    0x0000000000024049      0x1f3 build/microros_allocators.o
- .debug_line    0x000000000002423c      0x27f build/microros_time.o
- .debug_line    0x00000000000244bb      0x5c1 build/dma_transport.o
- .debug_line    0x0000000000024a7c       0x76 build/startup_stm32f407xx.o
- .debug_line    0x0000000000024af2      0x108 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-errno.o)
- .debug_line    0x0000000000024bfa       0xe3 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-impure.o)
- .debug_line    0x0000000000024cdd      0x10d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-init.o)
- .debug_line    0x0000000000024dea      0x15e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-malloc.o)
- .debug_line    0x0000000000024f48       0xbe /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcpy.o)
- .debug_line    0x0000000000025006      0x26b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memset.o)
- .debug_line    0x0000000000025271      0x2af /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-freer.o)
- .debug_line    0x0000000000025520      0x2f2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-mallocr.o)
- .debug_line    0x0000000000025812      0x316 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-puts.o)
- .debug_line    0x0000000000025b28      0x182 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-sbrkr.o)
- .debug_line    0x0000000000025caa      0x27c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wbuf.o)
- .debug_line    0x0000000000025f26      0x311 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wsetup.o)
- .debug_line    0x0000000000026237      0x418 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fflush.o)
- .debug_line    0x000000000002664f      0x561 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-findfp.o)
- .debug_line    0x0000000000026bb0      0x289 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fwalk.o)
- .debug_line    0x0000000000026e39      0x36f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-makebuf.o)
- .debug_line    0x00000000000271a8      0x13d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-mlock.o)
- .debug_line    0x00000000000272e5      0x275 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-reent.o)
- .debug_line    0x000000000002755a      0x25f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-stdio.o)
- .debug_line    0x00000000000277b9      0x188 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-writer.o)
- .debug_line    0x0000000000027941      0x182 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-closer.o)
- .debug_line    0x0000000000027ac3      0x213 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fstatr.o)
- .debug_line    0x0000000000027cd6      0x183 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-isattyr.o)
- .debug_line    0x0000000000027e59      0x188 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-lseekr.o)
- .debug_line    0x0000000000027fe1      0x187 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-readr.o)
- .debug_line    0x0000000000028168      0xb6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
- .debug_line    0x0000000000028cd2      0x35d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
- .debug_line    0x000000000002902f      0xe20 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
- .debug_line    0x0000000000029e4f      0x551 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
- .debug_line    0x000000000002a3a0      0x49d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
- .debug_line    0x000000000002a83d      0x47b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
- .debug_line    0x000000000002acb8      0x2eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
- .debug_line    0x000000000002afa3      0x413 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
- .debug_line    0x000000000002b3b6      0x212 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
- .debug_line    0x000000000002b5c8      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
- .debug_line    0x000000000002b8df      0x1cf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
- .debug_line    0x000000000002baae      0x1ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
- .debug_line    0x000000000002bc98      0xfa1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
- .debug_line    0x000000000002cc39      0x1b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
- .debug_line    0x000000000002cde9      0x564 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
- .debug_line    0x000000000002d34d      0x340 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
- .debug_line    0x000000000002d68d      0x431 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
- .debug_line    0x000000000002dabe      0x84f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
- .debug_line    0x000000000002e30d      0xad6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
- .debug_line    0x000000000002ede3      0x8b1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
- .debug_line    0x000000000002f694      0xadd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
- .debug_line    0x0000000000030171      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
- .debug_line    0x0000000000030b30      0xb03 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
- .debug_line    0x0000000000031633     0x111e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
- .debug_line    0x0000000000032751     0x109c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
- .debug_line    0x00000000000337ed      0x1ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
- .debug_line    0x000000000003399b      0x25e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_c-float32_multi_array__type_support.cpp.obj)
- .debug_line    0x0000000000033bf9      0x5ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-float32_multi_array__type_support_c.c.obj)
- .debug_line    0x00000000000341a7      0x5b3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_layout__type_support_c.c.obj)
- .debug_line    0x000000000003475a     0x242b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
- .debug_line    0x0000000000036b85      0x53e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
- .debug_line    0x00000000000370c3      0xd7f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
- .debug_line    0x0000000000037e42      0x456 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
- .debug_line    0x0000000000038298      0x86c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
- .debug_line    0x0000000000038b04      0x19b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
- .debug_line    0x0000000000038c9f      0x63f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
- .debug_line    0x00000000000392de     0x1db2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
- .debug_line    0x000000000003b090      0x662 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
- .debug_line    0x000000000003b6f2      0x1c5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
- .debug_line    0x000000000003b8b7      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
- .debug_line    0x000000000003be81      0x242 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
- .debug_line    0x000000000003c0c3      0x1c7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
- .debug_line    0x000000000003c28a      0xa32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
- .debug_line    0x000000000003ccbc      0x184 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
- .debug_line    0x000000000003ce40      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
- .debug_line    0x000000000003cfa1     0x8a2d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
- .debug_line    0x00000000000459ce      0x1f4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
- .debug_line    0x0000000000045bc2      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
- .debug_line    0x000000000004618c      0x2c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
- .debug_line    0x000000000004644e      0x612 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
- .debug_line    0x0000000000046a60      0x7ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
- .debug_line    0x000000000004720d      0x6ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
- .debug_line    0x00000000000478ba      0x6f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
- .debug_line    0x0000000000047fb0      0x282 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
- .debug_line    0x0000000000048232      0x5d4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
- .debug_line    0x0000000000048806     0x1256 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
- .debug_line    0x0000000000049a5c      0x3f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
- .debug_line    0x0000000000049e52      0x7b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
- .debug_line    0x000000000004a602      0x45c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
- .debug_line    0x000000000004aa5e      0x21b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
- .debug_line    0x000000000004ac79      0x192 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
- .debug_line    0x000000000004ae0b      0x31a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
- .debug_line    0x000000000004b125      0x176 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
- .debug_line    0x000000000004b29b      0x17e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
- .debug_line    0x000000000004b419      0x397 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
- .debug_line    0x000000000004b7b0       0xe1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
- .debug_line    0x000000000004b891      0x30e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
- .debug_line    0x000000000004bb9f      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
- .debug_line    0x000000000004c55e      0x753 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
- .debug_line    0x000000000004ccb1      0x7ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
- .debug_line    0x000000000004d47b      0xe09 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
- .debug_line    0x000000000004e284      0x8fa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
- .debug_line    0x000000000004eb7e      0x7ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
- .debug_line    0x000000000004f32c      0x84d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
- .debug_line    0x000000000004fb79      0x5a4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_dimension__type_support_c.c.obj)
- .debug_line    0x000000000005011d     0x288f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
- .debug_line    0x00000000000529ac      0x1da micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
- .debug_line    0x0000000000052b86      0x50c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
- .debug_line    0x0000000000053092      0x1bd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
- .debug_line    0x000000000005324f      0xaae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
- .debug_line    0x0000000000053cfd      0x352 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
- .debug_line    0x000000000005404f      0xf01 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
- .debug_line    0x0000000000054f50      0x19e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
- .debug_line    0x00000000000550ee     0x12aa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
- .debug_line    0x0000000000056398      0x9a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
- .debug_line    0x0000000000056d3a       0x7e /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_ldivmod.o)
- .debug_line    0x0000000000056db8       0x60 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
- .debug_line    0x0000000000056e18      0x61a /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
- .debug_line    0x0000000000057432       0x60 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_dvmd_tls.o)
- .debug_line    0x0000000000057492      0x141 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-calloc.o)
- .debug_line    0x00000000000575d3      0x154 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-ctype_.o)
- .debug_line    0x0000000000057727      0x164 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv.o)
- .debug_line    0x000000000005788b      0x218 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv_r.o)
- .debug_line    0x0000000000057aa3      0x17a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-callocr.o)
- .debug_line    0x0000000000057c1d      0x266 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-rand.o)
- .debug_line    0x0000000000057e83      0x14e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-realloc.o)
- .debug_line    0x0000000000057fd1      0x3ab /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-snprintf.o)
- .debug_line    0x000000000005837c      0x21f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strchr.o)
- .debug_line    0x000000000005859b      0x137 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcmp.o)
- .debug_line    0x00000000000586d2      0x149 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcpy.o)
- .debug_line    0x000000000005881b       0xaf /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strlen.o)
- .debug_line    0x00000000000588ca      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strncmp.o)
- .debug_line    0x0000000000058afc      0x788 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strstr.o)
- .debug_line    0x0000000000059284      0x379 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strtoul.o)
- .debug_line    0x00000000000595fd      0x291 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-vsnprintf.o)
- .debug_line    0x000000000005988e      0x18d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-assert.o)
- .debug_line    0x0000000000059a1b      0x140 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-envlock.o)
- .debug_line    0x0000000000059b5b      0x19a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fprintf.o)
- .debug_line    0x0000000000059cf5      0x1d4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcmp.o)
- .debug_line    0x0000000000059ec9      0x1c5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-reallocr.o)
- .debug_line    0x000000000005a08e      0x884 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-svfprintf.o)
- .debug_line    0x000000000005a912      0x726 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf.o)
- .debug_line    0x000000000005b038      0x790 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_line    0x000000000005b7c8      0x18e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strnlen.o)
- .debug_line    0x000000000005b956      0x15f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-abort.o)
- .debug_line    0x000000000005bab5      0x5e8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fvwrite.o)
- .debug_line    0x000000000005c09d       0xa4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memchr.o)
- .debug_line    0x000000000005c141      0x287 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memmove.o)
- .debug_line    0x000000000005c3c8      0x166 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-msizer.o)
- .debug_line    0x000000000005c52e      0x3cc /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signal.o)
- .debug_line    0x000000000005c8fa      0x1a4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signalr.o)
+.debug_line     0x0000000000000000    0x5ca9f
+ .debug_line    0x0000000000000000      0xc24 build/uros_tasks.o
+ .debug_line    0x0000000000000c24      0x510 build/error_indicator.o
+ .debug_line    0x0000000000001134      0x9e7 build/minicheetah_motor.o
+ .debug_line    0x0000000000001b1b      0x3ea build/main.o
+ .debug_line    0x0000000000001f05      0x319 build/gpio.o
+ .debug_line    0x000000000000221e      0x76c build/freertos.o
+ .debug_line    0x000000000000298a      0x2a7 build/can.o
+ .debug_line    0x0000000000002c31      0x148 build/dma.o
+ .debug_line    0x0000000000002d79      0x290 build/i2c.o
+ .debug_line    0x0000000000003009      0x2aa build/spi.o
+ .debug_line    0x00000000000032b3      0x375 build/usart.o
+ .debug_line    0x0000000000003628      0x114 build/usb_otg.o
+ .debug_line    0x000000000000373c      0x2e2 build/stm32f4xx_it.o
+ .debug_line    0x0000000000003a1e      0x159 build/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000003b77      0x469 build/syscalls.o
+ .debug_line    0x0000000000003fe0     0x108c build/stm32f4xx_hal_can.o
+ .debug_line    0x000000000000506c      0xaac build/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000005b18      0x6a5 build/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000061bd      0xdc4 build/stm32f4xx_hal_dma.o
+ .debug_line    0x0000000000006f81      0x718 build/stm32f4xx_hal_cortex.o
+ .debug_line    0x0000000000007699      0x4db build/stm32f4xx_hal.o
+ .debug_line    0x0000000000007b74     0x52f4 build/stm32f4xx_hal_i2c.o
+ .debug_line    0x000000000000ce68     0x2471 build/stm32f4xx_hal_spi.o
+ .debug_line    0x000000000000f2d9     0x4a6d build/stm32f4xx_hal_tim.o
+ .debug_line    0x0000000000013d46     0x1c90 build/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x00000000000159d6     0x458a build/stm32f4xx_hal_uart.o
+ .debug_line    0x0000000000019f60      0x1fc build/system_stm32f4xx.o
+ .debug_line    0x000000000001a15c      0x351 build/list.o
+ .debug_line    0x000000000001a4ad     0x1fd7 build/queue.o
+ .debug_line    0x000000000001c484     0x2cf1 build/tasks.o
+ .debug_line    0x000000000001f175      0xeb5 build/timers.o
+ .debug_line    0x000000000002002a     0x2a0b build/cmsis_os2.o
+ .debug_line    0x0000000000022a35      0x6ac build/heap_4.o
+ .debug_line    0x00000000000230e1      0x671 build/port.o
+ .debug_line    0x0000000000023752      0x247 build/stm32f4xx_hal_timebase_tim.o
+ .debug_line    0x0000000000023999      0x6b1 build/custom_memory_manager.o
+ .debug_line    0x000000000002404a      0x1f3 build/microros_allocators.o
+ .debug_line    0x000000000002423d      0x27f build/microros_time.o
+ .debug_line    0x00000000000244bc      0x5c1 build/dma_transport.o
+ .debug_line    0x0000000000024a7d       0x76 build/startup_stm32f407xx.o
+ .debug_line    0x0000000000024af3      0x108 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-errno.o)
+ .debug_line    0x0000000000024bfb       0xe3 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-impure.o)
+ .debug_line    0x0000000000024cde      0x10d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-init.o)
+ .debug_line    0x0000000000024deb      0x15e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-malloc.o)
+ .debug_line    0x0000000000024f49       0xbe /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000025007      0x26b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memset.o)
+ .debug_line    0x0000000000025272      0x2af /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-freer.o)
+ .debug_line    0x0000000000025521      0x2f2 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-mallocr.o)
+ .debug_line    0x0000000000025813      0x316 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-puts.o)
+ .debug_line    0x0000000000025b29      0x182 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-sbrkr.o)
+ .debug_line    0x0000000000025cab      0x27c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wbuf.o)
+ .debug_line    0x0000000000025f27      0x311 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-wsetup.o)
+ .debug_line    0x0000000000026238      0x418 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fflush.o)
+ .debug_line    0x0000000000026650      0x561 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-findfp.o)
+ .debug_line    0x0000000000026bb1      0x289 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fwalk.o)
+ .debug_line    0x0000000000026e3a      0x36f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-makebuf.o)
+ .debug_line    0x00000000000271a9      0x13d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-mlock.o)
+ .debug_line    0x00000000000272e6      0x275 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-reent.o)
+ .debug_line    0x000000000002755b      0x25f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-stdio.o)
+ .debug_line    0x00000000000277ba      0x188 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-writer.o)
+ .debug_line    0x0000000000027942      0x182 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-closer.o)
+ .debug_line    0x0000000000027ac4      0x213 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fstatr.o)
+ .debug_line    0x0000000000027cd7      0x183 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-isattyr.o)
+ .debug_line    0x0000000000027e5a      0x188 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-lseekr.o)
+ .debug_line    0x0000000000027fe2      0x187 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-readr.o)
+ .debug_line    0x0000000000028169      0xb6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
+ .debug_line    0x0000000000028cd3      0x35d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
+ .debug_line    0x0000000000029030      0xe20 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
+ .debug_line    0x0000000000029e50      0x551 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
+ .debug_line    0x000000000002a3a1      0x49d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
+ .debug_line    0x000000000002a83e      0x47b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
+ .debug_line    0x000000000002acb9      0x2eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
+ .debug_line    0x000000000002afa4      0x413 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
+ .debug_line    0x000000000002b3b7      0x212 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
+ .debug_line    0x000000000002b5c9      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
+ .debug_line    0x000000000002b8e0      0x1cf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
+ .debug_line    0x000000000002baaf      0x1ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
+ .debug_line    0x000000000002bc99      0xfa1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
+ .debug_line    0x000000000002cc3a      0x1b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
+ .debug_line    0x000000000002cdea      0x564 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
+ .debug_line    0x000000000002d34e      0x340 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
+ .debug_line    0x000000000002d68e      0x431 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
+ .debug_line    0x000000000002dabf      0x84f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
+ .debug_line    0x000000000002e30e      0xad6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
+ .debug_line    0x000000000002ede4      0x8b1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
+ .debug_line    0x000000000002f695      0xadd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
+ .debug_line    0x0000000000030172      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
+ .debug_line    0x0000000000030b31      0xb03 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
+ .debug_line    0x0000000000031634     0x111e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
+ .debug_line    0x0000000000032752     0x109c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
+ .debug_line    0x00000000000337ee      0x1ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
+ .debug_line    0x000000000003399c      0x25e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_c-float32_multi_array__type_support.cpp.obj)
+ .debug_line    0x0000000000033bfa      0x5ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-float32_multi_array__type_support_c.c.obj)
+ .debug_line    0x00000000000341a8      0x5b3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_layout__type_support_c.c.obj)
+ .debug_line    0x000000000003475b     0x242b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
+ .debug_line    0x0000000000036b86      0x53e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
+ .debug_line    0x00000000000370c4      0xd7f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
+ .debug_line    0x0000000000037e43      0x456 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
+ .debug_line    0x0000000000038299      0x86c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
+ .debug_line    0x0000000000038b05      0x19b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
+ .debug_line    0x0000000000038ca0      0x63f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
+ .debug_line    0x00000000000392df     0x1db2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
+ .debug_line    0x000000000003b091      0x662 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
+ .debug_line    0x000000000003b6f3      0x1c5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
+ .debug_line    0x000000000003b8b8      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
+ .debug_line    0x000000000003be82      0x242 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
+ .debug_line    0x000000000003c0c4      0x1c7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
+ .debug_line    0x000000000003c28b      0xa32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
+ .debug_line    0x000000000003ccbd      0x184 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
+ .debug_line    0x000000000003ce41      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
+ .debug_line    0x000000000003cfa2     0x8a2d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
+ .debug_line    0x00000000000459cf      0x1f4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
+ .debug_line    0x0000000000045bc3      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
+ .debug_line    0x000000000004618d      0x2c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
+ .debug_line    0x000000000004644f      0x612 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
+ .debug_line    0x0000000000046a61      0x7ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
+ .debug_line    0x000000000004720e      0x6ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
+ .debug_line    0x00000000000478bb      0x6f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
+ .debug_line    0x0000000000047fb1      0x282 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
+ .debug_line    0x0000000000048233      0x5d4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
+ .debug_line    0x0000000000048807     0x1256 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
+ .debug_line    0x0000000000049a5d      0x3f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
+ .debug_line    0x0000000000049e53      0x7b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
+ .debug_line    0x000000000004a603      0x45c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
+ .debug_line    0x000000000004aa5f      0x21b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
+ .debug_line    0x000000000004ac7a      0x192 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
+ .debug_line    0x000000000004ae0c      0x31a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
+ .debug_line    0x000000000004b126      0x176 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
+ .debug_line    0x000000000004b29c      0x17e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
+ .debug_line    0x000000000004b41a      0x397 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
+ .debug_line    0x000000000004b7b1       0xe1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
+ .debug_line    0x000000000004b892      0x30e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
+ .debug_line    0x000000000004bba0      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
+ .debug_line    0x000000000004c55f      0x753 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
+ .debug_line    0x000000000004ccb2      0x7ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
+ .debug_line    0x000000000004d47c      0xe09 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
+ .debug_line    0x000000000004e285      0x8fa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
+ .debug_line    0x000000000004eb7f      0x7ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
+ .debug_line    0x000000000004f32d      0x84d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
+ .debug_line    0x000000000004fb7a      0x5a4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libstd_msgs__rosidl_typesupport_microxrcedds_c-multi_array_dimension__type_support_c.c.obj)
+ .debug_line    0x000000000005011e     0x288f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
+ .debug_line    0x00000000000529ad      0x1da micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
+ .debug_line    0x0000000000052b87      0x50c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
+ .debug_line    0x0000000000053093      0x1bd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
+ .debug_line    0x0000000000053250      0xaae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
+ .debug_line    0x0000000000053cfe      0x352 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
+ .debug_line    0x0000000000054050      0xf01 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
+ .debug_line    0x0000000000054f51      0x19e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
+ .debug_line    0x00000000000550ef     0x12aa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
+ .debug_line    0x0000000000056399      0x9a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
+ .debug_line    0x0000000000056d3b       0x7e /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_ldivmod.o)
+ .debug_line    0x0000000000056db9       0x60 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x0000000000056e19      0x61a /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
+ .debug_line    0x0000000000057433       0x60 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m+fp/hard/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x0000000000057493      0x141 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-calloc.o)
+ .debug_line    0x00000000000575d4      0x154 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-ctype_.o)
+ .debug_line    0x0000000000057728      0x164 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv.o)
+ .debug_line    0x000000000005788c      0x218 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-getenv_r.o)
+ .debug_line    0x0000000000057aa4      0x17a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-callocr.o)
+ .debug_line    0x0000000000057c1e      0x266 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-rand.o)
+ .debug_line    0x0000000000057e84      0x14e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-realloc.o)
+ .debug_line    0x0000000000057fd2      0x3ab /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-snprintf.o)
+ .debug_line    0x000000000005837d      0x21f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strchr.o)
+ .debug_line    0x000000000005859c      0x137 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcmp.o)
+ .debug_line    0x00000000000586d3      0x149 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strcpy.o)
+ .debug_line    0x000000000005881c       0xaf /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strlen.o)
+ .debug_line    0x00000000000588cb      0x232 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strncmp.o)
+ .debug_line    0x0000000000058afd      0x788 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strstr.o)
+ .debug_line    0x0000000000059285      0x379 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strtoul.o)
+ .debug_line    0x00000000000595fe      0x291 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-vsnprintf.o)
+ .debug_line    0x000000000005988f      0x18d /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-assert.o)
+ .debug_line    0x0000000000059a1c      0x140 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-envlock.o)
+ .debug_line    0x0000000000059b5c      0x19a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fprintf.o)
+ .debug_line    0x0000000000059cf6      0x1d4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memcmp.o)
+ .debug_line    0x0000000000059eca      0x1c5 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-reallocr.o)
+ .debug_line    0x000000000005a08f      0x884 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-svfprintf.o)
+ .debug_line    0x000000000005a913      0x726 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf.o)
+ .debug_line    0x000000000005b039      0x790 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_line    0x000000000005b7c9      0x18e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-strnlen.o)
+ .debug_line    0x000000000005b957      0x15f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-abort.o)
+ .debug_line    0x000000000005bab6      0x5e8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-fvwrite.o)
+ .debug_line    0x000000000005c09e       0xa4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memchr.o)
+ .debug_line    0x000000000005c142      0x287 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-memmove.o)
+ .debug_line    0x000000000005c3c9      0x166 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-nano-msizer.o)
+ .debug_line    0x000000000005c52f      0x3cc /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signal.o)
+ .debug_line    0x000000000005c8fb      0x1a4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-signalr.o)
 
 .debug_str      0x0000000000000000    0x187d3
  .debug_str     0x0000000000000000     0x1a59 build/uros_tasks.o
