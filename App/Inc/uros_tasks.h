@@ -52,6 +52,23 @@ extern "C"{
 #include "error_indicator.h"
 // #include "minicheetah_motor.h"
 
+#define UROS_ERROR_NONE                 0b00000000
+#define UROS_ERROR_RMW_TRANSPORT        0b00000001
+#define UROS_ERROR_FREERTOS_ALLOC       0b00000010
+#define UROS_ERROR_RCL_SUPPORT_INIT     0b00000100
+#define UROS_ERROR_RCL_NODE_INIT        0b00001000
+#define UROS_ERROR_RCL_PUB_INIT         0b00010000
+#define UROS_ERROR_RCL_PUB              0b00100000
+// #define UROS_ERROR_RCL_
+
+#define UROS_STATUS_NOT_INIT            0b00000000
+#define UROS_STATUS_CONFIG              0b00000001
+#define UROS_STATUS_ALLOC_FREERTOS      0b00000010
+#define UROS_STATUS_RCL_SUPPORT         0b00000100
+#define UROS_STATUS_NODE                0b00001000
+#define UROS_STATUS_MOTOR_FB_PUB        0b00010000
+
+
 bool cubemx_transport_open(struct uxrCustomTransport * transport);
 bool cubemx_transport_close(struct uxrCustomTransport * transport);
 
@@ -64,23 +81,45 @@ void * microros_reallocate(void * pointer, size_t size, void * state);
 void * microros_zero_allocate(size_t number_of_elements, size_t size_of_element, void * state);
 
 
+/* States of the node */
+enum UROS_STATE{
+UROS_INITIALIZING = 0,
+UROS_ERROR = 1,
+UROS_WAITING_FOR_AGENT = 2,
+UROS_RUNNING = 3,
+UROS_NODE_DESTROYED = 4,
+};
 
-extern rcl_allocator_t allocator;
-extern rclc_support_t support;
-extern rcl_node_t node;
-extern rcl_publisher_t publisher;
-extern std_msgs__msg__Int32 msg;
-extern std_msgs__msg__Float32MultiArray motor_feedback_msg;
+/* TypeDef of UROS default Node */
+struct{
+    rcl_allocator_t         allocator;
+    rclc_support_t          support;
+    rcl_node_t              node;
+    rcl_publisher_t         publisher;
+    std_msgs__msg__Int32    msg;
+    std_msgs__msg__Float32MultiArray motor_feedback_msg;
+    uint8_t                 error_code;
+    rmw_ret_t               rmw_ret;
+    rcl_ret_t               rcl_ret;
+    enum UROS_STATE         state;
+    uint8_t                 status;
+}typedef UROS_t;
+
+/* declaye uros node */
+extern UROS_t uros;
 
 
-extern rmw_ret_t ret_rmw;
-extern rcl_ret_t ret_rcl;
-
-// initialize functions here
+// functions
 void init_uros_node();
 void spin_uros_node(int os_delay);
 
-
+bool _config_uros();
+bool _maloc4FreeRTOS();
+bool _create_rcl_support();
+bool _create_uros_node();
+bool _create_motor_feedback_pub();
+void _destroy_support();
+void _destroy_node();
 
 #ifdef __cplusplus
 }

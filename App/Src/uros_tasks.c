@@ -31,83 +31,281 @@ SOFTWARE.                                                                       
 #include "minicheetah_motor.h"
 
 
-rcl_allocator_t allocator;
-rclc_support_t support;
-rcl_node_t node;
-rcl_publisher_t publisher;
-std_msgs__msg__Int32 msg;
-std_msgs__msg__Float32MultiArray motor_feedback_msg;
+UROS_t uros;
 
-rmw_ret_t ret_rmw;
-rcl_ret_t ret_rcl;
 
 
 void init_uros_node()
-{
-    // micro-ROS configuration
-    rmw_err_code = rmw_uros_set_custom_transport(
-                true,
-                (void *) &huart2,
-                cubemx_transport_open,
-                cubemx_transport_close,
-                cubemx_transport_write,
-                cubemx_transport_read);
+{   
+    /* config micro ros */
+    if(_config_uros()){
+        /* allocate memory for FreeRTOS */
+        if(_maloc4FreeRTOS()){
+            /* init micro-ROS app */
+            uros.allocator = rcl_get_default_allocator(); 
+            /* create rcl support */
+            a:  
+            if(_create_rcl_support()){
+                    /* create node */
+                    if(_create_uros_node()){
+                        /* create motor feedback publisher */
+                        _create_motor_feedback_pub();
+                    }
+            }
+            /* if failed to init support */
+            else{
+                    while((uros.status & UROS_STATUS_RCL_SUPPORT) != UROS_STATUS_RCL_SUPPORT)
+                    {
+                        uros.state = UROS_WAITING_FOR_AGENT;
+                        goto a;
+                    }
+                } 
+        }
+    }
+}
 
+/**
+ * @brief motor_node spin.
+ * 
+ */
+void spin_uros_node(int os_delay)
+{
+    uros.motor_feedback_msg.data.size = uros.motor_feedback_msg.data.capacity;
+    uros.state = UROS_RUNNING;
+    while(1)
+    {
+        if (uros.status == 0b00011111)
+        {
+            for(int m=0; m<NUM_OF_MOTORS; m++)
+            {
+                uros.motor_feedback_msg.data.data[0] = motor[m].id;
+                uros.motor_feedback_msg.data.data[1] = motor[m].feedback.position;
+                uros.motor_feedback_msg.data.data[2] = motor[m].feedback.velocity;
+                uros.motor_feedback_msg.data.data[3] = motor[m].feedback.current;
+                uros.motor_feedback_msg.data.data[4] = motor[m].feedback.vb;
+                uros.rcl_ret = rcl_publish(&uros.publisher, &uros.motor_feedback_msg, NULL);
+                if (uros.rcl_ret != RCL_RET_OK)
+                {
+                    uros.state = UROS_ERROR;
+                    uros.error_code |= UROS_ERROR_RCL_PUB;
+                    uros.state = UROS_WAITING_FOR_AGENT;
+                    init_uros_node();                 
+                }
+            }   
+        }
+        else{
+            uros.state = UROS_WAITING_FOR_AGENT;
+            init_uros_node();
+        }
+        
+        printf("microros\n");
+        // motor.send_heartbeat();
+        osDelay(os_delay);
+    }
+}
+
+
+/**
+ * @brief To configure micro-ROS.
+ * 
+ * @return true: if rcl support is successfully created.
+ * @return false: if error.
+ */
+bool _config_uros()
+{
+    /* micro-ROS configuration */
+    uros.rmw_ret = rmw_uros_set_custom_transport(
+                    true,(void *) &huart2, 
+                    cubemx_transport_open,
+                    cubemx_transport_close, 
+                    cubemx_transport_write,
+                    cubemx_transport_read);
+
+    /* check error */
+    if(uros.rmw_ret != RMW_RET_OK)
+    {
+        uros.state = UROS_ERROR;
+        uros.status &= ~UROS_STATUS_CONFIG;
+        uros.error_code |= UROS_ERROR_RMW_TRANSPORT;
+        return 0;
+    }
+
+    /* if no error */
+    if(uros.state != UROS_WAITING_FOR_AGENT) uros.state = UROS_INITIALIZING;
+    uros.status |= UROS_STATUS_CONFIG;
+    uros.error_code &= ~UROS_ERROR_RMW_TRANSPORT;
+    return 1;
+}
+
+/**
+ * @brief To allocate memory for FreeRTOS.
+ * 
+ * @return true: if rcl support is successfully created.
+ * @return false: if error.
+ */
+bool _maloc4FreeRTOS()
+{
+    /* Allocationg memory for FreeRTOS */
     rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
     freeRTOS_allocator.allocate = microros_allocate;
     freeRTOS_allocator.deallocate = microros_deallocate;
     freeRTOS_allocator.reallocate = microros_reallocate;
     freeRTOS_allocator.zero_allocate =  microros_zero_allocate;
 
-    if (!rcutils_set_default_allocator(&freeRTOS_allocator)) {
-        printf("Error on default allocators (line %d)\n", __LINE__); 
+    /* allocate and check error */
+    if (!rcutils_set_default_allocator(&freeRTOS_allocator))
+    {
+        uros.state = UROS_ERROR;
+        uros.status &= ~UROS_STATUS_ALLOC_FREERTOS;
+        uros.error_code |= UROS_ERROR_FREERTOS_ALLOC;
+        // printf("Error on default allocators (line %d)\n", __LINE__); 
+        return 0;
     }
 
-    // micro-ROS app
-    allocator = rcl_get_default_allocator();
+    /* if no error */
+    if(uros.state != UROS_WAITING_FOR_AGENT)uros.state = UROS_INITIALIZING;
+    uros.status |= UROS_STATUS_ALLOC_FREERTOS;
+    uros.error_code &= ~UROS_ERROR_FREERTOS_ALLOC;
+    return 1;
+}
 
-    //create init_options
-    rcl_err_code = rclc_support_init(&support, 0, NULL, &allocator);
 
-    // create node
-    rcl_err_code = rclc_node_init_default(&node, "motor_node", "", &support);
+/**
+ * @brief To create the rcl support.
+ * 
+ * @return true: if rcl support is successfully created.
+ * @return false: if error.
+ */
+bool _create_rcl_support()
+{
+    /* If allready initialized, destroy */
+    if((uros.status & UROS_STATUS_RCL_SUPPORT)  == UROS_STATUS_RCL_SUPPORT  ){_destroy_support();}
 
-    // create msg
-    motor_feedback_msg.data.capacity = 10; // to allocate memory
-    motor_feedback_msg.data.data = (float*) malloc(motor_feedback_msg.data.capacity * sizeof(float));
+    /* initialize */
+    uros.rcl_ret = rclc_support_init(&uros.support, 0, NULL, &uros.allocator);
 
-    // create publisher
-    rcl_err_code = rclc_publisher_init_default(
-                    &publisher,
-                    &node,
+    /* check error */
+    if(uros.rcl_ret != RCL_RET_OK)
+    {
+        uros.state = UROS_WAITING_FOR_AGENT;            /*!< update state           */
+        uros.status &= ~UROS_STATUS_RCL_SUPPORT;        /*!< reset rcl support      */
+        uros.error_code |= UROS_ERROR_RCL_SUPPORT_INIT; /*!< set error              */
+        return 0;
+    }
+    /* if no error */
+    if(uros.state != UROS_WAITING_FOR_AGENT)uros.state = UROS_INITIALIZING; /*!< update state           */
+    uros.status |= UROS_STATUS_RCL_SUPPORT;                                 /*!< set rcl support        */
+    uros.error_code &= ~UROS_ERROR_RCL_SUPPORT_INIT;                        /*!< set error              */
+    return 1;
+}
+
+
+/**
+ * @brief To create the main node "motor_node".
+ * 
+ * @return true: if node is successfully created.
+ * @return false: if error.
+ */
+bool _create_uros_node()
+{
+    /* If already exist, destroy the node and its entities (pubs, subs, etc.) */
+    if((uros.status & UROS_STATUS_MOTOR_FB_PUB) == UROS_STATUS_MOTOR_FB_PUB ){_destroy_node();}
+    if((uros.status & UROS_STATUS_NODE)         == UROS_STATUS_NODE         ){_destroy_node();}
+
+    /* Initialize the node */
+    uros.rcl_ret = rclc_node_init_default(&uros.node, "motor_node", "", &uros.support);
+
+    /* check error */
+    if (uros.rcl_ret != RCL_RET_OK)
+    {
+        uros.state = UROS_ERROR;                            /*!< update state */
+        uros.status &= ~UROS_STATUS_NODE;
+        uros.error_code |= UROS_ERROR_RCL_NODE_INIT;        /*!< set error */
+        return 0;
+    }    
+
+    /* if no error */                  
+    if(uros.state != UROS_WAITING_FOR_AGENT)uros.state = UROS_INITIALIZING; /*!< update state */
+    uros.status |= UROS_STATUS_NODE;
+    uros.error_code &= ~UROS_ERROR_RCL_NODE_INIT;                           /*!< reset error */
+    return 1;
+}
+
+/**
+ * @brief To create the motoer feedback publisher
+ * 
+ * @return true: if publisher is successfully created.
+ * @return false: if error.
+ */
+bool _create_motor_feedback_pub()
+{
+    /* create msg */
+    uros.motor_feedback_msg.data.capacity = 5;              /*  to allocate memory */
+    uros.motor_feedback_msg.data.data = (float*) malloc(uros.motor_feedback_msg.data.capacity * sizeof(float));
+
+    /* initialize publisher */
+    uros.rcl_ret = rclc_publisher_init_default(
+                    &uros.publisher,
+                    &uros.node,
                     ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float32MultiArray),
                     "motor_feedback");
-
-}
-
-
-void spin_uros_node(int os_delay)
-{
-    msg.data = 0;
     
-    while(1)
+    /* check error */
+    if(uros.rcl_ret == RCL_RET_ERROR)
     {
-        
-        motor_feedback_msg.data.size = 6;
-        for(int i=0; i<6; i++){
-            motor_feedback_msg.data.data[i] = 10.0; // can_rx_data[i]
-        }
-
-        rcl_err_code = rcl_publish(&publisher, &motor_feedback_msg, NULL);
-        if (rcl_err_code != RCL_RET_OK)
-        {
-        printf("Error publishing (line %d)\n", __LINE__); 
-        }
-        printf("microros\n");
-        // motor.send_heartbeat();
-        osDelay(os_delay);
+        uros.state = UROS_ERROR;                            /*!< update state */
+        uros.status &= ~UROS_STATUS_MOTOR_FB_PUB;
+        uros.error_code |= UROS_ERROR_RCL_PUB_INIT;         /*!< set error */
+        return 0;
     }
+
+    /* if no error */
+    if(uros.state != UROS_WAITING_FOR_AGENT) uros.state = UROS_INITIALIZING; 
+    uros.status |= UROS_STATUS_MOTOR_FB_PUB;
+    uros.error_code &= ~UROS_ERROR_RCL_PUB_INIT;            /*!< set error */
+    return 1;
 }
+
+
+/**
+ * @brief To destroy the rcl support
+ * 
+ */
+void _destroy_support()
+{
+    _destroy_node();
+    uros.rcl_ret = rclc_support_fini(&uros.support);
+    uros.state = UROS_INITIALIZING;
+    uros.status &= ~ UROS_STATUS_RCL_SUPPORT;
+    uros.error_code &= ~ UROS_ERROR_RCL_SUPPORT_INIT;
+}
+
+/**
+ * @brief To destroy the node and its entities
+ * 
+ */
+void _destroy_node()
+{
+    if((uros.status & UROS_STATUS_MOTOR_FB_PUB) == UROS_STATUS_MOTOR_FB_PUB)
+    {
+        /* destroy node entities */
+        uros.rcl_ret = rcl_publisher_fini(&uros.publisher, &uros.node);
+        uros.status &= ~UROS_STATUS_MOTOR_FB_PUB;
+        uros.error_code &= ~ UROS_ERROR_RCL_PUB_INIT;
+    }
+    
+    if((uros.status & UROS_STATUS_NODE) == UROS_STATUS_NODE)
+    {
+        /* destroy node itself */
+        uros.rcl_ret = rcl_node_fini(&uros.node);
+        uros.state = UROS_NODE_DESTROYED;
+        uros.status &= ~UROS_STATUS_NODE;
+        uros.error_code &= ~ UROS_ERROR_RCL_NODE_INIT;
+    } 
+}
+
+
+
 
 
 
