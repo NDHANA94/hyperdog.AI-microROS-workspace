@@ -118,18 +118,10 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
     float uint2float(int x_int, float x_min, float x_max, int bits);
 ```
 
-- Error indicator using 4 LEDs is partially developed.
-    - `orange LED`: micro-ROS errors
-        - `1 blink`: rmw error
-        - `2 blinks`: rcl error
-    
-    - `red LED`: CAN bus errors
-    - `blue LED`: Motor errors (Not implemented yet)
-    - `green LED`: -
-
 - Tested `micro-ROS node`, `CAN communication` and `error indicator` on 3 seperate `FreeRTOS` tasks.
 - tested micro-ROS topics over 200 Hz frequency.
 - Developed a mechanism to re-establish the connection with micro-ros agent.
+- Created LED error code indicator for showing micro-ROS (LD3), CAN(LD5), Motor(LD6) errors.
         
 
 
@@ -141,6 +133,52 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 - And MANY MORE............. XD
 
 
+
+### ERROR CODE:
+
+#### Micro-ROS Error-code:
+    `1`: Failed to create RMW transport
+    `2`: Failed to allocate memory for FreeRTOS
+    `3`: Failed to initialize the node
+    `4`: Failed to initialize the motor feedbak publisher
+    `5`: Failed to publish motor feedback / Agent is not connected
+
+#### CAN Error-code:
+     `1`: Protocol Error Warning
+     `2`: Error Passive   
+     `3`: Parameter error ; can be ocuured due to lost of can bus connection or no msg received
+     `4`: Bus-off error
+     `5`: Stuff error  
+     `6`: Form error  
+     `7`: Acknowledgment error
+     `8`: Bit recessive error
+     `9`: Bit dominant error   
+    `10`: CRC error  
+    `11`: Rx FIFO0 overrun error
+    `12`: Rx FIFO1 overrun error 
+    `13`: TxMailbox 0 transmit failure due to arbitration lost
+    `14`: TxMailbox 0 transmit failure due to transmit error
+    `15`: TxMailbox 1 transmit failure due to arbitration lost
+    `16`: TxMailbox 1 transmit failure due to transmit error
+    `17`: TxMailbox 2 transmit failure due to arbitration lost
+    `18`: TxMailbox 2 transmit failure due to transmit error
+    `19`: Timeout error  
+    `20`: Peripheral not initialized 
+    `21`: Peripheral not ready 
+    `22`: Peripheral not started 
+
+#### Motor Error-code:
+     `1`: motor is not initialized  
+     `2`: motor parameter error
+     `3`: HAL_CAN Error
+     `4`: motor is offline / not connected 
+     `5`: Out Of Range error      
+     `6`: Over-Heat error   
+     `7`: Over-Current error 
+     `8`: Failed to enable the motor 
+     `9`: Failed to diable the motor    
+    `10`: Failed to set motor zero position
+    `11`: Motor is not ready to be operated
 
 ### How I created CubeMX project:
 
