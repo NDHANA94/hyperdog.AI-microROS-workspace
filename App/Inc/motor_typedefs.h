@@ -114,7 +114,7 @@ typedef struct{
 }CANTxMessage;
 
 typedef struct{
-  uint8_t data[7];
+  uint8_t data[NUM_OF_CAN_RX_BYTES];
   CAN_RxHeaderTypeDef header;
   CAN_FilterTypeDef filter;
 }CANRxMessage;
@@ -126,7 +126,7 @@ struct {
     motor_ctrl_limits_t     limit; /*!< to limit controlable range of the motor; max position, min position, max velocity, max current */
     motor_cmd_t             cmd; /*!< Command to the motor: p_des, v_des, kp, kd, i_ff */
     motor_feedback_t        feedback; /*!< Motor feedback of current motor states: position, velocity, current */
-    motor_init_state_t      init_state;
+    motor_init_state_t      init_state; /* State of initialization proccess */
     enum MOTOR_State        state; /*!< Motor status */
     motor_errorcode_t       error_code;
     CAN_HandleTypeDef*      hcan_ptr; /*!< Pointer hcan1*/

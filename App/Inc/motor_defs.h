@@ -27,7 +27,7 @@ extern "C"{
 #define CAN_CMD_FREQUENCY         100 // Hz
 #define CAN_HEARTBEAT_FREQUENCY     1 // Hz
 #define NUM_OF_CAN_TX_BYETS         8
-#define NUM_OF_CAN_RX_BYTES         7
+#define NUM_OF_CAN_RX_BYTES         6 // 7
 #define MAX_MOTOR_NO_RESPONSE_COUNT     5 /*!< after this number of times motor doesn't response repeatedly, motor status will be updated as MOTOR_OFFLINE  */
 
 

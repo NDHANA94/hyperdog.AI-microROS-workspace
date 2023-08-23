@@ -173,6 +173,11 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 
 
+
+### Fixed HAL bugs:
+- stm32f4xx_hal_can.h --> HAL_CAN_GetRxMessage(----) : Not updating error code, if HAL_OK:
+    fixed: add `hcan->ErrorCode &= ~ HAL_CAN_ERROR_PARAM;` to line 1587 (before `return HAL_OK;`)
+
 <!-- 
 
 gitignore:

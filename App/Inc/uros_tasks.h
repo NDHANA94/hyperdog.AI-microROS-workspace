@@ -52,13 +52,13 @@ extern "C"{
 #include "error_indicator.h"
 // #include "minicheetah_motor.h"
 
-#define UROS_ERROR_NONE                 0b00000000
-#define UROS_ERROR_RMW_TRANSPORT        0b00000001
-#define UROS_ERROR_FREERTOS_ALLOC       0b00000010
-#define UROS_ERROR_RCL_SUPPORT_INIT     0b00000100
-#define UROS_ERROR_RCL_NODE_INIT        0b00001000
-#define UROS_ERROR_RCL_PUB_INIT         0b00010000
-#define UROS_ERROR_RCL_PUB              0b00100000
+#define UROS_ERROR_NONE                     0b00000000  /*!<  No error*/
+#define UROS_ERROR_RMW_TRANSPORT            0b00000001  /*!<  Failed to create RMW transport*/
+#define UROS_ERROR_FREERTOS_ALLOC           0b00000010  /*!<  Failed to allocate memory for FreeRTOS*/
+#define UROS_ERROR_RCL_SUPPORT_INIT         0b00000100  /*!<  Failed to connect with the Agent or create rcl support*/
+#define UROS_ERROR_RCL_NODE_INIT            0b00001000  /*!<  Failed to initialize the node*/
+#define UROS_ERROR_RCL_MOTOR_FB_PUB_INIT    0b00010000  /*!<  Failed to initialize the motor feedback publisher*/
+#define UROS_ERROR_RCL_MOTOR_FB_PUB         0b00100000  /*!<  Failed to publish motor feedback*/
 // #define UROS_ERROR_RCL_
 
 #define UROS_STATUS_NOT_INIT            0b00000000

@@ -79,7 +79,6 @@ void init_uros_node()
 void spin_uros_node(int os_delay)
 {
     uros.motor_feedback_msg.data.size = uros.motor_feedback_msg.data.capacity;
-    uros.state = UROS_RUNNING;
     while(1)
     {
         if (uros.status == 0b00011111)
@@ -95,9 +94,12 @@ void spin_uros_node(int os_delay)
                 if (uros.rcl_ret != RCL_RET_OK)
                 {
                     uros.state = UROS_ERROR;
-                    uros.error_code |= UROS_ERROR_RCL_PUB;
+                    uros.error_code |= UROS_ERROR_RCL_MOTOR_FB_PUB;
                     uros.state = UROS_WAITING_FOR_AGENT;
                     init_uros_node();                 
+                }
+                else{
+                    uros.state = UROS_RUNNING;
                 }
             }   
         }
@@ -263,14 +265,14 @@ bool _create_motor_feedback_pub()
     {
         uros.state = UROS_ERROR;                            /*!< update state */
         uros.status &= ~UROS_STATUS_MOTOR_FB_PUB;
-        uros.error_code |= UROS_ERROR_RCL_PUB_INIT;         /*!< set error */
+        uros.error_code |= UROS_ERROR_RCL_MOTOR_FB_PUB_INIT;         /*!< set error */
         return 0;
     }
 
     /* if no error */
     if(uros.state != UROS_WAITING_FOR_AGENT) uros.state = UROS_INITIALIZING; 
     uros.status |= UROS_STATUS_MOTOR_FB_PUB;
-    uros.error_code &= ~UROS_ERROR_RCL_PUB_INIT;            /*!< set error */
+    uros.error_code &= ~UROS_ERROR_RCL_MOTOR_FB_PUB_INIT;            /*!< set error */
     return 1;
 }
 
@@ -299,7 +301,7 @@ void _destroy_node()
         /* destroy node entities */
         uros.rcl_ret = rcl_publisher_fini(&uros.publisher, &uros.node);
         uros.status &= ~UROS_STATUS_MOTOR_FB_PUB;
-        uros.error_code &= ~ UROS_ERROR_RCL_PUB_INIT;
+        uros.error_code &= ~ UROS_ERROR_RCL_MOTOR_FB_PUB_INIT;
     }
     
     if((uros.status & UROS_STATUS_NODE) == UROS_STATUS_NODE)

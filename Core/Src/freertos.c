@@ -23,17 +23,14 @@
 #include "main.h"
 #include "cmsis_os.h"
 
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 #include "uros_tasks.h"
 #include "error_indicator.h"
 #include "can.h"
 #include "minicheetah_motor.h"
-
-
-
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
+#include "stm32f4xx_ll_usb.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -131,27 +128,24 @@ void MX_FREERTOS_Init(void) {
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-  errorIndicatorTaskHandle = osThreadNew(StartErrorIndicatorTask, NULL, &errorIndicatorTask_attributes);
-  CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+  errorIndicatorTaskHandle = osThreadNew(StartErrorIndicatorTask, NULL, &errorIndicatorTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
+  CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
   /* USER CODE END RTOS_EVENTS */
 
 }
 
 
-/* USER CODE END Header_StartDefaultTask */
 /* USER CODE BEGIN Header_StartDefaultTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the defaultTask thread: Micro-ROS.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
@@ -163,16 +157,21 @@ void StartDefaultTask(void *argument)
   
   /* USER CODE END 5 */
 }
+/* USER CODE END Header_StartDefaultTask */
+
+
+
+
+
+/* Private application code --------------------------------------------------*/
+/* USER CODE BEGIN Application */
+
 
 void StartErrorIndicatorTask(void *argument)
 {
-  /* USER CODE BEGIN 5 */
-
-  // micro-ROS configuration
-
+  /* USER CODE BEGIN 6 */
   error_indicator();
-  
-  /* USER CODE END 5 */
+  /* USER CODE END 6 */
 }
 
 void StartCANTask(void* argument)
@@ -183,8 +182,6 @@ void StartCANTask(void* argument)
   MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
   MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
   // MOTOR_sendHeatbeat(FR_HIP);
-  
-
   // can_rx_init();
   // can_tx_init();
   
@@ -195,12 +192,8 @@ void StartCANTask(void* argument)
       osDelay(10);
       // MOTOR_setZero(FR_HIP);
   }
-  
-
 }
 
-/* Private application code --------------------------------------------------*/
-/* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
 
