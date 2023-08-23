@@ -136,14 +136,16 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 ### ERROR CODE:
 
-#### Micro-ROS Error-code:
+#### Micro-ROS Error-code: (LD3 - Orange LED)
+    short blinks:
     `1`: Failed to create RMW transport
     `2`: Failed to allocate memory for FreeRTOS
     `3`: Failed to initialize the node
     `4`: Failed to initialize the motor feedbak publisher
     `5`: Failed to publish motor feedback / Agent is not connected
 
-#### CAN Error-code:
+#### CAN Error-code: (LD5 - Red LED)
+    short blinks: 
      `1`: Protocol Error Warning
      `2`: Error Passive   
      `3`: Parameter error ; can be ocuured due to lost of can bus connection or no msg received
@@ -167,7 +169,9 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
     `21`: Peripheral not ready 
     `22`: Peripheral not started 
 
-#### Motor Error-code:
+#### Motor Error-code: (LD6 - Blue LED)
+    long blinks indicate motor index with the error.
+    short blinks indicate the error.
      `1`: motor is not initialized  
      `2`: motor parameter error
      `3`: HAL_CAN Error
