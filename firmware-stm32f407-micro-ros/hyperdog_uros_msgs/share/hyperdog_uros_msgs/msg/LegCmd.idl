@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/LegCmd.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module msg {
+    typedef double double__3[3];
+    struct LegCmd {
+      @verbatim (language="comment", text=
+        " FR, FL, RR, RL")
+      sequence<string, 2> leg;
+
+      @verbatim (language="comment", text=
+        " HIP, THIGH, CALF")
+      sequence<string, 5> joint;
+
+      @verbatim (language="comment", text=
+        " [x,y,z]")
+      double__3 position;
+
+      @verbatim (language="comment", text=
+        " [x,y,z]")
+      double__3 velocity;
+
+      @verbatim (language="comment", text=
+        " [x,y,z]")
+      double__3 stiffness;
+
+      @verbatim (language="comment", text=
+        " [x,y,z]")
+      double__3 damping;
+    };
+  };
+};

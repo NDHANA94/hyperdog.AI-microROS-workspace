@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/SetZeroPosition.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct SetZeroPosition_Request {
+      @verbatim (language="comment", text=
+        " FR, FL, RR, RL")
+      string leg;
+
+      @verbatim (language="comment", text=
+        " HIP_ROLL, HIP_PITCH, KNEE")
+      sequence<string, 10> joint;
+    };
+    struct SetZeroPosition_Response {
+      boolean is_set;
+
+      string error_msg;
+    };
+  };
+};

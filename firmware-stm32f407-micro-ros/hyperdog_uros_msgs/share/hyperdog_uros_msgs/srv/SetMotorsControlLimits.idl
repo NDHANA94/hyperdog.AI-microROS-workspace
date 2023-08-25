@@ -1,0 +1,40 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/SetMotorsControlLimits.srv
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_msgs/msg/MotorCtrlLimits.idl"
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct SetMotorsControlLimits_Request {
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fr_hip_pitch;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fr_hip_roll;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fr_knee;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fl_hip_pitch;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fl_hip_roll;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits fl_knee;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rr_hip_pitch;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rr_hip_roll;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rr_knee;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rl_hip_pitch;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rl_hip_roll;
+
+      hyperdog_uros_msgs::msg::MotorCtrlLimits rl_knee;
+    };
+    struct SetMotorsControlLimits_Response {
+      boolean is_set;
+
+      string error_msg;
+    };
+  };
+};

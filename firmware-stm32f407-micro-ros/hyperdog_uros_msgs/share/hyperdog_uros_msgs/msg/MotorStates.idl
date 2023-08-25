@@ -1,0 +1,34 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/MotorStates.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      " std_msgs/Header header")
+    struct MotorStates {
+      sequence<string, 10> motor_name;
+
+      uint8 id;
+
+      boolean is_available;
+
+      boolean is_enabled;
+
+      boolean is_error;
+
+      double cur_position;
+
+      double cur_velocity;
+
+      double torque;
+
+      double vb;
+
+      int16 error_code;
+
+      string status_msg;
+    };
+  };
+};

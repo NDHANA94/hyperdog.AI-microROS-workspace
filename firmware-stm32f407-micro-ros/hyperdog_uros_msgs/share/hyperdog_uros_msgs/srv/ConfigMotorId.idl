@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/ConfigMotorId.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct ConfigMotorId_Request {
+      @verbatim (language="comment", text=
+        " FR, FL, RR, RL")
+      sequence<string, 2> leg;
+
+      @verbatim (language="comment", text=
+        " HIP_ROLL, HIP_PITCH, KNEE")
+      sequence<string, 10> joint;
+
+      @verbatim (language="comment", text=
+        " 0 - 255")
+      uint8 id;
+    };
+    struct ConfigMotorId_Response {
+      boolean is_set;
+
+      string error_msg;
+    };
+  };
+};

@@ -1,6 +1,5 @@
 
 # std_msgs/Header header
-
 bool enable
 float64 desire_position
 float64 desire_velocity
