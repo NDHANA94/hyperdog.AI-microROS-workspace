@@ -25,7 +25,7 @@ source instal/local_setup.bash
 
 To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensions.
 
-### install ARM compiler for building and debuging the firmware:
+### Install ARM compiler for building and debuging the firmware:
 
 - If there is already installed `gcc-arm-none-eabi` package, remove it using following command:
     ```
@@ -51,6 +51,6 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
 ### Build:
 -   Build the firmware using fllowing command: 
     ```
-    cd firmware-stm32f407-micro-ros
+    cd firmware-stm32f407-micro-ros/
     make all
     ```
