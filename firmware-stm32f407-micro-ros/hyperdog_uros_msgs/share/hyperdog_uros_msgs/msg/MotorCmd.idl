@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/MotorCmd.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module msg {
+    struct MotorCmd {
+      @verbatim (language="comment", text=
+        " std_msgs/Header header")
+      boolean enable;
+
+      double desire_position;
+
+      double desire_velocity;
+
+      double kp;
+
+      double kd;
+
+      double i_ff;
+    };
+  };
+};
