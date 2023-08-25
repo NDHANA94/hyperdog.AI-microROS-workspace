@@ -1,0 +1,7 @@
+/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/math.h:394:14:fmaxf	16	static
+/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/math.h:395:14:fminf	16	static
+../Core/Src/math_ops.c:21:7:fmaxf3	24	static
+../Core/Src/math_ops.c:26:7:fminf3	24	static
+../Core/Src/math_ops.c:32:6:limit_norm	40	static
+../Core/Src/math_ops.c:41:5:float_to_uint	40	static
+../Core/Src/math_ops.c:49:7:uint_to_float	40	static

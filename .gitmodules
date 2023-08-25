@@ -1,0 +1,16 @@
+[submodule "src/micro-ros-setup"]
+	path = src/micro-ros-setup
+	url = https://github.com/micro-ROS/micro_ros_setup.git
+	branch = foxy
+[submodule "src/uros/micro-ROS-Agent"]
+	path = src/uros/micro-ROS-Agent
+	url = https://github.com/micro-ROS/micro-ROS-Agent.git
+	branch = foxy
+[submodule "src/uros/drive_base"]
+	path = src/uros/drive_base
+	url = https://github.com/micro-ROS/drive_base.git
+	branch = foxy
+[submodule "src/uros/micro_ros_msgs"]
+	path = src/uros/micro_ros_msgs
+	url = https://github.com/micro-ROS/micro_ros_msgs.git
+	branch = foxy

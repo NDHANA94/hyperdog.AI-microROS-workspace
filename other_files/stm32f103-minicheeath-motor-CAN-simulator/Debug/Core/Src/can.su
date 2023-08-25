@@ -1,5 +1,0 @@
-../Core/Src/can.c:37:6:MX_CAN_Init	8	static
-../Core/Src/can.c:69:6:HAL_CAN_MspInit	40	static
-../Core/Src/can.c:106:6:HAL_CAN_MspDeInit	16	static
-../Core/Src/can.c:133:6:can_rx_init	8	static
-../Core/Src/can.c:146:6:can_tx_init	4	static

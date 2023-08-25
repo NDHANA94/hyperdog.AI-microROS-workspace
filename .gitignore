@@ -1,6 +1,12 @@
 browser.vc.db 
 browser.vc.db-shm 
 browser.vc.db-wal
-build/*.o
-build/*.d
-build/*.lst
+firmware-stm32f407-micro-ros/browser.vc.db 
+firmware-stm32f407-micro-ros/browser.vc.db-shm 
+firmware-stm32f407-micro-ros/browser.vc.db-wal
+firmware-stm32f407-micro-ros/build/*.o
+firmware-stm32f407-micro-ros/build/*.d
+firmware-stm32f407-micro-ros/build/*.lst
+install/
+log/
+build/

@@ -1,0 +1,18 @@
+hyperdog_uros_msgs/MotorCtrlLimits fr_hip_pitch
+hyperdog_uros_msgs/MotorCtrlLimits fr_hip_roll
+hyperdog_uros_msgs/MotorCtrlLimits fr_knee
+
+hyperdog_uros_msgs/MotorCtrlLimits fl_hip_pitch
+hyperdog_uros_msgs/MotorCtrlLimits fl_hip_roll
+hyperdog_uros_msgs/MotorCtrlLimits fl_knee
+
+hyperdog_uros_msgs/MotorCtrlLimits rr_hip_pitch
+hyperdog_uros_msgs/MotorCtrlLimits rr_hip_roll
+hyperdog_uros_msgs/MotorCtrlLimits rr_knee
+
+hyperdog_uros_msgs/MotorCtrlLimits rl_hip_pitch
+hyperdog_uros_msgs/MotorCtrlLimits rl_hip_roll
+hyperdog_uros_msgs/MotorCtrlLimits rl_knee
+---
+bool is_set
+string error_msg

@@ -7,8 +7,8 @@
     "configurations": [
         {
             "name": "JLink launch",
-            "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -38,8 +38,8 @@
         },
         {
             "name": "JLink attach",
-            "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -69,30 +69,30 @@
         },
         {
             "name": "STlink launch",
-            "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros/",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "stutil",
             "device": "STM32F407VG",
             "interface": "swd",
             // "runToMain": false, // else it starts at reset handler - not interested
-            "preLaunchTask": "Build all", // configured in tasks.json
+            // "preLaunchTask": "Build all", // configured in tasks.json
             // "preLaunchCommands": ["Build all"], // you can execute command instead of task
             "svdFile": "", // Include svd to watch device peripherals
             "swoConfig": {} // currently (v1.7.0) not supported
         },
         {
             "name": "STlink attach",
-            "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "stutil",
             "device": "STM32F407VG",
             "interface": "swd",
             // "runToMain": false, // else it starts at reset handler - not interested
-            "preLaunchTask": "Build all", // configured in tasks.json
+            // "preLaunchTask": "Build all", // configured in tasks.json
             // "preLaunchCommands": ["Build all"], // you can execute command instead of task
             "svdFile": "", // Include svd to watch device peripherals
             "swoConfig": {} // currently (v1.7.0) not supported
