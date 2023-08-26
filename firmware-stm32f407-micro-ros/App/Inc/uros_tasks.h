@@ -56,6 +56,9 @@ extern "C"{
 #include "error_indicator.h"
 // #include "minicheetah_motor.h"
 
+#define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printk("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc);}}
+#define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printk("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
+
 #define UROS_ERROR_NONE                     0b00000000  /*!<  No error*/
 #define UROS_ERROR_RMW_TRANSPORT            0b00000001  /*!<  Failed to create RMW transport*/
 #define UROS_ERROR_FREERTOS_ALLOC           0b00000010  /*!<  Failed to allocate memory for FreeRTOS*/
