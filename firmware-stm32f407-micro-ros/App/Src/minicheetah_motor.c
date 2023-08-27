@@ -45,14 +45,14 @@ void MOTOR_initId(enum MOTORS m, uint8_t id)
 {
     // set init_state, state and error_code to thier initial state
     motor[m].state = MOTOR_INITIALIZING;
-    motor[m].init_state = MOTOR_INIT_NOT;
+    motor[m].init_state = MOTOR_INIT_STATUS_NOT;
     motor[m].error_code = MOTOR_ERROR_INITIAL;
 
     /* Set Id */
     motor[m].id = id;
 
     /* update motor init_state */
-    motor[m].init_state |= MOTOR_INIT_ID; // set ID_SET bit of the init state
+    motor[m].init_state |= MOTOR_INIT_STATUS_ID; // set ID_SET bit of the init state
 }
 
 
@@ -81,11 +81,11 @@ void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float 
     motor[m].params.vb.max    = vbMax;
     
     /* update init_state and error_code */
-    motor[m].init_state |= MOTOR_INIT_PARAM; // set PARAM_SET bit of the motor init_state.
+    motor[m].init_state |= MOTOR_INIT_STATUS_PARAM; // set PARAM_SET bit of the motor init_state.
     motor[m].error_code &= ~ MOTOR_ERROR_PARAM; // reset PARAM_ERROR bit of motor error_code.
 
     /* If motor is fully initialized update error_code and motor state */
-    if (motor[m].init_state == MOTOR_INIT_ALL)
+    if (motor[m].init_state == MOTOR_INIT_STATUS_OK)
     {   
         motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
         motor[m].state = MOTOR_READY;
@@ -111,10 +111,10 @@ void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMa
     motor[m].limit.current.min  = -iMax;
 
     /* update motor init_state */
-    motor[m].init_state |= MOTOR_INIT_LIMITS; // set CTRL_LIMIT_SET bit of the motor init_state.
+    motor[m].init_state |= MOTOR_INIT_STATUS_LIMITS; // set CTRL_LIMIT_SET bit of the motor init_state.
 
     /* If motor is fully initialized update error_code */
-    if (motor[m].init_state == MOTOR_INIT_ALL)
+    if (motor[m].init_state == MOTOR_INIT_STATUS_OK)
     { 
         motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
         motor[m].state = MOTOR_READY;
@@ -155,7 +155,7 @@ void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterb
     /* If there is a CAN state error, update motor init_state, state and error_code */
     if(motor[m].hcan_ptr->ErrorCode == HAL_ERROR)
     {
-        motor[m].init_state &= ~MOTOR_INIT_CAN;
+        motor[m].init_state &= ~MOTOR_INIT_STATUS_CAN;
         motor[m].error_code |= MOTOR_ERROR_HAL_CAN;
         motor[m].state = ERROR;
     }
@@ -163,12 +163,12 @@ void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterb
     else
     {
         /* update motor init_state and error_code */
-        motor[m].init_state |= MOTOR_INIT_CAN;
+        motor[m].init_state |= MOTOR_INIT_STATUS_CAN;
         motor[m].error_code &= ~MOTOR_ERROR_HAL_CAN; /* reset motor CAN_COFIG error in the error_code */
     }
 
     /* If motor is fully initialized update motor state and error_code */
-    if (motor[m].init_state == MOTOR_INIT_ALL)
+    if (motor[m].init_state == MOTOR_INIT_STATUS_OK)
     { 
         motor[m].error_code &= ~MOTOR_ERROR_NOT_INITIALIZED; // reset NOT_INITIALIZED bit of error_code
         motor[m].state = MOTOR_READY;

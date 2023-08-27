@@ -1,0 +1,4 @@
+uint8 id
+---
+bool is_enabled
+string error_msg

@@ -1,7 +1,7 @@
-string[<=2] leg_id
+string leg_id # FR, FL, RR, RL
 bool is_contacted
-float64[3] position
-float64[3] velocity 
-float64[3] applied_force
-float64[3] reaction_force
+hyperdog_uros_msgs/Vector3 position
+hyperdog_uros_msgs/Vector3 velocity 
+hyperdog_uros_msgs/Vector3 applied_force
+hyperdog_uros_msgs/Vector3 reaction_force
 uint8 error_code 

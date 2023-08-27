@@ -26,11 +26,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "uros_tasks.h"
-#include "error_indicator.h"
-#include "can.h"
-#include "minicheetah_motor.h"
 #include "stm32f4xx_ll_usb.h"
+#include "can.h"
+#include "usart.h"
+
+#include "hyperdog_uros_app.h"
+#include "error_indicator.h"
+#include "minicheetah_motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -152,15 +154,22 @@ void StartDefaultTask(void *argument)
 
   // micro-ROS configuration
 
-  init_uros_node();  
-  spin_uros_node(2);
+  // init_uros_node();  
+  // spin_uros_node(2);
+
+  if(!initMicroROS(&huart2)){
+    init_hyperdog_node();
+    while (1)
+    {
+      void* support_state = uros.allocator.state;
+      osDelay(100);
+    }
+    
+  }
   
   /* USER CODE END 5 */
 }
 /* USER CODE END Header_StartDefaultTask */
-
-
-
 
 
 /* Private application code --------------------------------------------------*/

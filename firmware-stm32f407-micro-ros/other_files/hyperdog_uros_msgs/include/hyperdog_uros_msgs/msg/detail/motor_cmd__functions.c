@@ -11,13 +11,30 @@
 #include "rcutils/allocator.h"
 
 
+// Include directives for member types
+// Member `leg`
+// Member `joint`
+#include "rosidl_runtime_c/string_functions.h"
+
 bool
 hyperdog_uros_msgs__msg__MotorCmd__init(hyperdog_uros_msgs__msg__MotorCmd * msg)
 {
   if (!msg) {
     return false;
   }
+  // leg
+  if (!rosidl_runtime_c__String__init(&msg->leg)) {
+    hyperdog_uros_msgs__msg__MotorCmd__fini(msg);
+    return false;
+  }
+  // joint
+  if (!rosidl_runtime_c__String__init(&msg->joint)) {
+    hyperdog_uros_msgs__msg__MotorCmd__fini(msg);
+    return false;
+  }
   // enable
+  // disable
+  // set_zero
   // desire_position
   // desire_velocity
   // kp
@@ -32,7 +49,13 @@ hyperdog_uros_msgs__msg__MotorCmd__fini(hyperdog_uros_msgs__msg__MotorCmd * msg)
   if (!msg) {
     return;
   }
+  // leg
+  rosidl_runtime_c__String__fini(&msg->leg);
+  // joint
+  rosidl_runtime_c__String__fini(&msg->joint);
   // enable
+  // disable
+  // set_zero
   // desire_position
   // desire_velocity
   // kp
@@ -46,8 +69,28 @@ hyperdog_uros_msgs__msg__MotorCmd__are_equal(const hyperdog_uros_msgs__msg__Moto
   if (!lhs || !rhs) {
     return false;
   }
+  // leg
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->leg), &(rhs->leg)))
+  {
+    return false;
+  }
+  // joint
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->joint), &(rhs->joint)))
+  {
+    return false;
+  }
   // enable
   if (lhs->enable != rhs->enable) {
+    return false;
+  }
+  // disable
+  if (lhs->disable != rhs->disable) {
+    return false;
+  }
+  // set_zero
+  if (lhs->set_zero != rhs->set_zero) {
     return false;
   }
   // desire_position
@@ -81,8 +124,24 @@ hyperdog_uros_msgs__msg__MotorCmd__copy(
   if (!input || !output) {
     return false;
   }
+  // leg
+  if (!rosidl_runtime_c__String__copy(
+      &(input->leg), &(output->leg)))
+  {
+    return false;
+  }
+  // joint
+  if (!rosidl_runtime_c__String__copy(
+      &(input->joint), &(output->joint)))
+  {
+    return false;
+  }
   // enable
   output->enable = input->enable;
+  // disable
+  output->disable = input->disable;
+  // set_zero
+  output->set_zero = input->set_zero;
   // desire_position
   output->desire_position = input->desire_position;
   // desire_velocity

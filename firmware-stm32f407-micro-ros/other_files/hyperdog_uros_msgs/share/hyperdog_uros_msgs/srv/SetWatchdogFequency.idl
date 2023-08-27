@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/SetWatchdogFequency.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct SetWatchdogFequency_Request {
+      double frequency;
+    };
+    struct SetWatchdogFequency_Response {
+      boolean is_set;
+
+      string error_msg;
+    };
+  };
+};

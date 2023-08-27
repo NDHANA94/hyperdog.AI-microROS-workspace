@@ -24,7 +24,7 @@ SOFTWARE.                                                                       
 ==========================================================================================*/
 
 #include "error_indicator.h"
-#include "uros_tasks.h"
+#include "hyperdog_uros_app.h"
 #include "minicheetah_motor.h"
 #include "can.h"
 
@@ -124,17 +124,18 @@ void error_indicator()
             else if((uros.error_code & UROS_ERROR_FREERTOS_ALLOC) == UROS_ERROR_FREERTOS_ALLOC) 
                 blink_error(3, 2, 200, 200);
             /*  Failed to connect with the Agent or create rcl support  */
-            else if((uros.error_code & UROS_ERROR_RCL_SUPPORT_INIT) == UROS_ERROR_RCL_SUPPORT_INIT) 
+            else if((uros.error_code & UROS_ERROR_RCL_SUPPORT) == UROS_ERROR_RCL_SUPPORT) 
                 blink_error(3, 3, 200, 200);
             /*  Failed to initialize the node                           */
-            else if((uros.error_code & UROS_ERROR_RCL_NODE_INIT) == UROS_ERROR_RCL_NODE_INIT) 
+            else if((uros.error_code & UROS_ERROR_RCL_NODE) == UROS_ERROR_RCL_NODE)  
                 blink_error(3, 4, 200, 200);
-            /*  Failed to initialize the motor feedback publisher       */
-            else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB_INIT) == UROS_ERROR_RCL_MOTOR_FB_PUB_INIT) 
-                blink_error(3, 5, 200, 200);
-            /*  Failed to publish motor feedback                        */
-            else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB) == UROS_ERROR_RCL_MOTOR_FB_PUB) 
-                blink_error(3, 6, 200, 200);
+                /// TODO: find which node has the error and indicate the node with fast bilnks.
+            // /*  Failed to initialize the motor feedback publisher       */
+            // else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB_INIT) == UROS_ERROR_RCL_MOTOR_FB_PUB_INIT) 
+            //     blink_error(3, 5, 200, 200);
+            // /*  Failed to publish motor feedback                        */
+            // else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB) == UROS_ERROR_RCL_MOTOR_FB_PUB) 
+            //     blink_error(3, 6, 200, 200);
         }
         else{
             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
@@ -234,7 +235,8 @@ void error_indicator()
             for(int m = 0; m < NUM_OF_MOTORS; m++)
             {   
                 // if motor is initialized and has an error
-                if((motor[m].init_state & MOTOR_INIT_ID) == MOTOR_INIT_ID && motor[m].state == MOTOR_ERROR) 
+                /// TODO: replace 0b0111 with MOTOR_INIT_STATUS_ID
+                if((motor[m].init_state & MOTOR_INIT_STATUS_ID) == MOTOR_INIT_STATUS_ID && motor[m].state == MOTOR_ERROR) 
                 {
                     is_motor_err = true;
                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);

@@ -25,26 +25,36 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/InitMotor.msg"
   "msg/LegCmd.msg"
-  "msg/LegStates.msg"
+  "msg/LegsCmd.msg"
   "msg/LegsStates.msg"
+  "msg/LegStates.msg"
+  "msg/Limit.msg"
   "msg/MotorCmd.msg"
-  "msg/MotorStates.msg"
+  "msg/MotorCmd2.msg"
   "msg/MotorCtrlLimits.msg"
+  "msg/MotorFeedback.msg"
+  "msg/MotorParams.msg"
   "msg/MotorsStates.msg"
-  "srv/ConfigMotorId.srv"
+  "msg/MotorStates.msg"
+  "msg/Vector3.msg"
+
   "srv/DisableAllMotors.srv"
   "srv/DisableMotor.srv"
-  "srv/EnableAllMotor.srv"
-  "srv/EnableMotors.srv"
+  "srv/DisableMotor2.srv"
+  "srv/EnableAllMotors.srv"
+  "srv/EnableMotor.srv"
+  "srv/EnableMotor2.srv"
+  "srv/InitMotor.srv"
+  "srv/InitMultyMotors.srv"
   "srv/SetLegDamping.srv"
   "srv/SetLegStiffness.srv"
   "srv/SetMotorCmdFrequency.srv"
-  "srv/SetMotorsControlLimits.srv"
   "srv/SetMotorIff.srv"
-  "srv/SetMotorParams.srv"
   "srv/SetWatchdogFequency.srv"
   "srv/SetZeroPosition.srv"
+  "srv/SetZeroPosition2.srv"
  )
 # <!--  -->
 

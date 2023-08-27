@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/InitMotor.srv
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_msgs/msg/InitMotor.idl"
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct InitMotor_Request {
+      hyperdog_uros_msgs::msg::InitMotor motor;
+    };
+    struct InitMotor_Response {
+      boolean done;
+
+      string error_msg;
+    };
+  };
+};

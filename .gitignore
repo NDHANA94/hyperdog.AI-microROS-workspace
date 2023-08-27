@@ -10,3 +10,4 @@ firmware-stm32f407-micro-ros/build_firmware/*.lst
 install/
 log/
 build/
+firmware/

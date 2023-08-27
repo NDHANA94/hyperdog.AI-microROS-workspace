@@ -29,14 +29,15 @@ OPT = -Og
 # paths
 #######################################
 # Build path
-BUILD_DIR = build_firmware
+BUILD_DIR = Build
 
 ######################################
 # source
 ######################################
 # C sources
 C_SOURCES =  \
-App/Src/uros_tasks.c \
+App/Src/hyperdog_uros_app.c \
+APP/hyperdog_uros_node.c \
 App/Src/error_indicator.c \
 App/Src/minicheetah_motor.c \
 Core/Src/main.c \

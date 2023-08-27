@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/MotorParams.msg
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_msgs/msg/Limit.idl"
+
+module hyperdog_uros_msgs {
+  module msg {
+    struct MotorParams {
+      hyperdog_uros_msgs::msg::Limit position;
+
+      hyperdog_uros_msgs::msg::Limit velocity;
+
+      hyperdog_uros_msgs::msg::Limit kp;
+
+      hyperdog_uros_msgs::msg::Limit kd;
+
+      hyperdog_uros_msgs::msg::Limit i_ff;
+    };
+  };
+};

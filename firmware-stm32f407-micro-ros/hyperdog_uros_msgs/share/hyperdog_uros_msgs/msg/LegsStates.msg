@@ -1,4 +1,4 @@
-hyperdog_uros_msgs/LegStates fr_leg
-hyperdog_uros_msgs/LegStates fl_leg
-hyperdog_uros_msgs/LegStates rr_leg
-hyperdog_uros_msgs/LegStates rl_leg
+hyperdog_uros_msgs/LegStates fr
+hyperdog_uros_msgs/LegStates fl
+hyperdog_uros_msgs/LegStates rr
+hyperdog_uros_msgs/LegStates rl

@@ -1,0 +1,33 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/InitMotor.msg
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_msgs/msg/MotorCtrlLimits.idl"
+#include "hyperdog_uros_msgs/msg/MotorParams.idl"
+
+module hyperdog_uros_msgs {
+  module msg {
+    struct InitMotor {
+      @verbatim (language="comment", text=
+        " 0 - 255")
+      uint8 id;
+
+      @verbatim (language="comment", text=
+        " Assign a leg joint to the motor" "\n"
+        " FR, FL, RR, RL")
+      string leg;
+
+      @verbatim (language="comment", text=
+        " HIP_ROLL, HIP_PITCH, KNEE")
+      string joint;
+
+      @verbatim (language="comment", text=
+        " motor parameters")
+      hyperdog_uros_msgs::msg::MotorParams parameters;
+
+      @verbatim (language="comment", text=
+        " motor control limits")
+      hyperdog_uros_msgs::msg::MotorCtrlLimits ctrl_limits;
+    };
+  };
+};

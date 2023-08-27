@@ -9,6 +9,10 @@ extern "C"{
 
 
 #define NUM_OF_MOTORS           12
+#define MOTOR_NAME              {"FR_HIP_ROLL", "FR_HIP_PITCH", "FR_KNEE"\
+                                 "FL_HIP_ROLL", "FL_HIP_PITCH", "FL_KNEE"\
+                                 "RR_HIP_ROLL", "RR_HIP_PITCH", "RR_KNEE"\
+                                 "RL_HIP_ROLL", "RL_HIP_PITCH", "RL_KNEE"}
 
 #define MOTOR_ID_FR_HIP         1
 #define MOTOR_ID_FR_THIGH       2
@@ -47,13 +51,13 @@ extern "C"{
 #define MOTOR_ERROR_INITIAL         (0b00000000111U) /*!< `0x007U`   initial state of the error code               */
 
 
-/* motor initialization steps; 4-bits */
-#define MOTOR_INIT_NOT              (0b0000U)   /* `0x000U` */   
-#define MOTOR_INIT_ID               (0b0001U)   /* `0x001U` */
-#define MOTOR_INIT_PARAM            (0b0010U)   /* `0x002U` */
-#define MOTOR_INIT_LIMITS           (0b0100U)   /* `0x004U` */
-#define MOTOR_INIT_CAN              (0b1000U)   /* `0x008U` */
-#define MOTOR_INIT_ALL              (0b1111U)   /* `0x015U` */
+/* motor initialization steps status; 4-bits */
+#define MOTOR_INIT_STATUS_NOT              (0b0000U)   /* `0x000U` */   
+#define MOTOR_INIT_STATUS_ID               (0b0001U)   /* `0x001U` */
+#define MOTOR_INIT_STATUS_PARAM            (0b0010U)   /* `0x002U` */
+#define MOTOR_INIT_STATUS_LIMITS           (0b0100U)   /* `0x004U` */
+#define MOTOR_INIT_STATUS_CAN              (0b1000U)   /* `0x008U` */
+#define MOTOR_INIT_STATUS_OK               (0b1111U)   /* `0x015U` */
 
 
 /* special  motor commands */

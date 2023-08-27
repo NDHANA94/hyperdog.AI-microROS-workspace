@@ -80,6 +80,7 @@ extern uint8_t motor_heartbeat_cmd[NUM_OF_CAN_TX_BYETS];
 
 extern uint16_t motor_error_code;
 extern uint8_t motor_status;
+// extern char _motor_name[NUM_OF_CAN_TX_BYETS][20] = MOTOR_NAME;
 
 
 void MOTOR_initId(enum MOTORS m, uint8_t id);

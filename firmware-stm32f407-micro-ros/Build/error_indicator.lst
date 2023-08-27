@@ -1,0 +1,1962 @@
+ARM GAS  /tmp/ccKg8OAe.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"error_indicator.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.blink_error,"ax",%progbits
+  20              		.align	1
+  21              		.global	blink_error
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	blink_error:
+  27              	.LVL0:
+  28              	.LFB138:
+  29              		.file 1 "App/Src/error_indicator.c"
+   1:App/Src/error_indicator.c **** /* ========================================================================================
+   2:App/Src/error_indicator.c **** MIT License                                                                               |
+   3:App/Src/error_indicator.c ****                                                                                           |
+   4:App/Src/error_indicator.c **** Copyright (c) 2023 Nipun Dhananjaya Weerakkodi                                            |
+   5:App/Src/error_indicator.c ****                                                                                           |
+   6:App/Src/error_indicator.c **** Permission is hereby granted, free of charge, to any person obtaining a copy              |
+   7:App/Src/error_indicator.c **** of this software and associated documentation files (the "Software"), to deal             |
+   8:App/Src/error_indicator.c **** in the Software without restriction, including without limitation the rights              |
+   9:App/Src/error_indicator.c **** to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                 |
+  10:App/Src/error_indicator.c **** copies of the Software, and to permit persons to whom the Software is                     |
+  11:App/Src/error_indicator.c **** furnished to do so, subject to the following conditions:                                  |
+  12:App/Src/error_indicator.c ****                                                                                           |
+  13:App/Src/error_indicator.c **** The above copyright notice and this permission notice shall be included in all            |
+  14:App/Src/error_indicator.c **** copies or substantial portions of the Software.                                           |
+  15:App/Src/error_indicator.c ****                                                                                           |
+  16:App/Src/error_indicator.c **** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                |
+  17:App/Src/error_indicator.c **** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                  |
+  18:App/Src/error_indicator.c **** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE               |
+  19:App/Src/error_indicator.c **** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                    |
+  20:App/Src/error_indicator.c **** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,             |
+  21:App/Src/error_indicator.c **** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE             |
+  22:App/Src/error_indicator.c **** SOFTWARE.                                                                                 |
+  23:App/Src/error_indicator.c ****                                                                                           |
+  24:App/Src/error_indicator.c **** ==========================================================================================*/
+  25:App/Src/error_indicator.c **** 
+  26:App/Src/error_indicator.c **** #include "error_indicator.h"
+  27:App/Src/error_indicator.c **** #include "hyperdog_uros_app.h"
+  28:App/Src/error_indicator.c **** #include "minicheetah_motor.h"
+  29:App/Src/error_indicator.c **** #include "can.h"
+ARM GAS  /tmp/ccKg8OAe.s 			page 2
+
+
+  30:App/Src/error_indicator.c **** 
+  31:App/Src/error_indicator.c **** rmw_ret_t rmw_err_code;
+  32:App/Src/error_indicator.c **** rcl_ret_t rcl_err_code;
+  33:App/Src/error_indicator.c **** 
+  34:App/Src/error_indicator.c **** void blink_error(int LD, int times, int on_period, int off_period){
+  30              		.loc 1 34 67 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 34 67 is_stmt 0 view .LVU1
+  35 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 4, -24
+  39              		.cfi_offset 5, -20
+  40              		.cfi_offset 6, -16
+  41              		.cfi_offset 7, -12
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 14, -4
+  44 0004 0746     		mov	r7, r0
+  45 0006 0C46     		mov	r4, r1
+  46 0008 1546     		mov	r5, r2
+  47 000a 1E46     		mov	r6, r3
+  35:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+  48              		.loc 1 35 5 is_stmt 1 view .LVU2
+  49 000c DFF86081 		ldr	r8, .L17
+  50 0010 0022     		movs	r2, #0
+  51              	.LVL1:
+  52              		.loc 1 35 5 is_stmt 0 view .LVU3
+  53 0012 4FF40051 		mov	r1, #8192
+  54              	.LVL2:
+  55              		.loc 1 35 5 view .LVU4
+  56 0016 4046     		mov	r0, r8
+  57              	.LVL3:
+  58              		.loc 1 35 5 view .LVU5
+  59 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  60              	.LVL4:
+  36:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+  61              		.loc 1 36 5 is_stmt 1 view .LVU6
+  62 001c 0022     		movs	r2, #0
+  63 001e 4FF48051 		mov	r1, #4096
+  64 0022 4046     		mov	r0, r8
+  65 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  66              	.LVL5:
+  37:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+  67              		.loc 1 37 5 view .LVU7
+  68 0028 0022     		movs	r2, #0
+  69 002a 4FF48041 		mov	r1, #16384
+  70 002e 4046     		mov	r0, r8
+  71 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  72              	.LVL6:
+  38:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+  73              		.loc 1 38 5 view .LVU8
+  74 0034 0022     		movs	r2, #0
+  75 0036 4FF40041 		mov	r1, #32768
+  76 003a 4046     		mov	r0, r8
+  77 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/ccKg8OAe.s 			page 3
+
+
+  78              	.LVL7:
+  39:App/Src/error_indicator.c ****     switch (LD)
+  79              		.loc 1 39 5 view .LVU9
+  80 0040 F81E     		subs	r0, r7, #3
+  81 0042 0328     		cmp	r0, #3
+  82 0044 26D8     		bhi	.L1
+  83 0046 DFE800F0 		tbb	[pc, r0]
+  84              	.L4:
+  85 004a 02       		.byte	(.L7-.L4)/2
+  86 004b 27       		.byte	(.L6-.L4)/2
+  87 004c 4B       		.byte	(.L5-.L4)/2
+  88 004d 6F       		.byte	(.L3-.L4)/2
+  89              		.p2align 1
+  90              	.L7:
+  40:App/Src/error_indicator.c ****     {
+  41:App/Src/error_indicator.c ****     case 3:
+  42:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+  91              		.loc 1 42 9 view .LVU10
+  92 004e 0022     		movs	r2, #0
+  93 0050 4FF40051 		mov	r1, #8192
+  94 0054 4648     		ldr	r0, .L17
+  95 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  96              	.LVL8:
+  43:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+  97              		.loc 1 43 9 view .LVU11
+  98              	.LBB2:
+  99              		.loc 1 43 14 view .LVU12
+ 100              		.loc 1 43 18 is_stmt 0 view .LVU13
+ 101 005a 0027     		movs	r7, #0
+ 102              	.LVL9:
+ 103              		.loc 1 43 9 view .LVU14
+ 104 005c 14E0     		b	.L8
+ 105              	.LVL10:
+ 106              	.L9:
+  44:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 107              		.loc 1 44 13 is_stmt 1 discriminator 3 view .LVU15
+ 108 005e DFF81081 		ldr	r8, .L17
+ 109 0062 0122     		movs	r2, #1
+ 110 0064 4FF40051 		mov	r1, #8192
+ 111 0068 4046     		mov	r0, r8
+ 112 006a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 113              	.LVL11:
+  45:App/Src/error_indicator.c ****             osDelay(on_period);
+ 114              		.loc 1 45 13 discriminator 3 view .LVU16
+ 115 006e 2846     		mov	r0, r5
+ 116 0070 FFF7FEFF 		bl	osDelay
+ 117              	.LVL12:
+  46:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 118              		.loc 1 46 13 discriminator 3 view .LVU17
+ 119 0074 0022     		movs	r2, #0
+ 120 0076 4FF40051 		mov	r1, #8192
+ 121 007a 4046     		mov	r0, r8
+ 122 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 123              	.LVL13:
+  47:App/Src/error_indicator.c ****             osDelay(off_period);
+ 124              		.loc 1 47 13 discriminator 3 view .LVU18
+ 125 0080 3046     		mov	r0, r6
+ARM GAS  /tmp/ccKg8OAe.s 			page 4
+
+
+ 126 0082 FFF7FEFF 		bl	osDelay
+ 127              	.LVL14:
+  43:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 128              		.loc 1 43 34 discriminator 3 view .LVU19
+  43:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 129              		.loc 1 43 35 is_stmt 0 discriminator 3 view .LVU20
+ 130 0086 0137     		adds	r7, r7, #1
+ 131              	.LVL15:
+ 132              	.L8:
+  43:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 133              		.loc 1 43 25 is_stmt 1 discriminator 1 view .LVU21
+  43:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 134              		.loc 1 43 9 is_stmt 0 discriminator 1 view .LVU22
+ 135 0088 A742     		cmp	r7, r4
+ 136 008a E8DB     		blt	.L9
+ 137              	.LBE2:
+  48:App/Src/error_indicator.c ****         }
+  49:App/Src/error_indicator.c ****         osDelay(1000);
+ 138              		.loc 1 49 9 is_stmt 1 view .LVU23
+ 139 008c 4FF47A70 		mov	r0, #1000
+ 140 0090 FFF7FEFF 		bl	osDelay
+ 141              	.LVL16:
+  50:App/Src/error_indicator.c ****         break;
+ 142              		.loc 1 50 9 view .LVU24
+ 143              	.L1:
+  51:App/Src/error_indicator.c ****     case 4:
+  52:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+  53:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+  54:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+  55:App/Src/error_indicator.c ****             osDelay(on_period);
+  56:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+  57:App/Src/error_indicator.c ****             osDelay(off_period);
+  58:App/Src/error_indicator.c ****         }
+  59:App/Src/error_indicator.c ****         osDelay(1000);
+  60:App/Src/error_indicator.c ****         break;
+  61:App/Src/error_indicator.c ****     case 5:
+  62:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+  63:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+  64:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+  65:App/Src/error_indicator.c ****             osDelay(on_period);
+  66:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+  67:App/Src/error_indicator.c ****             osDelay(off_period);
+  68:App/Src/error_indicator.c ****         }
+  69:App/Src/error_indicator.c ****         osDelay(1000);
+  70:App/Src/error_indicator.c ****         break;
+  71:App/Src/error_indicator.c ****     case 6:
+  72:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+  73:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+  74:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+  75:App/Src/error_indicator.c ****             osDelay(on_period);
+  76:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+  77:App/Src/error_indicator.c ****             osDelay(off_period);
+  78:App/Src/error_indicator.c ****         }
+  79:App/Src/error_indicator.c ****         osDelay(1000);
+  80:App/Src/error_indicator.c ****         break;
+  81:App/Src/error_indicator.c ****     
+  82:App/Src/error_indicator.c ****     default:
+ARM GAS  /tmp/ccKg8OAe.s 			page 5
+
+
+  83:App/Src/error_indicator.c ****         break;
+  84:App/Src/error_indicator.c ****     }
+  85:App/Src/error_indicator.c **** }
+ 144              		.loc 1 85 1 is_stmt 0 view .LVU25
+ 145 0094 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 146              	.LVL17:
+ 147              	.L6:
+  52:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+ 148              		.loc 1 52 9 is_stmt 1 view .LVU26
+ 149 0098 0022     		movs	r2, #0
+ 150 009a 4FF48051 		mov	r1, #4096
+ 151 009e 3448     		ldr	r0, .L17
+ 152 00a0 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 153              	.LVL18:
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 154              		.loc 1 53 9 view .LVU27
+ 155              	.LBB3:
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 156              		.loc 1 53 14 view .LVU28
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 157              		.loc 1 53 18 is_stmt 0 view .LVU29
+ 158 00a4 0027     		movs	r7, #0
+ 159              	.LVL19:
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 160              		.loc 1 53 9 view .LVU30
+ 161 00a6 14E0     		b	.L10
+ 162              	.LVL20:
+ 163              	.L11:
+  54:App/Src/error_indicator.c ****             osDelay(on_period);
+ 164              		.loc 1 54 13 is_stmt 1 discriminator 3 view .LVU31
+ 165 00a8 DFF8C480 		ldr	r8, .L17
+ 166 00ac 0122     		movs	r2, #1
+ 167 00ae 4FF48051 		mov	r1, #4096
+ 168 00b2 4046     		mov	r0, r8
+ 169 00b4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 170              	.LVL21:
+  55:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 171              		.loc 1 55 13 discriminator 3 view .LVU32
+ 172 00b8 2846     		mov	r0, r5
+ 173 00ba FFF7FEFF 		bl	osDelay
+ 174              	.LVL22:
+  56:App/Src/error_indicator.c ****             osDelay(off_period);
+ 175              		.loc 1 56 13 discriminator 3 view .LVU33
+ 176 00be 0022     		movs	r2, #0
+ 177 00c0 4FF48051 		mov	r1, #4096
+ 178 00c4 4046     		mov	r0, r8
+ 179 00c6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 180              	.LVL23:
+  57:App/Src/error_indicator.c ****         }
+ 181              		.loc 1 57 13 discriminator 3 view .LVU34
+ 182 00ca 3046     		mov	r0, r6
+ 183 00cc FFF7FEFF 		bl	osDelay
+ 184              	.LVL24:
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 185              		.loc 1 53 34 discriminator 3 view .LVU35
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 186              		.loc 1 53 35 is_stmt 0 discriminator 3 view .LVU36
+ARM GAS  /tmp/ccKg8OAe.s 			page 6
+
+
+ 187 00d0 0137     		adds	r7, r7, #1
+ 188              	.LVL25:
+ 189              	.L10:
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 190              		.loc 1 53 25 is_stmt 1 discriminator 1 view .LVU37
+  53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 191              		.loc 1 53 9 is_stmt 0 discriminator 1 view .LVU38
+ 192 00d2 A742     		cmp	r7, r4
+ 193 00d4 E8DB     		blt	.L11
+ 194              	.LBE3:
+  59:App/Src/error_indicator.c ****         break;
+ 195              		.loc 1 59 9 is_stmt 1 view .LVU39
+ 196 00d6 4FF47A70 		mov	r0, #1000
+ 197 00da FFF7FEFF 		bl	osDelay
+ 198              	.LVL26:
+  60:App/Src/error_indicator.c ****     case 5:
+ 199              		.loc 1 60 9 view .LVU40
+ 200 00de D9E7     		b	.L1
+ 201              	.LVL27:
+ 202              	.L5:
+  62:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+ 203              		.loc 1 62 9 view .LVU41
+ 204 00e0 0022     		movs	r2, #0
+ 205 00e2 4FF48041 		mov	r1, #16384
+ 206 00e6 2248     		ldr	r0, .L17
+ 207 00e8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 208              	.LVL28:
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 209              		.loc 1 63 9 view .LVU42
+ 210              	.LBB4:
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 211              		.loc 1 63 14 view .LVU43
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 212              		.loc 1 63 18 is_stmt 0 view .LVU44
+ 213 00ec 0027     		movs	r7, #0
+ 214              	.LVL29:
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 215              		.loc 1 63 9 view .LVU45
+ 216 00ee 14E0     		b	.L12
+ 217              	.LVL30:
+ 218              	.L13:
+  64:App/Src/error_indicator.c ****             osDelay(on_period);
+ 219              		.loc 1 64 13 is_stmt 1 discriminator 3 view .LVU46
+ 220 00f0 DFF87C80 		ldr	r8, .L17
+ 221 00f4 0122     		movs	r2, #1
+ 222 00f6 4FF48041 		mov	r1, #16384
+ 223 00fa 4046     		mov	r0, r8
+ 224 00fc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 225              	.LVL31:
+  65:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 226              		.loc 1 65 13 discriminator 3 view .LVU47
+ 227 0100 2846     		mov	r0, r5
+ 228 0102 FFF7FEFF 		bl	osDelay
+ 229              	.LVL32:
+  66:App/Src/error_indicator.c ****             osDelay(off_period);
+ 230              		.loc 1 66 13 discriminator 3 view .LVU48
+ 231 0106 0022     		movs	r2, #0
+ARM GAS  /tmp/ccKg8OAe.s 			page 7
+
+
+ 232 0108 4FF48041 		mov	r1, #16384
+ 233 010c 4046     		mov	r0, r8
+ 234 010e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 235              	.LVL33:
+  67:App/Src/error_indicator.c ****         }
+ 236              		.loc 1 67 13 discriminator 3 view .LVU49
+ 237 0112 3046     		mov	r0, r6
+ 238 0114 FFF7FEFF 		bl	osDelay
+ 239              	.LVL34:
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 240              		.loc 1 63 34 discriminator 3 view .LVU50
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 241              		.loc 1 63 35 is_stmt 0 discriminator 3 view .LVU51
+ 242 0118 0137     		adds	r7, r7, #1
+ 243              	.LVL35:
+ 244              	.L12:
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 245              		.loc 1 63 25 is_stmt 1 discriminator 1 view .LVU52
+  63:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 246              		.loc 1 63 9 is_stmt 0 discriminator 1 view .LVU53
+ 247 011a A742     		cmp	r7, r4
+ 248 011c E8DB     		blt	.L13
+ 249              	.LBE4:
+  69:App/Src/error_indicator.c ****         break;
+ 250              		.loc 1 69 9 is_stmt 1 view .LVU54
+ 251 011e 4FF47A70 		mov	r0, #1000
+ 252 0122 FFF7FEFF 		bl	osDelay
+ 253              	.LVL36:
+  70:App/Src/error_indicator.c ****     case 6:
+ 254              		.loc 1 70 9 view .LVU55
+ 255 0126 B5E7     		b	.L1
+ 256              	.LVL37:
+ 257              	.L3:
+  72:App/Src/error_indicator.c ****         for (int i = 0; i<times; i++){
+ 258              		.loc 1 72 9 view .LVU56
+ 259 0128 0022     		movs	r2, #0
+ 260 012a 4FF40041 		mov	r1, #32768
+ 261 012e 1048     		ldr	r0, .L17
+ 262 0130 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 263              	.LVL38:
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 264              		.loc 1 73 9 view .LVU57
+ 265              	.LBB5:
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 266              		.loc 1 73 14 view .LVU58
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 267              		.loc 1 73 18 is_stmt 0 view .LVU59
+ 268 0134 0027     		movs	r7, #0
+ 269              	.LVL39:
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 270              		.loc 1 73 9 view .LVU60
+ 271 0136 14E0     		b	.L14
+ 272              	.LVL40:
+ 273              	.L15:
+  74:App/Src/error_indicator.c ****             osDelay(on_period);
+ 274              		.loc 1 74 13 is_stmt 1 discriminator 3 view .LVU61
+ 275 0138 DFF83480 		ldr	r8, .L17
+ARM GAS  /tmp/ccKg8OAe.s 			page 8
+
+
+ 276 013c 0122     		movs	r2, #1
+ 277 013e 4FF40041 		mov	r1, #32768
+ 278 0142 4046     		mov	r0, r8
+ 279 0144 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 280              	.LVL41:
+  75:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 281              		.loc 1 75 13 discriminator 3 view .LVU62
+ 282 0148 2846     		mov	r0, r5
+ 283 014a FFF7FEFF 		bl	osDelay
+ 284              	.LVL42:
+  76:App/Src/error_indicator.c ****             osDelay(off_period);
+ 285              		.loc 1 76 13 discriminator 3 view .LVU63
+ 286 014e 0022     		movs	r2, #0
+ 287 0150 4FF40041 		mov	r1, #32768
+ 288 0154 4046     		mov	r0, r8
+ 289 0156 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 290              	.LVL43:
+  77:App/Src/error_indicator.c ****         }
+ 291              		.loc 1 77 13 discriminator 3 view .LVU64
+ 292 015a 3046     		mov	r0, r6
+ 293 015c FFF7FEFF 		bl	osDelay
+ 294              	.LVL44:
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 295              		.loc 1 73 34 discriminator 3 view .LVU65
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 296              		.loc 1 73 35 is_stmt 0 discriminator 3 view .LVU66
+ 297 0160 0137     		adds	r7, r7, #1
+ 298              	.LVL45:
+ 299              	.L14:
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 300              		.loc 1 73 25 is_stmt 1 discriminator 1 view .LVU67
+  73:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 301              		.loc 1 73 9 is_stmt 0 discriminator 1 view .LVU68
+ 302 0162 A742     		cmp	r7, r4
+ 303 0164 E8DB     		blt	.L15
+ 304              	.LBE5:
+  79:App/Src/error_indicator.c ****         break;
+ 305              		.loc 1 79 9 is_stmt 1 view .LVU69
+ 306 0166 4FF47A70 		mov	r0, #1000
+ 307 016a FFF7FEFF 		bl	osDelay
+ 308              	.LVL46:
+  80:App/Src/error_indicator.c ****     
+ 309              		.loc 1 80 9 view .LVU70
+ 310              		.loc 1 85 1 is_stmt 0 view .LVU71
+ 311 016e 91E7     		b	.L1
+ 312              	.L18:
+ 313              		.align	2
+ 314              	.L17:
+ 315 0170 000C0240 		.word	1073875968
+ 316              		.cfi_endproc
+ 317              	.LFE138:
+ 319              		.section	.text.no_error,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	no_error
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ARM GAS  /tmp/ccKg8OAe.s 			page 9
+
+
+ 326              	no_error:
+ 327              	.LFB139:
+  86:App/Src/error_indicator.c **** 
+  87:App/Src/error_indicator.c **** void no_error(){
+ 328              		.loc 1 87 16 is_stmt 1 view -0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 332 0000 10B5     		push	{r4, lr}
+ 333              	.LCFI1:
+ 334              		.cfi_def_cfa_offset 8
+ 335              		.cfi_offset 4, -8
+ 336              		.cfi_offset 14, -4
+  88:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 337              		.loc 1 88 5 view .LVU73
+ 338 0002 254C     		ldr	r4, .L21
+ 339 0004 0022     		movs	r2, #0
+ 340 0006 4FF48051 		mov	r1, #4096
+ 341 000a 2046     		mov	r0, r4
+ 342 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 343              	.LVL47:
+  89:App/Src/error_indicator.c ****     osDelay(100);
+ 344              		.loc 1 89 5 view .LVU74
+ 345 0010 6420     		movs	r0, #100
+ 346 0012 FFF7FEFF 		bl	osDelay
+ 347              	.LVL48:
+  90:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 348              		.loc 1 90 5 view .LVU75
+ 349 0016 0122     		movs	r2, #1
+ 350 0018 4FF40051 		mov	r1, #8192
+ 351 001c 2046     		mov	r0, r4
+ 352 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 353              	.LVL49:
+  91:App/Src/error_indicator.c ****     osDelay(100);
+ 354              		.loc 1 91 5 view .LVU76
+ 355 0022 6420     		movs	r0, #100
+ 356 0024 FFF7FEFF 		bl	osDelay
+ 357              	.LVL50:
+  92:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 358              		.loc 1 92 5 view .LVU77
+ 359 0028 0122     		movs	r2, #1
+ 360 002a 4FF48041 		mov	r1, #16384
+ 361 002e 2046     		mov	r0, r4
+ 362 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 363              	.LVL51:
+  93:App/Src/error_indicator.c ****     osDelay(100);
+ 364              		.loc 1 93 5 view .LVU78
+ 365 0034 6420     		movs	r0, #100
+ 366 0036 FFF7FEFF 		bl	osDelay
+ 367              	.LVL52:
+  94:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 368              		.loc 1 94 5 view .LVU79
+ 369 003a 0022     		movs	r2, #0
+ 370 003c 4FF40051 		mov	r1, #8192
+ 371 0040 2046     		mov	r0, r4
+ 372 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 373              	.LVL53:
+ARM GAS  /tmp/ccKg8OAe.s 			page 10
+
+
+  95:App/Src/error_indicator.c ****     osDelay(100);
+ 374              		.loc 1 95 5 view .LVU80
+ 375 0046 6420     		movs	r0, #100
+ 376 0048 FFF7FEFF 		bl	osDelay
+ 377              	.LVL54:
+  96:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 378              		.loc 1 96 5 view .LVU81
+ 379 004c 0122     		movs	r2, #1
+ 380 004e 4FF40041 		mov	r1, #32768
+ 381 0052 2046     		mov	r0, r4
+ 382 0054 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 383              	.LVL55:
+  97:App/Src/error_indicator.c ****     osDelay(100);
+ 384              		.loc 1 97 5 view .LVU82
+ 385 0058 6420     		movs	r0, #100
+ 386 005a FFF7FEFF 		bl	osDelay
+ 387              	.LVL56:
+  98:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 388              		.loc 1 98 5 view .LVU83
+ 389 005e 0022     		movs	r2, #0
+ 390 0060 4FF48041 		mov	r1, #16384
+ 391 0064 2046     		mov	r0, r4
+ 392 0066 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 393              	.LVL57:
+  99:App/Src/error_indicator.c ****     osDelay(100);
+ 394              		.loc 1 99 5 view .LVU84
+ 395 006a 6420     		movs	r0, #100
+ 396 006c FFF7FEFF 		bl	osDelay
+ 397              	.LVL58:
+ 100:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 398              		.loc 1 100 5 view .LVU85
+ 399 0070 0122     		movs	r2, #1
+ 400 0072 4FF48051 		mov	r1, #4096
+ 401 0076 2046     		mov	r0, r4
+ 402 0078 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 403              	.LVL59:
+ 101:App/Src/error_indicator.c ****     osDelay(100);
+ 404              		.loc 1 101 5 view .LVU86
+ 405 007c 6420     		movs	r0, #100
+ 406 007e FFF7FEFF 		bl	osDelay
+ 407              	.LVL60:
+ 102:App/Src/error_indicator.c ****     HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 408              		.loc 1 102 5 view .LVU87
+ 409 0082 0022     		movs	r2, #0
+ 410 0084 4FF40041 		mov	r1, #32768
+ 411 0088 2046     		mov	r0, r4
+ 412 008a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 413              	.LVL61:
+ 103:App/Src/error_indicator.c ****     osDelay(100);
+ 414              		.loc 1 103 5 view .LVU88
+ 415 008e 6420     		movs	r0, #100
+ 416 0090 FFF7FEFF 		bl	osDelay
+ 417              	.LVL62:
+ 104:App/Src/error_indicator.c **** }
+ 418              		.loc 1 104 1 is_stmt 0 view .LVU89
+ 419 0094 10BD     		pop	{r4, pc}
+ 420              	.L22:
+ARM GAS  /tmp/ccKg8OAe.s 			page 11
+
+
+ 421 0096 00BF     		.align	2
+ 422              	.L21:
+ 423 0098 000C0240 		.word	1073875968
+ 424              		.cfi_endproc
+ 425              	.LFE139:
+ 427              		.section	.text.error_indicator,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	error_indicator
+ 430              		.syntax unified
+ 431              		.thumb
+ 432              		.thumb_func
+ 434              	error_indicator:
+ 435              	.LFB140:
+ 105:App/Src/error_indicator.c **** 
+ 106:App/Src/error_indicator.c **** 
+ 107:App/Src/error_indicator.c **** ///  @brief Indicate eroor code using LD3:
+ 108:App/Src/error_indicator.c **** /// 
+ 109:App/Src/error_indicator.c **** void error_indicator()
+ 110:App/Src/error_indicator.c **** {
+ 436              		.loc 1 110 1 is_stmt 1 view -0
+ 437              		.cfi_startproc
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440 0000 38B5     		push	{r3, r4, r5, lr}
+ 441              	.LCFI2:
+ 442              		.cfi_def_cfa_offset 16
+ 443              		.cfi_offset 3, -16
+ 444              		.cfi_offset 4, -12
+ 445              		.cfi_offset 5, -8
+ 446              		.cfi_offset 14, -4
+ 447 0002 68E2     		b	.L66
+ 448              	.L104:
+ 449              	.LBB6:
+ 111:App/Src/error_indicator.c ****     while(1)
+ 112:App/Src/error_indicator.c ****     {
+ 113:App/Src/error_indicator.c ****         /* UROS Errors -> LD3 Orange*/
+ 114:App/Src/error_indicator.c ****         if(uros.state != UROS_RUNNING){
+ 115:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 116:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 117:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 118:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 119:App/Src/error_indicator.c ****             osDelay(500);
+ 120:App/Src/error_indicator.c ****             /*  Failed to create RMW transport                          */
+ 121:App/Src/error_indicator.c ****             if((uros.error_code & UROS_ERROR_RMW_TRANSPORT) == UROS_ERROR_RMW_TRANSPORT) 
+ 122:App/Src/error_indicator.c ****                 blink_error(3, 1, 200, 200);
+ 450              		.loc 1 122 17 view .LVU91
+ 451 0004 C823     		movs	r3, #200
+ 452 0006 1A46     		mov	r2, r3
+ 453 0008 0121     		movs	r1, #1
+ 454 000a 0320     		movs	r0, #3
+ 455 000c FFF7FEFF 		bl	blink_error
+ 456              	.LVL63:
+ 457 0010 20E0     		b	.L26
+ 458              	.L105:
+ 123:App/Src/error_indicator.c ****             /*  Failed to allocate memory for FreeRTOS                  */
+ 124:App/Src/error_indicator.c ****             else if((uros.error_code & UROS_ERROR_FREERTOS_ALLOC) == UROS_ERROR_FREERTOS_ALLOC) 
+ 125:App/Src/error_indicator.c ****                 blink_error(3, 2, 200, 200);
+ARM GAS  /tmp/ccKg8OAe.s 			page 12
+
+
+ 459              		.loc 1 125 17 view .LVU92
+ 460 0012 C823     		movs	r3, #200
+ 461 0014 1A46     		mov	r2, r3
+ 462 0016 0221     		movs	r1, #2
+ 463 0018 0320     		movs	r0, #3
+ 464 001a FFF7FEFF 		bl	blink_error
+ 465              	.LVL64:
+ 466 001e 19E0     		b	.L26
+ 467              	.L106:
+ 126:App/Src/error_indicator.c ****             /*  Failed to connect with the Agent or create rcl support  */
+ 127:App/Src/error_indicator.c ****             else if((uros.error_code & UROS_ERROR_RCL_SUPPORT) == UROS_ERROR_RCL_SUPPORT) 
+ 128:App/Src/error_indicator.c ****                 blink_error(3, 3, 200, 200);
+ 468              		.loc 1 128 17 view .LVU93
+ 469 0020 C823     		movs	r3, #200
+ 470 0022 1A46     		mov	r2, r3
+ 471 0024 0321     		movs	r1, #3
+ 472 0026 0846     		mov	r0, r1
+ 473 0028 FFF7FEFF 		bl	blink_error
+ 474              	.LVL65:
+ 475 002c 12E0     		b	.L26
+ 476              	.L24:
+ 129:App/Src/error_indicator.c ****             /*  Failed to initialize the node                           */
+ 130:App/Src/error_indicator.c ****             else if((uros.error_code & UROS_ERROR_RCL_NODE) == UROS_ERROR_RCL_NODE)  
+ 131:App/Src/error_indicator.c ****                 blink_error(3, 4, 200, 200);
+ 132:App/Src/error_indicator.c ****                 /// TODO: find which node has the error and indicate the node with fast bilnks.
+ 133:App/Src/error_indicator.c ****             // /*  Failed to initialize the motor feedback publisher       */
+ 134:App/Src/error_indicator.c ****             // else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB_INIT) == UROS_ERROR_RCL_MOTOR
+ 135:App/Src/error_indicator.c ****             //     blink_error(3, 5, 200, 200);
+ 136:App/Src/error_indicator.c ****             // /*  Failed to publish motor feedback                        */
+ 137:App/Src/error_indicator.c ****             // else if((uros.error_code & UROS_ERROR_RCL_MOTOR_FB_PUB) == UROS_ERROR_RCL_MOTOR_FB_P
+ 138:App/Src/error_indicator.c ****             //     blink_error(3, 6, 200, 200);
+ 139:App/Src/error_indicator.c ****         }
+ 140:App/Src/error_indicator.c ****         else{
+ 141:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 477              		.loc 1 141 13 view .LVU94
+ 478 002e B84C     		ldr	r4, .L107
+ 479 0030 0022     		movs	r2, #0
+ 480 0032 4FF40051 		mov	r1, #8192
+ 481 0036 2046     		mov	r0, r4
+ 482 0038 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 483              	.LVL66:
+ 142:App/Src/error_indicator.c ****             osDelay(100);
+ 484              		.loc 1 142 13 view .LVU95
+ 485 003c 6420     		movs	r0, #100
+ 486 003e FFF7FEFF 		bl	osDelay
+ 487              	.LVL67:
+ 143:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+ 488              		.loc 1 143 13 view .LVU96
+ 489 0042 0122     		movs	r2, #1
+ 490 0044 4FF40051 		mov	r1, #8192
+ 491 0048 2046     		mov	r0, r4
+ 492 004a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 493              	.LVL68:
+ 144:App/Src/error_indicator.c ****             osDelay(100);
+ 494              		.loc 1 144 13 view .LVU97
+ 495 004e 6420     		movs	r0, #100
+ 496 0050 FFF7FEFF 		bl	osDelay
+ARM GAS  /tmp/ccKg8OAe.s 			page 13
+
+
+ 497              	.LVL69:
+ 498              	.L26:
+ 145:App/Src/error_indicator.c ****         }
+ 146:App/Src/error_indicator.c **** 
+ 147:App/Src/error_indicator.c ****         /* If uros is running check CAN */
+ 148:App/Src/error_indicator.c ****         /* CAN Errors -> LD5 Red*/
+ 149:App/Src/error_indicator.c ****         if (hcan1.State == HAL_CAN_STATE_ERROR){
+ 499              		.loc 1 149 9 view .LVU98
+ 500              		.loc 1 149 18 is_stmt 0 view .LVU99
+ 501 0054 AF4B     		ldr	r3, .L107+4
+ 502 0056 93F82030 		ldrb	r3, [r3, #32]	@ zero_extendqisi2
+ 503 005a DBB2     		uxtb	r3, r3
+ 504              		.loc 1 149 12 view .LVU100
+ 505 005c 052B     		cmp	r3, #5
+ 506 005e 1CD0     		beq	.L70
+ 150:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 151:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 152:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 153:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 154:App/Src/error_indicator.c ****             osDelay(500);
+ 155:App/Src/error_indicator.c ****             /*!< Protocol Error Warning                               */
+ 156:App/Src/error_indicator.c ****             if((hcan1.ErrorCode & HAL_CAN_ERROR_EWG) == HAL_CAN_ERROR_EWG)
+ 157:App/Src/error_indicator.c ****                 blink_error(5, 1, 200, 200);
+ 158:App/Src/error_indicator.c ****             /*!< Error Passive                                        */
+ 159:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_EPV) == HAL_CAN_ERROR_EPV)
+ 160:App/Src/error_indicator.c ****                 blink_error(5, 2, 200, 200);
+ 161:App/Src/error_indicator.c ****             /*!< Parameter error ; can be ocuured due to lost of can bus connection or no msg recei
+ 162:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_PARAM) == HAL_CAN_ERROR_PARAM)
+ 163:App/Src/error_indicator.c ****                 blink_error(5, 3, 200, 200);
+ 164:App/Src/error_indicator.c ****             /*!< Bus-off error                                        */
+ 165:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_BOF) == HAL_CAN_ERROR_BOF)
+ 166:App/Src/error_indicator.c ****                 blink_error(5, 4, 200, 200);
+ 167:App/Src/error_indicator.c ****             /*!< Stuff error                                          */
+ 168:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_STF) == HAL_CAN_ERROR_STF)
+ 169:App/Src/error_indicator.c ****                 blink_error(5, 5, 200, 200);
+ 170:App/Src/error_indicator.c ****             /*!< Form error                                           */
+ 171:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_FOR) == HAL_CAN_ERROR_FOR)
+ 172:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
+ 173:App/Src/error_indicator.c ****             /*!< Acknowledgment error                                 */
+ 174:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_ACK) == HAL_CAN_ERROR_ACK)
+ 175:App/Src/error_indicator.c ****                 blink_error(5, 7, 200, 200);
+ 176:App/Src/error_indicator.c ****             /*!< Bit recessive error                                  */
+ 177:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_BR) == HAL_CAN_ERROR_BR)
+ 178:App/Src/error_indicator.c ****                 blink_error(5, 8, 200, 200);
+ 179:App/Src/error_indicator.c ****             /*!< Bit dominant error                                   */
+ 180:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_BD) == HAL_CAN_ERROR_BD)
+ 181:App/Src/error_indicator.c ****                 blink_error(5, 9, 200, 200);
+ 182:App/Src/error_indicator.c ****             /*!< CRC error                                            */
+ 183:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_CRC) == HAL_CAN_ERROR_CRC)
+ 184:App/Src/error_indicator.c ****                 blink_error(5, 10, 200, 200);
+ 185:App/Src/error_indicator.c ****             /*!< Rx FIFO0 overrun error                               */
+ 186:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_RX_FOV0) == HAL_CAN_ERROR_RX_FOV0)
+ 187:App/Src/error_indicator.c ****                 blink_error(5, 11, 200, 200);
+ 188:App/Src/error_indicator.c ****             /*!< Rx FIFO1 overrun error                               */
+ 189:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_RX_FOV1) == HAL_CAN_ERROR_RX_FOV1)
+ 190:App/Src/error_indicator.c ****                 blink_error(5, 12, 200, 200);
+ 191:App/Src/error_indicator.c ****             /*!< TxMailbox 0 transmit failure due to arbitration lost */
+ARM GAS  /tmp/ccKg8OAe.s 			page 14
+
+
+ 192:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_ALST0) == HAL_CAN_ERROR_TX_ALST0)
+ 193:App/Src/error_indicator.c ****                 blink_error(5, 13, 200, 200);
+ 194:App/Src/error_indicator.c ****             /*!< TxMailbox 0 transmit failure due to transmit error    */
+ 195:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_TERR0) == HAL_CAN_ERROR_TX_TERR0)
+ 196:App/Src/error_indicator.c ****                 blink_error(5, 14, 200, 200);
+ 197:App/Src/error_indicator.c ****             /*!< TxMailbox 1 transmit failure due to arbitration lost */
+ 198:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_ALST1) == HAL_CAN_ERROR_TX_ALST1)
+ 199:App/Src/error_indicator.c ****                 blink_error(5, 15, 200, 200);
+ 200:App/Src/error_indicator.c ****             /*!< TxMailbox 1 transmit failure due to transmit error    */
+ 201:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_TERR1) == HAL_CAN_ERROR_TX_TERR1)
+ 202:App/Src/error_indicator.c ****                 blink_error(5, 16, 200, 200);
+ 203:App/Src/error_indicator.c ****             /*!< TxMailbox 2 transmit failure due to arbitration lost */
+ 204:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_ALST2) == HAL_CAN_ERROR_TX_ALST2)
+ 205:App/Src/error_indicator.c ****                 blink_error(5, 17, 200, 200);
+ 206:App/Src/error_indicator.c ****             /*!< TxMailbox 2 transmit failure due to transmit error    */
+ 207:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_TERR2) == HAL_CAN_ERROR_TX_TERR2)
+ 208:App/Src/error_indicator.c ****                 blink_error(5, 18, 200, 200);
+ 209:App/Src/error_indicator.c ****             /*!< Timeout error                                        */
+ 210:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TIMEOUT) == HAL_CAN_ERROR_TIMEOUT)
+ 211:App/Src/error_indicator.c ****                 blink_error(5, 19, 200, 200);
+ 212:App/Src/error_indicator.c ****             /*!< Peripheral not initialized                           */
+ 213:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_NOT_INITIALIZED) == HAL_CAN_ERROR_NOT_INITIALI
+ 214:App/Src/error_indicator.c ****                 blink_error(5, 20, 200, 200);
+ 215:App/Src/error_indicator.c ****             /*!< Peripheral not ready                                 */
+ 216:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_NOT_READY) == HAL_CAN_ERROR_NOT_READY)
+ 217:App/Src/error_indicator.c ****                 blink_error(5, 21, 200, 200);
+ 218:App/Src/error_indicator.c ****             /*!< Peripheral not started                               */
+ 219:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_NOT_STARTED) == HAL_CAN_ERROR_NOT_STARTED)
+ 220:App/Src/error_indicator.c ****                 blink_error(5, 22, 200, 200);
+ 221:App/Src/error_indicator.c ****         }
+ 222:App/Src/error_indicator.c ****         else{
+ 223:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 507              		.loc 1 223 13 is_stmt 1 view .LVU101
+ 508 0060 AB4C     		ldr	r4, .L107
+ 509 0062 0022     		movs	r2, #0
+ 510 0064 4FF48041 		mov	r1, #16384
+ 511 0068 2046     		mov	r0, r4
+ 512 006a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 513              	.LVL70:
+ 224:App/Src/error_indicator.c ****             osDelay(100);
+ 514              		.loc 1 224 13 view .LVU102
+ 515 006e 6420     		movs	r0, #100
+ 516 0070 FFF7FEFF 		bl	osDelay
+ 517              	.LVL71:
+ 225:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+ 518              		.loc 1 225 13 view .LVU103
+ 519 0074 0122     		movs	r2, #1
+ 520 0076 4FF48041 		mov	r1, #16384
+ 521 007a 2046     		mov	r0, r4
+ 522 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 523              	.LVL72:
+ 226:App/Src/error_indicator.c ****             osDelay(100);
+ 524              		.loc 1 226 13 view .LVU104
+ 525 0080 6420     		movs	r0, #100
+ 526 0082 FFF7FEFF 		bl	osDelay
+ 527              	.LVL73:
+ 528              	.L31:
+ARM GAS  /tmp/ccKg8OAe.s 			page 15
+
+
+ 227:App/Src/error_indicator.c ****         }
+ 228:App/Src/error_indicator.c **** 
+ 229:App/Src/error_indicator.c ****         /* If uros and CAN are OK, check motors */
+ 230:App/Src/error_indicator.c ****         /* Motors Error - LD6 Blue*/
+ 231:App/Src/error_indicator.c ****         /* Long blinks indicate the motor index (NOT ID). Short blinks indicate the error */
+ 232:App/Src/error_indicator.c ****         bool is_motor_err = false;
+ 529              		.loc 1 232 9 view .LVU105
+ 233:App/Src/error_indicator.c ****         if (hcan1.State != HAL_CAN_STATE_ERROR)
+ 530              		.loc 1 233 9 view .LVU106
+ 531              		.loc 1 233 18 is_stmt 0 view .LVU107
+ 532 0086 A34B     		ldr	r3, .L107+4
+ 533 0088 93F82030 		ldrb	r3, [r3, #32]	@ zero_extendqisi2
+ 534 008c DBB2     		uxtb	r3, r3
+ 535              		.loc 1 233 12 view .LVU108
+ 536 008e 052B     		cmp	r3, #5
+ 537 0090 00F00E82 		beq	.L53
+ 538              	.LBB7:
+ 234:App/Src/error_indicator.c ****         {
+ 235:App/Src/error_indicator.c ****             for(int m = 0; m < NUM_OF_MOTORS; m++)
+ 539              		.loc 1 235 21 view .LVU109
+ 540 0094 0024     		movs	r4, #0
+ 541              	.LBE7:
+ 232:App/Src/error_indicator.c ****         if (hcan1.State != HAL_CAN_STATE_ERROR)
+ 542              		.loc 1 232 14 view .LVU110
+ 543 0096 2146     		mov	r1, r4
+ 544 0098 46E1     		b	.L52
+ 545              	.LVL74:
+ 546              	.L70:
+ 150:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 547              		.loc 1 150 13 is_stmt 1 view .LVU111
+ 548 009a 9D4C     		ldr	r4, .L107
+ 549 009c 0022     		movs	r2, #0
+ 550 009e 4FF40051 		mov	r1, #8192
+ 551 00a2 2046     		mov	r0, r4
+ 552 00a4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 553              	.LVL75:
+ 151:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 554              		.loc 1 151 13 view .LVU112
+ 555 00a8 0022     		movs	r2, #0
+ 556 00aa 4FF48051 		mov	r1, #4096
+ 557 00ae 2046     		mov	r0, r4
+ 558 00b0 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 559              	.LVL76:
+ 152:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 560              		.loc 1 152 13 view .LVU113
+ 561 00b4 0022     		movs	r2, #0
+ 562 00b6 4FF48041 		mov	r1, #16384
+ 563 00ba 2046     		mov	r0, r4
+ 564 00bc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 565              	.LVL77:
+ 153:App/Src/error_indicator.c ****             osDelay(500);
+ 566              		.loc 1 153 13 view .LVU114
+ 567 00c0 0022     		movs	r2, #0
+ 568 00c2 4FF40041 		mov	r1, #32768
+ 569 00c6 2046     		mov	r0, r4
+ 570 00c8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 571              	.LVL78:
+ARM GAS  /tmp/ccKg8OAe.s 			page 16
+
+
+ 154:App/Src/error_indicator.c ****             /*!< Protocol Error Warning                               */
+ 572              		.loc 1 154 13 view .LVU115
+ 573 00cc 4FF4FA70 		mov	r0, #500
+ 574 00d0 FFF7FEFF 		bl	osDelay
+ 575              	.LVL79:
+ 156:App/Src/error_indicator.c ****                 blink_error(5, 1, 200, 200);
+ 576              		.loc 1 156 13 view .LVU116
+ 156:App/Src/error_indicator.c ****                 blink_error(5, 1, 200, 200);
+ 577              		.loc 1 156 22 is_stmt 0 view .LVU117
+ 578 00d4 8F4B     		ldr	r3, .L107+4
+ 579 00d6 5B6A     		ldr	r3, [r3, #36]
+ 156:App/Src/error_indicator.c ****                 blink_error(5, 1, 200, 200);
+ 580              		.loc 1 156 15 view .LVU118
+ 581 00d8 13F0010F 		tst	r3, #1
+ 582 00dc 40F08580 		bne	.L71
+ 159:App/Src/error_indicator.c ****                 blink_error(5, 2, 200, 200);
+ 583              		.loc 1 159 18 is_stmt 1 view .LVU119
+ 159:App/Src/error_indicator.c ****                 blink_error(5, 2, 200, 200);
+ 584              		.loc 1 159 27 is_stmt 0 view .LVU120
+ 585 00e0 8C4B     		ldr	r3, .L107+4
+ 586 00e2 5B6A     		ldr	r3, [r3, #36]
+ 159:App/Src/error_indicator.c ****                 blink_error(5, 2, 200, 200);
+ 587              		.loc 1 159 20 view .LVU121
+ 588 00e4 13F0020F 		tst	r3, #2
+ 589 00e8 40F08680 		bne	.L72
+ 162:App/Src/error_indicator.c ****                 blink_error(5, 3, 200, 200);
+ 590              		.loc 1 162 18 is_stmt 1 view .LVU122
+ 162:App/Src/error_indicator.c ****                 blink_error(5, 3, 200, 200);
+ 591              		.loc 1 162 27 is_stmt 0 view .LVU123
+ 592 00ec 894B     		ldr	r3, .L107+4
+ 593 00ee 5B6A     		ldr	r3, [r3, #36]
+ 162:App/Src/error_indicator.c ****                 blink_error(5, 3, 200, 200);
+ 594              		.loc 1 162 20 view .LVU124
+ 595 00f0 13F4001F 		tst	r3, #2097152
+ 596 00f4 40F08780 		bne	.L73
+ 165:App/Src/error_indicator.c ****                 blink_error(5, 4, 200, 200);
+ 597              		.loc 1 165 18 is_stmt 1 view .LVU125
+ 165:App/Src/error_indicator.c ****                 blink_error(5, 4, 200, 200);
+ 598              		.loc 1 165 27 is_stmt 0 view .LVU126
+ 599 00f8 864B     		ldr	r3, .L107+4
+ 600 00fa 5B6A     		ldr	r3, [r3, #36]
+ 165:App/Src/error_indicator.c ****                 blink_error(5, 4, 200, 200);
+ 601              		.loc 1 165 20 view .LVU127
+ 602 00fc 13F0040F 		tst	r3, #4
+ 603 0100 40F08880 		bne	.L74
+ 168:App/Src/error_indicator.c ****                 blink_error(5, 5, 200, 200);
+ 604              		.loc 1 168 18 is_stmt 1 view .LVU128
+ 168:App/Src/error_indicator.c ****                 blink_error(5, 5, 200, 200);
+ 605              		.loc 1 168 27 is_stmt 0 view .LVU129
+ 606 0104 834B     		ldr	r3, .L107+4
+ 607 0106 5B6A     		ldr	r3, [r3, #36]
+ 168:App/Src/error_indicator.c ****                 blink_error(5, 5, 200, 200);
+ 608              		.loc 1 168 20 view .LVU130
+ 609 0108 13F0080F 		tst	r3, #8
+ 610 010c 40F08980 		bne	.L75
+ 171:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
+ 611              		.loc 1 171 18 is_stmt 1 view .LVU131
+ARM GAS  /tmp/ccKg8OAe.s 			page 17
+
+
+ 171:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
+ 612              		.loc 1 171 27 is_stmt 0 view .LVU132
+ 613 0110 804B     		ldr	r3, .L107+4
+ 614 0112 5B6A     		ldr	r3, [r3, #36]
+ 171:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
+ 615              		.loc 1 171 20 view .LVU133
+ 616 0114 13F0100F 		tst	r3, #16
+ 617 0118 40F08A80 		bne	.L76
+ 174:App/Src/error_indicator.c ****                 blink_error(5, 7, 200, 200);
+ 618              		.loc 1 174 18 is_stmt 1 view .LVU134
+ 174:App/Src/error_indicator.c ****                 blink_error(5, 7, 200, 200);
+ 619              		.loc 1 174 27 is_stmt 0 view .LVU135
+ 620 011c 7D4B     		ldr	r3, .L107+4
+ 621 011e 5B6A     		ldr	r3, [r3, #36]
+ 174:App/Src/error_indicator.c ****                 blink_error(5, 7, 200, 200);
+ 622              		.loc 1 174 20 view .LVU136
+ 623 0120 13F0200F 		tst	r3, #32
+ 624 0124 40F08B80 		bne	.L77
+ 177:App/Src/error_indicator.c ****                 blink_error(5, 8, 200, 200);
+ 625              		.loc 1 177 18 is_stmt 1 view .LVU137
+ 177:App/Src/error_indicator.c ****                 blink_error(5, 8, 200, 200);
+ 626              		.loc 1 177 27 is_stmt 0 view .LVU138
+ 627 0128 7A4B     		ldr	r3, .L107+4
+ 628 012a 5B6A     		ldr	r3, [r3, #36]
+ 177:App/Src/error_indicator.c ****                 blink_error(5, 8, 200, 200);
+ 629              		.loc 1 177 20 view .LVU139
+ 630 012c 13F0400F 		tst	r3, #64
+ 631 0130 40F08C80 		bne	.L78
+ 180:App/Src/error_indicator.c ****                 blink_error(5, 9, 200, 200);
+ 632              		.loc 1 180 18 is_stmt 1 view .LVU140
+ 180:App/Src/error_indicator.c ****                 blink_error(5, 9, 200, 200);
+ 633              		.loc 1 180 27 is_stmt 0 view .LVU141
+ 634 0134 774B     		ldr	r3, .L107+4
+ 635 0136 5B6A     		ldr	r3, [r3, #36]
+ 180:App/Src/error_indicator.c ****                 blink_error(5, 9, 200, 200);
+ 636              		.loc 1 180 20 view .LVU142
+ 637 0138 13F0800F 		tst	r3, #128
+ 638 013c 40F08D80 		bne	.L79
+ 183:App/Src/error_indicator.c ****                 blink_error(5, 10, 200, 200);
+ 639              		.loc 1 183 18 is_stmt 1 view .LVU143
+ 183:App/Src/error_indicator.c ****                 blink_error(5, 10, 200, 200);
+ 640              		.loc 1 183 27 is_stmt 0 view .LVU144
+ 641 0140 744B     		ldr	r3, .L107+4
+ 642 0142 5B6A     		ldr	r3, [r3, #36]
+ 183:App/Src/error_indicator.c ****                 blink_error(5, 10, 200, 200);
+ 643              		.loc 1 183 20 view .LVU145
+ 644 0144 13F4807F 		tst	r3, #256
+ 645 0148 40F08E80 		bne	.L80
+ 186:App/Src/error_indicator.c ****                 blink_error(5, 11, 200, 200);
+ 646              		.loc 1 186 18 is_stmt 1 view .LVU146
+ 186:App/Src/error_indicator.c ****                 blink_error(5, 11, 200, 200);
+ 647              		.loc 1 186 27 is_stmt 0 view .LVU147
+ 648 014c 714B     		ldr	r3, .L107+4
+ 649 014e 5B6A     		ldr	r3, [r3, #36]
+ 186:App/Src/error_indicator.c ****                 blink_error(5, 11, 200, 200);
+ 650              		.loc 1 186 20 view .LVU148
+ 651 0150 13F4007F 		tst	r3, #512
+ARM GAS  /tmp/ccKg8OAe.s 			page 18
+
+
+ 652 0154 40F08F80 		bne	.L81
+ 189:App/Src/error_indicator.c ****                 blink_error(5, 12, 200, 200);
+ 653              		.loc 1 189 18 is_stmt 1 view .LVU149
+ 189:App/Src/error_indicator.c ****                 blink_error(5, 12, 200, 200);
+ 654              		.loc 1 189 27 is_stmt 0 view .LVU150
+ 655 0158 6E4B     		ldr	r3, .L107+4
+ 656 015a 5B6A     		ldr	r3, [r3, #36]
+ 189:App/Src/error_indicator.c ****                 blink_error(5, 12, 200, 200);
+ 657              		.loc 1 189 20 view .LVU151
+ 658 015c 13F4806F 		tst	r3, #1024
+ 659 0160 40F09080 		bne	.L82
+ 192:App/Src/error_indicator.c ****                 blink_error(5, 13, 200, 200);
+ 660              		.loc 1 192 18 is_stmt 1 view .LVU152
+ 192:App/Src/error_indicator.c ****                 blink_error(5, 13, 200, 200);
+ 661              		.loc 1 192 27 is_stmt 0 view .LVU153
+ 662 0164 6B4B     		ldr	r3, .L107+4
+ 663 0166 5B6A     		ldr	r3, [r3, #36]
+ 192:App/Src/error_indicator.c ****                 blink_error(5, 13, 200, 200);
+ 664              		.loc 1 192 20 view .LVU154
+ 665 0168 13F4006F 		tst	r3, #2048
+ 666 016c 40F09180 		bne	.L83
+ 195:App/Src/error_indicator.c ****                 blink_error(5, 14, 200, 200);
+ 667              		.loc 1 195 18 is_stmt 1 view .LVU155
+ 195:App/Src/error_indicator.c ****                 blink_error(5, 14, 200, 200);
+ 668              		.loc 1 195 27 is_stmt 0 view .LVU156
+ 669 0170 684B     		ldr	r3, .L107+4
+ 670 0172 5B6A     		ldr	r3, [r3, #36]
+ 195:App/Src/error_indicator.c ****                 blink_error(5, 14, 200, 200);
+ 671              		.loc 1 195 20 view .LVU157
+ 672 0174 13F4805F 		tst	r3, #4096
+ 673 0178 40F09280 		bne	.L84
+ 198:App/Src/error_indicator.c ****                 blink_error(5, 15, 200, 200);
+ 674              		.loc 1 198 18 is_stmt 1 view .LVU158
+ 198:App/Src/error_indicator.c ****                 blink_error(5, 15, 200, 200);
+ 675              		.loc 1 198 27 is_stmt 0 view .LVU159
+ 676 017c 654B     		ldr	r3, .L107+4
+ 677 017e 5B6A     		ldr	r3, [r3, #36]
+ 198:App/Src/error_indicator.c ****                 blink_error(5, 15, 200, 200);
+ 678              		.loc 1 198 20 view .LVU160
+ 679 0180 13F4005F 		tst	r3, #8192
+ 680 0184 40F09380 		bne	.L85
+ 201:App/Src/error_indicator.c ****                 blink_error(5, 16, 200, 200);
+ 681              		.loc 1 201 18 is_stmt 1 view .LVU161
+ 201:App/Src/error_indicator.c ****                 blink_error(5, 16, 200, 200);
+ 682              		.loc 1 201 27 is_stmt 0 view .LVU162
+ 683 0188 624B     		ldr	r3, .L107+4
+ 684 018a 5B6A     		ldr	r3, [r3, #36]
+ 201:App/Src/error_indicator.c ****                 blink_error(5, 16, 200, 200);
+ 685              		.loc 1 201 20 view .LVU163
+ 686 018c 13F4804F 		tst	r3, #16384
+ 687 0190 40F09480 		bne	.L86
+ 204:App/Src/error_indicator.c ****                 blink_error(5, 17, 200, 200);
+ 688              		.loc 1 204 18 is_stmt 1 view .LVU164
+ 204:App/Src/error_indicator.c ****                 blink_error(5, 17, 200, 200);
+ 689              		.loc 1 204 27 is_stmt 0 view .LVU165
+ 690 0194 5F4B     		ldr	r3, .L107+4
+ 691 0196 5B6A     		ldr	r3, [r3, #36]
+ARM GAS  /tmp/ccKg8OAe.s 			page 19
+
+
+ 204:App/Src/error_indicator.c ****                 blink_error(5, 17, 200, 200);
+ 692              		.loc 1 204 20 view .LVU166
+ 693 0198 13F4004F 		tst	r3, #32768
+ 694 019c 40F09580 		bne	.L87
+ 207:App/Src/error_indicator.c ****                 blink_error(5, 18, 200, 200);
+ 695              		.loc 1 207 18 is_stmt 1 view .LVU167
+ 207:App/Src/error_indicator.c ****                 blink_error(5, 18, 200, 200);
+ 696              		.loc 1 207 27 is_stmt 0 view .LVU168
+ 697 01a0 5C4B     		ldr	r3, .L107+4
+ 698 01a2 5B6A     		ldr	r3, [r3, #36]
+ 207:App/Src/error_indicator.c ****                 blink_error(5, 18, 200, 200);
+ 699              		.loc 1 207 20 view .LVU169
+ 700 01a4 13F4803F 		tst	r3, #65536
+ 701 01a8 40F09680 		bne	.L88
+ 210:App/Src/error_indicator.c ****                 blink_error(5, 19, 200, 200);
+ 702              		.loc 1 210 18 is_stmt 1 view .LVU170
+ 210:App/Src/error_indicator.c ****                 blink_error(5, 19, 200, 200);
+ 703              		.loc 1 210 27 is_stmt 0 view .LVU171
+ 704 01ac 594B     		ldr	r3, .L107+4
+ 705 01ae 5B6A     		ldr	r3, [r3, #36]
+ 210:App/Src/error_indicator.c ****                 blink_error(5, 19, 200, 200);
+ 706              		.loc 1 210 20 view .LVU172
+ 707 01b0 13F4003F 		tst	r3, #131072
+ 708 01b4 40F09780 		bne	.L89
+ 213:App/Src/error_indicator.c ****                 blink_error(5, 20, 200, 200);
+ 709              		.loc 1 213 18 is_stmt 1 view .LVU173
+ 213:App/Src/error_indicator.c ****                 blink_error(5, 20, 200, 200);
+ 710              		.loc 1 213 27 is_stmt 0 view .LVU174
+ 711 01b8 564B     		ldr	r3, .L107+4
+ 712 01ba 5B6A     		ldr	r3, [r3, #36]
+ 213:App/Src/error_indicator.c ****                 blink_error(5, 20, 200, 200);
+ 713              		.loc 1 213 20 view .LVU175
+ 714 01bc 13F4802F 		tst	r3, #262144
+ 715 01c0 40F09880 		bne	.L90
+ 216:App/Src/error_indicator.c ****                 blink_error(5, 21, 200, 200);
+ 716              		.loc 1 216 18 is_stmt 1 view .LVU176
+ 216:App/Src/error_indicator.c ****                 blink_error(5, 21, 200, 200);
+ 717              		.loc 1 216 27 is_stmt 0 view .LVU177
+ 718 01c4 534B     		ldr	r3, .L107+4
+ 719 01c6 5B6A     		ldr	r3, [r3, #36]
+ 216:App/Src/error_indicator.c ****                 blink_error(5, 21, 200, 200);
+ 720              		.loc 1 216 20 view .LVU178
+ 721 01c8 13F4002F 		tst	r3, #524288
+ 722 01cc 40F09980 		bne	.L91
+ 219:App/Src/error_indicator.c ****                 blink_error(5, 22, 200, 200);
+ 723              		.loc 1 219 18 is_stmt 1 view .LVU179
+ 219:App/Src/error_indicator.c ****                 blink_error(5, 22, 200, 200);
+ 724              		.loc 1 219 27 is_stmt 0 view .LVU180
+ 725 01d0 504B     		ldr	r3, .L107+4
+ 726 01d2 5B6A     		ldr	r3, [r3, #36]
+ 219:App/Src/error_indicator.c ****                 blink_error(5, 22, 200, 200);
+ 727              		.loc 1 219 20 view .LVU181
+ 728 01d4 13F4801F 		tst	r3, #1048576
+ 729 01d8 3FF455AF 		beq	.L31
+ 220:App/Src/error_indicator.c ****         }
+ 730              		.loc 1 220 17 is_stmt 1 view .LVU182
+ 731 01dc C823     		movs	r3, #200
+ARM GAS  /tmp/ccKg8OAe.s 			page 20
+
+
+ 732 01de 1A46     		mov	r2, r3
+ 733 01e0 1621     		movs	r1, #22
+ 734 01e2 0520     		movs	r0, #5
+ 735 01e4 FFF7FEFF 		bl	blink_error
+ 736              	.LVL80:
+ 737 01e8 4DE7     		b	.L31
+ 738              	.L71:
+ 157:App/Src/error_indicator.c ****             /*!< Error Passive                                        */
+ 739              		.loc 1 157 17 view .LVU183
+ 740 01ea C823     		movs	r3, #200
+ 741 01ec 1A46     		mov	r2, r3
+ 742 01ee 0121     		movs	r1, #1
+ 743 01f0 0520     		movs	r0, #5
+ 744 01f2 FFF7FEFF 		bl	blink_error
+ 745              	.LVL81:
+ 746 01f6 46E7     		b	.L31
+ 747              	.L72:
+ 160:App/Src/error_indicator.c ****             /*!< Parameter error ; can be ocuured due to lost of can bus connection or no msg recei
+ 748              		.loc 1 160 17 view .LVU184
+ 749 01f8 C823     		movs	r3, #200
+ 750 01fa 1A46     		mov	r2, r3
+ 751 01fc 0221     		movs	r1, #2
+ 752 01fe 0520     		movs	r0, #5
+ 753 0200 FFF7FEFF 		bl	blink_error
+ 754              	.LVL82:
+ 755 0204 3FE7     		b	.L31
+ 756              	.L73:
+ 163:App/Src/error_indicator.c ****             /*!< Bus-off error                                        */
+ 757              		.loc 1 163 17 view .LVU185
+ 758 0206 C823     		movs	r3, #200
+ 759 0208 1A46     		mov	r2, r3
+ 760 020a 0321     		movs	r1, #3
+ 761 020c 0520     		movs	r0, #5
+ 762 020e FFF7FEFF 		bl	blink_error
+ 763              	.LVL83:
+ 764 0212 38E7     		b	.L31
+ 765              	.L74:
+ 166:App/Src/error_indicator.c ****             /*!< Stuff error                                          */
+ 766              		.loc 1 166 17 view .LVU186
+ 767 0214 C823     		movs	r3, #200
+ 768 0216 1A46     		mov	r2, r3
+ 769 0218 0421     		movs	r1, #4
+ 770 021a 0520     		movs	r0, #5
+ 771 021c FFF7FEFF 		bl	blink_error
+ 772              	.LVL84:
+ 773 0220 31E7     		b	.L31
+ 774              	.L75:
+ 169:App/Src/error_indicator.c ****             /*!< Form error                                           */
+ 775              		.loc 1 169 17 view .LVU187
+ 776 0222 C823     		movs	r3, #200
+ 777 0224 1A46     		mov	r2, r3
+ 778 0226 0521     		movs	r1, #5
+ 779 0228 0846     		mov	r0, r1
+ 780 022a FFF7FEFF 		bl	blink_error
+ 781              	.LVL85:
+ 782 022e 2AE7     		b	.L31
+ 783              	.L76:
+ARM GAS  /tmp/ccKg8OAe.s 			page 21
+
+
+ 172:App/Src/error_indicator.c ****             /*!< Acknowledgment error                                 */
+ 784              		.loc 1 172 17 view .LVU188
+ 785 0230 C823     		movs	r3, #200
+ 786 0232 1A46     		mov	r2, r3
+ 787 0234 0621     		movs	r1, #6
+ 788 0236 0520     		movs	r0, #5
+ 789 0238 FFF7FEFF 		bl	blink_error
+ 790              	.LVL86:
+ 791 023c 23E7     		b	.L31
+ 792              	.L77:
+ 175:App/Src/error_indicator.c ****             /*!< Bit recessive error                                  */
+ 793              		.loc 1 175 17 view .LVU189
+ 794 023e C823     		movs	r3, #200
+ 795 0240 1A46     		mov	r2, r3
+ 796 0242 0721     		movs	r1, #7
+ 797 0244 0520     		movs	r0, #5
+ 798 0246 FFF7FEFF 		bl	blink_error
+ 799              	.LVL87:
+ 800 024a 1CE7     		b	.L31
+ 801              	.L78:
+ 178:App/Src/error_indicator.c ****             /*!< Bit dominant error                                   */
+ 802              		.loc 1 178 17 view .LVU190
+ 803 024c C823     		movs	r3, #200
+ 804 024e 1A46     		mov	r2, r3
+ 805 0250 0821     		movs	r1, #8
+ 806 0252 0520     		movs	r0, #5
+ 807 0254 FFF7FEFF 		bl	blink_error
+ 808              	.LVL88:
+ 809 0258 15E7     		b	.L31
+ 810              	.L79:
+ 181:App/Src/error_indicator.c ****             /*!< CRC error                                            */
+ 811              		.loc 1 181 17 view .LVU191
+ 812 025a C823     		movs	r3, #200
+ 813 025c 1A46     		mov	r2, r3
+ 814 025e 0921     		movs	r1, #9
+ 815 0260 0520     		movs	r0, #5
+ 816 0262 FFF7FEFF 		bl	blink_error
+ 817              	.LVL89:
+ 818 0266 0EE7     		b	.L31
+ 819              	.L80:
+ 184:App/Src/error_indicator.c ****             /*!< Rx FIFO0 overrun error                               */
+ 820              		.loc 1 184 17 view .LVU192
+ 821 0268 C823     		movs	r3, #200
+ 822 026a 1A46     		mov	r2, r3
+ 823 026c 0A21     		movs	r1, #10
+ 824 026e 0520     		movs	r0, #5
+ 825 0270 FFF7FEFF 		bl	blink_error
+ 826              	.LVL90:
+ 827 0274 07E7     		b	.L31
+ 828              	.L81:
+ 187:App/Src/error_indicator.c ****             /*!< Rx FIFO1 overrun error                               */
+ 829              		.loc 1 187 17 view .LVU193
+ 830 0276 C823     		movs	r3, #200
+ 831 0278 1A46     		mov	r2, r3
+ 832 027a 0B21     		movs	r1, #11
+ 833 027c 0520     		movs	r0, #5
+ 834 027e FFF7FEFF 		bl	blink_error
+ARM GAS  /tmp/ccKg8OAe.s 			page 22
+
+
+ 835              	.LVL91:
+ 836 0282 00E7     		b	.L31
+ 837              	.L82:
+ 190:App/Src/error_indicator.c ****             /*!< TxMailbox 0 transmit failure due to arbitration lost */
+ 838              		.loc 1 190 17 view .LVU194
+ 839 0284 C823     		movs	r3, #200
+ 840 0286 1A46     		mov	r2, r3
+ 841 0288 0C21     		movs	r1, #12
+ 842 028a 0520     		movs	r0, #5
+ 843 028c FFF7FEFF 		bl	blink_error
+ 844              	.LVL92:
+ 845 0290 F9E6     		b	.L31
+ 846              	.L83:
+ 193:App/Src/error_indicator.c ****             /*!< TxMailbox 0 transmit failure due to transmit error    */
+ 847              		.loc 1 193 17 view .LVU195
+ 848 0292 C823     		movs	r3, #200
+ 849 0294 1A46     		mov	r2, r3
+ 850 0296 0D21     		movs	r1, #13
+ 851 0298 0520     		movs	r0, #5
+ 852 029a FFF7FEFF 		bl	blink_error
+ 853              	.LVL93:
+ 854 029e F2E6     		b	.L31
+ 855              	.L84:
+ 196:App/Src/error_indicator.c ****             /*!< TxMailbox 1 transmit failure due to arbitration lost */
+ 856              		.loc 1 196 17 view .LVU196
+ 857 02a0 C823     		movs	r3, #200
+ 858 02a2 1A46     		mov	r2, r3
+ 859 02a4 0E21     		movs	r1, #14
+ 860 02a6 0520     		movs	r0, #5
+ 861 02a8 FFF7FEFF 		bl	blink_error
+ 862              	.LVL94:
+ 863 02ac EBE6     		b	.L31
+ 864              	.L85:
+ 199:App/Src/error_indicator.c ****             /*!< TxMailbox 1 transmit failure due to transmit error    */
+ 865              		.loc 1 199 17 view .LVU197
+ 866 02ae C823     		movs	r3, #200
+ 867 02b0 1A46     		mov	r2, r3
+ 868 02b2 0F21     		movs	r1, #15
+ 869 02b4 0520     		movs	r0, #5
+ 870 02b6 FFF7FEFF 		bl	blink_error
+ 871              	.LVL95:
+ 872 02ba E4E6     		b	.L31
+ 873              	.L86:
+ 202:App/Src/error_indicator.c ****             /*!< TxMailbox 2 transmit failure due to arbitration lost */
+ 874              		.loc 1 202 17 view .LVU198
+ 875 02bc C823     		movs	r3, #200
+ 876 02be 1A46     		mov	r2, r3
+ 877 02c0 1021     		movs	r1, #16
+ 878 02c2 0520     		movs	r0, #5
+ 879 02c4 FFF7FEFF 		bl	blink_error
+ 880              	.LVL96:
+ 881 02c8 DDE6     		b	.L31
+ 882              	.L87:
+ 205:App/Src/error_indicator.c ****             /*!< TxMailbox 2 transmit failure due to transmit error    */
+ 883              		.loc 1 205 17 view .LVU199
+ 884 02ca C823     		movs	r3, #200
+ 885 02cc 1A46     		mov	r2, r3
+ARM GAS  /tmp/ccKg8OAe.s 			page 23
+
+
+ 886 02ce 1121     		movs	r1, #17
+ 887 02d0 0520     		movs	r0, #5
+ 888 02d2 FFF7FEFF 		bl	blink_error
+ 889              	.LVL97:
+ 890 02d6 D6E6     		b	.L31
+ 891              	.L88:
+ 208:App/Src/error_indicator.c ****             /*!< Timeout error                                        */
+ 892              		.loc 1 208 17 view .LVU200
+ 893 02d8 C823     		movs	r3, #200
+ 894 02da 1A46     		mov	r2, r3
+ 895 02dc 1221     		movs	r1, #18
+ 896 02de 0520     		movs	r0, #5
+ 897 02e0 FFF7FEFF 		bl	blink_error
+ 898              	.LVL98:
+ 899 02e4 CFE6     		b	.L31
+ 900              	.L89:
+ 211:App/Src/error_indicator.c ****             /*!< Peripheral not initialized                           */
+ 901              		.loc 1 211 17 view .LVU201
+ 902 02e6 C823     		movs	r3, #200
+ 903 02e8 1A46     		mov	r2, r3
+ 904 02ea 1321     		movs	r1, #19
+ 905 02ec 0520     		movs	r0, #5
+ 906 02ee FFF7FEFF 		bl	blink_error
+ 907              	.LVL99:
+ 908 02f2 C8E6     		b	.L31
+ 909              	.L90:
+ 214:App/Src/error_indicator.c ****             /*!< Peripheral not ready                                 */
+ 910              		.loc 1 214 17 view .LVU202
+ 911 02f4 C823     		movs	r3, #200
+ 912 02f6 1A46     		mov	r2, r3
+ 913 02f8 1421     		movs	r1, #20
+ 914 02fa 0520     		movs	r0, #5
+ 915 02fc FFF7FEFF 		bl	blink_error
+ 916              	.LVL100:
+ 917 0300 C1E6     		b	.L31
+ 918              	.L91:
+ 217:App/Src/error_indicator.c ****             /*!< Peripheral not started                               */
+ 919              		.loc 1 217 17 view .LVU203
+ 920 0302 C823     		movs	r3, #200
+ 921 0304 1A46     		mov	r2, r3
+ 922 0306 1521     		movs	r1, #21
+ 923 0308 0520     		movs	r0, #5
+ 924 030a FFF7FEFF 		bl	blink_error
+ 925              	.LVL101:
+ 926 030e BAE6     		b	.L31
+ 927              	.L108:
+ 928              		.align	2
+ 929              	.L107:
+ 930 0310 000C0240 		.word	1073875968
+ 931 0314 00000000 		.word	hcan1
+ 932              	.LVL102:
+ 933              	.L93:
+ 934              	.LBB8:
+ 236:App/Src/error_indicator.c ****             {   
+ 237:App/Src/error_indicator.c ****                 // if motor is initialized and has an error
+ 238:App/Src/error_indicator.c ****                 /// TODO: replace 0b0111 with MOTOR_INIT_STATUS_ID
+ 239:App/Src/error_indicator.c ****                 if((motor[m].init_state & MOTOR_INIT_STATUS_ID) == MOTOR_INIT_STATUS_ID && motor[m]
+ARM GAS  /tmp/ccKg8OAe.s 			page 24
+
+
+ 240:App/Src/error_indicator.c ****                 {
+ 241:App/Src/error_indicator.c ****                     is_motor_err = true;
+ 242:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 243:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 244:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 245:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 246:App/Src/error_indicator.c ****                     osDelay(500);
+ 247:App/Src/error_indicator.c **** 
+ 248:App/Src/error_indicator.c ****                     blink_error(6, m+1, 800, 200); /* long blinks */
+ 249:App/Src/error_indicator.c **** 
+ 250:App/Src/error_indicator.c ****                     /*!< `0x001U`   motor is not initialized                      */
+ 251:App/Src/error_indicator.c ****                     if((motor[m].error_code & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITI
+ 252:App/Src/error_indicator.c ****                         blink_error(6, 1, 200, 200); /* 1 short blink */
+ 935              		.loc 1 252 25 view .LVU204
+ 936 0318 C823     		movs	r3, #200
+ 937 031a 1A46     		mov	r2, r3
+ 938 031c 0121     		movs	r1, #1
+ 939 031e 0620     		movs	r0, #6
+ 940 0320 FFF7FEFF 		bl	blink_error
+ 941              	.LVL103:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 942              		.loc 1 241 34 is_stmt 0 view .LVU205
+ 943 0324 0121     		movs	r1, #1
+ 944              	.LVL104:
+ 945              	.L54:
+ 235:App/Src/error_indicator.c ****             {   
+ 946              		.loc 1 235 47 is_stmt 1 discriminator 2 view .LVU206
+ 235:App/Src/error_indicator.c ****             {   
+ 947              		.loc 1 235 48 is_stmt 0 discriminator 2 view .LVU207
+ 948 0326 0134     		adds	r4, r4, #1
+ 949              	.LVL105:
+ 950              	.L52:
+ 235:App/Src/error_indicator.c ****             {   
+ 951              		.loc 1 235 28 is_stmt 1 discriminator 1 view .LVU208
+ 235:App/Src/error_indicator.c ****             {   
+ 952              		.loc 1 235 13 is_stmt 0 discriminator 1 view .LVU209
+ 953 0328 0B2C     		cmp	r4, #11
+ 954 032a 00F3AD80 		bgt	.L92
+ 239:App/Src/error_indicator.c ****                 {
+ 955              		.loc 1 239 17 is_stmt 1 view .LVU210
+ 239:App/Src/error_indicator.c ****                 {
+ 956              		.loc 1 239 29 is_stmt 0 view .LVU211
+ 957 032e 884B     		ldr	r3, .L109
+ 958 0330 EC22     		movs	r2, #236
+ 959 0332 02FB0433 		mla	r3, r2, r4, r3
+ 960 0336 93F87030 		ldrb	r3, [r3, #112]	@ zero_extendqisi2
+ 239:App/Src/error_indicator.c ****                 {
+ 961              		.loc 1 239 19 view .LVU212
+ 962 033a 13F0010F 		tst	r3, #1
+ 963 033e F2D0     		beq	.L54
+ 239:App/Src/error_indicator.c ****                 {
+ 964              		.loc 1 239 100 discriminator 1 view .LVU213
+ 965 0340 834B     		ldr	r3, .L109
+ 966 0342 02FB0433 		mla	r3, r2, r4, r3
+ 967 0346 93F87130 		ldrb	r3, [r3, #113]	@ zero_extendqisi2
+ 239:App/Src/error_indicator.c ****                 {
+ 968              		.loc 1 239 89 discriminator 1 view .LVU214
+ARM GAS  /tmp/ccKg8OAe.s 			page 25
+
+
+ 969 034a 032B     		cmp	r3, #3
+ 970 034c EBD1     		bne	.L54
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 971              		.loc 1 241 21 is_stmt 1 view .LVU215
+ 972              	.LVL106:
+ 242:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 973              		.loc 1 242 21 view .LVU216
+ 974 034e 814D     		ldr	r5, .L109+4
+ 975 0350 0022     		movs	r2, #0
+ 976 0352 4FF40051 		mov	r1, #8192
+ 977 0356 2846     		mov	r0, r5
+ 978 0358 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 979              	.LVL107:
+ 243:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 980              		.loc 1 243 21 view .LVU217
+ 981 035c 0022     		movs	r2, #0
+ 982 035e 4FF48051 		mov	r1, #4096
+ 983 0362 2846     		mov	r0, r5
+ 984 0364 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 985              	.LVL108:
+ 244:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 986              		.loc 1 244 21 view .LVU218
+ 987 0368 0022     		movs	r2, #0
+ 988 036a 4FF48041 		mov	r1, #16384
+ 989 036e 2846     		mov	r0, r5
+ 990 0370 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 991              	.LVL109:
+ 245:App/Src/error_indicator.c ****                     osDelay(500);
+ 992              		.loc 1 245 21 view .LVU219
+ 993 0374 0022     		movs	r2, #0
+ 994 0376 4FF40041 		mov	r1, #32768
+ 995 037a 2846     		mov	r0, r5
+ 996 037c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 997              	.LVL110:
+ 246:App/Src/error_indicator.c **** 
+ 998              		.loc 1 246 21 view .LVU220
+ 999 0380 4FF4FA70 		mov	r0, #500
+ 1000 0384 FFF7FEFF 		bl	osDelay
+ 1001              	.LVL111:
+ 248:App/Src/error_indicator.c **** 
+ 1002              		.loc 1 248 21 view .LVU221
+ 1003 0388 C823     		movs	r3, #200
+ 1004 038a 4FF44872 		mov	r2, #800
+ 1005 038e 611C     		adds	r1, r4, #1
+ 1006 0390 0620     		movs	r0, #6
+ 1007 0392 FFF7FEFF 		bl	blink_error
+ 1008              	.LVL112:
+ 251:App/Src/error_indicator.c ****                         blink_error(6, 1, 200, 200); /* 1 short blink */
+ 1009              		.loc 1 251 21 view .LVU222
+ 251:App/Src/error_indicator.c ****                         blink_error(6, 1, 200, 200); /* 1 short blink */
+ 1010              		.loc 1 251 33 is_stmt 0 view .LVU223
+ 1011 0396 6E4B     		ldr	r3, .L109
+ 1012 0398 EC22     		movs	r2, #236
+ 1013 039a 02FB0433 		mla	r3, r2, r4, r3
+ 1014 039e B3F87230 		ldrh	r3, [r3, #114]
+ 251:App/Src/error_indicator.c ****                         blink_error(6, 1, 200, 200); /* 1 short blink */
+ 1015              		.loc 1 251 23 view .LVU224
+ARM GAS  /tmp/ccKg8OAe.s 			page 26
+
+
+ 1016 03a2 13F0010F 		tst	r3, #1
+ 1017 03a6 B7D1     		bne	.L93
+ 253:App/Src/error_indicator.c ****                     /*!< `0x002U`   motor parameter error                         */
+ 254:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_PARAM) == MOTOR_ERROR_PARAM)
+ 1018              		.loc 1 254 26 is_stmt 1 view .LVU225
+ 1019              		.loc 1 254 28 is_stmt 0 view .LVU226
+ 1020 03a8 13F0020F 		tst	r3, #2
+ 1021 03ac 1CD1     		bne	.L94
+ 255:App/Src/error_indicator.c ****                         blink_error(6, 2, 200, 200); /* 2 short blinks */
+ 256:App/Src/error_indicator.c ****                     /*!< `0x004U`   HAL_CAN Error                                 */
+ 257:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
+ 1022              		.loc 1 257 26 is_stmt 1 view .LVU227
+ 1023              		.loc 1 257 28 is_stmt 0 view .LVU228
+ 1024 03ae 13F0040F 		tst	r3, #4
+ 1025 03b2 21D1     		bne	.L95
+ 258:App/Src/error_indicator.c ****                         blink_error(6, 3, 200, 200); /* 3 short blinks */
+ 259:App/Src/error_indicator.c ****                     /*!< `0x008U`   motor is offline / not connected              */
+ 260:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
+ 1026              		.loc 1 260 26 is_stmt 1 view .LVU229
+ 1027              		.loc 1 260 28 is_stmt 0 view .LVU230
+ 1028 03b4 13F0080F 		tst	r3, #8
+ 1029 03b8 26D1     		bne	.L96
+ 261:App/Src/error_indicator.c ****                         blink_error(6, 4, 200, 200); /* 4 short blinks */
+ 262:App/Src/error_indicator.c ****                     /*!< `0x010U`   Out Of Range error                            */
+ 263:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_OOR) == MOTOR_ERROR_OOR)
+ 1030              		.loc 1 263 26 is_stmt 1 view .LVU231
+ 1031              		.loc 1 263 28 is_stmt 0 view .LVU232
+ 1032 03ba 13F0100F 		tst	r3, #16
+ 1033 03be 2BD1     		bne	.L97
+ 264:App/Src/error_indicator.c ****                         blink_error(6, 5, 200, 200); /* 5 short blinks */
+ 265:App/Src/error_indicator.c ****                     /*!< `0x020U`   Over-Heat error                               */
+ 266:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_OH) == MOTOR_ERROR_OH)
+ 1034              		.loc 1 266 26 is_stmt 1 view .LVU233
+ 1035              		.loc 1 266 28 is_stmt 0 view .LVU234
+ 1036 03c0 13F0200F 		tst	r3, #32
+ 1037 03c4 30D1     		bne	.L98
+ 267:App/Src/error_indicator.c ****                         blink_error(6, 6, 200, 200); /* 6 short blinks */
+ 268:App/Src/error_indicator.c ****                     /*!< `0x040U`   Over-Current error                            */
+ 269:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
+ 1038              		.loc 1 269 26 is_stmt 1 view .LVU235
+ 1039              		.loc 1 269 28 is_stmt 0 view .LVU236
+ 1040 03c6 13F0400F 		tst	r3, #64
+ 1041 03ca 35D1     		bne	.L99
+ 270:App/Src/error_indicator.c ****                         blink_error(6, 7, 200, 200); /* 7 short blinks */
+ 271:App/Src/error_indicator.c ****                     /*!< `0x080U`   Failed to enable the motor                    */
+ 272:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_EN) == MOTOR_ERROR_EN)
+ 1042              		.loc 1 272 26 is_stmt 1 view .LVU237
+ 1043              		.loc 1 272 28 is_stmt 0 view .LVU238
+ 1044 03cc 13F0800F 		tst	r3, #128
+ 1045 03d0 3AD1     		bne	.L100
+ 273:App/Src/error_indicator.c ****                         blink_error(6, 8, 200, 200); /* 8 short blinks */
+ 274:App/Src/error_indicator.c ****                     /*!< `0x100U`   Failed to diable the motor                    */
+ 275:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_DIS) == MOTOR_ERROR_DIS)
+ 1046              		.loc 1 275 26 is_stmt 1 view .LVU239
+ 1047              		.loc 1 275 28 is_stmt 0 view .LVU240
+ 1048 03d2 13F4807F 		tst	r3, #256
+ 1049 03d6 3FD1     		bne	.L101
+ARM GAS  /tmp/ccKg8OAe.s 			page 27
+
+
+ 276:App/Src/error_indicator.c ****                         blink_error(6, 9, 200, 200); /* 9 short blinks */
+ 277:App/Src/error_indicator.c ****                     /*!< `0x200U`   Failed to set motor zero position             */
+ 278:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_SZ) == MOTOR_ERROR_SZ)
+ 1050              		.loc 1 278 26 is_stmt 1 view .LVU241
+ 1051              		.loc 1 278 28 is_stmt 0 view .LVU242
+ 1052 03d8 13F4007F 		tst	r3, #512
+ 1053 03dc 44D1     		bne	.L102
+ 279:App/Src/error_indicator.c ****                         blink_error(6, 10, 200, 200); /* 10 short blinks */
+ 280:App/Src/error_indicator.c ****                     /*!< `0x400U`   Motor is not ready to be operated             */
+ 281:App/Src/error_indicator.c ****                     else if((motor[m].error_code & MOTOR_ERROR_NOT_READY) == MOTOR_ERROR_NOT_READY)
+ 1054              		.loc 1 281 26 is_stmt 1 view .LVU243
+ 1055              		.loc 1 281 28 is_stmt 0 view .LVU244
+ 1056 03de 13F4806F 		tst	r3, #1024
+ 1057 03e2 49D1     		bne	.L103
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1058              		.loc 1 241 34 view .LVU245
+ 1059 03e4 0121     		movs	r1, #1
+ 1060 03e6 9EE7     		b	.L54
+ 1061              	.L94:
+ 255:App/Src/error_indicator.c ****                     /*!< `0x004U`   HAL_CAN Error                                 */
+ 1062              		.loc 1 255 25 is_stmt 1 view .LVU246
+ 1063 03e8 C823     		movs	r3, #200
+ 1064 03ea 1A46     		mov	r2, r3
+ 1065 03ec 0221     		movs	r1, #2
+ 1066 03ee 0620     		movs	r0, #6
+ 1067 03f0 FFF7FEFF 		bl	blink_error
+ 1068              	.LVL113:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1069              		.loc 1 241 34 is_stmt 0 view .LVU247
+ 1070 03f4 0121     		movs	r1, #1
+ 1071 03f6 96E7     		b	.L54
+ 1072              	.L95:
+ 258:App/Src/error_indicator.c ****                     /*!< `0x008U`   motor is offline / not connected              */
+ 1073              		.loc 1 258 25 is_stmt 1 view .LVU248
+ 1074 03f8 C823     		movs	r3, #200
+ 1075 03fa 1A46     		mov	r2, r3
+ 1076 03fc 0321     		movs	r1, #3
+ 1077 03fe 0620     		movs	r0, #6
+ 1078 0400 FFF7FEFF 		bl	blink_error
+ 1079              	.LVL114:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1080              		.loc 1 241 34 is_stmt 0 view .LVU249
+ 1081 0404 0121     		movs	r1, #1
+ 1082 0406 8EE7     		b	.L54
+ 1083              	.L96:
+ 261:App/Src/error_indicator.c ****                     /*!< `0x010U`   Out Of Range error                            */
+ 1084              		.loc 1 261 25 is_stmt 1 view .LVU250
+ 1085 0408 C823     		movs	r3, #200
+ 1086 040a 1A46     		mov	r2, r3
+ 1087 040c 0421     		movs	r1, #4
+ 1088 040e 0620     		movs	r0, #6
+ 1089 0410 FFF7FEFF 		bl	blink_error
+ 1090              	.LVL115:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1091              		.loc 1 241 34 is_stmt 0 view .LVU251
+ 1092 0414 0121     		movs	r1, #1
+ 1093 0416 86E7     		b	.L54
+ARM GAS  /tmp/ccKg8OAe.s 			page 28
+
+
+ 1094              	.L97:
+ 264:App/Src/error_indicator.c ****                     /*!< `0x020U`   Over-Heat error                               */
+ 1095              		.loc 1 264 25 is_stmt 1 view .LVU252
+ 1096 0418 C823     		movs	r3, #200
+ 1097 041a 1A46     		mov	r2, r3
+ 1098 041c 0521     		movs	r1, #5
+ 1099 041e 0620     		movs	r0, #6
+ 1100 0420 FFF7FEFF 		bl	blink_error
+ 1101              	.LVL116:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1102              		.loc 1 241 34 is_stmt 0 view .LVU253
+ 1103 0424 0121     		movs	r1, #1
+ 1104 0426 7EE7     		b	.L54
+ 1105              	.L98:
+ 267:App/Src/error_indicator.c ****                     /*!< `0x040U`   Over-Current error                            */
+ 1106              		.loc 1 267 25 is_stmt 1 view .LVU254
+ 1107 0428 C823     		movs	r3, #200
+ 1108 042a 1A46     		mov	r2, r3
+ 1109 042c 0621     		movs	r1, #6
+ 1110 042e 0846     		mov	r0, r1
+ 1111 0430 FFF7FEFF 		bl	blink_error
+ 1112              	.LVL117:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1113              		.loc 1 241 34 is_stmt 0 view .LVU255
+ 1114 0434 0121     		movs	r1, #1
+ 1115 0436 76E7     		b	.L54
+ 1116              	.L99:
+ 270:App/Src/error_indicator.c ****                     /*!< `0x080U`   Failed to enable the motor                    */
+ 1117              		.loc 1 270 25 is_stmt 1 view .LVU256
+ 1118 0438 C823     		movs	r3, #200
+ 1119 043a 1A46     		mov	r2, r3
+ 1120 043c 0721     		movs	r1, #7
+ 1121 043e 0620     		movs	r0, #6
+ 1122 0440 FFF7FEFF 		bl	blink_error
+ 1123              	.LVL118:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1124              		.loc 1 241 34 is_stmt 0 view .LVU257
+ 1125 0444 0121     		movs	r1, #1
+ 1126 0446 6EE7     		b	.L54
+ 1127              	.L100:
+ 273:App/Src/error_indicator.c ****                     /*!< `0x100U`   Failed to diable the motor                    */
+ 1128              		.loc 1 273 25 is_stmt 1 view .LVU258
+ 1129 0448 C823     		movs	r3, #200
+ 1130 044a 1A46     		mov	r2, r3
+ 1131 044c 0821     		movs	r1, #8
+ 1132 044e 0620     		movs	r0, #6
+ 1133 0450 FFF7FEFF 		bl	blink_error
+ 1134              	.LVL119:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1135              		.loc 1 241 34 is_stmt 0 view .LVU259
+ 1136 0454 0121     		movs	r1, #1
+ 1137 0456 66E7     		b	.L54
+ 1138              	.L101:
+ 276:App/Src/error_indicator.c ****                     /*!< `0x200U`   Failed to set motor zero position             */
+ 1139              		.loc 1 276 25 is_stmt 1 view .LVU260
+ 1140 0458 C823     		movs	r3, #200
+ 1141 045a 1A46     		mov	r2, r3
+ARM GAS  /tmp/ccKg8OAe.s 			page 29
+
+
+ 1142 045c 0921     		movs	r1, #9
+ 1143 045e 0620     		movs	r0, #6
+ 1144 0460 FFF7FEFF 		bl	blink_error
+ 1145              	.LVL120:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1146              		.loc 1 241 34 is_stmt 0 view .LVU261
+ 1147 0464 0121     		movs	r1, #1
+ 1148 0466 5EE7     		b	.L54
+ 1149              	.L102:
+ 279:App/Src/error_indicator.c ****                     /*!< `0x400U`   Motor is not ready to be operated             */
+ 1150              		.loc 1 279 25 is_stmt 1 view .LVU262
+ 1151 0468 C823     		movs	r3, #200
+ 1152 046a 1A46     		mov	r2, r3
+ 1153 046c 0A21     		movs	r1, #10
+ 1154 046e 0620     		movs	r0, #6
+ 1155 0470 FFF7FEFF 		bl	blink_error
+ 1156              	.LVL121:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1157              		.loc 1 241 34 is_stmt 0 view .LVU263
+ 1158 0474 0121     		movs	r1, #1
+ 1159 0476 56E7     		b	.L54
+ 1160              	.L103:
+ 282:App/Src/error_indicator.c ****                         blink_error(6, 11, 200, 200); /* 11 short blinks */
+ 1161              		.loc 1 282 25 is_stmt 1 view .LVU264
+ 1162 0478 C823     		movs	r3, #200
+ 1163 047a 1A46     		mov	r2, r3
+ 1164 047c 0B21     		movs	r1, #11
+ 1165 047e 0620     		movs	r0, #6
+ 1166 0480 FFF7FEFF 		bl	blink_error
+ 1167              	.LVL122:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1168              		.loc 1 241 34 is_stmt 0 view .LVU265
+ 1169 0484 0121     		movs	r1, #1
+ 1170 0486 4EE7     		b	.L54
+ 1171              	.LVL123:
+ 1172              	.L92:
+ 241:App/Src/error_indicator.c ****                     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1173              		.loc 1 241 34 view .LVU266
+ 1174              	.LBE8:
+ 283:App/Src/error_indicator.c ****                 }
+ 284:App/Src/error_indicator.c ****                 /* If no Errors,  */
+ 285:App/Src/error_indicator.c ****             }
+ 286:App/Src/error_indicator.c ****             if(!is_motor_err){
+ 1175              		.loc 1 286 13 is_stmt 1 view .LVU267
+ 1176              		.loc 1 286 15 is_stmt 0 view .LVU268
+ 1177 0488 91B9     		cbnz	r1, .L53
+ 287:App/Src/error_indicator.c ****                 HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 1178              		.loc 1 287 17 is_stmt 1 view .LVU269
+ 1179 048a 324C     		ldr	r4, .L109+4
+ 1180              	.LVL124:
+ 1181              		.loc 1 287 17 is_stmt 0 view .LVU270
+ 1182 048c 0022     		movs	r2, #0
+ 1183 048e 4FF40041 		mov	r1, #32768
+ 1184              	.LVL125:
+ 1185              		.loc 1 287 17 view .LVU271
+ 1186 0492 2046     		mov	r0, r4
+ 1187 0494 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/ccKg8OAe.s 			page 30
+
+
+ 1188              	.LVL126:
+ 288:App/Src/error_indicator.c ****                 osDelay(100);
+ 1189              		.loc 1 288 17 is_stmt 1 view .LVU272
+ 1190 0498 6420     		movs	r0, #100
+ 1191 049a FFF7FEFF 		bl	osDelay
+ 1192              	.LVL127:
+ 289:App/Src/error_indicator.c ****                 HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+ 1193              		.loc 1 289 17 view .LVU273
+ 1194 049e 0122     		movs	r2, #1
+ 1195 04a0 4FF40041 		mov	r1, #32768
+ 1196 04a4 2046     		mov	r0, r4
+ 1197 04a6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1198              	.LVL128:
+ 290:App/Src/error_indicator.c ****                 osDelay(100);
+ 1199              		.loc 1 290 17 view .LVU274
+ 1200 04aa 6420     		movs	r0, #100
+ 1201 04ac FFF7FEFF 		bl	osDelay
+ 1202              	.LVL129:
+ 1203              	.L53:
+ 291:App/Src/error_indicator.c ****             }
+ 292:App/Src/error_indicator.c ****         }
+ 293:App/Src/error_indicator.c **** 
+ 294:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 1204              		.loc 1 294 9 view .LVU275
+ 1205 04b0 284C     		ldr	r4, .L109+4
+ 1206 04b2 0022     		movs	r2, #0
+ 1207 04b4 4FF48051 		mov	r1, #4096
+ 1208 04b8 2046     		mov	r0, r4
+ 1209 04ba FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1210              	.LVL130:
+ 295:App/Src/error_indicator.c ****         osDelay(100);
+ 1211              		.loc 1 295 9 view .LVU276
+ 1212 04be 6420     		movs	r0, #100
+ 1213 04c0 FFF7FEFF 		bl	osDelay
+ 1214              	.LVL131:
+ 296:App/Src/error_indicator.c ****         HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+ 1215              		.loc 1 296 9 view .LVU277
+ 1216 04c4 0122     		movs	r2, #1
+ 1217 04c6 4FF48051 		mov	r1, #4096
+ 1218 04ca 2046     		mov	r0, r4
+ 1219 04cc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1220              	.LVL132:
+ 297:App/Src/error_indicator.c ****         osDelay(100);
+ 1221              		.loc 1 297 9 view .LVU278
+ 1222 04d0 6420     		movs	r0, #100
+ 1223 04d2 FFF7FEFF 		bl	osDelay
+ 1224              	.LVL133:
+ 1225              	.LBE6:
+ 111:App/Src/error_indicator.c ****     {
+ 1226              		.loc 1 111 10 view .LVU279
+ 1227              	.L66:
+ 111:App/Src/error_indicator.c ****     {
+ 1228              		.loc 1 111 5 view .LVU280
+ 1229              	.LBB9:
+ 114:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1230              		.loc 1 114 9 view .LVU281
+ 114:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ARM GAS  /tmp/ccKg8OAe.s 			page 31
+
+
+ 1231              		.loc 1 114 16 is_stmt 0 view .LVU282
+ 1232 04d6 204B     		ldr	r3, .L109+8
+ 1233 04d8 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 114:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+ 1234              		.loc 1 114 11 view .LVU283
+ 1235 04dc 032B     		cmp	r3, #3
+ 1236 04de 3FF4A6AD 		beq	.L24
+ 115:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+ 1237              		.loc 1 115 13 is_stmt 1 view .LVU284
+ 1238 04e2 1C4C     		ldr	r4, .L109+4
+ 1239 04e4 0022     		movs	r2, #0
+ 1240 04e6 4FF40051 		mov	r1, #8192
+ 1241 04ea 2046     		mov	r0, r4
+ 1242 04ec FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1243              	.LVL134:
+ 116:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+ 1244              		.loc 1 116 13 view .LVU285
+ 1245 04f0 0022     		movs	r2, #0
+ 1246 04f2 4FF48051 		mov	r1, #4096
+ 1247 04f6 2046     		mov	r0, r4
+ 1248 04f8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1249              	.LVL135:
+ 117:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+ 1250              		.loc 1 117 13 view .LVU286
+ 1251 04fc 0022     		movs	r2, #0
+ 1252 04fe 4FF48041 		mov	r1, #16384
+ 1253 0502 2046     		mov	r0, r4
+ 1254 0504 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1255              	.LVL136:
+ 118:App/Src/error_indicator.c ****             osDelay(500);
+ 1256              		.loc 1 118 13 view .LVU287
+ 1257 0508 0022     		movs	r2, #0
+ 1258 050a 4FF40041 		mov	r1, #32768
+ 1259 050e 2046     		mov	r0, r4
+ 1260 0510 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1261              	.LVL137:
+ 119:App/Src/error_indicator.c ****             /*  Failed to create RMW transport                          */
+ 1262              		.loc 1 119 13 view .LVU288
+ 1263 0514 4FF4FA70 		mov	r0, #500
+ 1264 0518 FFF7FEFF 		bl	osDelay
+ 1265              	.LVL138:
+ 121:App/Src/error_indicator.c ****                 blink_error(3, 1, 200, 200);
+ 1266              		.loc 1 121 13 view .LVU289
+ 121:App/Src/error_indicator.c ****                 blink_error(3, 1, 200, 200);
+ 1267              		.loc 1 121 21 is_stmt 0 view .LVU290
+ 1268 051c 0E4B     		ldr	r3, .L109+8
+ 1269 051e 93F84E30 		ldrb	r3, [r3, #78]	@ zero_extendqisi2
+ 121:App/Src/error_indicator.c ****                 blink_error(3, 1, 200, 200);
+ 1270              		.loc 1 121 15 view .LVU291
+ 1271 0522 13F0010F 		tst	r3, #1
+ 1272 0526 7FF46DAD 		bne	.L104
+ 124:App/Src/error_indicator.c ****                 blink_error(3, 2, 200, 200);
+ 1273              		.loc 1 124 18 is_stmt 1 view .LVU292
+ 124:App/Src/error_indicator.c ****                 blink_error(3, 2, 200, 200);
+ 1274              		.loc 1 124 20 is_stmt 0 view .LVU293
+ 1275 052a 13F0020F 		tst	r3, #2
+ 1276 052e 7FF470AD 		bne	.L105
+ARM GAS  /tmp/ccKg8OAe.s 			page 32
+
+
+ 127:App/Src/error_indicator.c ****                 blink_error(3, 3, 200, 200);
+ 1277              		.loc 1 127 18 is_stmt 1 view .LVU294
+ 127:App/Src/error_indicator.c ****                 blink_error(3, 3, 200, 200);
+ 1278              		.loc 1 127 20 is_stmt 0 view .LVU295
+ 1279 0532 13F0040F 		tst	r3, #4
+ 1280 0536 7FF473AD 		bne	.L106
+ 130:App/Src/error_indicator.c ****                 blink_error(3, 4, 200, 200);
+ 1281              		.loc 1 130 18 is_stmt 1 view .LVU296
+ 130:App/Src/error_indicator.c ****                 blink_error(3, 4, 200, 200);
+ 1282              		.loc 1 130 20 is_stmt 0 view .LVU297
+ 1283 053a 13F0080F 		tst	r3, #8
+ 1284 053e 3FF489AD 		beq	.L26
+ 131:App/Src/error_indicator.c ****                 /// TODO: find which node has the error and indicate the node with fast bilnks.
+ 1285              		.loc 1 131 17 is_stmt 1 view .LVU298
+ 1286 0542 C823     		movs	r3, #200
+ 1287 0544 1A46     		mov	r2, r3
+ 1288 0546 0421     		movs	r1, #4
+ 1289 0548 0320     		movs	r0, #3
+ 1290 054a FFF7FEFF 		bl	blink_error
+ 1291              	.LVL139:
+ 1292 054e 81E5     		b	.L26
+ 1293              	.L110:
+ 1294              		.align	2
+ 1295              	.L109:
+ 1296 0550 00000000 		.word	motor
+ 1297 0554 000C0240 		.word	1073875968
+ 1298 0558 00000000 		.word	uros
+ 1299              	.LBE9:
+ 1300              		.cfi_endproc
+ 1301              	.LFE140:
+ 1303              		.global	rcl_err_code
+ 1304              		.global	rmw_err_code
+ 1305              		.section	.bss.rcl_err_code,"aw",%nobits
+ 1306              		.align	2
+ 1309              	rcl_err_code:
+ 1310 0000 00000000 		.space	4
+ 1311              		.section	.bss.rmw_err_code,"aw",%nobits
+ 1312              		.align	2
+ 1315              	rmw_err_code:
+ 1316 0000 00000000 		.space	4
+ 1317              		.text
+ 1318              	.Letext0:
+ 1319              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 1320              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1321              		.file 4 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/ret_
+ 1322              		.file 5 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1323              		.file 6 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
+ 1324              		.file 7 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
+ 1325              		.file 8 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/type
+ 1326              		.file 9 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/type
+ 1327              		.file 10 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1328              		.file 11 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1329              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1330              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 1331              		.file 14 "App/Inc/error_indicator.h"
+ 1332              		.file 15 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/all
+ 1333              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
+ARM GAS  /tmp/ccKg8OAe.s 			page 33
+
+
+ 1334              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
+ 1335              		.file 18 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/tim
+ 1336              		.file 19 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/qos
+ 1337              		.file 20 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/ty
+ 1338              		.file 21 "App/Inc/hyperdog_uros_app.h"
+ 1339              		.file 22 "Core/Inc/can.h"
+ 1340              		.file 23 "App/Inc/motor_defs.h"
+ 1341              		.file 24 "App/Inc/motor_typedefs.h"
+ 1342              		.file 25 "App/Inc/minicheetah_motor.h"
+ 1343              		.file 26 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ARM GAS  /tmp/ccKg8OAe.s 			page 34
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 error_indicator.c
+     /tmp/ccKg8OAe.s:20     .text.blink_error:0000000000000000 $t
+     /tmp/ccKg8OAe.s:26     .text.blink_error:0000000000000000 blink_error
+     /tmp/ccKg8OAe.s:85     .text.blink_error:000000000000004a $d
+     /tmp/ccKg8OAe.s:89     .text.blink_error:000000000000004e $t
+     /tmp/ccKg8OAe.s:315    .text.blink_error:0000000000000170 $d
+     /tmp/ccKg8OAe.s:320    .text.no_error:0000000000000000 $t
+     /tmp/ccKg8OAe.s:326    .text.no_error:0000000000000000 no_error
+     /tmp/ccKg8OAe.s:423    .text.no_error:0000000000000098 $d
+     /tmp/ccKg8OAe.s:428    .text.error_indicator:0000000000000000 $t
+     /tmp/ccKg8OAe.s:434    .text.error_indicator:0000000000000000 error_indicator
+     /tmp/ccKg8OAe.s:930    .text.error_indicator:0000000000000310 $d
+     /tmp/ccKg8OAe.s:936    .text.error_indicator:0000000000000318 $t
+     /tmp/ccKg8OAe.s:1296   .text.error_indicator:0000000000000550 $d
+     /tmp/ccKg8OAe.s:1309   .bss.rcl_err_code:0000000000000000 rcl_err_code
+     /tmp/ccKg8OAe.s:1315   .bss.rmw_err_code:0000000000000000 rmw_err_code
+     /tmp/ccKg8OAe.s:1306   .bss.rcl_err_code:0000000000000000 $d
+     /tmp/ccKg8OAe.s:1312   .bss.rmw_err_code:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+osDelay
+hcan1
+motor
+uros

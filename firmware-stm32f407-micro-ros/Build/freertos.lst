@@ -1,0 +1,664 @@
+ARM GAS  /tmp/ccIknrlO.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"freertos.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.StartDefaultTask,"ax",%progbits
+  20              		.align	1
+  21              		.global	StartDefaultTask
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	StartDefaultTask:
+  27              	.LVL0:
+  28              	.LFB139:
+  29              		.file 1 "Core/Src/freertos.c"
+   1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/freertos.c **** /**
+   3:Core/Src/freertos.c ****   ******************************************************************************
+   4:Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Core/Src/freertos.c ****   ******************************************************************************
+   7:Core/Src/freertos.c ****   * @attention
+   8:Core/Src/freertos.c ****   *
+   9:Core/Src/freertos.c ****   * Copyright (c) 2023 STMicroelectronics.
+  10:Core/Src/freertos.c ****   * All rights reserved.
+  11:Core/Src/freertos.c ****   *
+  12:Core/Src/freertos.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:Core/Src/freertos.c ****   * in the root directory of this software component.
+  14:Core/Src/freertos.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:Core/Src/freertos.c ****   *
+  16:Core/Src/freertos.c ****   ******************************************************************************
+  17:Core/Src/freertos.c ****   */
+  18:Core/Src/freertos.c **** /* USER CODE END Header */
+  19:Core/Src/freertos.c **** 
+  20:Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/freertos.c **** #include "FreeRTOS.h"
+  22:Core/Src/freertos.c **** #include "task.h"
+  23:Core/Src/freertos.c **** #include "main.h"
+  24:Core/Src/freertos.c **** #include "cmsis_os.h"
+  25:Core/Src/freertos.c **** 
+  26:Core/Src/freertos.c **** 
+  27:Core/Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  28:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  29:Core/Src/freertos.c **** #include "stm32f4xx_ll_usb.h"
+ARM GAS  /tmp/ccIknrlO.s 			page 2
+
+
+  30:Core/Src/freertos.c **** #include "can.h"
+  31:Core/Src/freertos.c **** #include "usart.h"
+  32:Core/Src/freertos.c **** 
+  33:Core/Src/freertos.c **** #include "hyperdog_uros_app.h"
+  34:Core/Src/freertos.c **** #include "error_indicator.h"
+  35:Core/Src/freertos.c **** #include "minicheetah_motor.h"
+  36:Core/Src/freertos.c **** /* USER CODE END Includes */
+  37:Core/Src/freertos.c **** 
+  38:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  39:Core/Src/freertos.c **** typedef StaticTask_t osStaticThreadDef_t;
+  40:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  41:Core/Src/freertos.c **** HAL_StatusTypeDef can_status;
+  42:Core/Src/freertos.c **** // Motor_TypeDef motor[NUM_OF_MOTORS];
+  43:Core/Src/freertos.c **** // uint16_t motor_error_code;
+  44:Core/Src/freertos.c **** // uint8_t motor_status;
+  45:Core/Src/freertos.c **** /* USER CODE END PTD */
+  46:Core/Src/freertos.c **** 
+  47:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  48:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  49:Core/Src/freertos.c **** 
+  50:Core/Src/freertos.c **** /* USER CODE END PD */
+  51:Core/Src/freertos.c **** 
+  52:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  53:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  54:Core/Src/freertos.c **** 
+  55:Core/Src/freertos.c **** /* USER CODE END PM */
+  56:Core/Src/freertos.c **** 
+  57:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  58:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  59:Core/Src/freertos.c **** 
+  60:Core/Src/freertos.c **** /* USER CODE END Variables */
+  61:Core/Src/freertos.c **** /* Definitions for defaultTask */
+  62:Core/Src/freertos.c **** osThreadId_t defaultTaskHandle;
+  63:Core/Src/freertos.c **** uint32_t defaultTaskBuffer[ 3000 ];
+  64:Core/Src/freertos.c **** osStaticThreadDef_t defaultTaskControlBlock;
+  65:Core/Src/freertos.c **** const osThreadAttr_t defaultTask_attributes = {
+  66:Core/Src/freertos.c ****   .name = "defaultTask",
+  67:Core/Src/freertos.c ****   .cb_mem = &defaultTaskControlBlock,
+  68:Core/Src/freertos.c ****   .cb_size = sizeof(defaultTaskControlBlock),
+  69:Core/Src/freertos.c ****   .stack_mem = &defaultTaskBuffer[0],
+  70:Core/Src/freertos.c ****   .stack_size = sizeof(defaultTaskBuffer),
+  71:Core/Src/freertos.c ****   .priority = (osPriority_t) osPriorityHigh2,
+  72:Core/Src/freertos.c **** };
+  73:Core/Src/freertos.c **** 
+  74:Core/Src/freertos.c **** 
+  75:Core/Src/freertos.c **** /* Definitions for errorIndicatorTask */
+  76:Core/Src/freertos.c **** osThreadId_t errorIndicatorTaskHandle;
+  77:Core/Src/freertos.c **** const osThreadAttr_t errorIndicatorTask_attributes = {
+  78:Core/Src/freertos.c ****   .name = "errorIndicatorTask",
+  79:Core/Src/freertos.c ****   .stack_size = 128 * 4,
+  80:Core/Src/freertos.c ****   .priority = (osPriority_t) osPriorityNormal,
+  81:Core/Src/freertos.c **** };
+  82:Core/Src/freertos.c **** 
+  83:Core/Src/freertos.c **** 
+  84:Core/Src/freertos.c **** /* Definitions for CAN */
+  85:Core/Src/freertos.c **** osThreadId_t CANTaskHandle;
+  86:Core/Src/freertos.c **** const osThreadAttr_t CANTask_attributes = {
+ARM GAS  /tmp/ccIknrlO.s 			page 3
+
+
+  87:Core/Src/freertos.c ****   .name = "canTask",
+  88:Core/Src/freertos.c ****   .stack_size = 128 * 4,
+  89:Core/Src/freertos.c ****   .priority = (osPriority_t) osPriorityHigh1,
+  90:Core/Src/freertos.c **** };
+  91:Core/Src/freertos.c **** 
+  92:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  93:Core/Src/freertos.c **** 
+  94:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  95:Core/Src/freertos.c **** void StartErrorIndicatorTask(void *argument);
+  96:Core/Src/freertos.c **** void StartCANTask(void* argument);
+  97:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  98:Core/Src/freertos.c **** 
+  99:Core/Src/freertos.c **** void StartDefaultTask(void *argument);
+ 100:Core/Src/freertos.c **** 
+ 101:Core/Src/freertos.c **** 
+ 102:Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+ 103:Core/Src/freertos.c **** 
+ 104:Core/Src/freertos.c **** /**
+ 105:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
+ 106:Core/Src/freertos.c ****   * @param  None
+ 107:Core/Src/freertos.c ****   * @retval None
+ 108:Core/Src/freertos.c ****   */
+ 109:Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+ 110:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 111:Core/Src/freertos.c **** 
+ 112:Core/Src/freertos.c ****   /* USER CODE END Init */
+ 113:Core/Src/freertos.c **** 
+ 114:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_MUTEX */
+ 115:Core/Src/freertos.c ****   /* add mutexes, ... */
+ 116:Core/Src/freertos.c ****   /* USER CODE END RTOS_MUTEX */
+ 117:Core/Src/freertos.c **** 
+ 118:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_SEMAPHORES */
+ 119:Core/Src/freertos.c ****   /* add semaphores, ... */
+ 120:Core/Src/freertos.c ****   /* USER CODE END RTOS_SEMAPHORES */
+ 121:Core/Src/freertos.c **** 
+ 122:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_TIMERS */
+ 123:Core/Src/freertos.c ****   /* start timers, add new ones, ... */
+ 124:Core/Src/freertos.c ****   /* USER CODE END RTOS_TIMERS */
+ 125:Core/Src/freertos.c **** 
+ 126:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_QUEUES */
+ 127:Core/Src/freertos.c ****   /* add queues, ... */
+ 128:Core/Src/freertos.c ****   /* USER CODE END RTOS_QUEUES */
+ 129:Core/Src/freertos.c **** 
+ 130:Core/Src/freertos.c ****   /* Create the thread(s) */
+ 131:Core/Src/freertos.c ****   /* creation of defaultTask */
+ 132:Core/Src/freertos.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+ 133:Core/Src/freertos.c **** 
+ 134:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_THREADS */
+ 135:Core/Src/freertos.c ****   errorIndicatorTaskHandle = osThreadNew(StartErrorIndicatorTask, NULL, &errorIndicatorTask_attribu
+ 136:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 137:Core/Src/freertos.c **** 
+ 138:Core/Src/freertos.c ****   /* USER CODE BEGIN RTOS_EVENTS */
+ 139:Core/Src/freertos.c ****   CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
+ 140:Core/Src/freertos.c ****   /* USER CODE END RTOS_EVENTS */
+ 141:Core/Src/freertos.c **** 
+ 142:Core/Src/freertos.c **** }
+ 143:Core/Src/freertos.c **** 
+ARM GAS  /tmp/ccIknrlO.s 			page 4
+
+
+ 144:Core/Src/freertos.c **** 
+ 145:Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartDefaultTask */
+ 146:Core/Src/freertos.c **** /**
+ 147:Core/Src/freertos.c ****   * @brief  Function implementing the defaultTask thread: Micro-ROS.
+ 148:Core/Src/freertos.c ****   * @param  argument: Not used
+ 149:Core/Src/freertos.c ****   * @retval None
+ 150:Core/Src/freertos.c ****   */
+ 151:Core/Src/freertos.c **** void StartDefaultTask(void *argument)
+ 152:Core/Src/freertos.c **** {
+  30              		.loc 1 152 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 152 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+ 153:Core/Src/freertos.c ****   /* USER CODE BEGIN 5 */
+ 154:Core/Src/freertos.c **** 
+ 155:Core/Src/freertos.c ****   // micro-ROS configuration
+ 156:Core/Src/freertos.c **** 
+ 157:Core/Src/freertos.c ****   // init_uros_node();  
+ 158:Core/Src/freertos.c ****   // spin_uros_node(2);
+ 159:Core/Src/freertos.c **** 
+ 160:Core/Src/freertos.c ****   if(!initMicroROS(&huart2)){
+  40              		.loc 1 160 3 is_stmt 1 view .LVU2
+  41              		.loc 1 160 7 is_stmt 0 view .LVU3
+  42 0002 0548     		ldr	r0, .L6
+  43              	.LVL1:
+  44              		.loc 1 160 7 view .LVU4
+  45 0004 FFF7FEFF 		bl	initMicroROS
+  46              	.LVL2:
+  47              		.loc 1 160 5 view .LVU5
+  48 0008 00B1     		cbz	r0, .L5
+ 161:Core/Src/freertos.c ****     init_hyperdog_node();
+ 162:Core/Src/freertos.c ****     while (1)
+ 163:Core/Src/freertos.c ****     {
+ 164:Core/Src/freertos.c ****       void* support_state = uros.allocator.state;
+ 165:Core/Src/freertos.c ****       osDelay(100);
+ 166:Core/Src/freertos.c ****     }
+ 167:Core/Src/freertos.c ****     
+ 168:Core/Src/freertos.c ****   }
+ 169:Core/Src/freertos.c ****   
+ 170:Core/Src/freertos.c ****   /* USER CODE END 5 */
+ 171:Core/Src/freertos.c **** }
+  49              		.loc 1 171 1 view .LVU6
+  50 000a 08BD     		pop	{r3, pc}
+  51              	.L5:
+  52              	.LBB2:
+ 161:Core/Src/freertos.c ****     init_hyperdog_node();
+  53              		.loc 1 161 5 is_stmt 1 view .LVU7
+  54 000c FFF7FEFF 		bl	init_hyperdog_node
+  55              	.LVL3:
+  56              	.L3:
+ 162:Core/Src/freertos.c ****     {
+ARM GAS  /tmp/ccIknrlO.s 			page 5
+
+
+  57              		.loc 1 162 5 discriminator 1 view .LVU8
+  58              	.LBB3:
+ 164:Core/Src/freertos.c ****       osDelay(100);
+  59              		.loc 1 164 7 discriminator 1 view .LVU9
+ 165:Core/Src/freertos.c ****     }
+  60              		.loc 1 165 7 discriminator 1 view .LVU10
+  61 0010 6420     		movs	r0, #100
+  62 0012 FFF7FEFF 		bl	osDelay
+  63              	.LVL4:
+  64              	.LBE3:
+ 162:Core/Src/freertos.c ****     {
+  65              		.loc 1 162 11 discriminator 1 view .LVU11
+  66 0016 FBE7     		b	.L3
+  67              	.L7:
+  68              		.align	2
+  69              	.L6:
+  70 0018 00000000 		.word	huart2
+  71              	.LBE2:
+  72              		.cfi_endproc
+  73              	.LFE139:
+  75              		.section	.text.StartErrorIndicatorTask,"ax",%progbits
+  76              		.align	1
+  77              		.global	StartErrorIndicatorTask
+  78              		.syntax unified
+  79              		.thumb
+  80              		.thumb_func
+  82              	StartErrorIndicatorTask:
+  83              	.LVL5:
+  84              	.LFB140:
+ 172:Core/Src/freertos.c **** /* USER CODE END Header_StartDefaultTask */
+ 173:Core/Src/freertos.c **** 
+ 174:Core/Src/freertos.c **** 
+ 175:Core/Src/freertos.c **** /* Private application code --------------------------------------------------*/
+ 176:Core/Src/freertos.c **** /* USER CODE BEGIN Application */
+ 177:Core/Src/freertos.c **** 
+ 178:Core/Src/freertos.c **** 
+ 179:Core/Src/freertos.c **** void StartErrorIndicatorTask(void *argument)
+ 180:Core/Src/freertos.c **** {
+  85              		.loc 1 180 1 view -0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              		.loc 1 180 1 is_stmt 0 view .LVU13
+  90 0000 08B5     		push	{r3, lr}
+  91              	.LCFI1:
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 3, -8
+  94              		.cfi_offset 14, -4
+ 181:Core/Src/freertos.c ****   /* USER CODE BEGIN 6 */
+ 182:Core/Src/freertos.c ****   error_indicator();
+  95              		.loc 1 182 3 is_stmt 1 view .LVU14
+  96 0002 FFF7FEFF 		bl	error_indicator
+  97              	.LVL6:
+ 183:Core/Src/freertos.c ****   /* USER CODE END 6 */
+ 184:Core/Src/freertos.c **** }
+  98              		.loc 1 184 1 is_stmt 0 view .LVU15
+  99 0006 08BD     		pop	{r3, pc}
+ARM GAS  /tmp/ccIknrlO.s 			page 6
+
+
+ 100              		.cfi_endproc
+ 101              	.LFE140:
+ 103              		.section	.text.StartCANTask,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	StartCANTask
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	StartCANTask:
+ 111              	.LVL7:
+ 112              	.LFB141:
+ 185:Core/Src/freertos.c **** 
+ 186:Core/Src/freertos.c **** void StartCANTask(void* argument)
+ 187:Core/Src/freertos.c **** {
+ 113              		.loc 1 187 1 is_stmt 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ Volatile: function does not return.
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 118              		.loc 1 187 1 is_stmt 0 view .LVU17
+ 119 0000 08B5     		push	{r3, lr}
+ 120              	.LCFI2:
+ 121              		.cfi_def_cfa_offset 8
+ 122              		.cfi_offset 3, -8
+ 123              		.cfi_offset 14, -4
+ 188:Core/Src/freertos.c **** 
+ 189:Core/Src/freertos.c ****   MOTOR_initId(FR_HIP, 1);
+ 124              		.loc 1 189 3 is_stmt 1 view .LVU18
+ 125 0002 0121     		movs	r1, #1
+ 126 0004 0020     		movs	r0, #0
+ 127              	.LVL8:
+ 128              		.loc 1 189 3 is_stmt 0 view .LVU19
+ 129 0006 FFF7FEFF 		bl	MOTOR_initId
+ 130              	.LVL9:
+ 190:Core/Src/freertos.c ****   MOTOR_initParams(FR_HIP, 12.5, 60, 500, 5, 18, 40);
+ 131              		.loc 1 190 3 is_stmt 1 view .LVU20
+ 132 000a DFED132A 		vldr.32	s5, .L13
+ 133 000e B3EE022A 		vmov.f32	s4, #1.8e+1
+ 134 0012 F1EE041A 		vmov.f32	s3, #5.0e+0
+ 135 0016 9FED111A 		vldr.32	s2, .L13+4
+ 136 001a DFED110A 		vldr.32	s1, .L13+8
+ 137 001e B2EE090A 		vmov.f32	s0, #1.25e+1
+ 138 0022 0020     		movs	r0, #0
+ 139 0024 FFF7FEFF 		bl	MOTOR_initParams
+ 140              	.LVL10:
+ 191:Core/Src/freertos.c ****   MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
+ 141              		.loc 1 191 3 view .LVU21
+ 142 0028 F2EE0E1A 		vmov.f32	s3, #1.5e+1
+ 143 002c B0EE081A 		vmov.f32	s2, #3.0e+0
+ 144 0030 FFEE000A 		vmov.f32	s1, #-1.0e+0
+ 145 0034 9FED0B0A 		vldr.32	s0, .L13+12
+ 146 0038 0020     		movs	r0, #0
+ 147 003a FFF7FEFF 		bl	MOTOR_initCtrlLimits
+ 148              	.LVL11:
+ 192:Core/Src/freertos.c ****   MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
+ 149              		.loc 1 192 3 view .LVU22
+ 150 003e 0022     		movs	r2, #0
+ARM GAS  /tmp/ccIknrlO.s 			page 7
+
+
+ 151 0040 0949     		ldr	r1, .L13+16
+ 152 0042 1046     		mov	r0, r2
+ 153 0044 FFF7FEFF 		bl	MOTOR_initCANConfig
+ 154              	.LVL12:
+ 155              	.L11:
+ 193:Core/Src/freertos.c ****   // MOTOR_sendHeatbeat(FR_HIP);
+ 194:Core/Src/freertos.c ****   // can_rx_init();
+ 195:Core/Src/freertos.c ****   // can_tx_init();
+ 196:Core/Src/freertos.c ****   
+ 197:Core/Src/freertos.c ****   while(1){
+ 156              		.loc 1 197 3 discriminator 1 view .LVU23
+ 198:Core/Src/freertos.c ****       // send_can_test();
+ 199:Core/Src/freertos.c ****       // MOTOR_sendHeatbeat(FR_HIP);
+ 200:Core/Src/freertos.c ****       MOTOR_enable(FR_HIP);
+ 157              		.loc 1 200 7 discriminator 1 view .LVU24
+ 158 0048 0020     		movs	r0, #0
+ 159 004a FFF7FEFF 		bl	MOTOR_enable
+ 160              	.LVL13:
+ 201:Core/Src/freertos.c ****       osDelay(10);
+ 161              		.loc 1 201 7 discriminator 1 view .LVU25
+ 162 004e 0A20     		movs	r0, #10
+ 163 0050 FFF7FEFF 		bl	osDelay
+ 164              	.LVL14:
+ 197:Core/Src/freertos.c ****       // send_can_test();
+ 165              		.loc 1 197 8 discriminator 1 view .LVU26
+ 166 0054 F8E7     		b	.L11
+ 167              	.L14:
+ 168 0056 00BF     		.align	2
+ 169              	.L13:
+ 170 0058 00002042 		.word	1109393408
+ 171 005c 0000FA43 		.word	1140457472
+ 172 0060 00007042 		.word	1114636288
+ 173 0064 9A99993F 		.word	1067030938
+ 174 0068 00000000 		.word	hcan1
+ 175              		.cfi_endproc
+ 176              	.LFE141:
+ 178              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	MX_FREERTOS_Init
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	MX_FREERTOS_Init:
+ 186              	.LFB138:
+ 109:Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 187              		.loc 1 109 29 view -0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191 0000 08B5     		push	{r3, lr}
+ 192              	.LCFI3:
+ 193              		.cfi_def_cfa_offset 8
+ 194              		.cfi_offset 3, -8
+ 195              		.cfi_offset 14, -4
+ 132:Core/Src/freertos.c **** 
+ 196              		.loc 1 132 3 view .LVU28
+ 132:Core/Src/freertos.c **** 
+ARM GAS  /tmp/ccIknrlO.s 			page 8
+
+
+ 197              		.loc 1 132 23 is_stmt 0 view .LVU29
+ 198 0002 0B4A     		ldr	r2, .L17
+ 199 0004 0021     		movs	r1, #0
+ 200 0006 0B48     		ldr	r0, .L17+4
+ 201 0008 FFF7FEFF 		bl	osThreadNew
+ 202              	.LVL15:
+ 132:Core/Src/freertos.c **** 
+ 203              		.loc 1 132 21 view .LVU30
+ 204 000c 0A4B     		ldr	r3, .L17+8
+ 205 000e 1860     		str	r0, [r3]
+ 135:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 206              		.loc 1 135 3 is_stmt 1 view .LVU31
+ 135:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 207              		.loc 1 135 30 is_stmt 0 view .LVU32
+ 208 0010 0A4A     		ldr	r2, .L17+12
+ 209 0012 0021     		movs	r1, #0
+ 210 0014 0A48     		ldr	r0, .L17+16
+ 211 0016 FFF7FEFF 		bl	osThreadNew
+ 212              	.LVL16:
+ 135:Core/Src/freertos.c ****   /* USER CODE END RTOS_THREADS */
+ 213              		.loc 1 135 28 view .LVU33
+ 214 001a 0A4B     		ldr	r3, .L17+20
+ 215 001c 1860     		str	r0, [r3]
+ 139:Core/Src/freertos.c ****   /* USER CODE END RTOS_EVENTS */
+ 216              		.loc 1 139 3 is_stmt 1 view .LVU34
+ 139:Core/Src/freertos.c ****   /* USER CODE END RTOS_EVENTS */
+ 217              		.loc 1 139 19 is_stmt 0 view .LVU35
+ 218 001e 0A4A     		ldr	r2, .L17+24
+ 219 0020 0021     		movs	r1, #0
+ 220 0022 0A48     		ldr	r0, .L17+28
+ 221 0024 FFF7FEFF 		bl	osThreadNew
+ 222              	.LVL17:
+ 139:Core/Src/freertos.c ****   /* USER CODE END RTOS_EVENTS */
+ 223              		.loc 1 139 17 view .LVU36
+ 224 0028 094B     		ldr	r3, .L17+32
+ 225 002a 1860     		str	r0, [r3]
+ 142:Core/Src/freertos.c **** 
+ 226              		.loc 1 142 1 view .LVU37
+ 227 002c 08BD     		pop	{r3, pc}
+ 228              	.L18:
+ 229 002e 00BF     		.align	2
+ 230              	.L17:
+ 231 0030 00000000 		.word	.LANCHOR0
+ 232 0034 00000000 		.word	StartDefaultTask
+ 233 0038 00000000 		.word	.LANCHOR1
+ 234 003c 00000000 		.word	.LANCHOR2
+ 235 0040 00000000 		.word	StartErrorIndicatorTask
+ 236 0044 00000000 		.word	.LANCHOR3
+ 237 0048 00000000 		.word	.LANCHOR4
+ 238 004c 00000000 		.word	StartCANTask
+ 239 0050 00000000 		.word	.LANCHOR5
+ 240              		.cfi_endproc
+ 241              	.LFE138:
+ 243              		.global	CANTask_attributes
+ 244              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 245              		.align	2
+ 246              	.LC0:
+ARM GAS  /tmp/ccIknrlO.s 			page 9
+
+
+ 247 0000 63616E54 		.ascii	"canTask\000"
+ 247      61736B00 
+ 248              		.global	CANTaskHandle
+ 249              		.global	errorIndicatorTask_attributes
+ 250              		.align	2
+ 251              	.LC1:
+ 252 0008 6572726F 		.ascii	"errorIndicatorTask\000"
+ 252      72496E64 
+ 252      69636174 
+ 252      6F725461 
+ 252      736B00
+ 253              		.global	errorIndicatorTaskHandle
+ 254              		.global	defaultTask_attributes
+ 255 001b 00       		.align	2
+ 256              	.LC2:
+ 257 001c 64656661 		.ascii	"defaultTask\000"
+ 257      756C7454 
+ 257      61736B00 
+ 258              		.global	defaultTaskControlBlock
+ 259              		.global	defaultTaskBuffer
+ 260              		.global	defaultTaskHandle
+ 261              		.global	can_status
+ 262              		.section	.bss.CANTaskHandle,"aw",%nobits
+ 263              		.align	2
+ 264              		.set	.LANCHOR5,. + 0
+ 267              	CANTaskHandle:
+ 268 0000 00000000 		.space	4
+ 269              		.section	.bss.can_status,"aw",%nobits
+ 272              	can_status:
+ 273 0000 00       		.space	1
+ 274              		.section	.bss.defaultTaskBuffer,"aw",%nobits
+ 275              		.align	2
+ 278              	defaultTaskBuffer:
+ 279 0000 00000000 		.space	12000
+ 279      00000000 
+ 279      00000000 
+ 279      00000000 
+ 279      00000000 
+ 280              		.section	.bss.defaultTaskControlBlock,"aw",%nobits
+ 281              		.align	2
+ 284              	defaultTaskControlBlock:
+ 285 0000 00000000 		.space	92
+ 285      00000000 
+ 285      00000000 
+ 285      00000000 
+ 285      00000000 
+ 286              		.section	.bss.defaultTaskHandle,"aw",%nobits
+ 287              		.align	2
+ 288              		.set	.LANCHOR1,. + 0
+ 291              	defaultTaskHandle:
+ 292 0000 00000000 		.space	4
+ 293              		.section	.bss.errorIndicatorTaskHandle,"aw",%nobits
+ 294              		.align	2
+ 295              		.set	.LANCHOR3,. + 0
+ 298              	errorIndicatorTaskHandle:
+ 299 0000 00000000 		.space	4
+ 300              		.section	.rodata.CANTask_attributes,"a"
+ARM GAS  /tmp/ccIknrlO.s 			page 10
+
+
+ 301              		.align	2
+ 302              		.set	.LANCHOR4,. + 0
+ 305              	CANTask_attributes:
+ 306 0000 00000000 		.word	.LC0
+ 307 0004 00000000 		.space	16
+ 307      00000000 
+ 307      00000000 
+ 307      00000000 
+ 308 0014 00020000 		.word	512
+ 309 0018 29000000 		.word	41
+ 310 001c 00000000 		.space	8
+ 310      00000000 
+ 311              		.section	.rodata.defaultTask_attributes,"a"
+ 312              		.align	2
+ 313              		.set	.LANCHOR0,. + 0
+ 316              	defaultTask_attributes:
+ 317 0000 1C000000 		.word	.LC2
+ 318 0004 00000000 		.space	4
+ 319 0008 00000000 		.word	defaultTaskControlBlock
+ 320 000c 5C000000 		.word	92
+ 321 0010 00000000 		.word	defaultTaskBuffer
+ 322 0014 E02E0000 		.word	12000
+ 323 0018 2A000000 		.word	42
+ 324 001c 00000000 		.space	8
+ 324      00000000 
+ 325              		.section	.rodata.errorIndicatorTask_attributes,"a"
+ 326              		.align	2
+ 327              		.set	.LANCHOR2,. + 0
+ 330              	errorIndicatorTask_attributes:
+ 331 0000 08000000 		.word	.LC1
+ 332 0004 00000000 		.space	16
+ 332      00000000 
+ 332      00000000 
+ 332      00000000 
+ 333 0014 00020000 		.word	512
+ 334 0018 18000000 		.word	24
+ 335 001c 00000000 		.space	8
+ 335      00000000 
+ 336              		.text
+ 337              	.Letext0:
+ 338              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 339              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 340              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 341              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+ 342              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+ 343              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 344              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 345              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 346              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 347              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 348              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 349              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 350              		.file 14 "Core/Inc/can.h"
+ 351              		.file 15 "Core/Inc/usart.h"
+ 352              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils
+ 353              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/all
+ 354              		.file 18 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/ret
+ARM GAS  /tmp/ccIknrlO.s 			page 11
+
+
+ 355              		.file 19 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils
+ 356              		.file 20 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/typ
+ 357              		.file 21 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/typ
+ 358              		.file 22 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
+ 359              		.file 23 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
+ 360              		.file 24 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/tim
+ 361              		.file 25 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/qos
+ 362              		.file 26 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/ty
+ 363              		.file 27 "App/Inc/hyperdog_uros_app.h"
+ 364              		.file 28 "App/Inc/motor_defs.h"
+ 365              		.file 29 "App/Inc/minicheetah_motor.h"
+ 366              		.file 30 "App/Inc/error_indicator.h"
+ARM GAS  /tmp/ccIknrlO.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/ccIknrlO.s:20     .text.StartDefaultTask:0000000000000000 $t
+     /tmp/ccIknrlO.s:26     .text.StartDefaultTask:0000000000000000 StartDefaultTask
+     /tmp/ccIknrlO.s:70     .text.StartDefaultTask:0000000000000018 $d
+     /tmp/ccIknrlO.s:76     .text.StartErrorIndicatorTask:0000000000000000 $t
+     /tmp/ccIknrlO.s:82     .text.StartErrorIndicatorTask:0000000000000000 StartErrorIndicatorTask
+     /tmp/ccIknrlO.s:104    .text.StartCANTask:0000000000000000 $t
+     /tmp/ccIknrlO.s:110    .text.StartCANTask:0000000000000000 StartCANTask
+     /tmp/ccIknrlO.s:170    .text.StartCANTask:0000000000000058 $d
+     /tmp/ccIknrlO.s:179    .text.MX_FREERTOS_Init:0000000000000000 $t
+     /tmp/ccIknrlO.s:185    .text.MX_FREERTOS_Init:0000000000000000 MX_FREERTOS_Init
+     /tmp/ccIknrlO.s:231    .text.MX_FREERTOS_Init:0000000000000030 $d
+     /tmp/ccIknrlO.s:305    .rodata.CANTask_attributes:0000000000000000 CANTask_attributes
+     /tmp/ccIknrlO.s:245    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccIknrlO.s:267    .bss.CANTaskHandle:0000000000000000 CANTaskHandle
+     /tmp/ccIknrlO.s:330    .rodata.errorIndicatorTask_attributes:0000000000000000 errorIndicatorTask_attributes
+     /tmp/ccIknrlO.s:298    .bss.errorIndicatorTaskHandle:0000000000000000 errorIndicatorTaskHandle
+     /tmp/ccIknrlO.s:316    .rodata.defaultTask_attributes:0000000000000000 defaultTask_attributes
+     /tmp/ccIknrlO.s:284    .bss.defaultTaskControlBlock:0000000000000000 defaultTaskControlBlock
+     /tmp/ccIknrlO.s:278    .bss.defaultTaskBuffer:0000000000000000 defaultTaskBuffer
+     /tmp/ccIknrlO.s:291    .bss.defaultTaskHandle:0000000000000000 defaultTaskHandle
+     /tmp/ccIknrlO.s:272    .bss.can_status:0000000000000000 can_status
+     /tmp/ccIknrlO.s:263    .bss.CANTaskHandle:0000000000000000 $d
+     /tmp/ccIknrlO.s:273    .bss.can_status:0000000000000000 $d
+     /tmp/ccIknrlO.s:275    .bss.defaultTaskBuffer:0000000000000000 $d
+     /tmp/ccIknrlO.s:281    .bss.defaultTaskControlBlock:0000000000000000 $d
+     /tmp/ccIknrlO.s:287    .bss.defaultTaskHandle:0000000000000000 $d
+     /tmp/ccIknrlO.s:294    .bss.errorIndicatorTaskHandle:0000000000000000 $d
+     /tmp/ccIknrlO.s:301    .rodata.CANTask_attributes:0000000000000000 $d
+     /tmp/ccIknrlO.s:312    .rodata.defaultTask_attributes:0000000000000000 $d
+     /tmp/ccIknrlO.s:326    .rodata.errorIndicatorTask_attributes:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+initMicroROS
+init_hyperdog_node
+osDelay
+huart2
+error_indicator
+MOTOR_initId
+MOTOR_initParams
+MOTOR_initCtrlLimits
+MOTOR_initCANConfig
+MOTOR_enable
+hcan1
+osThreadNew

@@ -1,0 +1,285 @@
+ARM GAS  /tmp/cc58izeb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"hyperdog_uros_node.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata.init_hyperdog_node.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 00       		.ascii	"\000"
+  23 0001 000000   		.align	2
+  24              	.LC1:
+  25 0004 68797065 		.ascii	"hyperdog_uros_node\000"
+  25      72646F67 
+  25      5F75726F 
+  25      735F6E6F 
+  25      646500
+  26              		.section	.text.init_hyperdog_node,"ax",%progbits
+  27              		.align	1
+  28              		.global	init_hyperdog_node
+  29              		.syntax unified
+  30              		.thumb
+  31              		.thumb_func
+  33              	init_hyperdog_node:
+  34              	.LFB134:
+  35              		.file 1 "App/Src/hyperdog_uros_node.c"
+   1:App/Src/hyperdog_uros_node.c **** 
+   2:App/Src/hyperdog_uros_node.c **** #include "main.h"
+   3:App/Src/hyperdog_uros_node.c **** #include "hyperdog_uros_node.h"
+   4:App/Src/hyperdog_uros_node.c **** 
+   5:App/Src/hyperdog_uros_node.c **** hyperdogUROS_Node_t hyperdog_node;
+   6:App/Src/hyperdog_uros_node.c **** 
+   7:App/Src/hyperdog_uros_node.c **** bool init_hyperdog_node()
+   8:App/Src/hyperdog_uros_node.c **** {
+  36              		.loc 1 8 1 view -0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40 0000 10B5     		push	{r4, lr}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 8
+  43              		.cfi_offset 4, -8
+  44              		.cfi_offset 14, -4
+   9:App/Src/hyperdog_uros_node.c ****     hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+  45              		.loc 1 9 5 view .LVU1
+ARM GAS  /tmp/cc58izeb.s 			page 2
+
+
+  46              		.loc 1 9 25 is_stmt 0 view .LVU2
+  47 0002 154C     		ldr	r4, .L8
+  48 0004 0123     		movs	r3, #1
+  49 0006 84F81033 		strb	r3, [r4, #784]
+  10:App/Src/hyperdog_uros_node.c **** 
+  11:App/Src/hyperdog_uros_node.c ****     /* initialize the node */
+  12:App/Src/hyperdog_uros_node.c ****     hyperdog_node.rcl_ret = rclc_node_init_default(
+  50              		.loc 1 12 5 is_stmt 1 view .LVU3
+  51              		.loc 1 12 29 is_stmt 0 view .LVU4
+  52 000a 144B     		ldr	r3, .L8+4
+  53 000c 144A     		ldr	r2, .L8+8
+  54 000e 1549     		ldr	r1, .L8+12
+  55 0010 2046     		mov	r0, r4
+  56 0012 FFF7FEFF 		bl	rclc_node_init_default
+  57              	.LVL0:
+  58              		.loc 1 12 27 view .LVU5
+  59 0016 C4F81403 		str	r0, [r4, #788]
+  13:App/Src/hyperdog_uros_node.c ****                             &hyperdog_node.node, 
+  14:App/Src/hyperdog_uros_node.c ****                             "hyperdog_uros_node", 
+  15:App/Src/hyperdog_uros_node.c ****                             "", 
+  16:App/Src/hyperdog_uros_node.c ****                             &uros.support);
+  17:App/Src/hyperdog_uros_node.c **** 
+  18:App/Src/hyperdog_uros_node.c ****     /* check error */
+  19:App/Src/hyperdog_uros_node.c ****     if(hyperdog_node.rcl_ret != RCL_RET_OK){
+  60              		.loc 1 19 5 is_stmt 1 view .LVU6
+  61              		.loc 1 19 7 is_stmt 0 view .LVU7
+  62 001a 40B9     		cbnz	r0, .L6
+  20:App/Src/hyperdog_uros_node.c ****         hyperdog_node.state = HYPERDOG_NODE_ERROR;
+  21:App/Src/hyperdog_uros_node.c ****         hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_INIT;
+  22:App/Src/hyperdog_uros_node.c **** 
+  23:App/Src/hyperdog_uros_node.c ****         /* check if rcl_support has no error */
+  24:App/Src/hyperdog_uros_node.c ****         if((uros.error_code & UROS_ERROR_RCL_SUPPORT ) == UROS_ERROR_RCL_SUPPORT){
+  25:App/Src/hyperdog_uros_node.c ****             /* if rcl_support has error resetMicroROS */
+  26:App/Src/hyperdog_uros_node.c ****             resetMicroROS();
+  27:App/Src/hyperdog_uros_node.c ****         }
+  28:App/Src/hyperdog_uros_node.c ****         return 0;
+  29:App/Src/hyperdog_uros_node.c ****     }
+  30:App/Src/hyperdog_uros_node.c ****     /* if no error */
+  31:App/Src/hyperdog_uros_node.c ****     hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_INIT;
+  63              		.loc 1 31 5 is_stmt 1 view .LVU8
+  64              		.loc 1 31 30 is_stmt 0 view .LVU9
+  65 001c 0E4A     		ldr	r2, .L8
+  66 001e B2F81233 		ldrh	r3, [r2, #786]
+  67 0022 23F00103 		bic	r3, r3, #1
+  68 0026 A2F81233 		strh	r3, [r2, #786]	@ movhi
+  32:App/Src/hyperdog_uros_node.c **** 
+  33:App/Src/hyperdog_uros_node.c ****     /* create motors states publisher */
+  34:App/Src/hyperdog_uros_node.c **** 
+  35:App/Src/hyperdog_uros_node.c **** 
+  36:App/Src/hyperdog_uros_node.c **** 
+  37:App/Src/hyperdog_uros_node.c **** 
+  38:App/Src/hyperdog_uros_node.c ****     return 1;
+  69              		.loc 1 38 5 is_stmt 1 view .LVU10
+  70              		.loc 1 38 12 is_stmt 0 view .LVU11
+  71 002a 0120     		movs	r0, #1
+  72              	.L4:
+  39:App/Src/hyperdog_uros_node.c **** }
+ARM GAS  /tmp/cc58izeb.s 			page 3
+
+
+  73              		.loc 1 39 1 view .LVU12
+  74 002c 10BD     		pop	{r4, pc}
+  75              	.L6:
+  20:App/Src/hyperdog_uros_node.c ****         hyperdog_node.state = HYPERDOG_NODE_ERROR;
+  76              		.loc 1 20 9 is_stmt 1 view .LVU13
+  20:App/Src/hyperdog_uros_node.c ****         hyperdog_node.state = HYPERDOG_NODE_ERROR;
+  77              		.loc 1 20 29 is_stmt 0 view .LVU14
+  78 002e 0322     		movs	r2, #3
+  79 0030 84F81023 		strb	r2, [r4, #784]
+  21:App/Src/hyperdog_uros_node.c **** 
+  80              		.loc 1 21 9 is_stmt 1 view .LVU15
+  21:App/Src/hyperdog_uros_node.c **** 
+  81              		.loc 1 21 34 is_stmt 0 view .LVU16
+  82 0034 B4F81223 		ldrh	r2, [r4, #786]
+  83 0038 42F00102 		orr	r2, r2, #1
+  84 003c A4F81223 		strh	r2, [r4, #786]	@ movhi
+  24:App/Src/hyperdog_uros_node.c ****             /* if rcl_support has error resetMicroROS */
+  85              		.loc 1 24 9 is_stmt 1 view .LVU17
+  24:App/Src/hyperdog_uros_node.c ****             /* if rcl_support has error resetMicroROS */
+  86              		.loc 1 24 17 is_stmt 0 view .LVU18
+  87 0040 094B     		ldr	r3, .L8+16
+  88 0042 93F84E30 		ldrb	r3, [r3, #78]	@ zero_extendqisi2
+  24:App/Src/hyperdog_uros_node.c ****             /* if rcl_support has error resetMicroROS */
+  89              		.loc 1 24 11 view .LVU19
+  90 0046 13F0040F 		tst	r3, #4
+  91 004a 01D1     		bne	.L7
+  92              	.L3:
+  28:App/Src/hyperdog_uros_node.c ****     }
+  93              		.loc 1 28 9 is_stmt 1 view .LVU20
+  28:App/Src/hyperdog_uros_node.c ****     }
+  94              		.loc 1 28 16 is_stmt 0 view .LVU21
+  95 004c 0020     		movs	r0, #0
+  96 004e EDE7     		b	.L4
+  97              	.L7:
+  26:App/Src/hyperdog_uros_node.c ****         }
+  98              		.loc 1 26 13 is_stmt 1 view .LVU22
+  99 0050 FFF7FEFF 		bl	resetMicroROS
+ 100              	.LVL1:
+ 101 0054 FAE7     		b	.L3
+ 102              	.L9:
+ 103 0056 00BF     		.align	2
+ 104              	.L8:
+ 105 0058 00000000 		.word	.LANCHOR0
+ 106 005c 14000000 		.word	uros+20
+ 107 0060 00000000 		.word	.LC0
+ 108 0064 04000000 		.word	.LC1
+ 109 0068 00000000 		.word	uros
+ 110              		.cfi_endproc
+ 111              	.LFE134:
+ 113              		.section	.text.spin_hyperdog_node,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	spin_hyperdog_node
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	spin_hyperdog_node:
+ 121              	.LFB135:
+ARM GAS  /tmp/cc58izeb.s 			page 4
+
+
+  40:App/Src/hyperdog_uros_node.c **** 
+  41:App/Src/hyperdog_uros_node.c **** void spin_hyperdog_node()
+  42:App/Src/hyperdog_uros_node.c **** {
+ 122              		.loc 1 42 1 view -0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+  43:App/Src/hyperdog_uros_node.c ****     // while (uros.error_code!= UROS_ERROR_)
+  44:App/Src/hyperdog_uros_node.c **** 
+  45:App/Src/hyperdog_uros_node.c **** }
+ 127              		.loc 1 45 1 view .LVU24
+ 128 0000 7047     		bx	lr
+ 129              		.cfi_endproc
+ 130              	.LFE135:
+ 132              		.section	.text.destroy_hyperdog_node,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	destroy_hyperdog_node
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	destroy_hyperdog_node:
+ 140              	.LFB136:
+  46:App/Src/hyperdog_uros_node.c **** 
+  47:App/Src/hyperdog_uros_node.c **** 
+  48:App/Src/hyperdog_uros_node.c **** /**
+  49:App/Src/hyperdog_uros_node.c ****  * To destroy all the entities of the hyperdog_node and node itself
+  50:App/Src/hyperdog_uros_node.c ****  */
+  51:App/Src/hyperdog_uros_node.c **** void destroy_hyperdog_node(){
+ 141              		.loc 1 51 29 view -0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+  52:App/Src/hyperdog_uros_node.c ****     /* first, destroy all the node's entities */
+  53:App/Src/hyperdog_uros_node.c ****     /// TODO: 
+  54:App/Src/hyperdog_uros_node.c **** 
+  55:App/Src/hyperdog_uros_node.c ****     /* then destroy the node itself */
+  56:App/Src/hyperdog_uros_node.c ****     /// TODO:
+  57:App/Src/hyperdog_uros_node.c **** 
+  58:App/Src/hyperdog_uros_node.c **** }
+ 146              		.loc 1 58 1 view .LVU26
+ 147 0000 7047     		bx	lr
+ 148              		.cfi_endproc
+ 149              	.LFE136:
+ 151              		.global	hyperdog_node
+ 152              		.section	.bss.hyperdog_node,"aw",%nobits
+ 153              		.align	3
+ 154              		.set	.LANCHOR0,. + 0
+ 157              	hyperdog_node:
+ 158 0000 00000000 		.space	792
+ 158      00000000 
+ 158      00000000 
+ 158      00000000 
+ 158      00000000 
+ 159              		.text
+ 160              	.Letext0:
+ARM GAS  /tmp/cc58izeb.s 			page 5
+
+
+ 161              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 162              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 163              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 164              		.file 5 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
+ 165              		.file 6 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/allo
+ 166              		.file 7 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/ret_
+ 167              		.file 8 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
+ 168              		.file 9 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/type
+ 169              		.file 10 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/typ
+ 170              		.file 11 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
+ 171              		.file 12 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
+ 172              		.file 13 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/nod
+ 173              		.file 14 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/pub
+ 174              		.file 15 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/tim
+ 175              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/qos
+ 176              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/ty
+ 177              		.file 18 "App/Inc/hyperdog_uros_app.h"
+ 178              		.file 19 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_
+ 179              		.file 20 "hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__struct.h"
+ 180              		.file 21 "hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__struct.h"
+ 181              		.file 22 "App/Inc/hyperdog_uros_node.h"
+ 182              		.file 23 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/no
+ARM GAS  /tmp/cc58izeb.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hyperdog_uros_node.c
+     /tmp/cc58izeb.s:20     .rodata.init_hyperdog_node.str1.4:0000000000000000 $d
+     /tmp/cc58izeb.s:27     .text.init_hyperdog_node:0000000000000000 $t
+     /tmp/cc58izeb.s:33     .text.init_hyperdog_node:0000000000000000 init_hyperdog_node
+     /tmp/cc58izeb.s:105    .text.init_hyperdog_node:0000000000000058 $d
+     /tmp/cc58izeb.s:114    .text.spin_hyperdog_node:0000000000000000 $t
+     /tmp/cc58izeb.s:120    .text.spin_hyperdog_node:0000000000000000 spin_hyperdog_node
+     /tmp/cc58izeb.s:133    .text.destroy_hyperdog_node:0000000000000000 $t
+     /tmp/cc58izeb.s:139    .text.destroy_hyperdog_node:0000000000000000 destroy_hyperdog_node
+     /tmp/cc58izeb.s:157    .bss.hyperdog_node:0000000000000000 hyperdog_node
+     /tmp/cc58izeb.s:153    .bss.hyperdog_node:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+rclc_node_init_default
+resetMicroROS
+uros
