@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjqcigt.s 			page 1
+ARM GAS  /tmp/ccYfoX6L.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
   27:App/Src/minicheetah_motor.c **** #include "error_indicator.h"
   28:App/Src/minicheetah_motor.c **** 
   29:App/Src/minicheetah_motor.c **** Motor_TypeDef motor[NUM_OF_MOTORS];
-ARM GAS  /tmp/ccjqcigt.s 			page 2
+ARM GAS  /tmp/ccYfoX6L.s 			page 2
 
 
   30:App/Src/minicheetah_motor.c **** uint8_t motor_enable_cmd[8] = MOTOR_ENABLE_CMD;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
   53:App/Src/minicheetah_motor.c **** 
   54:App/Src/minicheetah_motor.c ****     /* update motor init_state */
   55:App/Src/minicheetah_motor.c ****     motor[m].init_state |= MOTOR_INIT_STATUS_ID; // set ID_SET bit of the init state
-ARM GAS  /tmp/ccjqcigt.s 			page 3
+ARM GAS  /tmp/ccYfoX6L.s 			page 3
 
 
   61              		.loc 1 55 5 is_stmt 1 view .LVU11
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  101              		.loc 1 71 27 is_stmt 0 view .LVU19
  102 0010 83ED020A 		vstr.32	s0, [r3, #8]
   72:App/Src/minicheetah_motor.c ****     motor[m].params.v.min = -vMax;
-ARM GAS  /tmp/ccjqcigt.s 			page 4
+ARM GAS  /tmp/ccYfoX6L.s 			page 4
 
 
  103              		.loc 1 72 5 is_stmt 1 view .LVU20
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  144              		.loc 1 85 25 is_stmt 0 view .LVU45
  145 004c B3F87220 		ldrh	r2, [r3, #114]
  146 0050 22F00202 		bic	r2, r2, #2
-ARM GAS  /tmp/ccjqcigt.s 			page 5
+ARM GAS  /tmp/ccYfoX6L.s 			page 5
 
 
  147 0054 92B2     		uxth	r2, r2
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  190              	.LFB140:
   94:App/Src/minicheetah_motor.c **** 
   95:App/Src/minicheetah_motor.c **** 
-ARM GAS  /tmp/ccjqcigt.s 			page 6
+ARM GAS  /tmp/ccYfoX6L.s 			page 6
 
 
   96:App/Src/minicheetah_motor.c **** /** 
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  226 002c 42F00402 		orr	r2, r2, #4
  227 0030 83F87020 		strb	r2, [r3, #112]
  115:App/Src/minicheetah_motor.c **** 
-ARM GAS  /tmp/ccjqcigt.s 			page 7
+ARM GAS  /tmp/ccYfoX6L.s 			page 7
 
 
  116:App/Src/minicheetah_motor.c ****     /* If motor is fully initialized update error_code */
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  124:App/Src/minicheetah_motor.c **** 
  125:App/Src/minicheetah_motor.c **** /** Confiure rx/tx messages and rx filter of the motor.
  126:App/Src/minicheetah_motor.c ****  * Make sure to call this function after initialied the motor IDs. *
-ARM GAS  /tmp/ccjqcigt.s 			page 8
+ARM GAS  /tmp/ccYfoX6L.s 			page 8
 
 
  127:App/Src/minicheetah_motor.c ****  * \param m enum MOTOR
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  309              		.loc 1 142 5 is_stmt 1 view .LVU93
  310              		.loc 1 142 44 is_stmt 0 view .LVU94
  311 002c 40F6FF72 		movw	r2, #4095
-ARM GAS  /tmp/ccjqcigt.s 			page 9
+ARM GAS  /tmp/ccYfoX6L.s 			page 9
 
 
  312              	.LVL14:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  352              		.loc 1 156 7 view .LVU116
  353 0066 012B     		cmp	r3, #1
  354 0068 19D0     		beq	.L20
-ARM GAS  /tmp/ccjqcigt.s 			page 10
+ARM GAS  /tmp/ccYfoX6L.s 			page 10
 
 
  157:App/Src/minicheetah_motor.c ****     {
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  386 00a6 84F87020 		strb	r2, [r4, #112]
  159:App/Src/minicheetah_motor.c ****         motor[m].state = ERROR;
  387              		.loc 1 159 9 is_stmt 1 view .LVU127
-ARM GAS  /tmp/ccjqcigt.s 			page 11
+ARM GAS  /tmp/ccYfoX6L.s 			page 11
 
 
  159:App/Src/minicheetah_motor.c ****         motor[m].state = ERROR;
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  188:App/Src/minicheetah_motor.c **** {
  189:App/Src/minicheetah_motor.c ****     /* Copy heatbeat comd to can_tx mesage */
  190:App/Src/minicheetah_motor.c ****     memcpy(motor[m].canTx.data, motor_heartbeat_cmd, sizeof(motor_heartbeat_cmd));
-ARM GAS  /tmp/ccjqcigt.s 			page 12
+ARM GAS  /tmp/ccYfoX6L.s 			page 12
 
 
  191:App/Src/minicheetah_motor.c **** 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  245:App/Src/minicheetah_motor.c ****             if(motor[m].state != MOTOR_ENABLED && !_is_motor_error(m, MOTOR_ERROR_NOT_INITIALIZED))
  246:App/Src/minicheetah_motor.c ****             {
  247:App/Src/minicheetah_motor.c ****                 motor[m].state = MOTOR_READY; /*!< Reset motor error state */
-ARM GAS  /tmp/ccjqcigt.s 			page 13
+ARM GAS  /tmp/ccYfoX6L.s 			page 13
 
 
  248:App/Src/minicheetah_motor.c ****             }
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  302:App/Src/minicheetah_motor.c **** 
  303:App/Src/minicheetah_motor.c ****         /* else, update error_code and state */
  304:App/Src/minicheetah_motor.c ****         else{
-ARM GAS  /tmp/ccjqcigt.s 			page 14
+ARM GAS  /tmp/ccYfoX6L.s 			page 14
 
 
  305:App/Src/minicheetah_motor.c ****             motor[m].error_code |= MOTOR_ERROR_EN; /*!< set `enbale error` bit of the error code*/
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  359:App/Src/minicheetah_motor.c ****     {
  360:App/Src/minicheetah_motor.c ****         motor[m].error_code |= MOTOR_ERROR_SZ;
  361:App/Src/minicheetah_motor.c ****     }
-ARM GAS  /tmp/ccjqcigt.s 			page 15
+ARM GAS  /tmp/ccYfoX6L.s 			page 15
 
 
  362:App/Src/minicheetah_motor.c **** }
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  398:App/Src/minicheetah_motor.c ****     float p_des = fminf(fmaxf(motor[m].params.p.min, motor[m].cmd.p_des), motor[m].params.p.max);
  399:App/Src/minicheetah_motor.c ****     float v_des = fminf(fmaxf(motor[m].params.v.min, motor[m].cmd.v_des), motor[m].params.v.max);
  400:App/Src/minicheetah_motor.c ****     float kp    = fminf(fmaxf(motor[m].params.kp.min,    motor[m].cmd.kp   ), motor[m].params.kp.ma
-ARM GAS  /tmp/ccjqcigt.s 			page 16
+ARM GAS  /tmp/ccYfoX6L.s 			page 16
 
 
  401:App/Src/minicheetah_motor.c ****     float kd    = fminf(fmaxf(motor[m].params.kd.min,    motor[m].cmd.kd   ), motor[m].params.kd.ma
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  455:App/Src/minicheetah_motor.c ****     }
  456:App/Src/minicheetah_motor.c **** 
  457:App/Src/minicheetah_motor.c **** }
-ARM GAS  /tmp/ccjqcigt.s 			page 17
+ARM GAS  /tmp/ccYfoX6L.s 			page 17
 
 
  458:App/Src/minicheetah_motor.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  486              		.loc 1 474 30 is_stmt 1 view -0
  487              		.cfi_startproc
  488              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccjqcigt.s 			page 18
+ARM GAS  /tmp/ccYfoX6L.s 			page 18
 
 
  489              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  540              		.global	float2uint
  541              		.syntax unified
  542              		.thumb
-ARM GAS  /tmp/ccjqcigt.s 			page 19
+ARM GAS  /tmp/ccYfoX6L.s 			page 19
 
 
  543              		.thumb_func
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  376:App/Src/minicheetah_motor.c ****     /*  
  593              		.loc 1 376 1 is_stmt 1 view -0
  594              		.cfi_startproc
-ARM GAS  /tmp/ccjqcigt.s 			page 20
+ARM GAS  /tmp/ccYfoX6L.s 			page 20
 
 
  595              		@ args = 0, pretend = 0, frame = 0
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  399:App/Src/minicheetah_motor.c ****     float kp    = fminf(fmaxf(motor[m].params.kp.min,    motor[m].cmd.kp   ), motor[m].params.kp.ma
  644              		.loc 1 399 19 is_stmt 0 view .LVU174
  645 0030 94ED03DA 		vldr.32	s26, [r4, #12]
-ARM GAS  /tmp/ccjqcigt.s 			page 21
+ARM GAS  /tmp/ccYfoX6L.s 			page 21
 
 
  646 0034 D4ED140A 		vldr.32	s1, [r4, #80]
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  691 0094 D4ED170A 		vldr.32	s1, [r4, #92]
  692 0098 B0EE6A0A 		vmov.f32	s0, s21
  693              	.LVL44:
-ARM GAS  /tmp/ccjqcigt.s 			page 22
+ARM GAS  /tmp/ccYfoX6L.s 			page 22
 
 
  402:App/Src/minicheetah_motor.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  738              	.LVL56:
  408:App/Src/minicheetah_motor.c ****     int iff_int = float2uint(iff,   motor[m].params.i_ff.min,  motor[m].params.i_ff.max , 12);
  739              		.loc 1 408 5 is_stmt 1 view .LVU194
-ARM GAS  /tmp/ccjqcigt.s 			page 23
+ARM GAS  /tmp/ccYfoX6L.s 			page 23
 
 
  408:App/Src/minicheetah_motor.c ****     int iff_int = float2uint(iff,   motor[m].params.i_ff.min,  motor[m].params.i_ff.max , 12);
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  779              	.LVL63:
  414:App/Src/minicheetah_motor.c ****     motor[m].canTx.data[4] = kp_int&0xFF;
  780              		.loc 1 414 47 view .LVU210
-ARM GAS  /tmp/ccjqcigt.s 			page 24
+ARM GAS  /tmp/ccYfoX6L.s 			page 24
 
 
  781 0128 40EA0717 		orr	r7, r0, r7, lsl #4
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  822              		.cfi_restore 81
  823              		.cfi_def_cfa_offset 24
  824              	.LVL66:
-ARM GAS  /tmp/ccjqcigt.s 			page 25
+ARM GAS  /tmp/ccYfoX6L.s 			page 25
 
 
  419:App/Src/minicheetah_motor.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  872 001e 36EE800A 		vadd.f32	s0, s13, s0
  873              	.LVL70:
  874              		.loc 1 494 1 view .LVU238
-ARM GAS  /tmp/ccjqcigt.s 			page 26
+ARM GAS  /tmp/ccYfoX6L.s 			page 26
 
 
  875 0022 7047     		bx	lr
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  447:App/Src/minicheetah_motor.c ****     int i_int  = ((motor[m].canRx.data[4]&0xF)<<8) | motor[m].canRx.data[5];
  921              		.loc 1 447 5 is_stmt 1 view .LVU249
  447:App/Src/minicheetah_motor.c ****     int i_int  = ((motor[m].canRx.data[4]&0xF)<<8) | motor[m].canRx.data[5];
-ARM GAS  /tmp/ccjqcigt.s 			page 27
+ARM GAS  /tmp/ccYfoX6L.s 			page 27
 
 
  922              		.loc 1 447 47 is_stmt 0 view .LVU250
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  457:App/Src/minicheetah_motor.c **** }
  963              		.loc 1 457 1 is_stmt 0 view .LVU264
  964 006a 70BD     		pop	{r4, r5, r6, pc}
-ARM GAS  /tmp/ccjqcigt.s 			page 28
+ARM GAS  /tmp/ccYfoX6L.s 			page 28
 
 
  965              	.LVL80:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1015 002a 606F     		ldr	r0, [r4, #116]
  1016              	.LVL82:
  225:App/Src/minicheetah_motor.c ****     if(HAL_CAN_AddTxMessage(motor[m].hcan_ptr, &motor[m].canTx.header, motor[m].canTx.data, &motor[
-ARM GAS  /tmp/ccjqcigt.s 			page 29
+ARM GAS  /tmp/ccYfoX6L.s 			page 29
 
 
  1017              		.loc 1 225 8 view .LVU271
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  229:App/Src/minicheetah_motor.c ****         if(HAL_CAN_GetRxMessage(motor[m].hcan_ptr, CAN_RX_FIFO0, &motor[m].canRx.header, rx_data) =
  1061              		.loc 1 229 119 discriminator 1 view .LVU282
  1062 006a 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
-ARM GAS  /tmp/ccjqcigt.s 			page 30
+ARM GAS  /tmp/ccYfoX6L.s 			page 30
 
 
  229:App/Src/minicheetah_motor.c ****         if(HAL_CAN_GetRxMessage(motor[m].hcan_ptr, CAN_RX_FIFO0, &motor[m].canRx.header, rx_data) =
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1102 00aa 0323     		movs	r3, #3
  1103 00ac 82F87130 		strb	r3, [r2, #113]
  1104 00b0 CCE7     		b	.L46
-ARM GAS  /tmp/ccjqcigt.s 			page 31
+ARM GAS  /tmp/ccYfoX6L.s 			page 31
 
 
  1105              	.L53:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  247:App/Src/minicheetah_motor.c ****                 motor[m].state = MOTOR_READY; /*!< Reset motor error state */
  1146              		.loc 1 247 17 is_stmt 1 view .LVU311
  247:App/Src/minicheetah_motor.c ****                 motor[m].state = MOTOR_READY; /*!< Reset motor error state */
-ARM GAS  /tmp/ccjqcigt.s 			page 32
+ARM GAS  /tmp/ccYfoX6L.s 			page 32
 
 
  1147              		.loc 1 247 32 is_stmt 0 view .LVU312
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1196 0012 03FB0455 		mla	r5, r3, r4, r5
  1197 0016 134A     		ldr	r2, .L61+4
  1198 0018 05F1C403 		add	r3, r5, #196
-ARM GAS  /tmp/ccjqcigt.s 			page 33
+ARM GAS  /tmp/ccYfoX6L.s 			page 33
 
 
  1199 001c 92E80300 		ldm	r2, {r0, r1}
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1240              		.cfi_endproc
  1241              	.LFE144:
  1243              		.section	.text.MOTOR_disable,"ax",%progbits
-ARM GAS  /tmp/ccjqcigt.s 			page 34
+ARM GAS  /tmp/ccYfoX6L.s 			page 34
 
 
  1244              		.align	1
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1289 002e A5F87230 		strh	r3, [r5, #114]	@ movhi
  330:App/Src/minicheetah_motor.c ****         motor[m].state = MOTOR_READY;
  1290              		.loc 1 330 9 is_stmt 1 view .LVU343
-ARM GAS  /tmp/ccjqcigt.s 			page 35
+ARM GAS  /tmp/ccYfoX6L.s 			page 35
 
 
  330:App/Src/minicheetah_motor.c ****         motor[m].state = MOTOR_READY;
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1338              		.cfi_offset 3, -16
  1339              		.cfi_offset 4, -12
  1340              		.cfi_offset 5, -8
-ARM GAS  /tmp/ccjqcigt.s 			page 36
+ARM GAS  /tmp/ccYfoX6L.s 			page 36
 
 
  1341              		.cfi_offset 14, -4
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  188:App/Src/minicheetah_motor.c **** {
  1388              		.loc 1 188 1 is_stmt 1 view -0
  1389              		.cfi_startproc
-ARM GAS  /tmp/ccjqcigt.s 			page 37
+ARM GAS  /tmp/ccYfoX6L.s 			page 37
 
 
  1390              		@ args = 0, pretend = 0, frame = 0
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  205:App/Src/minicheetah_motor.c ****         motor[m].error_code &= ~ MOTOR_ERROR_OOR;           /* Reset motor out of range error */
  1434              		.loc 1 205 9 is_stmt 1 view .LVU373
  205:App/Src/minicheetah_motor.c ****         motor[m].error_code &= ~ MOTOR_ERROR_OOR;           /* Reset motor out of range error */
-ARM GAS  /tmp/ccjqcigt.s 			page 38
+ARM GAS  /tmp/ccYfoX6L.s 			page 38
 
 
  1435              		.loc 1 205 29 is_stmt 0 view .LVU374
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1486              		.align	2
  1487              		.set	.LANCHOR1,. + 0
  1490              	motor_enable_cmd:
-ARM GAS  /tmp/ccjqcigt.s 			page 39
+ARM GAS  /tmp/ccYfoX6L.s 			page 39
 
 
  1491 0000 FFFFFFFF 		.ascii	"\377\377\377\377\377\377\377\374"
@@ -2311,74 +2311,74 @@ ARM GAS  /tmp/ccjqcigt.s 			page 1
  1521              		.file 9 "App/Inc/motor_typedefs.h"
  1522              		.file 10 "App/Inc/minicheetah_motor.h"
  1523              		.file 11 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils
-ARM GAS  /tmp/ccjqcigt.s 			page 40
+ARM GAS  /tmp/ccYfoX6L.s 			page 40
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 minicheetah_motor.c
-     /tmp/ccjqcigt.s:20     .text.MOTOR_initId:0000000000000000 $t
-     /tmp/ccjqcigt.s:26     .text.MOTOR_initId:0000000000000000 MOTOR_initId
-     /tmp/ccjqcigt.s:73     .text.MOTOR_initId:0000000000000030 $d
-     /tmp/ccjqcigt.s:78     .text.MOTOR_initParams:0000000000000000 $t
-     /tmp/ccjqcigt.s:84     .text.MOTOR_initParams:0000000000000000 MOTOR_initParams
-     /tmp/ccjqcigt.s:177    .text.MOTOR_initParams:0000000000000078 $d
-     /tmp/ccjqcigt.s:182    .text.MOTOR_initCtrlLimits:0000000000000000 $t
-     /tmp/ccjqcigt.s:188    .text.MOTOR_initCtrlLimits:0000000000000000 MOTOR_initCtrlLimits
-     /tmp/ccjqcigt.s:257    .text.MOTOR_initCtrlLimits:0000000000000058 $d
-     /tmp/ccjqcigt.s:262    .text.MOTOR_initCANConfig:0000000000000000 $t
-     /tmp/ccjqcigt.s:268    .text.MOTOR_initCANConfig:0000000000000000 MOTOR_initCANConfig
-     /tmp/ccjqcigt.s:414    .text.MOTOR_initCANConfig:00000000000000d8 $d
-     /tmp/ccjqcigt.s:419    .text.MOTOR_startWatchdog:0000000000000000 $t
-     /tmp/ccjqcigt.s:425    .text.MOTOR_startWatchdog:0000000000000000 MOTOR_startWatchdog
-     /tmp/ccjqcigt.s:438    .text._is_motor_error:0000000000000000 $t
-     /tmp/ccjqcigt.s:444    .text._is_motor_error:0000000000000000 _is_motor_error
-     /tmp/ccjqcigt.s:472    .text._is_motor_error:0000000000000018 $d
-     /tmp/ccjqcigt.s:477    .text.fminf:0000000000000000 $t
-     /tmp/ccjqcigt.s:483    .text.fminf:0000000000000000 fminf
-     /tmp/ccjqcigt.s:508    .text.fmaxf:0000000000000000 $t
-     /tmp/ccjqcigt.s:514    .text.fmaxf:0000000000000000 fmaxf
-     /tmp/ccjqcigt.s:539    .text.float2uint:0000000000000000 $t
-     /tmp/ccjqcigt.s:545    .text.float2uint:0000000000000000 float2uint
-     /tmp/ccjqcigt.s:584    .text._pack_cmd:0000000000000000 $t
-     /tmp/ccjqcigt.s:590    .text._pack_cmd:0000000000000000 _pack_cmd
-     /tmp/ccjqcigt.s:832    .text._pack_cmd:0000000000000150 $d
-     /tmp/ccjqcigt.s:837    .text.uint2float:0000000000000000 $t
-     /tmp/ccjqcigt.s:843    .text.uint2float:0000000000000000 uint2float
-     /tmp/ccjqcigt.s:880    .text._unpack_canRx:0000000000000000 $t
-     /tmp/ccjqcigt.s:886    .text._unpack_canRx:0000000000000000 _unpack_canRx
-     /tmp/ccjqcigt.s:970    .text._unpack_canRx:000000000000006c $d
-     /tmp/ccjqcigt.s:975    .text.MOTOR_sendTxGetRx:0000000000000000 $t
-     /tmp/ccjqcigt.s:981    .text.MOTOR_sendTxGetRx:0000000000000000 MOTOR_sendTxGetRx
-     /tmp/ccjqcigt.s:1154   .text.MOTOR_sendTxGetRx:0000000000000104 $d
-     /tmp/ccjqcigt.s:1160   .text.MOTOR_enable:0000000000000000 $t
-     /tmp/ccjqcigt.s:1166   .text.MOTOR_enable:0000000000000000 MOTOR_enable
-     /tmp/ccjqcigt.s:1238   .text.MOTOR_enable:0000000000000060 $d
-     /tmp/ccjqcigt.s:1244   .text.MOTOR_disable:0000000000000000 $t
-     /tmp/ccjqcigt.s:1250   .text.MOTOR_disable:0000000000000000 MOTOR_disable
-     /tmp/ccjqcigt.s:1315   .text.MOTOR_disable:0000000000000058 $d
-     /tmp/ccjqcigt.s:1321   .text.MOTOR_setZero:0000000000000000 $t
-     /tmp/ccjqcigt.s:1327   .text.MOTOR_setZero:0000000000000000 MOTOR_setZero
-     /tmp/ccjqcigt.s:1373   .text.MOTOR_setZero:0000000000000034 $d
-     /tmp/ccjqcigt.s:1379   .text.MOTOR_sendHeatbeat:0000000000000000 $t
-     /tmp/ccjqcigt.s:1385   .text.MOTOR_sendHeatbeat:0000000000000000 MOTOR_sendHeatbeat
-     /tmp/ccjqcigt.s:1454   .text.MOTOR_sendHeatbeat:0000000000000064 $d
-     /tmp/ccjqcigt.s:1476   .bss.motor_state:0000000000000000 motor_state
-     /tmp/ccjqcigt.s:1496   .data.motor_error_code:0000000000000000 motor_error_code
-     /tmp/ccjqcigt.s:1503   .data.motor_heartbeat_cmd:0000000000000000 motor_heartbeat_cmd
-     /tmp/ccjqcigt.s:1510   .data.motor_setzero_cmd:0000000000000000 motor_setzero_cmd
-     /tmp/ccjqcigt.s:1483   .data.motor_disable_cmd:0000000000000000 motor_disable_cmd
-     /tmp/ccjqcigt.s:1490   .data.motor_enable_cmd:0000000000000000 motor_enable_cmd
-     /tmp/ccjqcigt.s:1471   .bss.motor:0000000000000000 motor
-     /tmp/ccjqcigt.s:1467   .bss.motor:0000000000000000 $d
-     /tmp/ccjqcigt.s:1477   .bss.motor_state:0000000000000000 $d
-ARM GAS  /tmp/ccjqcigt.s 			page 41
+     /tmp/ccYfoX6L.s:20     .text.MOTOR_initId:0000000000000000 $t
+     /tmp/ccYfoX6L.s:26     .text.MOTOR_initId:0000000000000000 MOTOR_initId
+     /tmp/ccYfoX6L.s:73     .text.MOTOR_initId:0000000000000030 $d
+     /tmp/ccYfoX6L.s:78     .text.MOTOR_initParams:0000000000000000 $t
+     /tmp/ccYfoX6L.s:84     .text.MOTOR_initParams:0000000000000000 MOTOR_initParams
+     /tmp/ccYfoX6L.s:177    .text.MOTOR_initParams:0000000000000078 $d
+     /tmp/ccYfoX6L.s:182    .text.MOTOR_initCtrlLimits:0000000000000000 $t
+     /tmp/ccYfoX6L.s:188    .text.MOTOR_initCtrlLimits:0000000000000000 MOTOR_initCtrlLimits
+     /tmp/ccYfoX6L.s:257    .text.MOTOR_initCtrlLimits:0000000000000058 $d
+     /tmp/ccYfoX6L.s:262    .text.MOTOR_initCANConfig:0000000000000000 $t
+     /tmp/ccYfoX6L.s:268    .text.MOTOR_initCANConfig:0000000000000000 MOTOR_initCANConfig
+     /tmp/ccYfoX6L.s:414    .text.MOTOR_initCANConfig:00000000000000d8 $d
+     /tmp/ccYfoX6L.s:419    .text.MOTOR_startWatchdog:0000000000000000 $t
+     /tmp/ccYfoX6L.s:425    .text.MOTOR_startWatchdog:0000000000000000 MOTOR_startWatchdog
+     /tmp/ccYfoX6L.s:438    .text._is_motor_error:0000000000000000 $t
+     /tmp/ccYfoX6L.s:444    .text._is_motor_error:0000000000000000 _is_motor_error
+     /tmp/ccYfoX6L.s:472    .text._is_motor_error:0000000000000018 $d
+     /tmp/ccYfoX6L.s:477    .text.fminf:0000000000000000 $t
+     /tmp/ccYfoX6L.s:483    .text.fminf:0000000000000000 fminf
+     /tmp/ccYfoX6L.s:508    .text.fmaxf:0000000000000000 $t
+     /tmp/ccYfoX6L.s:514    .text.fmaxf:0000000000000000 fmaxf
+     /tmp/ccYfoX6L.s:539    .text.float2uint:0000000000000000 $t
+     /tmp/ccYfoX6L.s:545    .text.float2uint:0000000000000000 float2uint
+     /tmp/ccYfoX6L.s:584    .text._pack_cmd:0000000000000000 $t
+     /tmp/ccYfoX6L.s:590    .text._pack_cmd:0000000000000000 _pack_cmd
+     /tmp/ccYfoX6L.s:832    .text._pack_cmd:0000000000000150 $d
+     /tmp/ccYfoX6L.s:837    .text.uint2float:0000000000000000 $t
+     /tmp/ccYfoX6L.s:843    .text.uint2float:0000000000000000 uint2float
+     /tmp/ccYfoX6L.s:880    .text._unpack_canRx:0000000000000000 $t
+     /tmp/ccYfoX6L.s:886    .text._unpack_canRx:0000000000000000 _unpack_canRx
+     /tmp/ccYfoX6L.s:970    .text._unpack_canRx:000000000000006c $d
+     /tmp/ccYfoX6L.s:975    .text.MOTOR_sendTxGetRx:0000000000000000 $t
+     /tmp/ccYfoX6L.s:981    .text.MOTOR_sendTxGetRx:0000000000000000 MOTOR_sendTxGetRx
+     /tmp/ccYfoX6L.s:1154   .text.MOTOR_sendTxGetRx:0000000000000104 $d
+     /tmp/ccYfoX6L.s:1160   .text.MOTOR_enable:0000000000000000 $t
+     /tmp/ccYfoX6L.s:1166   .text.MOTOR_enable:0000000000000000 MOTOR_enable
+     /tmp/ccYfoX6L.s:1238   .text.MOTOR_enable:0000000000000060 $d
+     /tmp/ccYfoX6L.s:1244   .text.MOTOR_disable:0000000000000000 $t
+     /tmp/ccYfoX6L.s:1250   .text.MOTOR_disable:0000000000000000 MOTOR_disable
+     /tmp/ccYfoX6L.s:1315   .text.MOTOR_disable:0000000000000058 $d
+     /tmp/ccYfoX6L.s:1321   .text.MOTOR_setZero:0000000000000000 $t
+     /tmp/ccYfoX6L.s:1327   .text.MOTOR_setZero:0000000000000000 MOTOR_setZero
+     /tmp/ccYfoX6L.s:1373   .text.MOTOR_setZero:0000000000000034 $d
+     /tmp/ccYfoX6L.s:1379   .text.MOTOR_sendHeatbeat:0000000000000000 $t
+     /tmp/ccYfoX6L.s:1385   .text.MOTOR_sendHeatbeat:0000000000000000 MOTOR_sendHeatbeat
+     /tmp/ccYfoX6L.s:1454   .text.MOTOR_sendHeatbeat:0000000000000064 $d
+     /tmp/ccYfoX6L.s:1476   .bss.motor_state:0000000000000000 motor_state
+     /tmp/ccYfoX6L.s:1496   .data.motor_error_code:0000000000000000 motor_error_code
+     /tmp/ccYfoX6L.s:1503   .data.motor_heartbeat_cmd:0000000000000000 motor_heartbeat_cmd
+     /tmp/ccYfoX6L.s:1510   .data.motor_setzero_cmd:0000000000000000 motor_setzero_cmd
+     /tmp/ccYfoX6L.s:1483   .data.motor_disable_cmd:0000000000000000 motor_disable_cmd
+     /tmp/ccYfoX6L.s:1490   .data.motor_enable_cmd:0000000000000000 motor_enable_cmd
+     /tmp/ccYfoX6L.s:1471   .bss.motor:0000000000000000 motor
+     /tmp/ccYfoX6L.s:1467   .bss.motor:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1477   .bss.motor_state:0000000000000000 $d
+ARM GAS  /tmp/ccYfoX6L.s 			page 41
 
 
-     /tmp/ccjqcigt.s:1479   .data.motor_disable_cmd:0000000000000000 $d
-     /tmp/ccjqcigt.s:1486   .data.motor_enable_cmd:0000000000000000 $d
-     /tmp/ccjqcigt.s:1493   .data.motor_error_code:0000000000000000 $d
-     /tmp/ccjqcigt.s:1499   .data.motor_heartbeat_cmd:0000000000000000 $d
-     /tmp/ccjqcigt.s:1506   .data.motor_setzero_cmd:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1479   .data.motor_disable_cmd:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1486   .data.motor_enable_cmd:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1493   .data.motor_error_code:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1499   .data.motor_heartbeat_cmd:0000000000000000 $d
+     /tmp/ccYfoX6L.s:1506   .data.motor_setzero_cmd:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_CAN_ConfigFilter

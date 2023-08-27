@@ -126,13 +126,15 @@ Build/hyperdog_uros_node.o: App/Src/hyperdog_uros_node.c Core/Inc/main.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__struct.h \
  micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/string.h \
  micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/primitives_sequence.h \
+ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_feedback__struct.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__functions.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/rosidl_generator_c__visibility_control.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__type_support.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/motors_states.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__struct.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__functions.h \
- hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__type_support.h
+ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__type_support.h \
+ App/Inc/motor_typedefs.h Core/Inc/can.h App/Inc/motor_defs.h
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -265,6 +267,7 @@ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/motor_states.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__struct.h:
 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/string.h:
 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/primitives_sequence.h:
+hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_feedback__struct.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__functions.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/rosidl_generator_c__visibility_control.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__type_support.h:
@@ -272,3 +275,6 @@ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/motors_states.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__struct.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__functions.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motors_states__type_support.h:
+App/Inc/motor_typedefs.h:
+Core/Inc/can.h:
+App/Inc/motor_defs.h:

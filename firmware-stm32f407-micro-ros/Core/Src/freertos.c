@@ -156,15 +156,14 @@ void StartDefaultTask(void *argument)
 
   // init_uros_node();  
   // spin_uros_node(2);
-
-  if(!initMicroROS(&huart2)){
+  a:
+  if(initMicroROS(&huart2)){
     init_hyperdog_node();
-    while (1)
-    {
-      void* support_state = uros.allocator.state;
-      osDelay(100);
-    }
-    
+    spin_hyperdog_node();
+  }
+  else{
+    osDelay(100);
+    goto a;
   }
   
   /* USER CODE END 5 */

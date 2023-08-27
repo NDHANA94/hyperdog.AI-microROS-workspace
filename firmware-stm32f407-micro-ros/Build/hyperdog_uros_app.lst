@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc0EM173.s 			page 1
+ARM GAS  /tmp/ccf8I2v0.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
   28:App/Src/hyperdog_uros_app.c **** 
   29:App/Src/hyperdog_uros_app.c **** 
   30:App/Src/hyperdog_uros_app.c **** uros_app_t uros;
-ARM GAS  /tmp/cc0EM173.s 			page 2
+ARM GAS  /tmp/ccf8I2v0.s 			page 2
 
 
   31:App/Src/hyperdog_uros_app.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33 0000 10B5     		push	{r4, lr}
   34              	.LCFI0:
-ARM GAS  /tmp/cc0EM173.s 			page 3
+ARM GAS  /tmp/ccf8I2v0.s 			page 3
 
 
   35              		.cfi_def_cfa_offset 8
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
   66 0028 92F84E30 		ldrb	r3, [r2, #78]	@ zero_extendqisi2
   67 002c 43F00403 		orr	r3, r3, #4
   68 0030 82F84E30 		strb	r3, [r2, #78]
-ARM GAS  /tmp/cc0EM173.s 			page 4
+ARM GAS  /tmp/ccf8I2v0.s 			page 4
 
 
  100:App/Src/hyperdog_uros_app.c ****         goto init_support;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
  111              		.global	initMicroROS
  112              		.syntax unified
  113              		.thumb
-ARM GAS  /tmp/cc0EM173.s 			page 5
+ARM GAS  /tmp/ccf8I2v0.s 			page 5
 
 
  114              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
   50:App/Src/hyperdog_uros_app.c ****         uros.error_code |= UROS_ERROR_RMW_TRANSPORT;        /*!< set rmw transport error */
  158              		.loc 1 50 20 is_stmt 0 view .LVU37
  159 0022 0422     		movs	r2, #4
-ARM GAS  /tmp/cc0EM173.s 			page 6
+ARM GAS  /tmp/ccf8I2v0.s 			page 6
 
 
  160 0024 84F84C20 		strb	r2, [r4, #76]
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
  200              		.loc 1 60 5 is_stmt 1 view .LVU51
   60:App/Src/hyperdog_uros_app.c ****     freeRTOS_allocator.zero_allocate = microros_zero_allocate;
  201              		.loc 1 60 35 is_stmt 0 view .LVU52
-ARM GAS  /tmp/cc0EM173.s 			page 7
+ARM GAS  /tmp/ccf8I2v0.s 			page 7
 
 
  202 0058 1B4B     		ldr	r3, .L15+28
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
  242              		.loc 1 68 5 is_stmt 1 view .LVU66
   68:App/Src/hyperdog_uros_app.c **** 
  243              		.loc 1 68 21 is_stmt 0 view .LVU67
-ARM GAS  /tmp/cc0EM173.s 			page 8
+ARM GAS  /tmp/ccf8I2v0.s 			page 8
 
 
  244 0098 96F84E30 		ldrb	r3, [r6, #78]	@ zero_extendqisi2
@@ -475,114 +475,119 @@ ARM GAS  /tmp/cc0EM173.s 			page 1
  114:App/Src/hyperdog_uros_app.c ****     uros.state = UROS_WAITING_FOR_AGENT;
  286              		.loc 1 114 5 view .LVU72
  287              		.loc 1 114 16 is_stmt 0 view .LVU73
- 288 0002 074B     		ldr	r3, .L20
+ 288 0002 084B     		ldr	r3, .L20
  289 0004 0222     		movs	r2, #2
  290 0006 83F84C20 		strb	r2, [r3, #76]
-ARM GAS  /tmp/cc0EM173.s 			page 9
+ARM GAS  /tmp/ccf8I2v0.s 			page 9
 
 
- 291              	.L18:
  115:App/Src/hyperdog_uros_app.c **** 
  116:App/Src/hyperdog_uros_app.c ****     /* destroy all the initialized nodes and their entities */
  117:App/Src/hyperdog_uros_app.c ****     /// TODO: Call the function of destroy_node of each nodes
- 118:App/Src/hyperdog_uros_app.c ****     // destroy_node_x();
- 119:App/Src/hyperdog_uros_app.c ****     // destroy_node_y();
- 120:App/Src/hyperdog_uros_app.c ****     // ....
- 121:App/Src/hyperdog_uros_app.c **** 
+ 118:App/Src/hyperdog_uros_app.c ****     _destroy_hyperdog_node();
+ 291              		.loc 1 118 5 is_stmt 1 view .LVU74
+ 292 000a FFF7FEFF 		bl	_destroy_hyperdog_node
+ 293              	.LVL9:
+ 294              	.L18:
+ 119:App/Src/hyperdog_uros_app.c ****     // destroy_node_x();
+ 120:App/Src/hyperdog_uros_app.c ****     // destroy_node_y();
+ 121:App/Src/hyperdog_uros_app.c ****     // ....
  122:App/Src/hyperdog_uros_app.c **** 
- 123:App/Src/hyperdog_uros_app.c ****     /* destroy the rclc support */
- 124:App/Src/hyperdog_uros_app.c ****     fini:
- 125:App/Src/hyperdog_uros_app.c ****     uros.rcl_ret = rclc_support_fini(&uros.support);
- 292              		.loc 1 125 5 is_stmt 1 view .LVU74
- 293              		.loc 1 125 20 is_stmt 0 view .LVU75
- 294 000a 054C     		ldr	r4, .L20
- 295 000c 04F11400 		add	r0, r4, #20
- 296 0010 FFF7FEFF 		bl	rclc_support_fini
- 297              	.LVL9:
- 298              		.loc 1 125 18 view .LVU76
- 299 0014 6065     		str	r0, [r4, #84]
- 126:App/Src/hyperdog_uros_app.c ****     if(uros.rcl_ret != RCL_RET_OK){
- 300              		.loc 1 126 5 is_stmt 1 view .LVU77
- 301              		.loc 1 126 7 is_stmt 0 view .LVU78
- 302 0016 0028     		cmp	r0, #0
- 303 0018 F7D1     		bne	.L18
- 127:App/Src/hyperdog_uros_app.c ****         goto fini;
- 128:App/Src/hyperdog_uros_app.c ****     }
- 129:App/Src/hyperdog_uros_app.c **** 
- 130:App/Src/hyperdog_uros_app.c ****     /* initialize rcl support object again */
- 131:App/Src/hyperdog_uros_app.c ****     _init_rcl_support();
- 304              		.loc 1 131 5 is_stmt 1 view .LVU79
- 305 001a FFF7FEFF 		bl	_init_rcl_support
- 306              	.LVL10:
- 132:App/Src/hyperdog_uros_app.c **** 
- 133:App/Src/hyperdog_uros_app.c ****     /* initialize all the nodes again */
- 134:App/Src/hyperdog_uros_app.c ****     /// TODO: call the initialization function for each nodes.
- 135:App/Src/hyperdog_uros_app.c ****     // init_node_x();
- 136:App/Src/hyperdog_uros_app.c ****     // init_node_y();
- 137:App/Src/hyperdog_uros_app.c ****     // ...
- 138:App/Src/hyperdog_uros_app.c **** 
- 139:App/Src/hyperdog_uros_app.c ****     
- 140:App/Src/hyperdog_uros_app.c **** }...
- 307              		.loc 1 140 1 is_stmt 0 view .LVU80
- 308 001e 10BD     		pop	{r4, pc}
- 309              	.L21:
- 310              		.align	2
- 311              	.L20:
- 312 0020 00000000 		.word	.LANCHOR0
- 313              		.cfi_endproc
- 314              	.LFE136:
- 316              		.global	uros
- 317              		.section	.bss.uros,"aw",%nobits
- 318              		.align	2
- 319              		.set	.LANCHOR0,. + 0
- 322              	uros:
- 323 0000 00000000 		.space	88
- 323      00000000 
-ARM GAS  /tmp/cc0EM173.s 			page 10
+ 123:App/Src/hyperdog_uros_app.c **** 
+ 124:App/Src/hyperdog_uros_app.c ****     /* destroy the rclc support */
+ 125:App/Src/hyperdog_uros_app.c ****     fini:
+ 126:App/Src/hyperdog_uros_app.c ****     uros.rcl_ret = rclc_support_fini(&uros.support);
+ 295              		.loc 1 126 5 view .LVU75
+ 296              		.loc 1 126 20 is_stmt 0 view .LVU76
+ 297 000e 054C     		ldr	r4, .L20
+ 298 0010 04F11400 		add	r0, r4, #20
+ 299 0014 FFF7FEFF 		bl	rclc_support_fini
+ 300              	.LVL10:
+ 301              		.loc 1 126 18 view .LVU77
+ 302 0018 6065     		str	r0, [r4, #84]
+ 127:App/Src/hyperdog_uros_app.c ****     if(uros.rcl_ret != RCL_RET_OK){
+ 303              		.loc 1 127 5 is_stmt 1 view .LVU78
+ 304              		.loc 1 127 7 is_stmt 0 view .LVU79
+ 305 001a 0028     		cmp	r0, #0
+ 306 001c F7D1     		bne	.L18
+ 128:App/Src/hyperdog_uros_app.c ****         goto fini;
+ 129:App/Src/hyperdog_uros_app.c ****     }
+ 130:App/Src/hyperdog_uros_app.c **** 
+ 131:App/Src/hyperdog_uros_app.c ****     /* initialize rcl support object again */
+ 132:App/Src/hyperdog_uros_app.c ****     _init_rcl_support();
+ 307              		.loc 1 132 5 is_stmt 1 view .LVU80
+ 308 001e FFF7FEFF 		bl	_init_rcl_support
+ 309              	.LVL11:
+ 133:App/Src/hyperdog_uros_app.c **** 
+ 134:App/Src/hyperdog_uros_app.c ****     /* initialize all the nodes again */
+ 135:App/Src/hyperdog_uros_app.c ****     /// TODO: call the initialization function for each nodes.
+ 136:App/Src/hyperdog_uros_app.c ****     // init_node_x();
+ 137:App/Src/hyperdog_uros_app.c ****     // init_node_y();
+ 138:App/Src/hyperdog_uros_app.c ****     // ...
+ 139:App/Src/hyperdog_uros_app.c **** 
+ 140:App/Src/hyperdog_uros_app.c ****     
+ 141:App/Src/hyperdog_uros_app.c **** }...
+ 310              		.loc 1 141 1 is_stmt 0 view .LVU81
+ 311 0022 10BD     		pop	{r4, pc}
+ 312              	.L21:
+ 313              		.align	2
+ 314              	.L20:
+ 315 0024 00000000 		.word	.LANCHOR0
+ 316              		.cfi_endproc
+ 317              	.LFE136:
+ 319              		.global	uros
+ 320              		.section	.bss.uros,"aw",%nobits
+ 321              		.align	2
+ARM GAS  /tmp/ccf8I2v0.s 			page 10
 
 
- 323      00000000 
- 323      00000000 
- 323      00000000 
- 324              		.text
- 325              	.Letext0:
- 326              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
- 327              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
- 328              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 329              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 330              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 331              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 332              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 333              		.file 9 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
- 334              		.file 10 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/all
- 335              		.file 11 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/ret
- 336              		.file 12 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils
- 337              		.file 13 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/typ
- 338              		.file 14 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/typ
- 339              		.file 15 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
- 340              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
- 341              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/tim
- 342              		.file 18 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/qos
- 343              		.file 19 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/ty
- 344              		.file 20 "App/Inc/hyperdog_uros_app.h"
- 345              		.file 21 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/in
- 346              		.file 22 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw_mic
-ARM GAS  /tmp/cc0EM173.s 			page 11
+ 322              		.set	.LANCHOR0,. + 0
+ 325              	uros:
+ 326 0000 00000000 		.space	88
+ 326      00000000 
+ 326      00000000 
+ 326      00000000 
+ 326      00000000 
+ 327              		.text
+ 328              	.Letext0:
+ 329              		.file 2 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h"
+ 330              		.file 3 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 331              		.file 4 "/usr/share/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 332              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 333              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 334              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 335              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 336              		.file 9 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils/
+ 337              		.file 10 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/all
+ 338              		.file 11 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/ret
+ 339              		.file 12 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcutils
+ 340              		.file 13 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/typ
+ 341              		.file 14 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/typ
+ 342              		.file 15 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
+ 343              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
+ 344              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/tim
+ 345              		.file 18 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw/qos
+ 346              		.file 19 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/ty
+ 347              		.file 20 "App/Inc/hyperdog_uros_app.h"
+ 348              		.file 21 "App/Inc/hyperdog_uros_node.h"
+ 349              		.file 22 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rclc/in
+ 350              		.file 23 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rmw_mic
+ARM GAS  /tmp/ccf8I2v0.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 hyperdog_uros_app.c
-     /tmp/cc0EM173.s:20     .text._init_rcl_support:0000000000000000 $t
-     /tmp/cc0EM173.s:26     .text._init_rcl_support:0000000000000000 _init_rcl_support
-     /tmp/cc0EM173.s:105    .text._init_rcl_support:0000000000000068 $d
-     /tmp/cc0EM173.s:110    .text.initMicroROS:0000000000000000 $t
-     /tmp/cc0EM173.s:116    .text.initMicroROS:0000000000000000 initMicroROS
-     /tmp/cc0EM173.s:256    .text.initMicroROS:00000000000000ac $d
-     /tmp/cc0EM173.s:269    .text.resetMicroROS:0000000000000000 $t
-     /tmp/cc0EM173.s:275    .text.resetMicroROS:0000000000000000 resetMicroROS
-     /tmp/cc0EM173.s:312    .text.resetMicroROS:0000000000000020 $d
-     /tmp/cc0EM173.s:322    .bss.uros:0000000000000000 uros
-     /tmp/cc0EM173.s:318    .bss.uros:0000000000000000 $d
+     /tmp/ccf8I2v0.s:20     .text._init_rcl_support:0000000000000000 $t
+     /tmp/ccf8I2v0.s:26     .text._init_rcl_support:0000000000000000 _init_rcl_support
+     /tmp/ccf8I2v0.s:105    .text._init_rcl_support:0000000000000068 $d
+     /tmp/ccf8I2v0.s:110    .text.initMicroROS:0000000000000000 $t
+     /tmp/ccf8I2v0.s:116    .text.initMicroROS:0000000000000000 initMicroROS
+     /tmp/ccf8I2v0.s:256    .text.initMicroROS:00000000000000ac $d
+     /tmp/ccf8I2v0.s:269    .text.resetMicroROS:0000000000000000 $t
+     /tmp/ccf8I2v0.s:275    .text.resetMicroROS:0000000000000000 resetMicroROS
+     /tmp/ccf8I2v0.s:315    .text.resetMicroROS:0000000000000024 $d
+     /tmp/ccf8I2v0.s:325    .bss.uros:0000000000000000 uros
+     /tmp/ccf8I2v0.s:321    .bss.uros:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 rclc_support_fini
@@ -599,3 +604,4 @@ microros_allocate
 microros_deallocate
 microros_reallocate
 microros_zero_allocate
+_destroy_hyperdog_node

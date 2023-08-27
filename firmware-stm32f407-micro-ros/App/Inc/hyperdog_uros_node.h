@@ -39,6 +39,7 @@ extern "C"{
 #include "hyperdog_uros_msgs/msg/motor_states.h"
 #include "hyperdog_uros_msgs/msg/motors_states.h"
 
+
 /**
  * |          |   12~10  |     9~7    |   6~4    |    3~1   |  0   |  
  * |          | srvs err | timers err | subs err | pubs err | init |
@@ -101,9 +102,12 @@ extern hyperdog_uros_msgs__msg__MotorStates motor_states_;
 
 extern hyperdogUROS_Node_t hyperdog_node;
 
-void init_hyperdog_node();
 
+void init_hyperdog_node();
 void spin_hyperdog_node();
+
+void _init_motors_state_publisher();
+void _destroy_hyperdog_node();
 
 #ifdef __cplusplus
 }

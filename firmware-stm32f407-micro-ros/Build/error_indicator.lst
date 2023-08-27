@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccKg8OAe.s 			page 1
+ARM GAS  /tmp/ccRur3Yu.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   27:App/Src/error_indicator.c **** #include "hyperdog_uros_app.h"
   28:App/Src/error_indicator.c **** #include "minicheetah_motor.h"
   29:App/Src/error_indicator.c **** #include "can.h"
-ARM GAS  /tmp/ccKg8OAe.s 			page 2
+ARM GAS  /tmp/ccRur3Yu.s 			page 2
 
 
   30:App/Src/error_indicator.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   75 0036 4FF40041 		mov	r1, #32768
   76 003a 4046     		mov	r0, r8
   77 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  /tmp/ccKg8OAe.s 			page 3
+ARM GAS  /tmp/ccRur3Yu.s 			page 3
 
 
   78              	.LVL7:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   47:App/Src/error_indicator.c ****             osDelay(off_period);
  124              		.loc 1 47 13 discriminator 3 view .LVU18
  125 0080 3046     		mov	r0, r6
-ARM GAS  /tmp/ccKg8OAe.s 			page 4
+ARM GAS  /tmp/ccRur3Yu.s 			page 4
 
 
  126 0082 FFF7FEFF 		bl	osDelay
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   80:App/Src/error_indicator.c ****         break;
   81:App/Src/error_indicator.c ****     
   82:App/Src/error_indicator.c ****     default:
-ARM GAS  /tmp/ccKg8OAe.s 			page 5
+ARM GAS  /tmp/ccRur3Yu.s 			page 5
 
 
   83:App/Src/error_indicator.c ****         break;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  185              		.loc 1 53 34 discriminator 3 view .LVU35
   53:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
  186              		.loc 1 53 35 is_stmt 0 discriminator 3 view .LVU36
-ARM GAS  /tmp/ccKg8OAe.s 			page 6
+ARM GAS  /tmp/ccRur3Yu.s 			page 6
 
 
  187 00d0 0137     		adds	r7, r7, #1
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   66:App/Src/error_indicator.c ****             osDelay(off_period);
  230              		.loc 1 66 13 discriminator 3 view .LVU48
  231 0106 0022     		movs	r2, #0
-ARM GAS  /tmp/ccKg8OAe.s 			page 7
+ARM GAS  /tmp/ccRur3Yu.s 			page 7
 
 
  232 0108 4FF48041 		mov	r1, #16384
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
   74:App/Src/error_indicator.c ****             osDelay(on_period);
  274              		.loc 1 74 13 is_stmt 1 discriminator 3 view .LVU61
  275 0138 DFF83480 		ldr	r8, .L17
-ARM GAS  /tmp/ccKg8OAe.s 			page 8
+ARM GAS  /tmp/ccRur3Yu.s 			page 8
 
 
  276 013c 0122     		movs	r2, #1
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  322              		.syntax unified
  323              		.thumb
  324              		.thumb_func
-ARM GAS  /tmp/ccKg8OAe.s 			page 9
+ARM GAS  /tmp/ccRur3Yu.s 			page 9
 
 
  326              	no_error:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  371 0040 2046     		mov	r0, r4
  372 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
  373              	.LVL53:
-ARM GAS  /tmp/ccKg8OAe.s 			page 10
+ARM GAS  /tmp/ccRur3Yu.s 			page 10
 
 
   95:App/Src/error_indicator.c ****     osDelay(100);
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  418              		.loc 1 104 1 is_stmt 0 view .LVU89
  419 0094 10BD     		pop	{r4, pc}
  420              	.L22:
-ARM GAS  /tmp/ccKg8OAe.s 			page 11
+ARM GAS  /tmp/ccRur3Yu.s 			page 11
 
 
  421 0096 00BF     		.align	2
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  123:App/Src/error_indicator.c ****             /*  Failed to allocate memory for FreeRTOS                  */
  124:App/Src/error_indicator.c ****             else if((uros.error_code & UROS_ERROR_FREERTOS_ALLOC) == UROS_ERROR_FREERTOS_ALLOC) 
  125:App/Src/error_indicator.c ****                 blink_error(3, 2, 200, 200);
-ARM GAS  /tmp/ccKg8OAe.s 			page 12
+ARM GAS  /tmp/ccRur3Yu.s 			page 12
 
 
  459              		.loc 1 125 17 view .LVU92
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  494              		.loc 1 144 13 view .LVU97
  495 004e 6420     		movs	r0, #100
  496 0050 FFF7FEFF 		bl	osDelay
-ARM GAS  /tmp/ccKg8OAe.s 			page 13
+ARM GAS  /tmp/ccRur3Yu.s 			page 13
 
 
  497              	.LVL69:
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  189:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_RX_FOV1) == HAL_CAN_ERROR_RX_FOV1)
  190:App/Src/error_indicator.c ****                 blink_error(5, 12, 200, 200);
  191:App/Src/error_indicator.c ****             /*!< TxMailbox 0 transmit failure due to arbitration lost */
-ARM GAS  /tmp/ccKg8OAe.s 			page 14
+ARM GAS  /tmp/ccRur3Yu.s 			page 14
 
 
  192:App/Src/error_indicator.c ****             else if((hcan1.ErrorCode & HAL_CAN_ERROR_TX_ALST0) == HAL_CAN_ERROR_TX_ALST0)
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  526 0082 FFF7FEFF 		bl	osDelay
  527              	.LVL73:
  528              	.L31:
-ARM GAS  /tmp/ccKg8OAe.s 			page 15
+ARM GAS  /tmp/ccRur3Yu.s 			page 15
 
 
  227:App/Src/error_indicator.c ****         }
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  569 00c6 2046     		mov	r0, r4
  570 00c8 FFF7FEFF 		bl	HAL_GPIO_WritePin
  571              	.LVL78:
-ARM GAS  /tmp/ccKg8OAe.s 			page 16
+ARM GAS  /tmp/ccRur3Yu.s 			page 16
 
 
  154:App/Src/error_indicator.c ****             /*!< Protocol Error Warning                               */
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  610 010c 40F08980 		bne	.L75
  171:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
  611              		.loc 1 171 18 is_stmt 1 view .LVU131
-ARM GAS  /tmp/ccKg8OAe.s 			page 17
+ARM GAS  /tmp/ccRur3Yu.s 			page 17
 
 
  171:App/Src/error_indicator.c ****                 blink_error(5, 6, 200, 200);
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  186:App/Src/error_indicator.c ****                 blink_error(5, 11, 200, 200);
  650              		.loc 1 186 20 view .LVU148
  651 0150 13F4007F 		tst	r3, #512
-ARM GAS  /tmp/ccKg8OAe.s 			page 18
+ARM GAS  /tmp/ccRur3Yu.s 			page 18
 
 
  652 0154 40F08F80 		bne	.L81
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  689              		.loc 1 204 27 is_stmt 0 view .LVU165
  690 0194 5F4B     		ldr	r3, .L107+4
  691 0196 5B6A     		ldr	r3, [r3, #36]
-ARM GAS  /tmp/ccKg8OAe.s 			page 19
+ARM GAS  /tmp/ccRur3Yu.s 			page 19
 
 
  204:App/Src/error_indicator.c ****                 blink_error(5, 17, 200, 200);
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  220:App/Src/error_indicator.c ****         }
  730              		.loc 1 220 17 is_stmt 1 view .LVU182
  731 01dc C823     		movs	r3, #200
-ARM GAS  /tmp/ccKg8OAe.s 			page 20
+ARM GAS  /tmp/ccRur3Yu.s 			page 20
 
 
  732 01de 1A46     		mov	r2, r3
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  781              	.LVL85:
  782 022e 2AE7     		b	.L31
  783              	.L76:
-ARM GAS  /tmp/ccKg8OAe.s 			page 21
+ARM GAS  /tmp/ccRur3Yu.s 			page 21
 
 
  172:App/Src/error_indicator.c ****             /*!< Acknowledgment error                                 */
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  832 027a 0B21     		movs	r1, #11
  833 027c 0520     		movs	r0, #5
  834 027e FFF7FEFF 		bl	blink_error
-ARM GAS  /tmp/ccKg8OAe.s 			page 22
+ARM GAS  /tmp/ccRur3Yu.s 			page 22
 
 
  835              	.LVL91:
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  883              		.loc 1 205 17 view .LVU199
  884 02ca C823     		movs	r3, #200
  885 02cc 1A46     		mov	r2, r3
-ARM GAS  /tmp/ccKg8OAe.s 			page 23
+ARM GAS  /tmp/ccRur3Yu.s 			page 23
 
 
  886 02ce 1121     		movs	r1, #17
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  237:App/Src/error_indicator.c ****                 // if motor is initialized and has an error
  238:App/Src/error_indicator.c ****                 /// TODO: replace 0b0111 with MOTOR_INIT_STATUS_ID
  239:App/Src/error_indicator.c ****                 if((motor[m].init_state & MOTOR_INIT_STATUS_ID) == MOTOR_INIT_STATUS_ID && motor[m]
-ARM GAS  /tmp/ccKg8OAe.s 			page 24
+ARM GAS  /tmp/ccRur3Yu.s 			page 24
 
 
  240:App/Src/error_indicator.c ****                 {
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  967 0346 93F87130 		ldrb	r3, [r3, #113]	@ zero_extendqisi2
  239:App/Src/error_indicator.c ****                 {
  968              		.loc 1 239 89 discriminator 1 view .LVU214
-ARM GAS  /tmp/ccKg8OAe.s 			page 25
+ARM GAS  /tmp/ccRur3Yu.s 			page 25
 
 
  969 034a 032B     		cmp	r3, #3
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1014 039e B3F87230 		ldrh	r3, [r3, #114]
  251:App/Src/error_indicator.c ****                         blink_error(6, 1, 200, 200); /* 1 short blink */
  1015              		.loc 1 251 23 view .LVU224
-ARM GAS  /tmp/ccKg8OAe.s 			page 26
+ARM GAS  /tmp/ccRur3Yu.s 			page 26
 
 
  1016 03a2 13F0010F 		tst	r3, #1
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1047              		.loc 1 275 28 is_stmt 0 view .LVU240
  1048 03d2 13F4807F 		tst	r3, #256
  1049 03d6 3FD1     		bne	.L101
-ARM GAS  /tmp/ccKg8OAe.s 			page 27
+ARM GAS  /tmp/ccRur3Yu.s 			page 27
 
 
  276:App/Src/error_indicator.c ****                         blink_error(6, 9, 200, 200); /* 9 short blinks */
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1091              		.loc 1 241 34 is_stmt 0 view .LVU251
  1092 0414 0121     		movs	r1, #1
  1093 0416 86E7     		b	.L54
-ARM GAS  /tmp/ccKg8OAe.s 			page 28
+ARM GAS  /tmp/ccRur3Yu.s 			page 28
 
 
  1094              	.L97:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1139              		.loc 1 276 25 is_stmt 1 view .LVU260
  1140 0458 C823     		movs	r3, #200
  1141 045a 1A46     		mov	r2, r3
-ARM GAS  /tmp/ccKg8OAe.s 			page 29
+ARM GAS  /tmp/ccRur3Yu.s 			page 29
 
 
  1142 045c 0921     		movs	r1, #9
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1185              		.loc 1 287 17 view .LVU271
  1186 0492 2046     		mov	r0, r4
  1187 0494 FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  /tmp/ccKg8OAe.s 			page 30
+ARM GAS  /tmp/ccRur3Yu.s 			page 30
 
 
  1188              	.LVL126:
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  114:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
  1230              		.loc 1 114 9 view .LVU281
  114:App/Src/error_indicator.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-ARM GAS  /tmp/ccKg8OAe.s 			page 31
+ARM GAS  /tmp/ccRur3Yu.s 			page 31
 
 
  1231              		.loc 1 114 16 is_stmt 0 view .LVU282
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1274              		.loc 1 124 20 is_stmt 0 view .LVU293
  1275 052a 13F0020F 		tst	r3, #2
  1276 052e 7FF470AD 		bne	.L105
-ARM GAS  /tmp/ccKg8OAe.s 			page 32
+ARM GAS  /tmp/ccRur3Yu.s 			page 32
 
 
  127:App/Src/error_indicator.c ****                 blink_error(3, 3, 200, 200);
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1331              		.file 14 "App/Inc/error_indicator.h"
  1332              		.file 15 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/all
  1333              		.file 16 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/ini
-ARM GAS  /tmp/ccKg8OAe.s 			page 33
+ARM GAS  /tmp/ccRur3Yu.s 			page 33
 
 
  1334              		.file 17 "micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rcl/con
@@ -1931,28 +1931,28 @@ ARM GAS  /tmp/ccKg8OAe.s 			page 1
  1341              		.file 24 "App/Inc/motor_typedefs.h"
  1342              		.file 25 "App/Inc/minicheetah_motor.h"
  1343              		.file 26 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
-ARM GAS  /tmp/ccKg8OAe.s 			page 34
+ARM GAS  /tmp/ccRur3Yu.s 			page 34
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 error_indicator.c
-     /tmp/ccKg8OAe.s:20     .text.blink_error:0000000000000000 $t
-     /tmp/ccKg8OAe.s:26     .text.blink_error:0000000000000000 blink_error
-     /tmp/ccKg8OAe.s:85     .text.blink_error:000000000000004a $d
-     /tmp/ccKg8OAe.s:89     .text.blink_error:000000000000004e $t
-     /tmp/ccKg8OAe.s:315    .text.blink_error:0000000000000170 $d
-     /tmp/ccKg8OAe.s:320    .text.no_error:0000000000000000 $t
-     /tmp/ccKg8OAe.s:326    .text.no_error:0000000000000000 no_error
-     /tmp/ccKg8OAe.s:423    .text.no_error:0000000000000098 $d
-     /tmp/ccKg8OAe.s:428    .text.error_indicator:0000000000000000 $t
-     /tmp/ccKg8OAe.s:434    .text.error_indicator:0000000000000000 error_indicator
-     /tmp/ccKg8OAe.s:930    .text.error_indicator:0000000000000310 $d
-     /tmp/ccKg8OAe.s:936    .text.error_indicator:0000000000000318 $t
-     /tmp/ccKg8OAe.s:1296   .text.error_indicator:0000000000000550 $d
-     /tmp/ccKg8OAe.s:1309   .bss.rcl_err_code:0000000000000000 rcl_err_code
-     /tmp/ccKg8OAe.s:1315   .bss.rmw_err_code:0000000000000000 rmw_err_code
-     /tmp/ccKg8OAe.s:1306   .bss.rcl_err_code:0000000000000000 $d
-     /tmp/ccKg8OAe.s:1312   .bss.rmw_err_code:0000000000000000 $d
+     /tmp/ccRur3Yu.s:20     .text.blink_error:0000000000000000 $t
+     /tmp/ccRur3Yu.s:26     .text.blink_error:0000000000000000 blink_error
+     /tmp/ccRur3Yu.s:85     .text.blink_error:000000000000004a $d
+     /tmp/ccRur3Yu.s:89     .text.blink_error:000000000000004e $t
+     /tmp/ccRur3Yu.s:315    .text.blink_error:0000000000000170 $d
+     /tmp/ccRur3Yu.s:320    .text.no_error:0000000000000000 $t
+     /tmp/ccRur3Yu.s:326    .text.no_error:0000000000000000 no_error
+     /tmp/ccRur3Yu.s:423    .text.no_error:0000000000000098 $d
+     /tmp/ccRur3Yu.s:428    .text.error_indicator:0000000000000000 $t
+     /tmp/ccRur3Yu.s:434    .text.error_indicator:0000000000000000 error_indicator
+     /tmp/ccRur3Yu.s:930    .text.error_indicator:0000000000000310 $d
+     /tmp/ccRur3Yu.s:936    .text.error_indicator:0000000000000318 $t
+     /tmp/ccRur3Yu.s:1296   .text.error_indicator:0000000000000550 $d
+     /tmp/ccRur3Yu.s:1309   .bss.rcl_err_code:0000000000000000 rcl_err_code
+     /tmp/ccRur3Yu.s:1315   .bss.rmw_err_code:0000000000000000 rmw_err_code
+     /tmp/ccRur3Yu.s:1306   .bss.rcl_err_code:0000000000000000 $d
+     /tmp/ccRur3Yu.s:1312   .bss.rmw_err_code:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

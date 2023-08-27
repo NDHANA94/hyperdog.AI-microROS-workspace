@@ -126,6 +126,7 @@ Build/hyperdog_uros_app.o: App/Src/hyperdog_uros_app.c \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__struct.h \
  micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/string.h \
  micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/primitives_sequence.h \
+ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_feedback__struct.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__functions.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/rosidl_generator_c__visibility_control.h \
  hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__type_support.h \
@@ -265,6 +266,7 @@ hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/motor_states.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__struct.h:
 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/string.h:
 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rosidl_runtime_c/primitives_sequence.h:
+hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_feedback__struct.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__functions.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/rosidl_generator_c__visibility_control.h:
 hyperdog_uros_msgs/include/hyperdog_uros_msgs/msg/detail/motor_states__type_support.h:

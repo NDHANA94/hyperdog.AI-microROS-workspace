@@ -115,6 +115,7 @@ void resetMicroROS()
 
     /* destroy all the initialized nodes and their entities */
     /// TODO: Call the function of destroy_node of each nodes
+    _destroy_hyperdog_node();
     // destroy_node_x();
     // destroy_node_y();
     // ....

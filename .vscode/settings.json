@@ -49,7 +49,8 @@
         "motor_cmd.h": "c",
         "error_indicator.h": "c",
         "hyperdog_uros_node.h": "c",
-        "rope": "c"
+        "rope": "c",
+        "motors_states.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": false,
