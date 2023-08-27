@@ -31,6 +31,7 @@
 #include "usart.h"
 
 #include "hyperdog_uros_app.h"
+#include "hyperdog_uros_node.h"
 #include "error_indicator.h"
 #include "minicheetah_motor.h"
 /* USER CODE END Includes */
@@ -159,7 +160,7 @@ void StartDefaultTask(void *argument)
   a:
   if(initMicroROS(&huart2)){
     init_hyperdog_node();
-    spin_hyperdog_node();
+    rclc_executor_spin(&hyperdog_node.executor);
   }
   else{
     osDelay(100);

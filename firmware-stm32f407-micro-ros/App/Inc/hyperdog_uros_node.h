@@ -39,6 +39,7 @@ extern "C"{
 #include "hyperdog_uros_msgs/msg/motor_states.h"
 #include "hyperdog_uros_msgs/msg/motors_states.h"
 
+#define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(10) /*!< 10ms */
 
 /**
  * |          |   12~10  |     9~7    |   6~4    |    3~1   |  0   |  
@@ -83,30 +84,32 @@ enum HyperdogNodeState{
 };
 
 
+struct{
+    rcl_publisher_t                         publisher;
+    hyperdog_uros_msgs__msg__MotorsStates   msg; 
+    rcl_timer_t                             timer; 
+    unsigned int                            timer_period; /* Hz */
+}typedef motorStates_publisher_t;
+
+
 struct
 {
     rcl_node_t                              node;
-    /* motors states publisher components*/
-    rcl_publisher_t                         motors_states_pub;
-    hyperdog_uros_msgs__msg__MotorsStates   motors_states_msg;    
-
+    rclc_executor_t                         executor;
+    motorStates_publisher_t                 motorsStates_pub;
     enum HyperdogNodeState                  state;
-    uint16_t                                error_code; /* 13-bits error-code*/
+    uint16_t                                error_code;             /* 13-bits error-code*/
     rcl_ret_t                               rcl_ret;
-
 }typedef hyperdogUROS_Node_t;
 
-
 extern hyperdog_uros_msgs__msg__MotorStates motor_states_;
- 
-
 extern hyperdogUROS_Node_t hyperdog_node;
 
-
+/* function decorators */
 void init_hyperdog_node();
-void spin_hyperdog_node();
 
-void _init_motors_state_publisher();
+void _init_motors_states_publisher();
+void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 void _destroy_hyperdog_node();
 
 #ifdef __cplusplus

@@ -4,10 +4,11 @@ browser.vc.db-wal
 firmware-stm32f407-micro-ros/browser.vc.db 
 firmware-stm32f407-micro-ros/browser.vc.db-shm 
 firmware-stm32f407-micro-ros/browser.vc.db-wal
-firmware-stm32f407-micro-ros/build_firmware/*.o
-firmware-stm32f407-micro-ros/build_firmware/*.d
-firmware-stm32f407-micro-ros/build_firmware/*.lst
+firmware-stm32f407-micro-ros/Build/*.o
+firmware-stm32f407-micro-ros/Build/*.d
+firmware-stm32f407-micro-ros/Build/*.lst
 install/
 log/
 build/
 firmware/
+
