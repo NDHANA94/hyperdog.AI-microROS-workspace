@@ -10,15 +10,6 @@ module hyperdog_uros_msgs {
       " std_msgs/Header header")
     struct MotorStates {
       @verbatim (language="comment", text=
-        " motor details" "\n"
-        " FR, FL, RR, RL")
-      string leg;
-
-      @verbatim (language="comment", text=
-        " HIP_ROLL, HIP_PITCH, KNEE")
-      string joint;
-
-      @verbatim (language="comment", text=
         " states")
       boolean is_available;
 

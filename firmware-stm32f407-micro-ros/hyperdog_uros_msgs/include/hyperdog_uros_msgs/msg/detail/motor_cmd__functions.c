@@ -11,11 +11,6 @@
 #include "rcutils/allocator.h"
 
 
-// Include directives for member types
-// Member `leg`
-// Member `joint`
-#include "rosidl_runtime_c/string_functions.h"
-
 bool
 hyperdog_uros_msgs__msg__MotorCmd__init(hyperdog_uros_msgs__msg__MotorCmd * msg)
 {
@@ -23,15 +18,7 @@ hyperdog_uros_msgs__msg__MotorCmd__init(hyperdog_uros_msgs__msg__MotorCmd * msg)
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__init(&msg->leg)) {
-    hyperdog_uros_msgs__msg__MotorCmd__fini(msg);
-    return false;
-  }
   // joint
-  if (!rosidl_runtime_c__String__init(&msg->joint)) {
-    hyperdog_uros_msgs__msg__MotorCmd__fini(msg);
-    return false;
-  }
   // enable
   // disable
   // set_zero
@@ -50,9 +37,7 @@ hyperdog_uros_msgs__msg__MotorCmd__fini(hyperdog_uros_msgs__msg__MotorCmd * msg)
     return;
   }
   // leg
-  rosidl_runtime_c__String__fini(&msg->leg);
   // joint
-  rosidl_runtime_c__String__fini(&msg->joint);
   // enable
   // disable
   // set_zero
@@ -70,15 +55,11 @@ hyperdog_uros_msgs__msg__MotorCmd__are_equal(const hyperdog_uros_msgs__msg__Moto
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg), &(rhs->leg)))
-  {
+  if (lhs->leg != rhs->leg) {
     return false;
   }
   // joint
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->joint), &(rhs->joint)))
-  {
+  if (lhs->joint != rhs->joint) {
     return false;
   }
   // enable
@@ -125,17 +106,9 @@ hyperdog_uros_msgs__msg__MotorCmd__copy(
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg), &(output->leg)))
-  {
-    return false;
-  }
+  output->leg = input->leg;
   // joint
-  if (!rosidl_runtime_c__String__copy(
-      &(input->joint), &(output->joint)))
-  {
-    return false;
-  }
+  output->joint = input->joint;
   // enable
   output->enable = input->enable;
   // disable

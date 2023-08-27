@@ -1,2 +1,2 @@
-string leg # FR, FL, RR, RL
-string joint # HIP_ROLL, HIP_PITCH, KNEE
+uint8 leg       # 0=FR,       1=FL,        2=RR,    3=RL
+uint8 joint     # 0=HIP_ROLL, 1=HIP_PITCH, 2=KNEE

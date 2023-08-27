@@ -18,24 +18,25 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'leg_id'
-#include "rosidl_runtime_c/string.h"
 // Member 'position'
 // Member 'velocity'
 // Member 'applied_force'
 // Member 'reaction_force'
+// Member 'stiffness_ratio'
+// Member 'damping_ratio'
 #include "hyperdog_uros_msgs/msg/detail/vector3__struct.h"
 
 // Struct defined in msg/LegStates in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__LegStates
 {
-  rosidl_runtime_c__String leg_id;
   bool is_contacted;
+  uint8_t error_code;
   hyperdog_uros_msgs__msg__Vector3 position;
   hyperdog_uros_msgs__msg__Vector3 velocity;
   hyperdog_uros_msgs__msg__Vector3 applied_force;
   hyperdog_uros_msgs__msg__Vector3 reaction_force;
-  uint8_t error_code;
+  hyperdog_uros_msgs__msg__Vector3 stiffness_ratio;
+  hyperdog_uros_msgs__msg__Vector3 damping_ratio;
 } hyperdog_uros_msgs__msg__LegStates;
 
 // Struct for a sequence of hyperdog_uros_msgs__msg__LegStates.

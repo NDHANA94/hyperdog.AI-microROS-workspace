@@ -17,16 +17,11 @@ extern "C"
 
 // Constants defined in the message
 
-// Include directives for member types
-// Member 'leg'
-// Member 'joint'
-#include "rosidl_runtime_c/string.h"
-
 // Struct defined in msg/MotorCmd in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__MotorCmd
 {
-  rosidl_runtime_c__String leg;
-  rosidl_runtime_c__String joint;
+  uint8_t leg;
+  uint8_t joint;
   bool enable;
   bool disable;
   bool set_zero;

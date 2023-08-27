@@ -14,12 +14,12 @@ module hyperdog_uros_msgs {
 
       @verbatim (language="comment", text=
         " Assign a leg joint to the motor" "\n"
-        " FR, FL, RR, RL")
-      string leg;
+        " 0=FR,         1=FL,           2=RR,           3=RL")
+      uint8 leg;
 
       @verbatim (language="comment", text=
-        " HIP_ROLL, HIP_PITCH, KNEE")
-      string joint;
+        " 0=HIP_ROLL,   1=HIP_PITCH,    2=KNEE")
+      uint8 joint;
 
       @verbatim (language="comment", text=
         " motor parameters")
@@ -27,7 +27,7 @@ module hyperdog_uros_msgs {
 
       @verbatim (language="comment", text=
         " motor control limits")
-      hyperdog_uros_msgs::msg::MotorCtrlLimits ctrl_limits;
+      hyperdog_uros_msgs::msg::MotorCtrlLimits ctrl_limitss;
     };
   };
 };

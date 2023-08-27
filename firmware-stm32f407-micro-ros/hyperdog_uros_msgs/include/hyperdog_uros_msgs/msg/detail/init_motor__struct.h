@@ -18,22 +18,19 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'leg'
-// Member 'joint'
-#include "rosidl_runtime_c/string.h"
 // Member 'parameters'
 #include "hyperdog_uros_msgs/msg/detail/motor_params__struct.h"
-// Member 'ctrl_limits'
+// Member 'ctrl_limitss'
 #include "hyperdog_uros_msgs/msg/detail/motor_ctrl_limits__struct.h"
 
 // Struct defined in msg/InitMotor in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__InitMotor
 {
   uint8_t id;
-  rosidl_runtime_c__String leg;
-  rosidl_runtime_c__String joint;
+  uint8_t leg;
+  uint8_t joint;
   hyperdog_uros_msgs__msg__MotorParams parameters;
-  hyperdog_uros_msgs__msg__MotorCtrlLimits ctrl_limits;
+  hyperdog_uros_msgs__msg__MotorCtrlLimits ctrl_limitss;
 } hyperdog_uros_msgs__msg__InitMotor;
 
 // Struct for a sequence of hyperdog_uros_msgs__msg__InitMotor.

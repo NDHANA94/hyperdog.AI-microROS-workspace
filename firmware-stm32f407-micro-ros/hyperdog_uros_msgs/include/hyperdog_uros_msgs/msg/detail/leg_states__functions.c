@@ -12,12 +12,12 @@
 
 
 // Include directives for member types
-// Member `leg_id`
-#include "rosidl_runtime_c/string_functions.h"
 // Member `position`
 // Member `velocity`
 // Member `applied_force`
 // Member `reaction_force`
+// Member `stiffness_ratio`
+// Member `damping_ratio`
 #include "hyperdog_uros_msgs/msg/detail/vector3__functions.h"
 
 bool
@@ -26,12 +26,8 @@ hyperdog_uros_msgs__msg__LegStates__init(hyperdog_uros_msgs__msg__LegStates * ms
   if (!msg) {
     return false;
   }
-  // leg_id
-  if (!rosidl_runtime_c__String__init(&msg->leg_id)) {
-    hyperdog_uros_msgs__msg__LegStates__fini(msg);
-    return false;
-  }
   // is_contacted
+  // error_code
   // position
   if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->position)) {
     hyperdog_uros_msgs__msg__LegStates__fini(msg);
@@ -52,7 +48,16 @@ hyperdog_uros_msgs__msg__LegStates__init(hyperdog_uros_msgs__msg__LegStates * ms
     hyperdog_uros_msgs__msg__LegStates__fini(msg);
     return false;
   }
-  // error_code
+  // stiffness_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->stiffness_ratio)) {
+    hyperdog_uros_msgs__msg__LegStates__fini(msg);
+    return false;
+  }
+  // damping_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->damping_ratio)) {
+    hyperdog_uros_msgs__msg__LegStates__fini(msg);
+    return false;
+  }
   return true;
 }
 
@@ -62,9 +67,8 @@ hyperdog_uros_msgs__msg__LegStates__fini(hyperdog_uros_msgs__msg__LegStates * ms
   if (!msg) {
     return;
   }
-  // leg_id
-  rosidl_runtime_c__String__fini(&msg->leg_id);
   // is_contacted
+  // error_code
   // position
   hyperdog_uros_msgs__msg__Vector3__fini(&msg->position);
   // velocity
@@ -73,7 +77,10 @@ hyperdog_uros_msgs__msg__LegStates__fini(hyperdog_uros_msgs__msg__LegStates * ms
   hyperdog_uros_msgs__msg__Vector3__fini(&msg->applied_force);
   // reaction_force
   hyperdog_uros_msgs__msg__Vector3__fini(&msg->reaction_force);
-  // error_code
+  // stiffness_ratio
+  hyperdog_uros_msgs__msg__Vector3__fini(&msg->stiffness_ratio);
+  // damping_ratio
+  hyperdog_uros_msgs__msg__Vector3__fini(&msg->damping_ratio);
 }
 
 bool
@@ -82,14 +89,12 @@ hyperdog_uros_msgs__msg__LegStates__are_equal(const hyperdog_uros_msgs__msg__Leg
   if (!lhs || !rhs) {
     return false;
   }
-  // leg_id
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg_id), &(rhs->leg_id)))
-  {
-    return false;
-  }
   // is_contacted
   if (lhs->is_contacted != rhs->is_contacted) {
+    return false;
+  }
+  // error_code
+  if (lhs->error_code != rhs->error_code) {
     return false;
   }
   // position
@@ -116,8 +121,16 @@ hyperdog_uros_msgs__msg__LegStates__are_equal(const hyperdog_uros_msgs__msg__Leg
   {
     return false;
   }
-  // error_code
-  if (lhs->error_code != rhs->error_code) {
+  // stiffness_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__are_equal(
+      &(lhs->stiffness_ratio), &(rhs->stiffness_ratio)))
+  {
+    return false;
+  }
+  // damping_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__are_equal(
+      &(lhs->damping_ratio), &(rhs->damping_ratio)))
+  {
     return false;
   }
   return true;
@@ -131,14 +144,10 @@ hyperdog_uros_msgs__msg__LegStates__copy(
   if (!input || !output) {
     return false;
   }
-  // leg_id
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg_id), &(output->leg_id)))
-  {
-    return false;
-  }
   // is_contacted
   output->is_contacted = input->is_contacted;
+  // error_code
+  output->error_code = input->error_code;
   // position
   if (!hyperdog_uros_msgs__msg__Vector3__copy(
       &(input->position), &(output->position)))
@@ -163,8 +172,18 @@ hyperdog_uros_msgs__msg__LegStates__copy(
   {
     return false;
   }
-  // error_code
-  output->error_code = input->error_code;
+  // stiffness_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__copy(
+      &(input->stiffness_ratio), &(output->stiffness_ratio)))
+  {
+    return false;
+  }
+  // damping_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__copy(
+      &(input->damping_ratio), &(output->damping_ratio)))
+  {
+    return false;
+  }
   return true;
 }
 

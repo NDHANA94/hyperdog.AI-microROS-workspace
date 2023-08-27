@@ -1,2 +1,2 @@
-string leg # FR, FL, RR, RL
-hyperdog_uros_msgs/Vector3 stiffness # 0-5 | [x, y, z]
+uint8 leg       # 0=FR,       1=FL,        2=RR,    3=RL
+hyperdog_uros_msgs/Vector3 stiffness_ratio # 0-5 | [x, y, z]

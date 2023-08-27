@@ -18,16 +18,14 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'leg'
-#include "rosidl_runtime_c/string.h"
-// Member 'stiffness'
+// Member 'stiffness_ratio'
 #include "hyperdog_uros_msgs/msg/detail/vector3__struct.h"
 
 // Struct defined in srv/SetLegStiffness in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetLegStiffness_Request
 {
-  rosidl_runtime_c__String leg;
-  hyperdog_uros_msgs__msg__Vector3 stiffness;
+  uint8_t leg;
+  hyperdog_uros_msgs__msg__Vector3 stiffness_ratio;
 } hyperdog_uros_msgs__srv__SetLegStiffness_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__SetLegStiffness_Request.
@@ -45,8 +43,7 @@ typedef struct hyperdog_uros_msgs__srv__SetLegStiffness_Request__Sequence
 
 // Include directives for member types
 // Member 'error_msg'
-// already included above
-// #include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string.h"
 
 // Struct defined in srv/SetLegStiffness in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetLegStiffness_Response

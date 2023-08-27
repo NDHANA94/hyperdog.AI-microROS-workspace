@@ -17,16 +17,11 @@ extern "C"
 
 // Constants defined in the message
 
-// Include directives for member types
-// Member 'leg'
-// Member 'joint'
-#include "rosidl_runtime_c/string.h"
-
 // Struct defined in srv/SetZeroPosition in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetZeroPosition_Request
 {
-  rosidl_runtime_c__String leg;
-  rosidl_runtime_c__String joint;
+  uint8_t leg;
+  uint8_t joint;
 } hyperdog_uros_msgs__srv__SetZeroPosition_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__SetZeroPosition_Request.
@@ -44,8 +39,7 @@ typedef struct hyperdog_uros_msgs__srv__SetZeroPosition_Request__Sequence
 
 // Include directives for member types
 // Member 'error_msg'
-// already included above
-// #include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string.h"
 
 // Struct defined in srv/SetZeroPosition in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetZeroPosition_Response

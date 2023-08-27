@@ -10,11 +10,6 @@
 
 #include "rcutils/allocator.h"
 
-// Include directives for member types
-// Member `leg`
-// Member `joint`
-#include "rosidl_runtime_c/string_functions.h"
-
 bool
 hyperdog_uros_msgs__srv__EnableMotor_Request__init(hyperdog_uros_msgs__srv__EnableMotor_Request * msg)
 {
@@ -22,15 +17,7 @@ hyperdog_uros_msgs__srv__EnableMotor_Request__init(hyperdog_uros_msgs__srv__Enab
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__init(&msg->leg)) {
-    hyperdog_uros_msgs__srv__EnableMotor_Request__fini(msg);
-    return false;
-  }
   // joint
-  if (!rosidl_runtime_c__String__init(&msg->joint)) {
-    hyperdog_uros_msgs__srv__EnableMotor_Request__fini(msg);
-    return false;
-  }
   return true;
 }
 
@@ -41,9 +28,7 @@ hyperdog_uros_msgs__srv__EnableMotor_Request__fini(hyperdog_uros_msgs__srv__Enab
     return;
   }
   // leg
-  rosidl_runtime_c__String__fini(&msg->leg);
   // joint
-  rosidl_runtime_c__String__fini(&msg->joint);
 }
 
 bool
@@ -53,15 +38,11 @@ hyperdog_uros_msgs__srv__EnableMotor_Request__are_equal(const hyperdog_uros_msgs
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg), &(rhs->leg)))
-  {
+  if (lhs->leg != rhs->leg) {
     return false;
   }
   // joint
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->joint), &(rhs->joint)))
-  {
+  if (lhs->joint != rhs->joint) {
     return false;
   }
   return true;
@@ -76,17 +57,9 @@ hyperdog_uros_msgs__srv__EnableMotor_Request__copy(
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg), &(output->leg)))
-  {
-    return false;
-  }
+  output->leg = input->leg;
   // joint
-  if (!rosidl_runtime_c__String__copy(
-      &(input->joint), &(output->joint)))
-  {
-    return false;
-  }
+  output->joint = input->joint;
   return true;
 }
 
@@ -267,8 +240,7 @@ hyperdog_uros_msgs__srv__EnableMotor_Request__Sequence__copy(
 
 // Include directives for member types
 // Member `error_msg`
-// already included above
-// #include "rosidl_runtime_c/string_functions.h"
+#include "rosidl_runtime_c/string_functions.h"
 
 bool
 hyperdog_uros_msgs__srv__EnableMotor_Response__init(hyperdog_uros_msgs__srv__EnableMotor_Response * msg)

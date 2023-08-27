@@ -1,5 +1,0 @@
-string leg # FR, FL, RR, RL
-hyperdog_uros_msgs/Vector3 stiffness # 0-5 | [x, y, z]
----
-bool is_set
-string error_msg

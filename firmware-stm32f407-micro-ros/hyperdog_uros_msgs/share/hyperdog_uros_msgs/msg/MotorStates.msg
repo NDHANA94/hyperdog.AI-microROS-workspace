@@ -1,9 +1,5 @@
 # std_msgs/Header header
 
-# motor details
-string leg # FR, FL, RR, RL
-string joint # HIP_ROLL, HIP_PITCH, KNEE
-
 # states
 bool is_available
 bool is_enabled

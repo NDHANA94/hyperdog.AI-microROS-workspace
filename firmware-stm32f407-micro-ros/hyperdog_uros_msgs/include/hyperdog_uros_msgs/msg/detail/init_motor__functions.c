@@ -12,12 +12,9 @@
 
 
 // Include directives for member types
-// Member `leg`
-// Member `joint`
-#include "rosidl_runtime_c/string_functions.h"
 // Member `parameters`
 #include "hyperdog_uros_msgs/msg/detail/motor_params__functions.h"
-// Member `ctrl_limits`
+// Member `ctrl_limitss`
 #include "hyperdog_uros_msgs/msg/detail/motor_ctrl_limits__functions.h"
 
 bool
@@ -28,22 +25,14 @@ hyperdog_uros_msgs__msg__InitMotor__init(hyperdog_uros_msgs__msg__InitMotor * ms
   }
   // id
   // leg
-  if (!rosidl_runtime_c__String__init(&msg->leg)) {
-    hyperdog_uros_msgs__msg__InitMotor__fini(msg);
-    return false;
-  }
   // joint
-  if (!rosidl_runtime_c__String__init(&msg->joint)) {
-    hyperdog_uros_msgs__msg__InitMotor__fini(msg);
-    return false;
-  }
   // parameters
   if (!hyperdog_uros_msgs__msg__MotorParams__init(&msg->parameters)) {
     hyperdog_uros_msgs__msg__InitMotor__fini(msg);
     return false;
   }
-  // ctrl_limits
-  if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__init(&msg->ctrl_limits)) {
+  // ctrl_limitss
+  if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__init(&msg->ctrl_limitss)) {
     hyperdog_uros_msgs__msg__InitMotor__fini(msg);
     return false;
   }
@@ -58,13 +47,11 @@ hyperdog_uros_msgs__msg__InitMotor__fini(hyperdog_uros_msgs__msg__InitMotor * ms
   }
   // id
   // leg
-  rosidl_runtime_c__String__fini(&msg->leg);
   // joint
-  rosidl_runtime_c__String__fini(&msg->joint);
   // parameters
   hyperdog_uros_msgs__msg__MotorParams__fini(&msg->parameters);
-  // ctrl_limits
-  hyperdog_uros_msgs__msg__MotorCtrlLimits__fini(&msg->ctrl_limits);
+  // ctrl_limitss
+  hyperdog_uros_msgs__msg__MotorCtrlLimits__fini(&msg->ctrl_limitss);
 }
 
 bool
@@ -78,15 +65,11 @@ hyperdog_uros_msgs__msg__InitMotor__are_equal(const hyperdog_uros_msgs__msg__Ini
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg), &(rhs->leg)))
-  {
+  if (lhs->leg != rhs->leg) {
     return false;
   }
   // joint
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->joint), &(rhs->joint)))
-  {
+  if (lhs->joint != rhs->joint) {
     return false;
   }
   // parameters
@@ -95,9 +78,9 @@ hyperdog_uros_msgs__msg__InitMotor__are_equal(const hyperdog_uros_msgs__msg__Ini
   {
     return false;
   }
-  // ctrl_limits
+  // ctrl_limitss
   if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__are_equal(
-      &(lhs->ctrl_limits), &(rhs->ctrl_limits)))
+      &(lhs->ctrl_limitss), &(rhs->ctrl_limitss)))
   {
     return false;
   }
@@ -115,26 +98,18 @@ hyperdog_uros_msgs__msg__InitMotor__copy(
   // id
   output->id = input->id;
   // leg
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg), &(output->leg)))
-  {
-    return false;
-  }
+  output->leg = input->leg;
   // joint
-  if (!rosidl_runtime_c__String__copy(
-      &(input->joint), &(output->joint)))
-  {
-    return false;
-  }
+  output->joint = input->joint;
   // parameters
   if (!hyperdog_uros_msgs__msg__MotorParams__copy(
       &(input->parameters), &(output->parameters)))
   {
     return false;
   }
-  // ctrl_limits
+  // ctrl_limitss
   if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__copy(
-      &(input->ctrl_limits), &(output->ctrl_limits)))
+      &(input->ctrl_limitss), &(output->ctrl_limitss)))
   {
     return false;
   }

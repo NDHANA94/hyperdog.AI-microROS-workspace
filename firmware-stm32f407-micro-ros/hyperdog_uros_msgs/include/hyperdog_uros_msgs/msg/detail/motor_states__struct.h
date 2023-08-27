@@ -18,8 +18,6 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'leg'
-// Member 'joint'
 // Member 'status_msg'
 #include "rosidl_runtime_c/string.h"
 // Member 'feedback'
@@ -28,8 +26,6 @@ extern "C"
 // Struct defined in msg/MotorStates in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__MotorStates
 {
-  rosidl_runtime_c__String leg;
-  rosidl_runtime_c__String joint;
   bool is_available;
   bool is_enabled;
   bool is_error;

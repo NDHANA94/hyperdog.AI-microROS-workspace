@@ -8,14 +8,6 @@ module hyperdog_uros_msgs {
   module msg {
     struct LegCmd {
       @verbatim (language="comment", text=
-        " FR, FL, RR, RL")
-      string leg;
-
-      @verbatim (language="comment", text=
-        " HIP, THIGH, CALF")
-      string joint;
-
-      @verbatim (language="comment", text=
         " [x,y,z]")
       hyperdog_uros_msgs::msg::Vector3 position;
 
@@ -25,11 +17,11 @@ module hyperdog_uros_msgs {
 
       @verbatim (language="comment", text=
         " [x,y,z]")
-      hyperdog_uros_msgs::msg::Vector3 stiffness;
+      hyperdog_uros_msgs::msg::Vector3 stiffness_ratio;
 
       @verbatim (language="comment", text=
         " [x,y,z]")
-      hyperdog_uros_msgs::msg::Vector3 damping;
+      hyperdog_uros_msgs::msg::Vector3 damping_ratio;
     };
   };
 };

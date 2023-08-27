@@ -11,9 +11,7 @@
 #include "rcutils/allocator.h"
 
 // Include directives for member types
-// Member `leg`
-#include "rosidl_runtime_c/string_functions.h"
-// Member `stiffness`
+// Member `stiffness_ratio`
 #include "hyperdog_uros_msgs/msg/detail/vector3__functions.h"
 
 bool
@@ -23,12 +21,8 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__init(hyperdog_uros_msgs__srv__
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__init(&msg->leg)) {
-    hyperdog_uros_msgs__srv__SetLegStiffness_Request__fini(msg);
-    return false;
-  }
-  // stiffness
-  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->stiffness)) {
+  // stiffness_ratio
+  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->stiffness_ratio)) {
     hyperdog_uros_msgs__srv__SetLegStiffness_Request__fini(msg);
     return false;
   }
@@ -42,9 +36,8 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__fini(hyperdog_uros_msgs__srv__
     return;
   }
   // leg
-  rosidl_runtime_c__String__fini(&msg->leg);
-  // stiffness
-  hyperdog_uros_msgs__msg__Vector3__fini(&msg->stiffness);
+  // stiffness_ratio
+  hyperdog_uros_msgs__msg__Vector3__fini(&msg->stiffness_ratio);
 }
 
 bool
@@ -54,14 +47,12 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__are_equal(const hyperdog_uros_
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg), &(rhs->leg)))
-  {
+  if (lhs->leg != rhs->leg) {
     return false;
   }
-  // stiffness
+  // stiffness_ratio
   if (!hyperdog_uros_msgs__msg__Vector3__are_equal(
-      &(lhs->stiffness), &(rhs->stiffness)))
+      &(lhs->stiffness_ratio), &(rhs->stiffness_ratio)))
   {
     return false;
   }
@@ -77,14 +68,10 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__copy(
     return false;
   }
   // leg
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg), &(output->leg)))
-  {
-    return false;
-  }
-  // stiffness
+  output->leg = input->leg;
+  // stiffness_ratio
   if (!hyperdog_uros_msgs__msg__Vector3__copy(
-      &(input->stiffness), &(output->stiffness)))
+      &(input->stiffness_ratio), &(output->stiffness_ratio)))
   {
     return false;
   }
@@ -268,8 +255,7 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__Sequence__copy(
 
 // Include directives for member types
 // Member `error_msg`
-// already included above
-// #include "rosidl_runtime_c/string_functions.h"
+#include "rosidl_runtime_c/string_functions.h"
 
 bool
 hyperdog_uros_msgs__srv__SetLegStiffness_Response__init(hyperdog_uros_msgs__srv__SetLegStiffness_Response * msg)

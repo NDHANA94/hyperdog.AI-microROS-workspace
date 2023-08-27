@@ -12,8 +12,6 @@
 
 
 // Include directives for member types
-// Member `leg`
-// Member `joint`
 // Member `status_msg`
 #include "rosidl_runtime_c/string_functions.h"
 // Member `feedback`
@@ -23,16 +21,6 @@ bool
 hyperdog_uros_msgs__msg__MotorStates__init(hyperdog_uros_msgs__msg__MotorStates * msg)
 {
   if (!msg) {
-    return false;
-  }
-  // leg
-  if (!rosidl_runtime_c__String__init(&msg->leg)) {
-    hyperdog_uros_msgs__msg__MotorStates__fini(msg);
-    return false;
-  }
-  // joint
-  if (!rosidl_runtime_c__String__init(&msg->joint)) {
-    hyperdog_uros_msgs__msg__MotorStates__fini(msg);
     return false;
   }
   // is_available
@@ -58,10 +46,6 @@ hyperdog_uros_msgs__msg__MotorStates__fini(hyperdog_uros_msgs__msg__MotorStates 
   if (!msg) {
     return;
   }
-  // leg
-  rosidl_runtime_c__String__fini(&msg->leg);
-  // joint
-  rosidl_runtime_c__String__fini(&msg->joint);
   // is_available
   // is_enabled
   // is_error
@@ -76,18 +60,6 @@ bool
 hyperdog_uros_msgs__msg__MotorStates__are_equal(const hyperdog_uros_msgs__msg__MotorStates * lhs, const hyperdog_uros_msgs__msg__MotorStates * rhs)
 {
   if (!lhs || !rhs) {
-    return false;
-  }
-  // leg
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->leg), &(rhs->leg)))
-  {
-    return false;
-  }
-  // joint
-  if (!rosidl_runtime_c__String__are_equal(
-      &(lhs->joint), &(rhs->joint)))
-  {
     return false;
   }
   // is_available
@@ -127,18 +99,6 @@ hyperdog_uros_msgs__msg__MotorStates__copy(
   hyperdog_uros_msgs__msg__MotorStates * output)
 {
   if (!input || !output) {
-    return false;
-  }
-  // leg
-  if (!rosidl_runtime_c__String__copy(
-      &(input->leg), &(output->leg)))
-  {
-    return false;
-  }
-  // joint
-  if (!rosidl_runtime_c__String__copy(
-      &(input->joint), &(output->joint)))
-  {
     return false;
   }
   // is_available
