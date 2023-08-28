@@ -96,9 +96,10 @@ void microros_deallocate(void * pointer, void * state);
 void * microros_reallocate(void * pointer, size_t size, void * state);
 void * microros_zero_allocate(size_t number_of_elements, size_t size_of_element, void * state);
 
-
+void start_HyperDog_UROS_APP(UART_HandleTypeDef* huart);
 bool initMicroROS(UART_HandleTypeDef* huart);
-void resetMicroROS();
+void restartMicroROS();
+
 
 void _init_rcl_support();
 

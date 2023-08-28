@@ -47,6 +47,7 @@ extern "C"{
  */ 
 #define NODE_HYPERDOG_ERROR_NONE                0b0000000000000
 #define NODE_HYPERDOG_ERROR_FAILED_INIT         0b0000000000001
+
 #define NODE_HYPERDOG_ERROR_FAILED_PUB1         0b0000000000010 /*!< motor states publisher     */
 #define NODE_HYPERDOG_ERROR_FAILED_PUB2         0b0000000000100 /*!< 2nd publisher              */
 #define NODE_HYPERDOG_ERROR_FAILED_PUB3         0b0000000000110 /*!< 3rd publisher              */
@@ -54,6 +55,7 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_PUB5         0b0000000001010 /*!< 5th publisher              */
 #define NODE_HYPERDOG_ERROR_FAILED_PUB6         0b0000000001100 /*!< 6th publisher              */
 #define NODE_HYPERDOG_ERROR_FAILED_PUB7         0b0000000001110 /*!< 7th publisher              */
+
 #define NODE_HYPERDOG_ERROR_FAILED_SUB1         0b0000000010000 /*!< 1st subscriber             */
 #define NODE_HYPERDOG_ERROR_FAILED_SUB2         0b0000000100000 /*!< 2nd subscriber             */
 #define NODE_HYPERDOG_ERROR_FAILED_SUB3         0b0000000110000 /*!< 3rd subscriber             */
@@ -61,6 +63,7 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_SUB5         0b0000001010000 /*!< 5th subscriber             */
 #define NODE_HYPERDOG_ERROR_FAILED_SUB6         0b0000001100000 /*!< 6th subscriber             */
 #define NODE_HYPERDOG_ERROR_FAILED_SUB7         0b0000001110000 /*!< 7th subscriber             */
+
 #define NODE_HYPERDOG_ERROR_FAILED_TIM1         0b0000010000000 /*!< 1st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM2         0b0000100000000 /*!< 2st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM3         0b0000110000000 /*!< 3st timer                  */
@@ -68,6 +71,7 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_TIM5         0b0001010000000 /*!< 5st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM6         0b0001100000000 /*!< 6st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM7         0b0001110000000 /*!< 7st timer                  */
+
 #define NODE_HYPERDOG_ERROR_FAILED_SRV1         0b0010000000000 /*!< 1st service                */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV2         0b0100000000000 /*!< 2st service                */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV3         0b0110000000000 /*!< 3st service                */
@@ -76,7 +80,7 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_SRV6         0b1100000000000 /*!< 6st service                */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV7         0b1110000000000 /*!< 7st service                */
 
-enum HyperdogNodeState{
+enum State{
     HYPERDOG_NODE_NOT_INITIALIZED = 0,
     HYPERDOG_NODE_INITIALIZING    = 1,
     HYPERDOG_NODE_RUNNING         = 2,
@@ -89,6 +93,7 @@ struct{
     hyperdog_uros_msgs__msg__MotorsStates   msg; 
     rcl_timer_t                             timer; 
     unsigned int                            timer_period; /* Hz */
+    rcl_ret_t                               rcl_ret;
 }typedef motorStates_publisher_t;
 
 
@@ -97,7 +102,7 @@ struct
     rcl_node_t                              node;
     rclc_executor_t                         executor;
     motorStates_publisher_t                 motorsStates_pub;
-    enum HyperdogNodeState                  state;
+    enum State                              state;
     uint16_t                                error_code;             /* 13-bits error-code*/
     rcl_ret_t                               rcl_ret;
 }typedef hyperdogUROS_Node_t;
@@ -106,11 +111,13 @@ extern hyperdog_uros_msgs__msg__MotorStates motor_states_;
 extern hyperdogUROS_Node_t hyperdog_node;
 
 /* function decorators */
+
 void init_hyperdog_node();
 
 void _init_motors_states_publisher();
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 void _destroy_hyperdog_node();
+
 
 #ifdef __cplusplus
 }

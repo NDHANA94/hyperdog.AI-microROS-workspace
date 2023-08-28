@@ -153,19 +153,7 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 
-  // micro-ROS configuration
-
-  // init_uros_node();  
-  // spin_uros_node(2);
-  a:
-  if(initMicroROS(&huart2)){
-    init_hyperdog_node();
-    rclc_executor_spin(&hyperdog_node.executor);
-  }
-  else{
-    osDelay(100);
-    goto a;
-  }
+  start_HyperDog_UROS_APP(&huart2);
   
   /* USER CODE END 5 */
 }

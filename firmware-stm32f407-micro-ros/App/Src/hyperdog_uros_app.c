@@ -30,14 +30,36 @@ SOFTWARE.                                                                       
 uros_app_t uros;
 
 
-/**
+/**========================================================================================
+ * To start the micro-ROS
+ * 
+ * 
+ ========================================================================================*/
+void start_HyperDog_UROS_APP(UART_HandleTypeDef* huart)
+{
+    /* Initialize micro-ROS ----------------------------------------------------------*/
+    if(initMicroROS(huart)){
+        
+    }
+
+
+    /* Initialize node 1 -------------------------------------------------------------*/
+    init_hyperdog_node();
+    rclc_executor_spin(&hyperdog_node.executor);
+}
+
+
+
+
+/**============================================================================================
  * To initialize the micro ros.
  * \return 1 if succeeded, 0 if failed.
- */
+ ============================================================================================*/
 bool initMicroROS(UART_HandleTypeDef* huart)
 {
-    uros.state = UROS_INITIALIZING;                         /*!< update state */
-    /* initialize transport */
+    uros.state = UROS_INITIALIZING; // update state
+
+    /* initialize transport -----------------------------------------------------------*/
     uros.rmw_ret = rmw_uros_set_custom_transport(
         true, 
         (void *) huart, 
@@ -45,15 +67,16 @@ bool initMicroROS(UART_HandleTypeDef* huart)
         cubemx_transport_close, 
         cubemx_transport_write, 
         cubemx_transport_read);
-    /* check error and update state and error code */
+
+    /* check error and update state and error code ------------------------------------*/
     if(uros.rmw_ret != RMW_RET_OK){
-        uros.state = UROS_ERROR;                            /*!< update state */
-        uros.error_code |= UROS_ERROR_RMW_TRANSPORT;        /*!< set rmw transport error */
+        uros.state = UROS_ERROR; //update state
+        uros.error_code |= UROS_ERROR_RMW_TRANSPORT; // set rmw transport error
         return 0;
     }
-    uros.error_code &= ~ UROS_ERROR_RMW_TRANSPORT;          /*!< reset rmw transport error */
+    uros.error_code &= ~ UROS_ERROR_RMW_TRANSPORT; //reset rmw transport error 
 
-    /* allocate memory for FreeRTOS */
+    /* allocate memory for FreeRTOS ---------------------------------------------------*/
     rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
     freeRTOS_allocator.allocate = microros_allocate;
     freeRTOS_allocator.deallocate = microros_deallocate;
@@ -65,13 +88,14 @@ bool initMicroROS(UART_HandleTypeDef* huart)
         return 0;
     }
     uros.allocator = rcl_get_default_allocator();
-    uros.error_code &= ~UROS_ERROR_FREERTOS_ALLOC;          /*!< reset rcl freeRTOS alloc error */    
+    uros.error_code &= ~UROS_ERROR_FREERTOS_ALLOC; //reset rcl freeRTOS alloc error
 
-    /* create rcl support */
+    /* create rcl support -------------------------------------------------------------*/
     _init_rcl_support();
 
     return 1;
 }
+
 
 /**
  * To initialize rclc support
@@ -80,17 +104,17 @@ bool initMicroROS(UART_HandleTypeDef* huart)
 void _init_rcl_support()
 {
     init_support:
-    /* initialize rclc support object*/
+    /* initialize rclc support object-------------------------------------*/
     uros.state = UROS_WAITING_FOR_AGENT;
     uros.rcl_ret = rclc_support_init(&uros.support, 0, NULL, &uros.allocator);
 
-    /* check error */
+    /* check error -------------------------------------------------------*/
     if(uros.rcl_ret != RCL_RET_OK){
         fail:
-        /* destroy rclc support */
+        /* destroy rclc support ---------------------------*/
         uros.rcl_ret = rclc_support_fini(&uros.support);
 
-        /* update state and error code */
+        /* update state and error code -------------------*/
         if(uros.rcl_ret != RCL_RET_OK){
             uros.state = UROS_ERROR;
             uros.error_code |= UROS_ERROR_RCL_SUPPORT;
@@ -99,7 +123,7 @@ void _init_rcl_support()
         uros.error_code |= UROS_ERROR_RCL_SUPPORT;
         goto init_support;
     }
-    /* if no error */
+    /* if no error ------------------------------------------------------*/
     uros.state = UROS_RUNNING;
     uros.error_code &= ~UROS_ERROR_RCL_SUPPORT;
 }
@@ -109,11 +133,11 @@ void _init_rcl_support()
  * This will destroy all the nodes, and rclc support. then wait till the the agent is back online.
  * Once the agent is connected all the nodes will be initialized again.
  */
-void resetMicroROS()
+void restartMicroROS()
 {
     uros.state = UROS_WAITING_FOR_AGENT;
 
-    /* destroy all the initialized nodes and their entities */
+    /* destroy all the initialized nodes and their entities------------*/
     /// TODO: Call the function of destroy_node of each nodes
     _destroy_hyperdog_node();
     // destroy_node_x();
@@ -121,21 +145,29 @@ void resetMicroROS()
     // ....
 
 
-    /* destroy the rclc support */
+    /* destroy the rclc support--------------------------------------- */
     fini:
     uros.rcl_ret = rclc_support_fini(&uros.support);
     if(uros.rcl_ret != RCL_RET_OK){
+        osDelay(100);
         goto fini;
     }
 
-    /* initialize rcl support object again */
+    /* initialize rcl support object again ----------------------------*/
     _init_rcl_support();
 
-    /* initialize all the nodes again */
+    /* initialize all the nodes again ---------------------------------*/
     /// TODO: call the initialization function for each nodes.
+    init_hyperdog_node();
     // init_node_x();
     // init_node_y();
     // ...
+
+
+    /* spin the executors  --------------------------------------------*/
+    rclc_executor_spin(&hyperdog_node.executor);
+    // rclc_executor_spin(& node_x.executor)
+    // rclc_executor_spin(& node_y.executor)
 
     
 }
