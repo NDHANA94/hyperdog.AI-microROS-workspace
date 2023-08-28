@@ -35,17 +35,19 @@ uros_app_t uros;
  * 
  * 
  ========================================================================================*/
-void start_HyperDog_UROS_APP(UART_HandleTypeDef* huart)
+int start_HyperDog_UROS_APP(UART_HandleTypeDef* huart)
 {
     /* Initialize micro-ROS ----------------------------------------------------------*/
     if(initMicroROS(huart)){
-        
+        /* Initialize node 1 ----------------------------------------*/
+        init_hyperdog_node();
+        rclc_executor_spin(&hyperdog_node.executor);
+
+        /* clean ---------------------------------------------------*/
+        _destroy_hyperdog_node();
+        return 0;
     }
-
-
-    /* Initialize node 1 -------------------------------------------------------------*/
-    init_hyperdog_node();
-    rclc_executor_spin(&hyperdog_node.executor);
+    return -1;
 }
 
 
