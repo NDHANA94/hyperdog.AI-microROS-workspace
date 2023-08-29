@@ -6,7 +6,7 @@
 module hyperdog_uros_msgs {
   module msg {
     struct MotorFeedback {
-      uint8 id;
+      uint8 can_id;
 
       double position;
 

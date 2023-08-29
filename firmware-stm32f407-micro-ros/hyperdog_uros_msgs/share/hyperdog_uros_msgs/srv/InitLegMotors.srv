@@ -1,0 +1,5 @@
+hyperdog_uros_msgs/InitLegMotors data
+
+---
+bool done
+string error_msg

@@ -14,7 +14,7 @@ module hyperdog_uros_msgs {
         " 0=HIP_ROLL, 1=HIP_PITCH, 2=KNEE")
       uint8 joint;
 
-      double i_ff;
+      double data;
     };
     struct SetMotorIff_Response {
       boolean is_set;

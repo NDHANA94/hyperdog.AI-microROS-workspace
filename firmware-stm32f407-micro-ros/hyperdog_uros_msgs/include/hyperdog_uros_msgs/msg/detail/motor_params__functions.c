@@ -25,6 +25,7 @@ hyperdog_uros_msgs__msg__MotorParams__init(hyperdog_uros_msgs__msg__MotorParams 
   if (!msg) {
     return false;
   }
+  // can_id
   // position
   if (!hyperdog_uros_msgs__msg__Limit__init(&msg->position)) {
     hyperdog_uros_msgs__msg__MotorParams__fini(msg);
@@ -59,6 +60,7 @@ hyperdog_uros_msgs__msg__MotorParams__fini(hyperdog_uros_msgs__msg__MotorParams 
   if (!msg) {
     return;
   }
+  // can_id
   // position
   hyperdog_uros_msgs__msg__Limit__fini(&msg->position);
   // velocity
@@ -75,6 +77,10 @@ bool
 hyperdog_uros_msgs__msg__MotorParams__are_equal(const hyperdog_uros_msgs__msg__MotorParams * lhs, const hyperdog_uros_msgs__msg__MotorParams * rhs)
 {
   if (!lhs || !rhs) {
+    return false;
+  }
+  // can_id
+  if (lhs->can_id != rhs->can_id) {
     return false;
   }
   // position
@@ -118,6 +124,8 @@ hyperdog_uros_msgs__msg__MotorParams__copy(
   if (!input || !output) {
     return false;
   }
+  // can_id
+  output->can_id = input->can_id;
   // position
   if (!hyperdog_uros_msgs__msg__Limit__copy(
       &(input->position), &(output->position)))

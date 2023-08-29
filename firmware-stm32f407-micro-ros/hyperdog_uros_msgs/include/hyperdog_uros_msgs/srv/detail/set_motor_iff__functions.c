@@ -18,7 +18,7 @@ hyperdog_uros_msgs__srv__SetMotorIff_Request__init(hyperdog_uros_msgs__srv__SetM
   }
   // leg
   // joint
-  // i_ff
+  // data
   return true;
 }
 
@@ -30,7 +30,7 @@ hyperdog_uros_msgs__srv__SetMotorIff_Request__fini(hyperdog_uros_msgs__srv__SetM
   }
   // leg
   // joint
-  // i_ff
+  // data
 }
 
 bool
@@ -47,8 +47,8 @@ hyperdog_uros_msgs__srv__SetMotorIff_Request__are_equal(const hyperdog_uros_msgs
   if (lhs->joint != rhs->joint) {
     return false;
   }
-  // i_ff
-  if (lhs->i_ff != rhs->i_ff) {
+  // data
+  if (lhs->data != rhs->data) {
     return false;
   }
   return true;
@@ -66,8 +66,8 @@ hyperdog_uros_msgs__srv__SetMotorIff_Request__copy(
   output->leg = input->leg;
   // joint
   output->joint = input->joint;
-  // i_ff
-  output->i_ff = input->i_ff;
+  // data
+  output->data = input->data;
   return true;
 }
 

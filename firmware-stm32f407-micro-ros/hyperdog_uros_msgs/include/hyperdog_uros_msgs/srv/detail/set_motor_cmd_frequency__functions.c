@@ -16,7 +16,7 @@ hyperdog_uros_msgs__srv__SetMotorCmdFrequency_Request__init(hyperdog_uros_msgs__
   if (!msg) {
     return false;
   }
-  // frequency
+  // data
   return true;
 }
 
@@ -26,7 +26,7 @@ hyperdog_uros_msgs__srv__SetMotorCmdFrequency_Request__fini(hyperdog_uros_msgs__
   if (!msg) {
     return;
   }
-  // frequency
+  // data
 }
 
 bool
@@ -35,8 +35,8 @@ hyperdog_uros_msgs__srv__SetMotorCmdFrequency_Request__are_equal(const hyperdog_
   if (!lhs || !rhs) {
     return false;
   }
-  // frequency
-  if (lhs->frequency != rhs->frequency) {
+  // data
+  if (lhs->data != rhs->data) {
     return false;
   }
   return true;
@@ -50,8 +50,8 @@ hyperdog_uros_msgs__srv__SetMotorCmdFrequency_Request__copy(
   if (!input || !output) {
     return false;
   }
-  // frequency
-  output->frequency = input->frequency;
+  // data
+  output->data = input->data;
   return true;
 }
 

@@ -1,9 +1,9 @@
 // generated from rosidl_generator_c/resource/idl__type_support.h.em
-// with input from hyperdog_uros_msgs:srv/InitMultyMotors.idl
+// with input from hyperdog_uros_msgs:srv/InitLegMotors.idl
 // generated code does not contain a copyright notice
 
-#ifndef HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__TYPE_SUPPORT_H_
-#define HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__TYPE_SUPPORT_H_
+#ifndef HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__TYPE_SUPPORT_H_
+#define HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__TYPE_SUPPORT_H_
 
 #include "rosidl_typesupport_interface/macros.h"
 
@@ -23,7 +23,7 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
   rosidl_typesupport_c,
   hyperdog_uros_msgs,
   srv,
-  InitMultyMotors_Request
+  InitLegMotors_Request
 )();
 
 // already included above
@@ -36,7 +36,7 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
   rosidl_typesupport_c,
   hyperdog_uros_msgs,
   srv,
-  InitMultyMotors_Response
+  InitLegMotors_Response
 )();
 
 #include "rosidl_runtime_c/service_type_support_struct.h"
@@ -48,11 +48,11 @@ ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(
   rosidl_typesupport_c,
   hyperdog_uros_msgs,
   srv,
-  InitMultyMotors
+  InitLegMotors
 )();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__TYPE_SUPPORT_H_
+#endif  // HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__TYPE_SUPPORT_H_

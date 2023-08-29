@@ -20,7 +20,7 @@ extern "C"
 // Struct defined in msg/MotorFeedback in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__MotorFeedback
 {
-  uint8_t id;
+  uint8_t can_id;
   double position;
   double velocity;
   double torque;

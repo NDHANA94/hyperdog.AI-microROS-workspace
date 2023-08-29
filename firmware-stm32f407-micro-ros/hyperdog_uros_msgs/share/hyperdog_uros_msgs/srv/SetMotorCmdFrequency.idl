@@ -6,7 +6,7 @@
 module hyperdog_uros_msgs {
   module srv {
     struct SetMotorCmdFrequency_Request {
-      double frequency;
+      double data;
     };
     struct SetMotorCmdFrequency_Response {
       boolean is_set;

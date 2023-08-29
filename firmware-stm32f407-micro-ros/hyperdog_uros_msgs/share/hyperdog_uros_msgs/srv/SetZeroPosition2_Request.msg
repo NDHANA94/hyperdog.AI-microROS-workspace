@@ -1,1 +1,1 @@
-uint8 id
+uint8 can_id

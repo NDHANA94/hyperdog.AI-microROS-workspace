@@ -20,7 +20,7 @@ extern "C"
 // Struct defined in srv/SetWatchdogFequency in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetWatchdogFequency_Request
 {
-  double frequency;
+  double data;
 } hyperdog_uros_msgs__srv__SetWatchdogFequency_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__SetWatchdogFequency_Request.

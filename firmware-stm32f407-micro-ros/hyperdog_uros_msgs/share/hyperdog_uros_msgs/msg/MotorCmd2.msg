@@ -1,5 +1,5 @@
 # Id of the motor
-uint8 id
+uint8 can_id
 
 # Special commands
 bool enable

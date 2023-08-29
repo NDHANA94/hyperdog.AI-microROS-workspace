@@ -8,7 +8,7 @@ module hyperdog_uros_msgs {
     @verbatim (language="comment", text=
       " Id of the motor")
     struct MotorCmd2 {
-      uint8 id;
+      uint8 can_id;
 
       @verbatim (language="comment", text=
         " Special commands")

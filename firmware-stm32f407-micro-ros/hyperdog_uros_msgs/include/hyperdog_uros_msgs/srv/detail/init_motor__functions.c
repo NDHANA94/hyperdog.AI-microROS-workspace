@@ -11,7 +11,7 @@
 #include "rcutils/allocator.h"
 
 // Include directives for member types
-// Member `motor`
+// Member `data`
 #include "hyperdog_uros_msgs/msg/detail/init_motor__functions.h"
 
 bool
@@ -20,8 +20,8 @@ hyperdog_uros_msgs__srv__InitMotor_Request__init(hyperdog_uros_msgs__srv__InitMo
   if (!msg) {
     return false;
   }
-  // motor
-  if (!hyperdog_uros_msgs__msg__InitMotor__init(&msg->motor)) {
+  // data
+  if (!hyperdog_uros_msgs__msg__InitMotor__init(&msg->data)) {
     hyperdog_uros_msgs__srv__InitMotor_Request__fini(msg);
     return false;
   }
@@ -34,8 +34,8 @@ hyperdog_uros_msgs__srv__InitMotor_Request__fini(hyperdog_uros_msgs__srv__InitMo
   if (!msg) {
     return;
   }
-  // motor
-  hyperdog_uros_msgs__msg__InitMotor__fini(&msg->motor);
+  // data
+  hyperdog_uros_msgs__msg__InitMotor__fini(&msg->data);
 }
 
 bool
@@ -44,9 +44,9 @@ hyperdog_uros_msgs__srv__InitMotor_Request__are_equal(const hyperdog_uros_msgs__
   if (!lhs || !rhs) {
     return false;
   }
-  // motor
+  // data
   if (!hyperdog_uros_msgs__msg__InitMotor__are_equal(
-      &(lhs->motor), &(rhs->motor)))
+      &(lhs->data), &(rhs->data)))
   {
     return false;
   }
@@ -61,9 +61,9 @@ hyperdog_uros_msgs__srv__InitMotor_Request__copy(
   if (!input || !output) {
     return false;
   }
-  // motor
+  // data
   if (!hyperdog_uros_msgs__msg__InitMotor__copy(
-      &(input->motor), &(output->motor)))
+      &(input->data), &(output->data)))
   {
     return false;
   }

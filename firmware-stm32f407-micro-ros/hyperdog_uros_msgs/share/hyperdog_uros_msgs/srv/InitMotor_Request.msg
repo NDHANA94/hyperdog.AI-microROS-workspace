@@ -1,2 +1,2 @@
-hyperdog_uros_msgs/InitMotor motor
+hyperdog_uros_msgs/InitMotor data
 

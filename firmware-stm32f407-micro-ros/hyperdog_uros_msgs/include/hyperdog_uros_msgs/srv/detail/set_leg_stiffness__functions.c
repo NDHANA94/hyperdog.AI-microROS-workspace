@@ -11,7 +11,7 @@
 #include "rcutils/allocator.h"
 
 // Include directives for member types
-// Member `stiffness_ratio`
+// Member `data`
 #include "hyperdog_uros_msgs/msg/detail/vector3__functions.h"
 
 bool
@@ -21,8 +21,8 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__init(hyperdog_uros_msgs__srv__
     return false;
   }
   // leg
-  // stiffness_ratio
-  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->stiffness_ratio)) {
+  // data
+  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->data)) {
     hyperdog_uros_msgs__srv__SetLegStiffness_Request__fini(msg);
     return false;
   }
@@ -36,8 +36,8 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__fini(hyperdog_uros_msgs__srv__
     return;
   }
   // leg
-  // stiffness_ratio
-  hyperdog_uros_msgs__msg__Vector3__fini(&msg->stiffness_ratio);
+  // data
+  hyperdog_uros_msgs__msg__Vector3__fini(&msg->data);
 }
 
 bool
@@ -50,9 +50,9 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__are_equal(const hyperdog_uros_
   if (lhs->leg != rhs->leg) {
     return false;
   }
-  // stiffness_ratio
+  // data
   if (!hyperdog_uros_msgs__msg__Vector3__are_equal(
-      &(lhs->stiffness_ratio), &(rhs->stiffness_ratio)))
+      &(lhs->data), &(rhs->data)))
   {
     return false;
   }
@@ -69,9 +69,9 @@ hyperdog_uros_msgs__srv__SetLegStiffness_Request__copy(
   }
   // leg
   output->leg = input->leg;
-  // stiffness_ratio
+  // data
   if (!hyperdog_uros_msgs__msg__Vector3__copy(
-      &(input->stiffness_ratio), &(output->stiffness_ratio)))
+      &(input->data), &(output->data)))
   {
     return false;
   }

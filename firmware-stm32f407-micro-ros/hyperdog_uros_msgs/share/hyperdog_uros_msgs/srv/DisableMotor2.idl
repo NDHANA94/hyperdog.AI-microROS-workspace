@@ -6,7 +6,7 @@
 module hyperdog_uros_msgs {
   module srv {
     struct DisableMotor2_Request {
-      uint8 id;
+      uint8 can_id;
     };
     struct DisableMotor2_Response {
       boolean is_disabled;

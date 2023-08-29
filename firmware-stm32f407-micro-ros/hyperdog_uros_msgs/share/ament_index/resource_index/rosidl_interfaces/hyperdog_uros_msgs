@@ -1,3 +1,5 @@
+msg/InitLegMotors.idl
+msg/InitLegMotors.msg
 msg/InitMotor.idl
 msg/InitMotor.msg
 msg/LegCmd.idl
@@ -50,14 +52,14 @@ srv/EnableMotor2_Request.msg
 srv/EnableMotor2_Response.msg
 srv/EnableMotor_Request.msg
 srv/EnableMotor_Response.msg
+srv/InitLegMotors.idl
+srv/InitLegMotors.srv
+srv/InitLegMotors_Request.msg
+srv/InitLegMotors_Response.msg
 srv/InitMotor.idl
 srv/InitMotor.srv
 srv/InitMotor_Request.msg
 srv/InitMotor_Response.msg
-srv/InitMultyMotors.idl
-srv/InitMultyMotors.srv
-srv/InitMultyMotors_Request.msg
-srv/InitMultyMotors_Response.msg
 srv/SetLegDamping.idl
 srv/SetLegDamping.srv
 srv/SetLegDamping_Request.msg

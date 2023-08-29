@@ -18,14 +18,14 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'damping_ratio'
+// Member 'data'
 #include "hyperdog_uros_msgs/msg/detail/vector3__struct.h"
 
 // Struct defined in srv/SetLegDamping in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__SetLegDamping_Request
 {
   uint8_t leg;
-  hyperdog_uros_msgs__msg__Vector3 damping_ratio;
+  hyperdog_uros_msgs__msg__Vector3 data;
 } hyperdog_uros_msgs__srv__SetLegDamping_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__SetLegDamping_Request.

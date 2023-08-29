@@ -7,27 +7,14 @@
 
 module hyperdog_uros_msgs {
   module msg {
+    @verbatim (language="comment", text=
+      " motor parameters")
     struct InitMotor {
-      @verbatim (language="comment", text=
-        " 0 - 255")
-      uint8 id;
-
-      @verbatim (language="comment", text=
-        " Assign a leg joint to the motor" "\n"
-        " 0=FR,         1=FL,           2=RR,           3=RL")
-      uint8 leg;
-
-      @verbatim (language="comment", text=
-        " 0=HIP_ROLL,   1=HIP_PITCH,    2=KNEE")
-      uint8 joint;
-
-      @verbatim (language="comment", text=
-        " motor parameters")
-      hyperdog_uros_msgs::msg::MotorParams parameters;
+      hyperdog_uros_msgs::msg::MotorParams params;
 
       @verbatim (language="comment", text=
         " motor control limits")
-      hyperdog_uros_msgs::msg::MotorCtrlLimits ctrl_limitss;
+      hyperdog_uros_msgs::msg::MotorCtrlLimits ctrl_limits;
     };
   };
 };

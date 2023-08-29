@@ -11,7 +11,7 @@
 #include "rcutils/allocator.h"
 
 // Include directives for member types
-// Member `damping_ratio`
+// Member `data`
 #include "hyperdog_uros_msgs/msg/detail/vector3__functions.h"
 
 bool
@@ -21,8 +21,8 @@ hyperdog_uros_msgs__srv__SetLegDamping_Request__init(hyperdog_uros_msgs__srv__Se
     return false;
   }
   // leg
-  // damping_ratio
-  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->damping_ratio)) {
+  // data
+  if (!hyperdog_uros_msgs__msg__Vector3__init(&msg->data)) {
     hyperdog_uros_msgs__srv__SetLegDamping_Request__fini(msg);
     return false;
   }
@@ -36,8 +36,8 @@ hyperdog_uros_msgs__srv__SetLegDamping_Request__fini(hyperdog_uros_msgs__srv__Se
     return;
   }
   // leg
-  // damping_ratio
-  hyperdog_uros_msgs__msg__Vector3__fini(&msg->damping_ratio);
+  // data
+  hyperdog_uros_msgs__msg__Vector3__fini(&msg->data);
 }
 
 bool
@@ -50,9 +50,9 @@ hyperdog_uros_msgs__srv__SetLegDamping_Request__are_equal(const hyperdog_uros_ms
   if (lhs->leg != rhs->leg) {
     return false;
   }
-  // damping_ratio
+  // data
   if (!hyperdog_uros_msgs__msg__Vector3__are_equal(
-      &(lhs->damping_ratio), &(rhs->damping_ratio)))
+      &(lhs->data), &(rhs->data)))
   {
     return false;
   }
@@ -69,9 +69,9 @@ hyperdog_uros_msgs__srv__SetLegDamping_Request__copy(
   }
   // leg
   output->leg = input->leg;
-  // damping_ratio
+  // data
   if (!hyperdog_uros_msgs__msg__Vector3__copy(
-      &(input->damping_ratio), &(output->damping_ratio)))
+      &(input->data), &(output->data)))
   {
     return false;
   }

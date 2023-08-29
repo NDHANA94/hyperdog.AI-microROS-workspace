@@ -18,19 +18,16 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'parameters'
+// Member 'params'
 #include "hyperdog_uros_msgs/msg/detail/motor_params__struct.h"
-// Member 'ctrl_limitss'
+// Member 'ctrl_limits'
 #include "hyperdog_uros_msgs/msg/detail/motor_ctrl_limits__struct.h"
 
 // Struct defined in msg/InitMotor in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__InitMotor
 {
-  uint8_t id;
-  uint8_t leg;
-  uint8_t joint;
-  hyperdog_uros_msgs__msg__MotorParams parameters;
-  hyperdog_uros_msgs__msg__MotorCtrlLimits ctrl_limitss;
+  hyperdog_uros_msgs__msg__MotorParams params;
+  hyperdog_uros_msgs__msg__MotorCtrlLimits ctrl_limits;
 } hyperdog_uros_msgs__msg__InitMotor;
 
 // Struct for a sequence of hyperdog_uros_msgs__msg__InitMotor.

@@ -12,9 +12,9 @@
 
 
 // Include directives for member types
-// Member `parameters`
+// Member `params`
 #include "hyperdog_uros_msgs/msg/detail/motor_params__functions.h"
-// Member `ctrl_limitss`
+// Member `ctrl_limits`
 #include "hyperdog_uros_msgs/msg/detail/motor_ctrl_limits__functions.h"
 
 bool
@@ -23,16 +23,13 @@ hyperdog_uros_msgs__msg__InitMotor__init(hyperdog_uros_msgs__msg__InitMotor * ms
   if (!msg) {
     return false;
   }
-  // id
-  // leg
-  // joint
-  // parameters
-  if (!hyperdog_uros_msgs__msg__MotorParams__init(&msg->parameters)) {
+  // params
+  if (!hyperdog_uros_msgs__msg__MotorParams__init(&msg->params)) {
     hyperdog_uros_msgs__msg__InitMotor__fini(msg);
     return false;
   }
-  // ctrl_limitss
-  if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__init(&msg->ctrl_limitss)) {
+  // ctrl_limits
+  if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__init(&msg->ctrl_limits)) {
     hyperdog_uros_msgs__msg__InitMotor__fini(msg);
     return false;
   }
@@ -45,13 +42,10 @@ hyperdog_uros_msgs__msg__InitMotor__fini(hyperdog_uros_msgs__msg__InitMotor * ms
   if (!msg) {
     return;
   }
-  // id
-  // leg
-  // joint
-  // parameters
-  hyperdog_uros_msgs__msg__MotorParams__fini(&msg->parameters);
-  // ctrl_limitss
-  hyperdog_uros_msgs__msg__MotorCtrlLimits__fini(&msg->ctrl_limitss);
+  // params
+  hyperdog_uros_msgs__msg__MotorParams__fini(&msg->params);
+  // ctrl_limits
+  hyperdog_uros_msgs__msg__MotorCtrlLimits__fini(&msg->ctrl_limits);
 }
 
 bool
@@ -60,27 +54,15 @@ hyperdog_uros_msgs__msg__InitMotor__are_equal(const hyperdog_uros_msgs__msg__Ini
   if (!lhs || !rhs) {
     return false;
   }
-  // id
-  if (lhs->id != rhs->id) {
-    return false;
-  }
-  // leg
-  if (lhs->leg != rhs->leg) {
-    return false;
-  }
-  // joint
-  if (lhs->joint != rhs->joint) {
-    return false;
-  }
-  // parameters
+  // params
   if (!hyperdog_uros_msgs__msg__MotorParams__are_equal(
-      &(lhs->parameters), &(rhs->parameters)))
+      &(lhs->params), &(rhs->params)))
   {
     return false;
   }
-  // ctrl_limitss
+  // ctrl_limits
   if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__are_equal(
-      &(lhs->ctrl_limitss), &(rhs->ctrl_limitss)))
+      &(lhs->ctrl_limits), &(rhs->ctrl_limits)))
   {
     return false;
   }
@@ -95,21 +77,15 @@ hyperdog_uros_msgs__msg__InitMotor__copy(
   if (!input || !output) {
     return false;
   }
-  // id
-  output->id = input->id;
-  // leg
-  output->leg = input->leg;
-  // joint
-  output->joint = input->joint;
-  // parameters
+  // params
   if (!hyperdog_uros_msgs__msg__MotorParams__copy(
-      &(input->parameters), &(output->parameters)))
+      &(input->params), &(output->params)))
   {
     return false;
   }
-  // ctrl_limitss
+  // ctrl_limits
   if (!hyperdog_uros_msgs__msg__MotorCtrlLimits__copy(
-      &(input->ctrl_limitss), &(output->ctrl_limitss)))
+      &(input->ctrl_limits), &(output->ctrl_limits)))
   {
     return false;
   }

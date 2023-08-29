@@ -22,7 +22,7 @@ typedef struct hyperdog_uros_msgs__srv__SetMotorIff_Request
 {
   uint8_t leg;
   uint8_t joint;
-  double i_ff;
+  double data;
 } hyperdog_uros_msgs__srv__SetMotorIff_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__SetMotorIff_Request.

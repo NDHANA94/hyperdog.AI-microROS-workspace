@@ -13,7 +13,7 @@ module hyperdog_uros_msgs {
 
       @verbatim (language="comment", text=
         " 0-5 | [x, y, z]")
-      hyperdog_uros_msgs::msg::Vector3 stiffness_ratio;
+      hyperdog_uros_msgs::msg::Vector3 data;
     };
     struct SetLegStiffness_Response {
       boolean is_set;

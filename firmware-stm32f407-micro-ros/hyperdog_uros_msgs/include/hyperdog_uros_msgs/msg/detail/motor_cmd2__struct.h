@@ -20,7 +20,7 @@ extern "C"
 // Struct defined in msg/MotorCmd2 in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__MotorCmd2
 {
-  uint8_t id;
+  uint8_t can_id;
   bool enable;
   bool disable;
   bool set_zero;

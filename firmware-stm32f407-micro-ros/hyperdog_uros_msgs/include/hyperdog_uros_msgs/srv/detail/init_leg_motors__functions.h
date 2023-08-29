@@ -1,9 +1,9 @@
 // generated from rosidl_generator_c/resource/idl__functions.h.em
-// with input from hyperdog_uros_msgs:srv/InitMultyMotors.idl
+// with input from hyperdog_uros_msgs:srv/InitLegMotors.idl
 // generated code does not contain a copyright notice
 
-#ifndef HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__FUNCTIONS_H_
-#define HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__FUNCTIONS_H_
+#ifndef HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__FUNCTIONS_H_
+#define HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__FUNCTIONS_H_
 
 #ifdef __cplusplus
 extern "C"
@@ -16,57 +16,57 @@ extern "C"
 #include "rosidl_runtime_c/visibility_control.h"
 #include "hyperdog_uros_msgs/msg/rosidl_generator_c__visibility_control.h"
 
-#include "hyperdog_uros_msgs/srv/detail/init_multy_motors__struct.h"
+#include "hyperdog_uros_msgs/srv/detail/init_leg_motors__struct.h"
 
-/// Initialize srv/InitMultyMotors message.
+/// Initialize srv/InitLegMotors message.
 /**
  * If the init function is called twice for the same message without
  * calling fini inbetween previously allocated memory will be leaked.
  * \param[in,out] msg The previously allocated message pointer.
  * Fields without a default value will not be initialized by this function.
  * You might want to call memset(msg, 0, sizeof(
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request
  * )) before or use
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__create()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__create()
  * to allocate and initialize the message.
  * \return true if initialization was successful, otherwise false
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__init(hyperdog_uros_msgs__srv__InitMultyMotors_Request * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__init(hyperdog_uros_msgs__srv__InitLegMotors_Request * msg);
 
-/// Finalize srv/InitMultyMotors message.
+/// Finalize srv/InitLegMotors message.
 /**
  * \param[in,out] msg The allocated message pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__fini(hyperdog_uros_msgs__srv__InitMultyMotors_Request * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__fini(hyperdog_uros_msgs__srv__InitLegMotors_Request * msg);
 
-/// Create srv/InitMultyMotors message.
+/// Create srv/InitLegMotors message.
 /**
  * It allocates the memory for the message, sets the memory to zero, and
  * calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__init().
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__init().
  * \return The pointer to the initialized message if successful,
  * otherwise NULL
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
-hyperdog_uros_msgs__srv__InitMultyMotors_Request *
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__create();
+hyperdog_uros_msgs__srv__InitLegMotors_Request *
+hyperdog_uros_msgs__srv__InitLegMotors_Request__create();
 
-/// Destroy srv/InitMultyMotors message.
+/// Destroy srv/InitLegMotors message.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__fini()
  * and frees the memory of the message.
  * \param[in,out] msg The allocated message pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__destroy(hyperdog_uros_msgs__srv__InitMultyMotors_Request * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__destroy(hyperdog_uros_msgs__srv__InitLegMotors_Request * msg);
 
-/// Check for srv/InitMultyMotors message equality.
+/// Check for srv/InitLegMotors message equality.
 /**
  * \param[in] lhs The message on the left hand size of the equality operator.
  * \param[in] rhs The message on the right hand size of the equality operator.
@@ -74,9 +74,9 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Request__destroy(hyperdog_uros_msgs__sr
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__are_equal(const hyperdog_uros_msgs__srv__InitMultyMotors_Request * lhs, const hyperdog_uros_msgs__srv__InitMultyMotors_Request * rhs);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__are_equal(const hyperdog_uros_msgs__srv__InitLegMotors_Request * lhs, const hyperdog_uros_msgs__srv__InitLegMotors_Request * rhs);
 
-/// Copy a srv/InitMultyMotors message.
+/// Copy a srv/InitLegMotors message.
 /**
  * This functions performs a deep copy, as opposed to the shallow copy that
  * plain assignment yields.
@@ -89,14 +89,14 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Request__are_equal(const hyperdog_uros_
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__copy(
-  const hyperdog_uros_msgs__srv__InitMultyMotors_Request * input,
-  hyperdog_uros_msgs__srv__InitMultyMotors_Request * output);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__copy(
+  const hyperdog_uros_msgs__srv__InitLegMotors_Request * input,
+  hyperdog_uros_msgs__srv__InitLegMotors_Request * output);
 
-/// Initialize array of srv/InitMultyMotors messages.
+/// Initialize array of srv/InitLegMotors messages.
 /**
  * It allocates the memory for the number of elements and calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__init()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__init()
  * for each element of the array.
  * \param[in,out] array The allocated array pointer.
  * \param[in] size The size / capacity of the array.
@@ -106,44 +106,44 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Request__copy(
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__init(hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * array, size_t size);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__init(hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * array, size_t size);
 
-/// Finalize array of srv/InitMultyMotors messages.
+/// Finalize array of srv/InitLegMotors messages.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__fini()
  * for each element of the array and frees the memory for the number of
  * elements.
  * \param[in,out] array The initialized array pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__fini(hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * array);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__fini(hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * array);
 
-/// Create array of srv/InitMultyMotors messages.
+/// Create array of srv/InitLegMotors messages.
 /**
  * It allocates the memory for the array and calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__init().
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__init().
  * \param[in] size The size / capacity of the array.
  * \return The pointer to the initialized array if successful, otherwise NULL
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence *
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__create(size_t size);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence *
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__create(size_t size);
 
-/// Destroy array of srv/InitMultyMotors messages.
+/// Destroy array of srv/InitLegMotors messages.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__fini()
  * on the array,
  * and frees the memory of the array.
  * \param[in,out] array The initialized array pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__destroy(hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * array);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__destroy(hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * array);
 
-/// Check for srv/InitMultyMotors message array equality.
+/// Check for srv/InitLegMotors message array equality.
 /**
  * \param[in] lhs The message array on the left hand size of the equality operator.
  * \param[in] rhs The message array on the right hand size of the equality operator.
@@ -151,9 +151,9 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__destroy(hyperdog_uro
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__are_equal(const hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * lhs, const hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * rhs);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__are_equal(const hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * lhs, const hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * rhs);
 
-/// Copy an array of srv/InitMultyMotors messages.
+/// Copy an array of srv/InitLegMotors messages.
 /**
  * This functions performs a deep copy, as opposed to the shallow copy that
  * plain assignment yields.
@@ -166,59 +166,59 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__are_equal(const hype
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence__copy(
-  const hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * input,
-  hyperdog_uros_msgs__srv__InitMultyMotors_Request__Sequence * output);
+hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence__copy(
+  const hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * input,
+  hyperdog_uros_msgs__srv__InitLegMotors_Request__Sequence * output);
 
-/// Initialize srv/InitMultyMotors message.
+/// Initialize srv/InitLegMotors message.
 /**
  * If the init function is called twice for the same message without
  * calling fini inbetween previously allocated memory will be leaked.
  * \param[in,out] msg The previously allocated message pointer.
  * Fields without a default value will not be initialized by this function.
  * You might want to call memset(msg, 0, sizeof(
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response
  * )) before or use
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__create()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__create()
  * to allocate and initialize the message.
  * \return true if initialization was successful, otherwise false
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__init(hyperdog_uros_msgs__srv__InitMultyMotors_Response * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__init(hyperdog_uros_msgs__srv__InitLegMotors_Response * msg);
 
-/// Finalize srv/InitMultyMotors message.
+/// Finalize srv/InitLegMotors message.
 /**
  * \param[in,out] msg The allocated message pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__fini(hyperdog_uros_msgs__srv__InitMultyMotors_Response * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__fini(hyperdog_uros_msgs__srv__InitLegMotors_Response * msg);
 
-/// Create srv/InitMultyMotors message.
+/// Create srv/InitLegMotors message.
 /**
  * It allocates the memory for the message, sets the memory to zero, and
  * calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__init().
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__init().
  * \return The pointer to the initialized message if successful,
  * otherwise NULL
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
-hyperdog_uros_msgs__srv__InitMultyMotors_Response *
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__create();
+hyperdog_uros_msgs__srv__InitLegMotors_Response *
+hyperdog_uros_msgs__srv__InitLegMotors_Response__create();
 
-/// Destroy srv/InitMultyMotors message.
+/// Destroy srv/InitLegMotors message.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__fini()
  * and frees the memory of the message.
  * \param[in,out] msg The allocated message pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__destroy(hyperdog_uros_msgs__srv__InitMultyMotors_Response * msg);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__destroy(hyperdog_uros_msgs__srv__InitLegMotors_Response * msg);
 
-/// Check for srv/InitMultyMotors message equality.
+/// Check for srv/InitLegMotors message equality.
 /**
  * \param[in] lhs The message on the left hand size of the equality operator.
  * \param[in] rhs The message on the right hand size of the equality operator.
@@ -226,9 +226,9 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Response__destroy(hyperdog_uros_msgs__s
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__are_equal(const hyperdog_uros_msgs__srv__InitMultyMotors_Response * lhs, const hyperdog_uros_msgs__srv__InitMultyMotors_Response * rhs);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__are_equal(const hyperdog_uros_msgs__srv__InitLegMotors_Response * lhs, const hyperdog_uros_msgs__srv__InitLegMotors_Response * rhs);
 
-/// Copy a srv/InitMultyMotors message.
+/// Copy a srv/InitLegMotors message.
 /**
  * This functions performs a deep copy, as opposed to the shallow copy that
  * plain assignment yields.
@@ -241,14 +241,14 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Response__are_equal(const hyperdog_uros
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__copy(
-  const hyperdog_uros_msgs__srv__InitMultyMotors_Response * input,
-  hyperdog_uros_msgs__srv__InitMultyMotors_Response * output);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__copy(
+  const hyperdog_uros_msgs__srv__InitLegMotors_Response * input,
+  hyperdog_uros_msgs__srv__InitLegMotors_Response * output);
 
-/// Initialize array of srv/InitMultyMotors messages.
+/// Initialize array of srv/InitLegMotors messages.
 /**
  * It allocates the memory for the number of elements and calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__init()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__init()
  * for each element of the array.
  * \param[in,out] array The allocated array pointer.
  * \param[in] size The size / capacity of the array.
@@ -258,44 +258,44 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Response__copy(
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__init(hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * array, size_t size);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__init(hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * array, size_t size);
 
-/// Finalize array of srv/InitMultyMotors messages.
+/// Finalize array of srv/InitLegMotors messages.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__fini()
  * for each element of the array and frees the memory for the number of
  * elements.
  * \param[in,out] array The initialized array pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__fini(hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * array);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__fini(hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * array);
 
-/// Create array of srv/InitMultyMotors messages.
+/// Create array of srv/InitLegMotors messages.
 /**
  * It allocates the memory for the array and calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__init().
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__init().
  * \param[in] size The size / capacity of the array.
  * \return The pointer to the initialized array if successful, otherwise NULL
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence *
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__create(size_t size);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence *
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__create(size_t size);
 
-/// Destroy array of srv/InitMultyMotors messages.
+/// Destroy array of srv/InitLegMotors messages.
 /**
  * It calls
- * hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__fini()
+ * hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__fini()
  * on the array,
  * and frees the memory of the array.
  * \param[in,out] array The initialized array pointer.
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 void
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__destroy(hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * array);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__destroy(hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * array);
 
-/// Check for srv/InitMultyMotors message array equality.
+/// Check for srv/InitLegMotors message array equality.
 /**
  * \param[in] lhs The message array on the left hand size of the equality operator.
  * \param[in] rhs The message array on the right hand size of the equality operator.
@@ -303,9 +303,9 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__destroy(hyperdog_ur
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__are_equal(const hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * lhs, const hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * rhs);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__are_equal(const hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * lhs, const hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * rhs);
 
-/// Copy an array of srv/InitMultyMotors messages.
+/// Copy an array of srv/InitLegMotors messages.
 /**
  * This functions performs a deep copy, as opposed to the shallow copy that
  * plain assignment yields.
@@ -318,12 +318,12 @@ hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__are_equal(const hyp
  */
 ROSIDL_GENERATOR_C_PUBLIC_hyperdog_uros_msgs
 bool
-hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence__copy(
-  const hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * input,
-  hyperdog_uros_msgs__srv__InitMultyMotors_Response__Sequence * output);
+hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence__copy(
+  const hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * input,
+  hyperdog_uros_msgs__srv__InitLegMotors_Response__Sequence * output);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_MULTY_MOTORS__FUNCTIONS_H_
+#endif  // HYPERDOG_UROS_MSGS__SRV__DETAIL__INIT_LEG_MOTORS__FUNCTIONS_H_

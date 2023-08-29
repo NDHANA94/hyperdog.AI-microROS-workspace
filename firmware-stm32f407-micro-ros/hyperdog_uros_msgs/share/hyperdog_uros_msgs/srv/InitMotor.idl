@@ -7,7 +7,7 @@
 module hyperdog_uros_msgs {
   module srv {
     struct InitMotor_Request {
-      hyperdog_uros_msgs::msg::InitMotor motor;
+      hyperdog_uros_msgs::msg::InitMotor data;
     };
     struct InitMotor_Response {
       boolean done;

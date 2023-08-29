@@ -17,7 +17,7 @@ hyperdog_uros_msgs__msg__MotorFeedback__init(hyperdog_uros_msgs__msg__MotorFeedb
   if (!msg) {
     return false;
   }
-  // id
+  // can_id
   // position
   // velocity
   // torque
@@ -31,7 +31,7 @@ hyperdog_uros_msgs__msg__MotorFeedback__fini(hyperdog_uros_msgs__msg__MotorFeedb
   if (!msg) {
     return;
   }
-  // id
+  // can_id
   // position
   // velocity
   // torque
@@ -44,8 +44,8 @@ hyperdog_uros_msgs__msg__MotorFeedback__are_equal(const hyperdog_uros_msgs__msg_
   if (!lhs || !rhs) {
     return false;
   }
-  // id
-  if (lhs->id != rhs->id) {
+  // can_id
+  if (lhs->can_id != rhs->can_id) {
     return false;
   }
   // position
@@ -75,8 +75,8 @@ hyperdog_uros_msgs__msg__MotorFeedback__copy(
   if (!input || !output) {
     return false;
   }
-  // id
-  output->id = input->id;
+  // can_id
+  output->can_id = input->can_id;
   // position
   output->position = input->position;
   // velocity

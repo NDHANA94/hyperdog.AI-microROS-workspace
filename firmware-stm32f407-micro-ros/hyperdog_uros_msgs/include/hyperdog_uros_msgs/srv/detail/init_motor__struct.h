@@ -18,13 +18,13 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'motor'
+// Member 'data'
 #include "hyperdog_uros_msgs/msg/detail/init_motor__struct.h"
 
 // Struct defined in srv/InitMotor in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__InitMotor_Request
 {
-  hyperdog_uros_msgs__msg__InitMotor motor;
+  hyperdog_uros_msgs__msg__InitMotor data;
 } hyperdog_uros_msgs__srv__InitMotor_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__InitMotor_Request.

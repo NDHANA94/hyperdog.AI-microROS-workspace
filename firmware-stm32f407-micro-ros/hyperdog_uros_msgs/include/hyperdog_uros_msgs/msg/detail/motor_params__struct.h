@@ -28,6 +28,7 @@ extern "C"
 // Struct defined in msg/MotorParams in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__msg__MotorParams
 {
+  uint8_t can_id;
   hyperdog_uros_msgs__msg__Limit position;
   hyperdog_uros_msgs__msg__Limit velocity;
   hyperdog_uros_msgs__msg__Limit kp;

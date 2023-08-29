@@ -1,8 +1,8 @@
 // generated from rosidl_typesupport_microxrcedds_c/resource/idl__rosidl_typesupport_c.h.em
-// with input from hyperdog_uros_msgs:srv/InitMultyMotors.idl
+// with input from hyperdog_uros_msgs:srv/InitLegMotors.idl
 // generated code does not contain a copyright notice
-#ifndef HYPERDOG_UROS_MSGS__SRV__INIT_MULTY_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_
-#define HYPERDOG_UROS_MSGS__SRV__INIT_MULTY_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_
+#ifndef HYPERDOG_UROS_MSGS__SRV__INIT_LEG_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_
+#define HYPERDOG_UROS_MSGS__SRV__INIT_LEG_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_
 
 
 #include <stddef.h>
@@ -18,18 +18,18 @@ extern "C"
 #endif
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
-size_t get_serialized_size_hyperdog_uros_msgs__srv__InitMultyMotors_Request(
+size_t get_serialized_size_hyperdog_uros_msgs__srv__InitLegMotors_Request(
   const void * untyped_ros_message,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
-size_t max_serialized_size_hyperdog_uros_msgs__srv__InitMultyMotors_Request(
+size_t max_serialized_size_hyperdog_uros_msgs__srv__InitLegMotors_Request(
   bool * full_bounded,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
 const rosidl_message_type_support_t *
-  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitMultyMotors_Request)();
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitLegMotors_Request)();
 
 #ifdef __cplusplus
 }
@@ -55,18 +55,18 @@ extern "C"
 #endif
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
-size_t get_serialized_size_hyperdog_uros_msgs__srv__InitMultyMotors_Response(
+size_t get_serialized_size_hyperdog_uros_msgs__srv__InitLegMotors_Response(
   const void * untyped_ros_message,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
-size_t max_serialized_size_hyperdog_uros_msgs__srv__InitMultyMotors_Response(
+size_t max_serialized_size_hyperdog_uros_msgs__srv__InitLegMotors_Response(
   bool * full_bounded,
   size_t current_alignment);
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
 const rosidl_message_type_support_t *
-  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitMultyMotors_Response)();
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitLegMotors_Response)();
 
 #ifdef __cplusplus
 }
@@ -86,10 +86,10 @@ extern "C"
 
 ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_PUBLIC_hyperdog_uros_msgs
 const rosidl_service_type_support_t *
-  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitMultyMotors)();
+  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_microxrcedds_c, hyperdog_uros_msgs, srv, InitLegMotors)();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // HYPERDOG_UROS_MSGS__SRV__INIT_MULTY_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_
+#endif  // HYPERDOG_UROS_MSGS__SRV__INIT_LEG_MOTORS__ROSIDL_TYPESUPPORT_MICROXRCEDDS_C_H_

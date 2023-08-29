@@ -16,7 +16,7 @@ hyperdog_uros_msgs__srv__DisableMotor2_Request__init(hyperdog_uros_msgs__srv__Di
   if (!msg) {
     return false;
   }
-  // id
+  // can_id
   return true;
 }
 
@@ -26,7 +26,7 @@ hyperdog_uros_msgs__srv__DisableMotor2_Request__fini(hyperdog_uros_msgs__srv__Di
   if (!msg) {
     return;
   }
-  // id
+  // can_id
 }
 
 bool
@@ -35,8 +35,8 @@ hyperdog_uros_msgs__srv__DisableMotor2_Request__are_equal(const hyperdog_uros_ms
   if (!lhs || !rhs) {
     return false;
   }
-  // id
-  if (lhs->id != rhs->id) {
+  // can_id
+  if (lhs->can_id != rhs->can_id) {
     return false;
   }
   return true;
@@ -50,8 +50,8 @@ hyperdog_uros_msgs__srv__DisableMotor2_Request__copy(
   if (!input || !output) {
     return false;
   }
-  // id
-  output->id = input->id;
+  // can_id
+  output->can_id = input->can_id;
   return true;
 }
 

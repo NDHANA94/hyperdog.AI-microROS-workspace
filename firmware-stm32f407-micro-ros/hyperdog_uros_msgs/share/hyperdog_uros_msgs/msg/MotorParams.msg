@@ -1,3 +1,4 @@
+uint8 can_id
 hyperdog_uros_msgs/Limit position
 hyperdog_uros_msgs/Limit velocity
 hyperdog_uros_msgs/Limit kp

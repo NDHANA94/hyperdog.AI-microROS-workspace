@@ -20,7 +20,7 @@ extern "C"
 // Struct defined in srv/DisableMotor2 in the package hyperdog_uros_msgs.
 typedef struct hyperdog_uros_msgs__srv__DisableMotor2_Request
 {
-  uint8_t id;
+  uint8_t can_id;
 } hyperdog_uros_msgs__srv__DisableMotor2_Request;
 
 // Struct for a sequence of hyperdog_uros_msgs__srv__DisableMotor2_Request.
