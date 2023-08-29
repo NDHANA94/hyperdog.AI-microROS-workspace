@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/EnableMotor.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct EnableMotor_Request {
+      @verbatim (language="comment", text=
+        " 0=FR,       1=FL,        2=RR,    3=RL")
+      uint8 leg;
+
+      @verbatim (language="comment", text=
+        " 0=HIP_ROLL, 1=HIP_PITCH, 2=KNEE")
+      uint8 joint;
+    };
+    struct EnableMotor_Response {
+      boolean is_enabled;
+
+      string error_msg;
+    };
+  };
+};

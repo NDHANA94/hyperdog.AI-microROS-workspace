@@ -1,0 +1,8 @@
+source;share/hyperdog_uros_msgs/hook/cmake_prefix_path.ps1
+source;share/hyperdog_uros_msgs/hook/cmake_prefix_path.dsv
+source;share/hyperdog_uros_msgs/hook/cmake_prefix_path.sh
+source;share/hyperdog_uros_msgs/local_setup.bash
+source;share/hyperdog_uros_msgs/local_setup.dsv
+source;share/hyperdog_uros_msgs/local_setup.ps1
+source;share/hyperdog_uros_msgs/local_setup.sh
+source;share/hyperdog_uros_msgs/local_setup.zsh

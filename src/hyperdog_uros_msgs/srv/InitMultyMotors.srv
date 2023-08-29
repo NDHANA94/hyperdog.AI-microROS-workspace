@@ -1,5 +1,0 @@
-hyperdog_uros_msgs/InitMotor[] motor
-
----
-bool done
-string error_msg

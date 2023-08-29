@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_msgs/srv/SetLegDamping.srv
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_msgs/msg/Vector3.idl"
+
+module hyperdog_uros_msgs {
+  module srv {
+    struct SetLegDamping_Request {
+      @verbatim (language="comment", text=
+        " 0=FR,       1=FL,        2=RR,    3=RL")
+      uint8 leg;
+
+      hyperdog_uros_msgs::msg::Vector3 data;
+    };
+    struct SetLegDamping_Response {
+      boolean is_set;
+
+      string error_msg;
+    };
+  };
+};

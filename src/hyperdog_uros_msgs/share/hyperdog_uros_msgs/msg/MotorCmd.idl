@@ -1,0 +1,40 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_msgs/msg/MotorCmd.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      " leg and joint of the motor")
+    struct MotorCmd {
+      @verbatim (language="comment", text=
+        " 0=FR,       1=FL,        2=RR,    3=RL")
+      uint8 leg;
+
+      @verbatim (language="comment", text=
+        " 0=HIP_ROLL, 1=HIP_PITCH, 2=KNEE")
+      uint8 joint;
+
+      @verbatim (language="comment", text=
+        " special commands")
+      boolean enable;
+
+      boolean disable;
+
+      boolean set_zero;
+
+      @verbatim (language="comment", text=
+        " control commands")
+      double desire_position;
+
+      double desire_velocity;
+
+      double kp;
+
+      double kd;
+
+      double i_ff;
+    };
+  };
+};
