@@ -25,7 +25,7 @@ SOFTWARE.                                                                       
 
 #include "error_indicator.h"
 #include "hyperdog_uros_app.h"
-#include "minicheetah_motor.h"
+// #include "minicheetah_motor.h"
 #include "can.h"
 
 rmw_ret_t rmw_err_code;
@@ -229,72 +229,72 @@ void error_indicator()
         /* If uros and CAN are OK, check motors */
         /* Motors Error - LD6 Blue*/
         /* Long blinks indicate the motor index (NOT ID). Short blinks indicate the error */
-        bool is_motor_err = false;
-        if (hcan1.State != HAL_CAN_STATE_ERROR)
-        {
-            for(int m = 0; m < NUM_OF_MOTORS; m++)
-            {   
-                // if motor is initialized and has an error
-                /// TODO: replace 0b0111 with MOTOR_INIT_STATUS_ID
-                if((motor[m].init_state & MOTOR_INIT_STATUS_ID) == MOTOR_INIT_STATUS_ID && motor[m].state == MOTOR_ERROR) 
-                {
-                    is_motor_err = true;
-                    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
-                    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
-                    HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
-                    HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
-                    osDelay(500);
+    //     bool is_motor_err = false;
+    //     if (hcan1.State != HAL_CAN_STATE_ERROR)
+    //     {
+    //         for(int m = 0; m < NUM_OF_MOTORS; m++)
+    //         {   
+    //             // if motor is initialized and has an error
+    //             /// TODO: replace 0b0111 with MOTOR_INIT_STATUS_ID
+    //             if((motor[m].init_state & MOTOR_INIT_STATUS_ID) == MOTOR_INIT_STATUS_ID && motor[m].state == MOTOR_ERROR) 
+    //             {
+    //                 is_motor_err = true;
+    //                 HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+    //                 HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+    //                 HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+    //                 HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+    //                 osDelay(500);
 
-                    blink_error(6, m+1, 800, 200); /* long blinks */
+    //                 blink_error(6, m+1, 800, 200); /* long blinks */
 
-                    /*!< `0x001U`   motor is not initialized                      */
-                    if((motor[m].error_code & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED)
-                        blink_error(6, 1, 200, 200); /* 1 short blink */
-                    /*!< `0x002U`   motor parameter error                         */
-                    else if((motor[m].error_code & MOTOR_ERROR_PARAM) == MOTOR_ERROR_PARAM)
-                        blink_error(6, 2, 200, 200); /* 2 short blinks */
-                    /*!< `0x004U`   HAL_CAN Error                                 */
-                    else if((motor[m].error_code & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
-                        blink_error(6, 3, 200, 200); /* 3 short blinks */
-                    /*!< `0x008U`   motor is offline / not connected              */
-                    else if((motor[m].error_code & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
-                        blink_error(6, 4, 200, 200); /* 4 short blinks */
-                    /*!< `0x010U`   Out Of Range error                            */
-                    else if((motor[m].error_code & MOTOR_ERROR_OOR) == MOTOR_ERROR_OOR)
-                        blink_error(6, 5, 200, 200); /* 5 short blinks */
-                    /*!< `0x020U`   Over-Heat error                               */
-                    else if((motor[m].error_code & MOTOR_ERROR_OH) == MOTOR_ERROR_OH)
-                        blink_error(6, 6, 200, 200); /* 6 short blinks */
-                    /*!< `0x040U`   Over-Current error                            */
-                    else if((motor[m].error_code & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
-                        blink_error(6, 7, 200, 200); /* 7 short blinks */
-                    /*!< `0x080U`   Failed to enable the motor                    */
-                    else if((motor[m].error_code & MOTOR_ERROR_EN) == MOTOR_ERROR_EN)
-                        blink_error(6, 8, 200, 200); /* 8 short blinks */
-                    /*!< `0x100U`   Failed to diable the motor                    */
-                    else if((motor[m].error_code & MOTOR_ERROR_DIS) == MOTOR_ERROR_DIS)
-                        blink_error(6, 9, 200, 200); /* 9 short blinks */
-                    /*!< `0x200U`   Failed to set motor zero position             */
-                    else if((motor[m].error_code & MOTOR_ERROR_SZ) == MOTOR_ERROR_SZ)
-                        blink_error(6, 10, 200, 200); /* 10 short blinks */
-                    /*!< `0x400U`   Motor is not ready to be operated             */
-                    else if((motor[m].error_code & MOTOR_ERROR_NOT_READY) == MOTOR_ERROR_NOT_READY)
-                        blink_error(6, 11, 200, 200); /* 11 short blinks */
-                }
-                /* If no Errors,  */
-            }
-            if(!is_motor_err){
-                HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
-                osDelay(100);
-                HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
-                osDelay(100);
-            }
-        }
+    //                 /*!< `0x001U`   motor is not initialized                      */
+    //                 if((motor[m].error_code & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED)
+    //                     blink_error(6, 1, 200, 200); /* 1 short blink */
+    //                 /*!< `0x002U`   motor parameter error                         */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_PARAM) == MOTOR_ERROR_PARAM)
+    //                     blink_error(6, 2, 200, 200); /* 2 short blinks */
+    //                 /*!< `0x004U`   HAL_CAN Error                                 */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
+    //                     blink_error(6, 3, 200, 200); /* 3 short blinks */
+    //                 /*!< `0x008U`   motor is offline / not connected              */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
+    //                     blink_error(6, 4, 200, 200); /* 4 short blinks */
+    //                 /*!< `0x010U`   Out Of Range error                            */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_OOR) == MOTOR_ERROR_OOR)
+    //                     blink_error(6, 5, 200, 200); /* 5 short blinks */
+    //                 /*!< `0x020U`   Over-Heat error                               */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_OH) == MOTOR_ERROR_OH)
+    //                     blink_error(6, 6, 200, 200); /* 6 short blinks */
+    //                 /*!< `0x040U`   Over-Current error                            */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
+    //                     blink_error(6, 7, 200, 200); /* 7 short blinks */
+    //                 /*!< `0x080U`   Failed to enable the motor                    */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_EN) == MOTOR_ERROR_EN)
+    //                     blink_error(6, 8, 200, 200); /* 8 short blinks */
+    //                 /*!< `0x100U`   Failed to diable the motor                    */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_DIS) == MOTOR_ERROR_DIS)
+    //                     blink_error(6, 9, 200, 200); /* 9 short blinks */
+    //                 /*!< `0x200U`   Failed to set motor zero position             */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_SZ) == MOTOR_ERROR_SZ)
+    //                     blink_error(6, 10, 200, 200); /* 10 short blinks */
+    //                 /*!< `0x400U`   Motor is not ready to be operated             */
+    //                 else if((motor[m].error_code & MOTOR_ERROR_NOT_READY) == MOTOR_ERROR_NOT_READY)
+    //                     blink_error(6, 11, 200, 200); /* 11 short blinks */
+    //             }
+    //             /* If no Errors,  */
+    //         }
+    //         if(!is_motor_err){
+    //             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_RESET);
+    //             osDelay(100);
+    //             HAL_GPIO_WritePin(LD6_GPIO_Port, LD6_Pin, GPIO_PIN_SET);
+    //             osDelay(100);
+    //         }
+    //     }
 
-        HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
-        osDelay(100);
-        HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
-        osDelay(100);
+    //     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
+    //     osDelay(100);
+    //     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+    //     osDelay(100);
 
     }
 }

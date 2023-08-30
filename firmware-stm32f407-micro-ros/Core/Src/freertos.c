@@ -33,7 +33,7 @@
 #include "hyperdog_uros_app.h"
 #include "hyperdog_uros_node.h"
 #include "error_indicator.h"
-#include "minicheetah_motor.h"
+// #include "minicheetah_motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -83,18 +83,18 @@ const osThreadAttr_t errorIndicatorTask_attributes = {
 
 
 /* Definitions for CAN */
-osThreadId_t CANTaskHandle;
-const osThreadAttr_t CANTask_attributes = {
-  .name = "canTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityHigh1,
-};
+// osThreadId_t CANTaskHandle;
+// const osThreadAttr_t CANTask_attributes = {
+//   .name = "canTask",
+//   .stack_size = 128 * 4,
+//   .priority = (osPriority_t) osPriorityHigh1,
+// };
 
 /* Private function prototypes -----------------------------------------------*/
 
 /* USER CODE BEGIN FunctionPrototypes */
 void StartErrorIndicatorTask(void *argument);
-void StartCANTask(void* argument);
+// void StartCANTask(void* argument);
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -137,7 +137,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
-  CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
+  // CANTaskHandle = osThreadNew(StartCANTask, NULL, &CANTask_attributes);
   /* USER CODE END RTOS_EVENTS */
 
 }
@@ -171,25 +171,25 @@ void StartErrorIndicatorTask(void *argument)
   /* USER CODE END 6 */
 }
 
-void StartCANTask(void* argument)
-{
+// void StartCANTask(void* argument)
+// {
 
-  MOTOR_initId(FR_HIP, 1);
-  MOTOR_initParams(FR_HIP, 12.5, 60, 500, 5, 18, 40);
-  MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
-  MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
-  // MOTOR_sendHeatbeat(FR_HIP);
-  // can_rx_init();
-  // can_tx_init();
+//   MOTOR_initId(FR_HIP, 1);
+//   MOTOR_initParams(FR_HIP, 12.5, 60, 500, 5, 18, 40);
+//   MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
+//   MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
+//   // MOTOR_sendHeatbeat(FR_HIP);
+//   // can_rx_init();
+//   // can_tx_init();
   
-  while(1){
-      // send_can_test();
-      // MOTOR_sendHeatbeat(FR_HIP);
-      MOTOR_enable(FR_HIP);
-      osDelay(10);
-      // MOTOR_setZero(FR_HIP);
-  }
-}
+//   while(1){
+//       // send_can_test();
+//       // MOTOR_sendHeatbeat(FR_HIP);
+//       MOTOR_enable(FR_HIP);
+//       osDelay(10);
+//       // MOTOR_setZero(FR_HIP);
+//   }
+// }
 
 
 /* USER CODE END Application */

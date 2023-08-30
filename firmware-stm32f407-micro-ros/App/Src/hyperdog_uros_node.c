@@ -1,7 +1,7 @@
 
 #include "main.h"
 #include "hyperdog_uros_node.h"
-#include "motor_typedefs.h"
+// #include "motor_typedefs.h"
 #include "leg_motors.h"
 
 hyperdogUROS_Node_t hyperdog_node;
