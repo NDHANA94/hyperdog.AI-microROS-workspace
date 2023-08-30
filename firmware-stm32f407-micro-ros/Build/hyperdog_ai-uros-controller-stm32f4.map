@@ -4144,576 +4144,575 @@ LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3
                 0x00000000080016b0       0x68 Build/hyperdog_uros_node.o
                 0x00000000080016b0                _motors_states_timer_callback
  .text._init_motors_states_publisher
-                0x0000000008001718       0xb4 Build/hyperdog_uros_node.o
+                0x0000000008001718       0xb8 Build/hyperdog_uros_node.o
                 0x0000000008001718                _init_motors_states_publisher
  .text.init_hyperdog_node
-                0x00000000080017cc       0x74 Build/hyperdog_uros_node.o
-                0x00000000080017cc                init_hyperdog_node
+                0x00000000080017d0       0x74 Build/hyperdog_uros_node.o
+                0x00000000080017d0                init_hyperdog_node
  .text._destroy_hyperdog_node
-                0x0000000008001840       0x48 Build/hyperdog_uros_node.o
-                0x0000000008001840                _destroy_hyperdog_node
+                0x0000000008001844       0x48 Build/hyperdog_uros_node.o
+                0x0000000008001844                _destroy_hyperdog_node
  .text.blink_error
-                0x0000000008001888      0x174 Build/error_indicator.o
-                0x0000000008001888                blink_error
+                0x000000000800188c      0x174 Build/error_indicator.o
+                0x000000000800188c                blink_error
  .text.error_indicator
-                0x00000000080019fc      0x55c Build/error_indicator.o
-                0x00000000080019fc                error_indicator
+                0x0000000008001a00      0x55c Build/error_indicator.o
+                0x0000000008001a00                error_indicator
  .text.MOTOR_initId
-                0x0000000008001f58       0x34 Build/minicheetah_motor.o
-                0x0000000008001f58                MOTOR_initId
+                0x0000000008001f5c       0x34 Build/minicheetah_motor.o
+                0x0000000008001f5c                MOTOR_initId
  .text.MOTOR_initParams
-                0x0000000008001f8c       0x7c Build/minicheetah_motor.o
-                0x0000000008001f8c                MOTOR_initParams
+                0x0000000008001f90       0x7c Build/minicheetah_motor.o
+                0x0000000008001f90                MOTOR_initParams
  .text.MOTOR_initCtrlLimits
-                0x0000000008002008       0x5c Build/minicheetah_motor.o
-                0x0000000008002008                MOTOR_initCtrlLimits
+                0x000000000800200c       0x5c Build/minicheetah_motor.o
+                0x000000000800200c                MOTOR_initCtrlLimits
  .text.MOTOR_initCANConfig
-                0x0000000008002064       0xdc Build/minicheetah_motor.o
-                0x0000000008002064                MOTOR_initCANConfig
+                0x0000000008002068       0xdc Build/minicheetah_motor.o
+                0x0000000008002068                MOTOR_initCANConfig
  .text._is_motor_error
-                0x0000000008002140       0x1c Build/minicheetah_motor.o
-                0x0000000008002140                _is_motor_error
+                0x0000000008002144       0x1c Build/minicheetah_motor.o
+                0x0000000008002144                _is_motor_error
  .text.uint2float
-                0x000000000800215c       0x24 Build/minicheetah_motor.o
-                0x000000000800215c                uint2float
+                0x0000000008002160       0x24 Build/minicheetah_motor.o
+                0x0000000008002160                uint2float
  .text._unpack_canRx
-                0x0000000008002180       0x70 Build/minicheetah_motor.o
-                0x0000000008002180                _unpack_canRx
+                0x0000000008002184       0x70 Build/minicheetah_motor.o
+                0x0000000008002184                _unpack_canRx
  .text.MOTOR_sendTxGetRx
-                0x00000000080021f0      0x108 Build/minicheetah_motor.o
-                0x00000000080021f0                MOTOR_sendTxGetRx
+                0x00000000080021f4      0x108 Build/minicheetah_motor.o
+                0x00000000080021f4                MOTOR_sendTxGetRx
  .text.MOTOR_enable
-                0x00000000080022f8       0x68 Build/minicheetah_motor.o
-                0x00000000080022f8                MOTOR_enable
+                0x00000000080022fc       0x68 Build/minicheetah_motor.o
+                0x00000000080022fc                MOTOR_enable
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008002360       0x18 Build/main.o
-                0x0000000008002360                HAL_TIM_PeriodElapsedCallback
+                0x0000000008002364       0x18 Build/main.o
+                0x0000000008002364                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x0000000008002378        0x4 Build/main.o
-                0x0000000008002378                Error_Handler
+                0x000000000800237c        0x4 Build/main.o
+                0x000000000800237c                Error_Handler
  .text.SystemClock_Config
-                0x000000000800237c       0xac Build/main.o
-                0x000000000800237c                SystemClock_Config
- .text.main     0x0000000008002428       0x40 Build/main.o
-                0x0000000008002428                main
+                0x0000000008002380       0xac Build/main.o
+                0x0000000008002380                SystemClock_Config
+ .text.main     0x000000000800242c       0x40 Build/main.o
+                0x000000000800242c                main
  .text.MX_GPIO_Init
-                0x0000000008002468      0x1e0 Build/gpio.o
-                0x0000000008002468                MX_GPIO_Init
+                0x000000000800246c      0x1e0 Build/gpio.o
+                0x000000000800246c                MX_GPIO_Init
  .text.StartDefaultTask
-                0x0000000008002648       0x10 Build/freertos.o
-                0x0000000008002648                StartDefaultTask
+                0x000000000800264c       0x10 Build/freertos.o
+                0x000000000800264c                StartDefaultTask
  .text.StartErrorIndicatorTask
-                0x0000000008002658        0x8 Build/freertos.o
-                0x0000000008002658                StartErrorIndicatorTask
+                0x000000000800265c        0x8 Build/freertos.o
+                0x000000000800265c                StartErrorIndicatorTask
  .text.StartCANTask
-                0x0000000008002660       0x6c Build/freertos.o
-                0x0000000008002660                StartCANTask
+                0x0000000008002664       0x6c Build/freertos.o
+                0x0000000008002664                StartCANTask
  .text.MX_FREERTOS_Init
-                0x00000000080026cc       0x54 Build/freertos.o
-                0x00000000080026cc                MX_FREERTOS_Init
+                0x00000000080026d0       0x54 Build/freertos.o
+                0x00000000080026d0                MX_FREERTOS_Init
  .text.MX_CAN1_Init
-                0x0000000008002720       0x40 Build/can.o
-                0x0000000008002720                MX_CAN1_Init
+                0x0000000008002724       0x40 Build/can.o
+                0x0000000008002724                MX_CAN1_Init
  .text.HAL_CAN_MspInit
-                0x0000000008002760       0x6c Build/can.o
-                0x0000000008002760                HAL_CAN_MspInit
+                0x0000000008002764       0x6c Build/can.o
+                0x0000000008002764                HAL_CAN_MspInit
  .text.MX_DMA_Init
-                0x00000000080027cc       0x44 Build/dma.o
-                0x00000000080027cc                MX_DMA_Init
+                0x00000000080027d0       0x44 Build/dma.o
+                0x00000000080027d0                MX_DMA_Init
  .text.MX_I2C1_Init
-                0x0000000008002810       0x3c Build/i2c.o
-                0x0000000008002810                MX_I2C1_Init
+                0x0000000008002814       0x3c Build/i2c.o
+                0x0000000008002814                MX_I2C1_Init
  .text.HAL_I2C_MspInit
-                0x000000000800284c       0x70 Build/i2c.o
-                0x000000000800284c                HAL_I2C_MspInit
+                0x0000000008002850       0x70 Build/i2c.o
+                0x0000000008002850                HAL_I2C_MspInit
  .text.MX_SPI1_Init
-                0x00000000080028bc       0x40 Build/spi.o
-                0x00000000080028bc                MX_SPI1_Init
+                0x00000000080028c0       0x40 Build/spi.o
+                0x00000000080028c0                MX_SPI1_Init
  .text.HAL_SPI_MspInit
-                0x00000000080028fc       0x6c Build/spi.o
-                0x00000000080028fc                HAL_SPI_MspInit
+                0x0000000008002900       0x6c Build/spi.o
+                0x0000000008002900                HAL_SPI_MspInit
  .text.MX_USART2_UART_Init
-                0x0000000008002968       0x34 Build/usart.o
-                0x0000000008002968                MX_USART2_UART_Init
+                0x000000000800296c       0x34 Build/usart.o
+                0x000000000800296c                MX_USART2_UART_Init
  .text.HAL_UART_MspInit
-                0x000000000800299c      0x104 Build/usart.o
-                0x000000000800299c                HAL_UART_MspInit
+                0x00000000080029a0      0x104 Build/usart.o
+                0x00000000080029a0                HAL_UART_MspInit
  .text.MX_USB_OTG_FS_USB_Init
-                0x0000000008002aa0        0x2 Build/usb_otg.o
-                0x0000000008002aa0                MX_USB_OTG_FS_USB_Init
+                0x0000000008002aa4        0x2 Build/usb_otg.o
+                0x0000000008002aa4                MX_USB_OTG_FS_USB_Init
  .text.NMI_Handler
-                0x0000000008002aa2        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aa2                NMI_Handler
- .text.HardFault_Handler
-                0x0000000008002aa4        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aa4                HardFault_Handler
- .text.MemManage_Handler
                 0x0000000008002aa6        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aa6                MemManage_Handler
- .text.BusFault_Handler
+                0x0000000008002aa6                NMI_Handler
+ .text.HardFault_Handler
                 0x0000000008002aa8        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aa8                BusFault_Handler
- .text.UsageFault_Handler
+                0x0000000008002aa8                HardFault_Handler
+ .text.MemManage_Handler
                 0x0000000008002aaa        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aaa                UsageFault_Handler
- .text.DebugMon_Handler
+                0x0000000008002aaa                MemManage_Handler
+ .text.BusFault_Handler
                 0x0000000008002aac        0x2 Build/stm32f4xx_it.o
-                0x0000000008002aac                DebugMon_Handler
- *fill*         0x0000000008002aae        0x2 
+                0x0000000008002aac                BusFault_Handler
+ .text.UsageFault_Handler
+                0x0000000008002aae        0x2 Build/stm32f4xx_it.o
+                0x0000000008002aae                UsageFault_Handler
+ .text.DebugMon_Handler
+                0x0000000008002ab0        0x2 Build/stm32f4xx_it.o
+                0x0000000008002ab0                DebugMon_Handler
+ *fill*         0x0000000008002ab2        0x2 
  .text.DMA1_Stream5_IRQHandler
-                0x0000000008002ab0       0x10 Build/stm32f4xx_it.o
-                0x0000000008002ab0                DMA1_Stream5_IRQHandler
+                0x0000000008002ab4       0x10 Build/stm32f4xx_it.o
+                0x0000000008002ab4                DMA1_Stream5_IRQHandler
  .text.DMA1_Stream6_IRQHandler
-                0x0000000008002ac0       0x10 Build/stm32f4xx_it.o
-                0x0000000008002ac0                DMA1_Stream6_IRQHandler
+                0x0000000008002ac4       0x10 Build/stm32f4xx_it.o
+                0x0000000008002ac4                DMA1_Stream6_IRQHandler
  .text.CAN1_RX0_IRQHandler
-                0x0000000008002ad0       0x10 Build/stm32f4xx_it.o
-                0x0000000008002ad0                CAN1_RX0_IRQHandler
+                0x0000000008002ad4       0x10 Build/stm32f4xx_it.o
+                0x0000000008002ad4                CAN1_RX0_IRQHandler
  .text.TIM1_UP_TIM10_IRQHandler
-                0x0000000008002ae0       0x10 Build/stm32f4xx_it.o
-                0x0000000008002ae0                TIM1_UP_TIM10_IRQHandler
+                0x0000000008002ae4       0x10 Build/stm32f4xx_it.o
+                0x0000000008002ae4                TIM1_UP_TIM10_IRQHandler
  .text.USART2_IRQHandler
-                0x0000000008002af0       0x10 Build/stm32f4xx_it.o
-                0x0000000008002af0                USART2_IRQHandler
+                0x0000000008002af4       0x10 Build/stm32f4xx_it.o
+                0x0000000008002af4                USART2_IRQHandler
  .text.HAL_MspInit
-                0x0000000008002b00       0x44 Build/stm32f4xx_hal_msp.o
-                0x0000000008002b00                HAL_MspInit
- .text._getpid  0x0000000008002b44        0x4 Build/syscalls.o
-                0x0000000008002b44                _getpid
- .text._kill    0x0000000008002b48       0x10 Build/syscalls.o
-                0x0000000008002b48                _kill
- .text._exit    0x0000000008002b58        0xc Build/syscalls.o
-                0x0000000008002b58                _exit
- .text._read    0x0000000008002b64       0x20 Build/syscalls.o
-                0x0000000008002b64                _read
- .text._write   0x0000000008002b84       0x1c Build/syscalls.o
-                0x0000000008002b84                _write
- .text._sbrk    0x0000000008002ba0       0x4c Build/syscalls.o
-                0x0000000008002ba0                _sbrk
- .text._close   0x0000000008002bec        0x6 Build/syscalls.o
-                0x0000000008002bec                _close
- .text._fstat   0x0000000008002bf2        0xa Build/syscalls.o
-                0x0000000008002bf2                _fstat
- .text._isatty  0x0000000008002bfc        0x4 Build/syscalls.o
-                0x0000000008002bfc                _isatty
- .text._lseek   0x0000000008002c00        0x4 Build/syscalls.o
-                0x0000000008002c00                _lseek
+                0x0000000008002b04       0x44 Build/stm32f4xx_hal_msp.o
+                0x0000000008002b04                HAL_MspInit
+ .text._getpid  0x0000000008002b48        0x4 Build/syscalls.o
+                0x0000000008002b48                _getpid
+ .text._kill    0x0000000008002b4c       0x10 Build/syscalls.o
+                0x0000000008002b4c                _kill
+ .text._exit    0x0000000008002b5c        0xc Build/syscalls.o
+                0x0000000008002b5c                _exit
+ .text._read    0x0000000008002b68       0x20 Build/syscalls.o
+                0x0000000008002b68                _read
+ .text._write   0x0000000008002b88       0x1c Build/syscalls.o
+                0x0000000008002b88                _write
+ .text._sbrk    0x0000000008002ba4       0x4c Build/syscalls.o
+                0x0000000008002ba4                _sbrk
+ .text._close   0x0000000008002bf0        0x6 Build/syscalls.o
+                0x0000000008002bf0                _close
+ .text._fstat   0x0000000008002bf6        0xa Build/syscalls.o
+                0x0000000008002bf6                _fstat
+ .text._isatty  0x0000000008002c00        0x4 Build/syscalls.o
+                0x0000000008002c00                _isatty
+ .text._lseek   0x0000000008002c04        0x4 Build/syscalls.o
+                0x0000000008002c04                _lseek
  .text.HAL_CAN_Init
-                0x0000000008002c04      0x14c Build/stm32f4xx_hal_can.o
-                0x0000000008002c04                HAL_CAN_Init
+                0x0000000008002c08      0x14c Build/stm32f4xx_hal_can.o
+                0x0000000008002c08                HAL_CAN_Init
  .text.HAL_CAN_ConfigFilter
-                0x0000000008002d50      0x138 Build/stm32f4xx_hal_can.o
-                0x0000000008002d50                HAL_CAN_ConfigFilter
+                0x0000000008002d54      0x138 Build/stm32f4xx_hal_can.o
+                0x0000000008002d54                HAL_CAN_ConfigFilter
  .text.HAL_CAN_Start
-                0x0000000008002e88       0x5c Build/stm32f4xx_hal_can.o
-                0x0000000008002e88                HAL_CAN_Start
+                0x0000000008002e8c       0x5c Build/stm32f4xx_hal_can.o
+                0x0000000008002e8c                HAL_CAN_Start
  .text.HAL_CAN_AddTxMessage
-                0x0000000008002ee4       0xfc Build/stm32f4xx_hal_can.o
-                0x0000000008002ee4                HAL_CAN_AddTxMessage
+                0x0000000008002ee8       0xfc Build/stm32f4xx_hal_can.o
+                0x0000000008002ee8                HAL_CAN_AddTxMessage
  .text.HAL_CAN_GetRxMessage
-                0x0000000008002fe0      0x152 Build/stm32f4xx_hal_can.o
-                0x0000000008002fe0                HAL_CAN_GetRxMessage
+                0x0000000008002fe4      0x152 Build/stm32f4xx_hal_can.o
+                0x0000000008002fe4                HAL_CAN_GetRxMessage
  .text.HAL_CAN_TxMailbox0CompleteCallback
-                0x0000000008003132        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003132                HAL_CAN_TxMailbox0CompleteCallback
- .text.HAL_CAN_TxMailbox1CompleteCallback
-                0x0000000008003134        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003134                HAL_CAN_TxMailbox1CompleteCallback
- .text.HAL_CAN_TxMailbox2CompleteCallback
                 0x0000000008003136        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003136                HAL_CAN_TxMailbox2CompleteCallback
- .text.HAL_CAN_TxMailbox0AbortCallback
+                0x0000000008003136                HAL_CAN_TxMailbox0CompleteCallback
+ .text.HAL_CAN_TxMailbox1CompleteCallback
                 0x0000000008003138        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003138                HAL_CAN_TxMailbox0AbortCallback
- .text.HAL_CAN_TxMailbox1AbortCallback
+                0x0000000008003138                HAL_CAN_TxMailbox1CompleteCallback
+ .text.HAL_CAN_TxMailbox2CompleteCallback
                 0x000000000800313a        0x2 Build/stm32f4xx_hal_can.o
-                0x000000000800313a                HAL_CAN_TxMailbox1AbortCallback
- .text.HAL_CAN_TxMailbox2AbortCallback
+                0x000000000800313a                HAL_CAN_TxMailbox2CompleteCallback
+ .text.HAL_CAN_TxMailbox0AbortCallback
                 0x000000000800313c        0x2 Build/stm32f4xx_hal_can.o
-                0x000000000800313c                HAL_CAN_TxMailbox2AbortCallback
- .text.HAL_CAN_RxFifo0MsgPendingCallback
+                0x000000000800313c                HAL_CAN_TxMailbox0AbortCallback
+ .text.HAL_CAN_TxMailbox1AbortCallback
                 0x000000000800313e        0x2 Build/stm32f4xx_hal_can.o
-                0x000000000800313e                HAL_CAN_RxFifo0MsgPendingCallback
- .text.HAL_CAN_RxFifo0FullCallback
+                0x000000000800313e                HAL_CAN_TxMailbox1AbortCallback
+ .text.HAL_CAN_TxMailbox2AbortCallback
                 0x0000000008003140        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003140                HAL_CAN_RxFifo0FullCallback
- .text.HAL_CAN_RxFifo1MsgPendingCallback
+                0x0000000008003140                HAL_CAN_TxMailbox2AbortCallback
+ .text.HAL_CAN_RxFifo0MsgPendingCallback
                 0x0000000008003142        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003142                HAL_CAN_RxFifo1MsgPendingCallback
- .text.HAL_CAN_RxFifo1FullCallback
+                0x0000000008003142                HAL_CAN_RxFifo0MsgPendingCallback
+ .text.HAL_CAN_RxFifo0FullCallback
                 0x0000000008003144        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003144                HAL_CAN_RxFifo1FullCallback
- .text.HAL_CAN_SleepCallback
+                0x0000000008003144                HAL_CAN_RxFifo0FullCallback
+ .text.HAL_CAN_RxFifo1MsgPendingCallback
                 0x0000000008003146        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003146                HAL_CAN_SleepCallback
- .text.HAL_CAN_WakeUpFromRxMsgCallback
+                0x0000000008003146                HAL_CAN_RxFifo1MsgPendingCallback
+ .text.HAL_CAN_RxFifo1FullCallback
                 0x0000000008003148        0x2 Build/stm32f4xx_hal_can.o
-                0x0000000008003148                HAL_CAN_WakeUpFromRxMsgCallback
- .text.HAL_CAN_ErrorCallback
+                0x0000000008003148                HAL_CAN_RxFifo1FullCallback
+ .text.HAL_CAN_SleepCallback
                 0x000000000800314a        0x2 Build/stm32f4xx_hal_can.o
-                0x000000000800314a                HAL_CAN_ErrorCallback
+                0x000000000800314a                HAL_CAN_SleepCallback
+ .text.HAL_CAN_WakeUpFromRxMsgCallback
+                0x000000000800314c        0x2 Build/stm32f4xx_hal_can.o
+                0x000000000800314c                HAL_CAN_WakeUpFromRxMsgCallback
+ .text.HAL_CAN_ErrorCallback
+                0x000000000800314e        0x2 Build/stm32f4xx_hal_can.o
+                0x000000000800314e                HAL_CAN_ErrorCallback
  .text.HAL_CAN_IRQHandler
-                0x000000000800314c      0x24a Build/stm32f4xx_hal_can.o
-                0x000000000800314c                HAL_CAN_IRQHandler
- *fill*         0x0000000008003396        0x2 
+                0x0000000008003150      0x24a Build/stm32f4xx_hal_can.o
+                0x0000000008003150                HAL_CAN_IRQHandler
+ *fill*         0x000000000800339a        0x2 
  .text.HAL_RCC_OscConfig
-                0x0000000008003398      0x3f8 Build/stm32f4xx_hal_rcc.o
-                0x0000000008003398                HAL_RCC_OscConfig
+                0x000000000800339c      0x3f8 Build/stm32f4xx_hal_rcc.o
+                0x000000000800339c                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x0000000008003790       0xd4 Build/stm32f4xx_hal_rcc.o
-                0x0000000008003790                HAL_RCC_GetSysClockFreq
+                0x0000000008003794       0xd4 Build/stm32f4xx_hal_rcc.o
+                0x0000000008003794                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x0000000008003864      0x160 Build/stm32f4xx_hal_rcc.o
-                0x0000000008003864                HAL_RCC_ClockConfig
+                0x0000000008003868      0x160 Build/stm32f4xx_hal_rcc.o
+                0x0000000008003868                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x00000000080039c4        0xc Build/stm32f4xx_hal_rcc.o
-                0x00000000080039c4                HAL_RCC_GetHCLKFreq
+                0x00000000080039c8        0xc Build/stm32f4xx_hal_rcc.o
+                0x00000000080039c8                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x00000000080039d0       0x20 Build/stm32f4xx_hal_rcc.o
-                0x00000000080039d0                HAL_RCC_GetPCLK1Freq
+                0x00000000080039d4       0x20 Build/stm32f4xx_hal_rcc.o
+                0x00000000080039d4                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x00000000080039f0       0x20 Build/stm32f4xx_hal_rcc.o
-                0x00000000080039f0                HAL_RCC_GetPCLK2Freq
+                0x00000000080039f4       0x20 Build/stm32f4xx_hal_rcc.o
+                0x00000000080039f4                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCC_GetClockConfig
-                0x0000000008003a10       0x3c Build/stm32f4xx_hal_rcc.o
-                0x0000000008003a10                HAL_RCC_GetClockConfig
+                0x0000000008003a14       0x3c Build/stm32f4xx_hal_rcc.o
+                0x0000000008003a14                HAL_RCC_GetClockConfig
  .text.HAL_GPIO_Init
-                0x0000000008003a4c      0x1e4 Build/stm32f4xx_hal_gpio.o
-                0x0000000008003a4c                HAL_GPIO_Init
+                0x0000000008003a50      0x1e4 Build/stm32f4xx_hal_gpio.o
+                0x0000000008003a50                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x0000000008003c30        0xc Build/stm32f4xx_hal_gpio.o
-                0x0000000008003c30                HAL_GPIO_WritePin
+                0x0000000008003c34        0xc Build/stm32f4xx_hal_gpio.o
+                0x0000000008003c34                HAL_GPIO_WritePin
  .text.DMA_SetConfig
-                0x0000000008003c3c       0x2c Build/stm32f4xx_hal_dma.o
+                0x0000000008003c40       0x2c Build/stm32f4xx_hal_dma.o
  .text.DMA_CalcBaseAndBitshift
-                0x0000000008003c68       0x44 Build/stm32f4xx_hal_dma.o
+                0x0000000008003c6c       0x44 Build/stm32f4xx_hal_dma.o
  .text.DMA_CheckFifoParam
-                0x0000000008003cac       0x8e Build/stm32f4xx_hal_dma.o
- *fill*         0x0000000008003d3a        0x2 
+                0x0000000008003cb0       0x8e Build/stm32f4xx_hal_dma.o
+ *fill*         0x0000000008003d3e        0x2 
  .text.HAL_DMA_Init
-                0x0000000008003d3c       0xcc Build/stm32f4xx_hal_dma.o
-                0x0000000008003d3c                HAL_DMA_Init
+                0x0000000008003d40       0xcc Build/stm32f4xx_hal_dma.o
+                0x0000000008003d40                HAL_DMA_Init
  .text.HAL_DMA_Start_IT
-                0x0000000008003e08       0x6a Build/stm32f4xx_hal_dma.o
-                0x0000000008003e08                HAL_DMA_Start_IT
+                0x0000000008003e0c       0x6a Build/stm32f4xx_hal_dma.o
+                0x0000000008003e0c                HAL_DMA_Start_IT
  .text.HAL_DMA_Abort
-                0x0000000008003e72       0x94 Build/stm32f4xx_hal_dma.o
-                0x0000000008003e72                HAL_DMA_Abort
+                0x0000000008003e76       0x94 Build/stm32f4xx_hal_dma.o
+                0x0000000008003e76                HAL_DMA_Abort
  .text.HAL_DMA_Abort_IT
-                0x0000000008003f06       0x26 Build/stm32f4xx_hal_dma.o
-                0x0000000008003f06                HAL_DMA_Abort_IT
+                0x0000000008003f0a       0x26 Build/stm32f4xx_hal_dma.o
+                0x0000000008003f0a                HAL_DMA_Abort_IT
  .text.HAL_DMA_IRQHandler
-                0x0000000008003f2c      0x1dc Build/stm32f4xx_hal_dma.o
-                0x0000000008003f2c                HAL_DMA_IRQHandler
+                0x0000000008003f30      0x1dc Build/stm32f4xx_hal_dma.o
+                0x0000000008003f30                HAL_DMA_IRQHandler
  .text.HAL_NVIC_SetPriorityGrouping
-                0x0000000008004108       0x24 Build/stm32f4xx_hal_cortex.o
-                0x0000000008004108                HAL_NVIC_SetPriorityGrouping
+                0x000000000800410c       0x24 Build/stm32f4xx_hal_cortex.o
+                0x000000000800410c                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x000000000800412c       0x70 Build/stm32f4xx_hal_cortex.o
-                0x000000000800412c                HAL_NVIC_SetPriority
+                0x0000000008004130       0x70 Build/stm32f4xx_hal_cortex.o
+                0x0000000008004130                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x000000000800419c       0x1c Build/stm32f4xx_hal_cortex.o
-                0x000000000800419c                HAL_NVIC_EnableIRQ
+                0x00000000080041a0       0x1c Build/stm32f4xx_hal_cortex.o
+                0x00000000080041a0                HAL_NVIC_EnableIRQ
  .text.HAL_Init
-                0x00000000080041b8       0x34 Build/stm32f4xx_hal.o
-                0x00000000080041b8                HAL_Init
+                0x00000000080041bc       0x34 Build/stm32f4xx_hal.o
+                0x00000000080041bc                HAL_Init
  .text.HAL_IncTick
-                0x00000000080041ec       0x18 Build/stm32f4xx_hal.o
-                0x00000000080041ec                HAL_IncTick
+                0x00000000080041f0       0x18 Build/stm32f4xx_hal.o
+                0x00000000080041f0                HAL_IncTick
  .text.HAL_GetTick
-                0x0000000008004204        0xc Build/stm32f4xx_hal.o
-                0x0000000008004204                HAL_GetTick
+                0x0000000008004208        0xc Build/stm32f4xx_hal.o
+                0x0000000008004208                HAL_GetTick
  .text.HAL_I2C_Init
-                0x0000000008004210      0x1bc Build/stm32f4xx_hal_i2c.o
-                0x0000000008004210                HAL_I2C_Init
+                0x0000000008004214      0x1bc Build/stm32f4xx_hal_i2c.o
+                0x0000000008004214                HAL_I2C_Init
  .text.HAL_SPI_Init
-                0x00000000080043cc       0xbe Build/stm32f4xx_hal_spi.o
-                0x00000000080043cc                HAL_SPI_Init
+                0x00000000080043d0       0xbe Build/stm32f4xx_hal_spi.o
+                0x00000000080043d0                HAL_SPI_Init
  .text.HAL_TIM_Base_MspInit
-                0x000000000800448a        0x2 Build/stm32f4xx_hal_tim.o
-                0x000000000800448a                HAL_TIM_Base_MspInit
+                0x000000000800448e        0x2 Build/stm32f4xx_hal_tim.o
+                0x000000000800448e                HAL_TIM_Base_MspInit
  .text.HAL_TIM_Base_Start_IT
-                0x000000000800448c       0x88 Build/stm32f4xx_hal_tim.o
-                0x000000000800448c                HAL_TIM_Base_Start_IT
+                0x0000000008004490       0x88 Build/stm32f4xx_hal_tim.o
+                0x0000000008004490                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x0000000008004514        0x2 Build/stm32f4xx_hal_tim.o
-                0x0000000008004514                HAL_TIM_OC_DelayElapsedCallback
- .text.HAL_TIM_IC_CaptureCallback
-                0x0000000008004516        0x2 Build/stm32f4xx_hal_tim.o
-                0x0000000008004516                HAL_TIM_IC_CaptureCallback
- .text.HAL_TIM_PWM_PulseFinishedCallback
                 0x0000000008004518        0x2 Build/stm32f4xx_hal_tim.o
-                0x0000000008004518                HAL_TIM_PWM_PulseFinishedCallback
- .text.HAL_TIM_TriggerCallback
+                0x0000000008004518                HAL_TIM_OC_DelayElapsedCallback
+ .text.HAL_TIM_IC_CaptureCallback
                 0x000000000800451a        0x2 Build/stm32f4xx_hal_tim.o
-                0x000000000800451a                HAL_TIM_TriggerCallback
+                0x000000000800451a                HAL_TIM_IC_CaptureCallback
+ .text.HAL_TIM_PWM_PulseFinishedCallback
+                0x000000000800451c        0x2 Build/stm32f4xx_hal_tim.o
+                0x000000000800451c                HAL_TIM_PWM_PulseFinishedCallback
+ .text.HAL_TIM_TriggerCallback
+                0x000000000800451e        0x2 Build/stm32f4xx_hal_tim.o
+                0x000000000800451e                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x000000000800451c      0x17a Build/stm32f4xx_hal_tim.o
-                0x000000000800451c                HAL_TIM_IRQHandler
- *fill*         0x0000000008004696        0x2 
+                0x0000000008004520      0x17a Build/stm32f4xx_hal_tim.o
+                0x0000000008004520                HAL_TIM_IRQHandler
+ *fill*         0x000000000800469a        0x2 
  .text.TIM_Base_SetConfig
-                0x0000000008004698       0xc8 Build/stm32f4xx_hal_tim.o
-                0x0000000008004698                TIM_Base_SetConfig
+                0x000000000800469c       0xc8 Build/stm32f4xx_hal_tim.o
+                0x000000000800469c                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x0000000008004760       0x58 Build/stm32f4xx_hal_tim.o
-                0x0000000008004760                HAL_TIM_Base_Init
+                0x0000000008004764       0x58 Build/stm32f4xx_hal_tim.o
+                0x0000000008004764                HAL_TIM_Base_Init
  .text.HAL_TIMEx_CommutCallback
-                0x00000000080047b8        0x2 Build/stm32f4xx_hal_tim_ex.o
-                0x00000000080047b8                HAL_TIMEx_CommutCallback
+                0x00000000080047bc        0x2 Build/stm32f4xx_hal_tim_ex.o
+                0x00000000080047bc                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x00000000080047ba        0x2 Build/stm32f4xx_hal_tim_ex.o
-                0x00000000080047ba                HAL_TIMEx_BreakCallback
+                0x00000000080047be        0x2 Build/stm32f4xx_hal_tim_ex.o
+                0x00000000080047be                HAL_TIMEx_BreakCallback
  .text.UART_EndTxTransfer
-                0x00000000080047bc       0x20 Build/stm32f4xx_hal_uart.o
+                0x00000000080047c0       0x20 Build/stm32f4xx_hal_uart.o
  .text.UART_EndRxTransfer
-                0x00000000080047dc       0x5c Build/stm32f4xx_hal_uart.o
+                0x00000000080047e0       0x5c Build/stm32f4xx_hal_uart.o
  .text.UART_Transmit_IT
-                0x0000000008004838       0x60 Build/stm32f4xx_hal_uart.o
+                0x000000000800483c       0x60 Build/stm32f4xx_hal_uart.o
  .text.UART_SetConfig
-                0x0000000008004898      0x110 Build/stm32f4xx_hal_uart.o
+                0x000000000800489c      0x110 Build/stm32f4xx_hal_uart.o
  .text.HAL_UART_Init
-                0x00000000080049a8       0x5e Build/stm32f4xx_hal_uart.o
-                0x00000000080049a8                HAL_UART_Init
- *fill*         0x0000000008004a06        0x2 
+                0x00000000080049ac       0x5e Build/stm32f4xx_hal_uart.o
+                0x00000000080049ac                HAL_UART_Init
+ *fill*         0x0000000008004a0a        0x2 
  .text.HAL_UART_Transmit_DMA
-                0x0000000008004a08       0x9c Build/stm32f4xx_hal_uart.o
-                0x0000000008004a08                HAL_UART_Transmit_DMA
+                0x0000000008004a0c       0x9c Build/stm32f4xx_hal_uart.o
+                0x0000000008004a0c                HAL_UART_Transmit_DMA
  .text.HAL_UART_DMAStop
-                0x0000000008004aa4       0x84 Build/stm32f4xx_hal_uart.o
-                0x0000000008004aa4                HAL_UART_DMAStop
+                0x0000000008004aa8       0x84 Build/stm32f4xx_hal_uart.o
+                0x0000000008004aa8                HAL_UART_DMAStop
  .text.HAL_UART_TxCpltCallback
-                0x0000000008004b28        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004b28                HAL_UART_TxCpltCallback
+                0x0000000008004b2c        0x2 Build/stm32f4xx_hal_uart.o
+                0x0000000008004b2c                HAL_UART_TxCpltCallback
  .text.UART_DMATransmitCplt
-                0x0000000008004b2a       0x4c Build/stm32f4xx_hal_uart.o
+                0x0000000008004b2e       0x4c Build/stm32f4xx_hal_uart.o
  .text.UART_EndTransmit_IT
-                0x0000000008004b76       0x1a Build/stm32f4xx_hal_uart.o
+                0x0000000008004b7a       0x1a Build/stm32f4xx_hal_uart.o
  .text.HAL_UART_TxHalfCpltCallback
-                0x0000000008004b90        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004b90                HAL_UART_TxHalfCpltCallback
+                0x0000000008004b94        0x2 Build/stm32f4xx_hal_uart.o
+                0x0000000008004b94                HAL_UART_TxHalfCpltCallback
  .text.UART_DMATxHalfCplt
-                0x0000000008004b92        0xa Build/stm32f4xx_hal_uart.o
+                0x0000000008004b96        0xa Build/stm32f4xx_hal_uart.o
  .text.HAL_UART_RxCpltCallback
-                0x0000000008004b9c        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004b9c                HAL_UART_RxCpltCallback
- .text.HAL_UART_RxHalfCpltCallback
-                0x0000000008004b9e        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004b9e                HAL_UART_RxHalfCpltCallback
- .text.HAL_UART_ErrorCallback
                 0x0000000008004ba0        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004ba0                HAL_UART_ErrorCallback
+                0x0000000008004ba0                HAL_UART_RxCpltCallback
+ .text.HAL_UART_RxHalfCpltCallback
+                0x0000000008004ba2        0x2 Build/stm32f4xx_hal_uart.o
+                0x0000000008004ba2                HAL_UART_RxHalfCpltCallback
+ .text.HAL_UART_ErrorCallback
+                0x0000000008004ba4        0x2 Build/stm32f4xx_hal_uart.o
+                0x0000000008004ba4                HAL_UART_ErrorCallback
  .text.UART_DMAError
-                0x0000000008004ba2       0x58 Build/stm32f4xx_hal_uart.o
+                0x0000000008004ba6       0x58 Build/stm32f4xx_hal_uart.o
  .text.UART_DMAAbortOnError
-                0x0000000008004bfa       0x10 Build/stm32f4xx_hal_uart.o
+                0x0000000008004bfe       0x10 Build/stm32f4xx_hal_uart.o
  .text.HAL_UARTEx_RxEventCallback
-                0x0000000008004c0a        0x2 Build/stm32f4xx_hal_uart.o
-                0x0000000008004c0a                HAL_UARTEx_RxEventCallback
+                0x0000000008004c0e        0x2 Build/stm32f4xx_hal_uart.o
+                0x0000000008004c0e                HAL_UARTEx_RxEventCallback
  .text.UART_Receive_IT
-                0x0000000008004c0c       0xe2 Build/stm32f4xx_hal_uart.o
- *fill*         0x0000000008004cee        0x2 
+                0x0000000008004c10       0xe2 Build/stm32f4xx_hal_uart.o
+ *fill*         0x0000000008004cf2        0x2 
  .text.HAL_UART_IRQHandler
-                0x0000000008004cf0      0x280 Build/stm32f4xx_hal_uart.o
-                0x0000000008004cf0                HAL_UART_IRQHandler
+                0x0000000008004cf4      0x280 Build/stm32f4xx_hal_uart.o
+                0x0000000008004cf4                HAL_UART_IRQHandler
  .text.UART_DMARxHalfCplt
-                0x0000000008004f70       0x1a Build/stm32f4xx_hal_uart.o
+                0x0000000008004f74       0x1a Build/stm32f4xx_hal_uart.o
  .text.UART_DMAReceiveCplt
-                0x0000000008004f8a       0x96 Build/stm32f4xx_hal_uart.o
+                0x0000000008004f8e       0x96 Build/stm32f4xx_hal_uart.o
  .text.UART_Start_Receive_DMA
-                0x0000000008005020       0xa8 Build/stm32f4xx_hal_uart.o
-                0x0000000008005020                UART_Start_Receive_DMA
+                0x0000000008005024       0xa8 Build/stm32f4xx_hal_uart.o
+                0x0000000008005024                UART_Start_Receive_DMA
  .text.HAL_UART_Receive_DMA
-                0x00000000080050c8       0x38 Build/stm32f4xx_hal_uart.o
-                0x00000000080050c8                HAL_UART_Receive_DMA
+                0x00000000080050cc       0x38 Build/stm32f4xx_hal_uart.o
+                0x00000000080050cc                HAL_UART_Receive_DMA
  .text.SystemInit
-                0x0000000008005100       0x14 Build/system_stm32f4xx.o
-                0x0000000008005100                SystemInit
+                0x0000000008005104       0x14 Build/system_stm32f4xx.o
+                0x0000000008005104                SystemInit
  .text.vListInitialise
-                0x0000000008005114       0x16 Build/list.o
-                0x0000000008005114                vListInitialise
+                0x0000000008005118       0x16 Build/list.o
+                0x0000000008005118                vListInitialise
  .text.vListInitialiseItem
-                0x000000000800512a        0x6 Build/list.o
-                0x000000000800512a                vListInitialiseItem
+                0x000000000800512e        0x6 Build/list.o
+                0x000000000800512e                vListInitialiseItem
  .text.vListInsertEnd
-                0x0000000008005130       0x16 Build/list.o
-                0x0000000008005130                vListInsertEnd
+                0x0000000008005134       0x16 Build/list.o
+                0x0000000008005134                vListInsertEnd
  .text.vListInsert
-                0x0000000008005146       0x32 Build/list.o
-                0x0000000008005146                vListInsert
+                0x000000000800514a       0x32 Build/list.o
+                0x000000000800514a                vListInsert
  .text.uxListRemove
-                0x0000000008005178       0x26 Build/list.o
-                0x0000000008005178                uxListRemove
+                0x000000000800517c       0x26 Build/list.o
+                0x000000000800517c                uxListRemove
  .text.prvIsQueueFull
-                0x000000000800519e       0x1e Build/queue.o
+                0x00000000080051a2       0x1e Build/queue.o
  .text.prvIsQueueEmpty
-                0x00000000080051bc       0x1a Build/queue.o
+                0x00000000080051c0       0x1a Build/queue.o
  .text.prvCopyDataToQueue
-                0x00000000080051d6       0x76 Build/queue.o
+                0x00000000080051da       0x76 Build/queue.o
  .text.prvCopyDataFromQueue
-                0x000000000800524c       0x24 Build/queue.o
+                0x0000000008005250       0x24 Build/queue.o
  .text.prvUnlockQueue
-                0x0000000008005270       0x6e Build/queue.o
+                0x0000000008005274       0x6e Build/queue.o
  .text.xQueueGenericReset
-                0x00000000080052de       0x84 Build/queue.o
-                0x00000000080052de                xQueueGenericReset
+                0x00000000080052e2       0x84 Build/queue.o
+                0x00000000080052e2                xQueueGenericReset
  .text.prvInitialiseNewQueue
-                0x0000000008005362       0x22 Build/queue.o
+                0x0000000008005366       0x22 Build/queue.o
  .text.xQueueGenericCreateStatic
-                0x0000000008005384       0x94 Build/queue.o
-                0x0000000008005384                xQueueGenericCreateStatic
+                0x0000000008005388       0x94 Build/queue.o
+                0x0000000008005388                xQueueGenericCreateStatic
  .text.xQueueGenericSend
-                0x0000000008005418      0x188 Build/queue.o
-                0x0000000008005418                xQueueGenericSend
+                0x000000000800541c      0x188 Build/queue.o
+                0x000000000800541c                xQueueGenericSend
  .text.xQueueGenericSendFromISR
-                0x00000000080055a0       0xce Build/queue.o
-                0x00000000080055a0                xQueueGenericSendFromISR
+                0x00000000080055a4       0xce Build/queue.o
+                0x00000000080055a4                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x000000000800566e      0x15e Build/queue.o
-                0x000000000800566e                xQueueReceive
+                0x0000000008005672      0x15e Build/queue.o
+                0x0000000008005672                xQueueReceive
  .text.vQueueAddToRegistry
-                0x00000000080057cc       0x28 Build/queue.o
-                0x00000000080057cc                vQueueAddToRegistry
+                0x00000000080057d0       0x28 Build/queue.o
+                0x00000000080057d0                vQueueAddToRegistry
  .text.vQueueWaitForMessageRestricted
-                0x00000000080057f4       0x52 Build/queue.o
-                0x00000000080057f4                vQueueWaitForMessageRestricted
- *fill*         0x0000000008005846        0x2 
+                0x00000000080057f8       0x52 Build/queue.o
+                0x00000000080057f8                vQueueWaitForMessageRestricted
+ *fill*         0x000000000800584a        0x2 
  .text.prvResetNextTaskUnblockTime
-                0x0000000008005848       0x2c Build/tasks.o
+                0x000000000800584c       0x2c Build/tasks.o
  .text.prvInitialiseNewTask
-                0x0000000008005874       0xa6 Build/tasks.o
- *fill*         0x000000000800591a        0x2 
+                0x0000000008005878       0xa6 Build/tasks.o
+ *fill*         0x000000000800591e        0x2 
  .text.prvInitialiseTaskLists
-                0x000000000800591c       0x68 Build/tasks.o
+                0x0000000008005920       0x68 Build/tasks.o
  .text.prvAddNewTaskToReadyList
-                0x0000000008005984       0xac Build/tasks.o
+                0x0000000008005988       0xac Build/tasks.o
  .text.prvDeleteTCB
-                0x0000000008005a30       0x38 Build/tasks.o
+                0x0000000008005a34       0x38 Build/tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x0000000008005a68       0x4c Build/tasks.o
+                0x0000000008005a6c       0x4c Build/tasks.o
  .text.prvIdleTask
-                0x0000000008005ab4       0x28 Build/tasks.o
+                0x0000000008005ab8       0x28 Build/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x0000000008005adc       0x7c Build/tasks.o
+                0x0000000008005ae0       0x7c Build/tasks.o
  .text.xTaskCreateStatic
-                0x0000000008005b58       0x76 Build/tasks.o
-                0x0000000008005b58                xTaskCreateStatic
+                0x0000000008005b5c       0x76 Build/tasks.o
+                0x0000000008005b5c                xTaskCreateStatic
  .text.xTaskCreate
-                0x0000000008005bce       0x68 Build/tasks.o
-                0x0000000008005bce                xTaskCreate
- *fill*         0x0000000008005c36        0x2 
+                0x0000000008005bd2       0x68 Build/tasks.o
+                0x0000000008005bd2                xTaskCreate
+ *fill*         0x0000000008005c3a        0x2 
  .text.vTaskStartScheduler
-                0x0000000008005c38       0x9c Build/tasks.o
-                0x0000000008005c38                vTaskStartScheduler
+                0x0000000008005c3c       0x9c Build/tasks.o
+                0x0000000008005c3c                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x0000000008005cd4       0x10 Build/tasks.o
-                0x0000000008005cd4                vTaskSuspendAll
+                0x0000000008005cd8       0x10 Build/tasks.o
+                0x0000000008005cd8                vTaskSuspendAll
  .text.xTaskGetTickCount
-                0x0000000008005ce4        0xc Build/tasks.o
-                0x0000000008005ce4                xTaskGetTickCount
+                0x0000000008005ce8        0xc Build/tasks.o
+                0x0000000008005ce8                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x0000000008005cf0      0x118 Build/tasks.o
-                0x0000000008005cf0                xTaskIncrementTick
+                0x0000000008005cf4      0x118 Build/tasks.o
+                0x0000000008005cf4                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x0000000008005e08       0xf8 Build/tasks.o
-                0x0000000008005e08                xTaskResumeAll
+                0x0000000008005e0c       0xf8 Build/tasks.o
+                0x0000000008005e0c                xTaskResumeAll
  .text.vTaskDelay
-                0x0000000008005f00       0x4c Build/tasks.o
-                0x0000000008005f00                vTaskDelay
+                0x0000000008005f04       0x4c Build/tasks.o
+                0x0000000008005f04                vTaskDelay
  .text.vTaskSwitchContext
-                0x0000000008005f4c       0x94 Build/tasks.o
-                0x0000000008005f4c                vTaskSwitchContext
+                0x0000000008005f50       0x94 Build/tasks.o
+                0x0000000008005f50                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x0000000008005fe0       0x30 Build/tasks.o
-                0x0000000008005fe0                vTaskPlaceOnEventList
+                0x0000000008005fe4       0x30 Build/tasks.o
+                0x0000000008005fe4                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x0000000008006010       0x38 Build/tasks.o
-                0x0000000008006010                vTaskPlaceOnEventListRestricted
+                0x0000000008006014       0x38 Build/tasks.o
+                0x0000000008006014                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x0000000008006048       0x8c Build/tasks.o
-                0x0000000008006048                xTaskRemoveFromEventList
+                0x000000000800604c       0x8c Build/tasks.o
+                0x000000000800604c                xTaskRemoveFromEventList
  .text.vTaskSetTimeOutState
-                0x00000000080060d4       0x38 Build/tasks.o
-                0x00000000080060d4                vTaskSetTimeOutState
+                0x00000000080060d8       0x38 Build/tasks.o
+                0x00000000080060d8                vTaskSetTimeOutState
  .text.vTaskInternalSetTimeOutState
-                0x000000000800610c       0x18 Build/tasks.o
-                0x000000000800610c                vTaskInternalSetTimeOutState
+                0x0000000008006110       0x18 Build/tasks.o
+                0x0000000008006110                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x0000000008006124       0x84 Build/tasks.o
-                0x0000000008006124                xTaskCheckForTimeOut
+                0x0000000008006128       0x84 Build/tasks.o
+                0x0000000008006128                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x00000000080061a8        0xc Build/tasks.o
-                0x00000000080061a8                vTaskMissedYield
+                0x00000000080061ac        0xc Build/tasks.o
+                0x00000000080061ac                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x00000000080061b4       0x20 Build/tasks.o
-                0x00000000080061b4                xTaskGetSchedulerState
+                0x00000000080061b8       0x20 Build/tasks.o
+                0x00000000080061b8                xTaskGetSchedulerState
  .text.xTaskPriorityDisinherit
-                0x00000000080061d4       0x90 Build/tasks.o
-                0x00000000080061d4                xTaskPriorityDisinherit
+                0x00000000080061d8       0x90 Build/tasks.o
+                0x00000000080061d8                xTaskPriorityDisinherit
  .text.prvGetNextExpireTime
-                0x0000000008006264       0x20 Build/timers.o
+                0x0000000008006268       0x20 Build/timers.o
  .text.prvInsertTimerInActiveList
-                0x0000000008006284       0x48 Build/timers.o
+                0x0000000008006288       0x48 Build/timers.o
  .text.prvCheckForValidListAndQueue
-                0x00000000080062cc       0x70 Build/timers.o
+                0x00000000080062d0       0x70 Build/timers.o
  .text.xTimerCreateTimerTask
-                0x000000000800633c       0x64 Build/timers.o
-                0x000000000800633c                xTimerCreateTimerTask
+                0x0000000008006340       0x64 Build/timers.o
+                0x0000000008006340                xTimerCreateTimerTask
  .text.xTimerGenericCommand
-                0x00000000080063a0       0x6c Build/timers.o
-                0x00000000080063a0                xTimerGenericCommand
+                0x00000000080063a4       0x6c Build/timers.o
+                0x00000000080063a4                xTimerGenericCommand
  .text.prvSwitchTimerLists
-                0x000000000800640c       0x7c Build/timers.o
+                0x0000000008006410       0x7c Build/timers.o
  .text.prvSampleTimeNow
-                0x0000000008006488       0x2c Build/timers.o
+                0x000000000800648c       0x2c Build/timers.o
  .text.prvProcessExpiredTimer
-                0x00000000080064b4       0x6c Build/timers.o
+                0x00000000080064b8       0x6c Build/timers.o
  .text.prvProcessTimerOrBlockTask
-                0x0000000008006520       0x74 Build/timers.o
+                0x0000000008006524       0x74 Build/timers.o
  .text.prvProcessReceivedCommands
-                0x0000000008006594      0x10c Build/timers.o
+                0x0000000008006598      0x10c Build/timers.o
  .text.prvTimerTask
-                0x00000000080066a0       0x16 Build/timers.o
+                0x00000000080066a4       0x16 Build/timers.o
  .text.SysTick_Handler
-                0x00000000080066b6       0x18 Build/cmsis_os2.o
-                0x00000000080066b6                SysTick_Handler
- *fill*         0x00000000080066ce        0x2 
+                0x00000000080066ba       0x18 Build/cmsis_os2.o
+                0x00000000080066ba                SysTick_Handler
+ *fill*         0x00000000080066d2        0x2 
  .text.osKernelInitialize
-                0x00000000080066d0       0x24 Build/cmsis_os2.o
-                0x00000000080066d0                osKernelInitialize
+                0x00000000080066d4       0x24 Build/cmsis_os2.o
+                0x00000000080066d4                osKernelInitialize
  .text.osKernelStart
-                0x00000000080066f4       0x38 Build/cmsis_os2.o
-                0x00000000080066f4                osKernelStart
+                0x00000000080066f8       0x38 Build/cmsis_os2.o
+                0x00000000080066f8                osKernelStart
  .text.osThreadNew
-                0x000000000800672c       0xbc Build/cmsis_os2.o
-                0x000000000800672c                osThreadNew
- .text.osDelay  0x00000000080067e8       0x1c Build/cmsis_os2.o
-                0x00000000080067e8                osDelay
+                0x0000000008006730       0xbc Build/cmsis_os2.o
+                0x0000000008006730                osThreadNew
+ .text.osDelay  0x00000000080067ec       0x1c Build/cmsis_os2.o
+                0x00000000080067ec                osDelay
  .text.vApplicationGetIdleTaskMemory
-                0x0000000008006804       0x18 Build/cmsis_os2.o
-                0x0000000008006804                vApplicationGetIdleTaskMemory
+                0x0000000008006808       0x18 Build/cmsis_os2.o
+                0x0000000008006808                vApplicationGetIdleTaskMemory
  .text.vApplicationGetTimerTaskMemory
-                0x000000000800681c       0x18 Build/cmsis_os2.o
-                0x000000000800681c                vApplicationGetTimerTaskMemory
+                0x0000000008006820       0x18 Build/cmsis_os2.o
+                0x0000000008006820                vApplicationGetTimerTaskMemory
  .text.prvHeapInit
-                0x0000000008006834       0x64 Build/heap_4.o
+                0x0000000008006838       0x64 Build/heap_4.o
  .text.prvInsertBlockIntoFreeList
-                0x0000000008006898       0x64 Build/heap_4.o
+                0x000000000800689c       0x64 Build/heap_4.o
  .text.pvPortMalloc
-                0x00000000080068fc       0xfc Build/heap_4.o
-                0x00000000080068fc                pvPortMalloc
+                0x0000000008006900       0xfc Build/heap_4.o
+                0x0000000008006900                pvPortMalloc
  .text.vPortFree
-                0x00000000080069f8       0x7c Build/heap_4.o
-                0x00000000080069f8                vPortFree
+                0x00000000080069fc       0x7c Build/heap_4.o
+                0x00000000080069fc                vPortFree
  .text.prvTaskExitError
-                0x0000000008006a74       0x40 Build/port.o
+                0x0000000008006a78       0x40 Build/port.o
  .text.prvPortStartFirstTask
-                0x0000000008006ab4       0x28 Build/port.o
+                0x0000000008006ab8       0x28 Build/port.o
  .text.vPortEnableVFP
-                0x0000000008006adc       0x14 Build/port.o
+                0x0000000008006ae0       0x14 Build/port.o
  .text.pxPortInitialiseStack
-                0x0000000008006af0       0x2c Build/port.o
-                0x0000000008006af0                pxPortInitialiseStack
- *fill*         0x0000000008006b1c        0x4 
+                0x0000000008006af4       0x2c Build/port.o
+                0x0000000008006af4                pxPortInitialiseStack
  .text.SVC_Handler
                 0x0000000008006b20       0x24 Build/port.o
                 0x0000000008006b20                SVC_Handler
@@ -7288,150 +7287,150 @@ LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3
 LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
 LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/libgcc.a
 
-.debug_info     0x0000000000000000    0xf6c04
- .debug_info    0x0000000000000000     0x1d2b Build/hyperdog_uros_app.o
- .debug_info    0x0000000000001d2b     0x181f Build/hyperdog_uros_node.o
- .debug_info    0x000000000000354a     0x2320 Build/error_indicator.o
- .debug_info    0x000000000000586a     0x14ed Build/minicheetah_motor.o
- .debug_info    0x0000000000006d57     0x11c4 Build/main.o
- .debug_info    0x0000000000007f1b      0x6b2 Build/gpio.o
- .debug_info    0x00000000000085cd     0x1610 Build/freertos.o
- .debug_info    0x0000000000009bdd      0x9bd Build/can.o
- .debug_info    0x000000000000a59a      0x577 Build/dma.o
- .debug_info    0x000000000000ab11      0xb4f Build/i2c.o
- .debug_info    0x000000000000b660      0xb17 Build/spi.o
- .debug_info    0x000000000000c177      0xdf1 Build/usart.o
- .debug_info    0x000000000000cf68       0x8d Build/usb_otg.o
- .debug_info    0x000000000000cff5      0xf84 Build/stm32f4xx_it.o
- .debug_info    0x000000000000df79      0x541 Build/stm32f4xx_hal_msp.o
- .debug_info    0x000000000000e4ba      0x8df Build/syscalls.o
- .debug_info    0x000000000000ed99     0x1395 Build/stm32f4xx_hal_can.o
- .debug_info    0x000000000001012e      0xbe6 Build/stm32f4xx_hal_rcc.o
- .debug_info    0x0000000000010d14      0x848 Build/stm32f4xx_hal_gpio.o
- .debug_info    0x000000000001155c      0xbd1 Build/stm32f4xx_hal_dma.o
- .debug_info    0x000000000001212d     0x1174 Build/stm32f4xx_hal_cortex.o
- .debug_info    0x00000000000132a1      0xacf Build/stm32f4xx_hal.o
- .debug_info    0x0000000000013d70     0x3b39 Build/stm32f4xx_hal_i2c.o
- .debug_info    0x00000000000178a9     0x2015 Build/stm32f4xx_hal_spi.o
- .debug_info    0x00000000000198be     0x4061 Build/stm32f4xx_hal_tim.o
- .debug_info    0x000000000001d91f     0x1c6a Build/stm32f4xx_hal_tim_ex.o
- .debug_info    0x000000000001f589     0x43e7 Build/stm32f4xx_hal_uart.o
- .debug_info    0x0000000000023970      0x5b3 Build/system_stm32f4xx.o
- .debug_info    0x0000000000023f23      0x30f Build/list.o
- .debug_info    0x0000000000024232     0x2968 Build/queue.o
- .debug_info    0x0000000000026b9a     0x333f Build/tasks.o
- .debug_info    0x0000000000029ed9     0x1bd3 Build/timers.o
- .debug_info    0x000000000002baac     0x4e1b Build/cmsis_os2.o
- .debug_info    0x00000000000308c7      0x61a Build/heap_4.o
- .debug_info    0x0000000000030ee1      0x5c8 Build/port.o
- .debug_info    0x00000000000314a9      0xd4f Build/stm32f4xx_hal_timebase_tim.o
- .debug_info    0x00000000000321f8      0x6b6 Build/custom_memory_manager.o
- .debug_info    0x00000000000328ae      0x2c7 Build/microros_allocators.o
- .debug_info    0x0000000000032b75      0x277 Build/microros_time.o
- .debug_info    0x0000000000032dec      0xcb7 Build/dma_transport.o
- .debug_info    0x0000000000033aa3       0x22 Build/startup_stm32f407xx.o
- .debug_info    0x0000000000033ac5     0x20ce micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
- .debug_info    0x0000000000035b93      0xdaf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
- .debug_info    0x0000000000036942     0x26cc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
- .debug_info    0x000000000003900e     0x283e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
- .debug_info    0x000000000003b84c     0x3a11 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
- .debug_info    0x000000000003f25d     0x1601 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
- .debug_info    0x000000000004085e     0x149e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
- .debug_info    0x0000000000041cfc     0x137d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
- .debug_info    0x0000000000043079     0x1754 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
- .debug_info    0x00000000000447cd     0x14d8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
- .debug_info    0x0000000000045ca5      0xe6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
- .debug_info    0x0000000000046b13      0x5ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
- .debug_info    0x00000000000470fd      0xe9f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
- .debug_info    0x0000000000047f9c      0xc3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
- .debug_info    0x0000000000048bd6      0xdff micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
- .debug_info    0x00000000000499d5      0xc0a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
- .debug_info    0x000000000004a5df      0xc98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
- .debug_info    0x000000000004b277     0x1f68 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
- .debug_info    0x000000000004d1df      0xc3f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
- .debug_info    0x000000000004de1e      0xb8b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
- .debug_info    0x000000000004e9a9      0xe4c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
- .debug_info    0x000000000004f7f5      0xd78 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
- .debug_info    0x000000000005056d      0xe0e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
- .debug_info    0x000000000005137b     0x2fc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
- .debug_info    0x0000000000054340     0x3471 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
- .debug_info    0x00000000000577b1     0x3236 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
- .debug_info    0x000000000005a9e7     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
- .debug_info    0x000000000005e031     0x3446 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
- .debug_info    0x0000000000061477     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
- .debug_info    0x0000000000064ac1     0x3c8e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
- .debug_info    0x000000000006874f     0x4c64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
- .debug_info    0x000000000006d3b3      0xb44 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
- .debug_info    0x000000000006def7     0x15dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
- .debug_info    0x000000000006f4d4     0x2db6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
- .debug_info    0x000000000007228a      0x1a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
- .debug_info    0x0000000000072431     0x153e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
- .debug_info    0x000000000007396f     0x665a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
- .debug_info    0x0000000000079fc9     0x1818 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
- .debug_info    0x000000000007b7e1      0x1f7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
- .debug_info    0x000000000007b9d8      0xaad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
- .debug_info    0x000000000007c485      0x40f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
- .debug_info    0x000000000007c894      0xb4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
- .debug_info    0x000000000007d3e2     0x2368 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
- .debug_info    0x000000000007f74a      0x3f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
- .debug_info    0x000000000007fb43      0x363 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
- .debug_info    0x000000000007fea6    0x17094 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
- .debug_info    0x0000000000096f3a     0x20f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
- .debug_info    0x0000000000099033      0xb8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
- .debug_info    0x0000000000099bc0     0x1255 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
- .debug_info    0x000000000009ae15      0xcc7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
- .debug_info    0x000000000009badc     0x1226 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
- .debug_info    0x000000000009cd02     0x1995 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
- .debug_info    0x000000000009e697     0x1319 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
- .debug_info    0x000000000009f9b0     0x12c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
- .debug_info    0x00000000000a0c76      0xc66 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
- .debug_info    0x00000000000a18dc     0x13f1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
- .debug_info    0x00000000000a2ccd     0x2013 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
- .debug_info    0x00000000000a4ce0     0x2634 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
- .debug_info    0x00000000000a7314     0x22e1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
- .debug_info    0x00000000000a95f5      0xdb3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
- .debug_info    0x00000000000aa3a8      0xed3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
- .debug_info    0x00000000000ab27b     0x2f00 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
- .debug_info    0x00000000000ae17b      0xdbb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
- .debug_info    0x00000000000aef36      0xb40 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
- .debug_info    0x00000000000afa76      0x361 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
- .debug_info    0x00000000000afdd7      0x315 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
- .debug_info    0x00000000000b00ec      0xd57 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
- .debug_info    0x00000000000b0e43      0xc24 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
- .debug_info    0x00000000000b1a67       0x6d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
- .debug_info    0x00000000000b1ad4      0xcf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
- .debug_info    0x00000000000b27ca     0x3445 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
- .debug_info    0x00000000000b5c0f     0x2eae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
- .debug_info    0x00000000000b8abd     0x2f9b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
- .debug_info    0x00000000000bba58     0x38dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
- .debug_info    0x00000000000bf335     0x31b5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
- .debug_info    0x00000000000c24ea     0x32b8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
- .debug_info    0x00000000000c57a2     0x3305 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
- .debug_info    0x00000000000c8aa7     0x3911 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
- .debug_info    0x00000000000cc3b8     0x2f10 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
- .debug_info    0x00000000000cf2c8     0x2f4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
- .debug_info    0x00000000000d2216     0x33c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
- .debug_info    0x00000000000d55dc     0x2f98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
- .debug_info    0x00000000000d8574     0x304f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
- .debug_info    0x00000000000db5c3     0x577a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
- .debug_info    0x00000000000e0d3d     0x4d52 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
- .debug_info    0x00000000000e5a8f     0x12fb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
- .debug_info    0x00000000000e6d8a     0x2aa6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
- .debug_info    0x00000000000e9830      0xda4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
- .debug_info    0x00000000000ea5d4      0x83e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
- .debug_info    0x00000000000eae12      0x18c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
- .debug_info    0x00000000000eaf9e     0x1b07 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
- .debug_info    0x00000000000ecaa5      0x464 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
- .debug_info    0x00000000000ecf09     0x1e8a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
- .debug_info    0x00000000000eed93      0x155 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
- .debug_info    0x00000000000eeee8     0x19e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
- .debug_info    0x00000000000f08cf     0x336f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
- .debug_info    0x00000000000f3c3e      0x1b0 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
- .debug_info    0x00000000000f3dee      0xfbb hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
- .debug_info    0x00000000000f4da9      0xfa7 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
- .debug_info    0x00000000000f5d50      0xeb4 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
+.debug_info     0x0000000000000000    0xf5289
+ .debug_info    0x0000000000000000     0x1d5f Build/hyperdog_uros_app.o
+ .debug_info    0x0000000000001d5f     0x1853 Build/hyperdog_uros_node.o
+ .debug_info    0x00000000000035b2     0x2320 Build/error_indicator.o
+ .debug_info    0x00000000000058d2     0x14ed Build/minicheetah_motor.o
+ .debug_info    0x0000000000006dbf     0x11c4 Build/main.o
+ .debug_info    0x0000000000007f83      0x6b2 Build/gpio.o
+ .debug_info    0x0000000000008635     0x1610 Build/freertos.o
+ .debug_info    0x0000000000009c45      0x9bd Build/can.o
+ .debug_info    0x000000000000a602      0x577 Build/dma.o
+ .debug_info    0x000000000000ab79      0xb4f Build/i2c.o
+ .debug_info    0x000000000000b6c8      0xb17 Build/spi.o
+ .debug_info    0x000000000000c1df      0xdf1 Build/usart.o
+ .debug_info    0x000000000000cfd0       0x8d Build/usb_otg.o
+ .debug_info    0x000000000000d05d      0xf84 Build/stm32f4xx_it.o
+ .debug_info    0x000000000000dfe1      0x541 Build/stm32f4xx_hal_msp.o
+ .debug_info    0x000000000000e522      0x8df Build/syscalls.o
+ .debug_info    0x000000000000ee01     0x1395 Build/stm32f4xx_hal_can.o
+ .debug_info    0x0000000000010196      0xbe6 Build/stm32f4xx_hal_rcc.o
+ .debug_info    0x0000000000010d7c      0x848 Build/stm32f4xx_hal_gpio.o
+ .debug_info    0x00000000000115c4      0xbd1 Build/stm32f4xx_hal_dma.o
+ .debug_info    0x0000000000012195     0x1174 Build/stm32f4xx_hal_cortex.o
+ .debug_info    0x0000000000013309      0xacf Build/stm32f4xx_hal.o
+ .debug_info    0x0000000000013dd8     0x3b39 Build/stm32f4xx_hal_i2c.o
+ .debug_info    0x0000000000017911     0x2015 Build/stm32f4xx_hal_spi.o
+ .debug_info    0x0000000000019926     0x4061 Build/stm32f4xx_hal_tim.o
+ .debug_info    0x000000000001d987     0x1c6a Build/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x000000000001f5f1     0x43e7 Build/stm32f4xx_hal_uart.o
+ .debug_info    0x00000000000239d8      0x5b3 Build/system_stm32f4xx.o
+ .debug_info    0x0000000000023f8b      0x30f Build/list.o
+ .debug_info    0x000000000002429a     0x2968 Build/queue.o
+ .debug_info    0x0000000000026c02     0x333f Build/tasks.o
+ .debug_info    0x0000000000029f41     0x1bd3 Build/timers.o
+ .debug_info    0x000000000002bb14     0x4e1b Build/cmsis_os2.o
+ .debug_info    0x000000000003092f      0x61a Build/heap_4.o
+ .debug_info    0x0000000000030f49      0x5c8 Build/port.o
+ .debug_info    0x0000000000031511      0xd4f Build/stm32f4xx_hal_timebase_tim.o
+ .debug_info    0x0000000000032260      0x6b6 Build/custom_memory_manager.o
+ .debug_info    0x0000000000032916      0x2c7 Build/microros_allocators.o
+ .debug_info    0x0000000000032bdd      0x277 Build/microros_time.o
+ .debug_info    0x0000000000032e54      0xcb7 Build/dma_transport.o
+ .debug_info    0x0000000000033b0b       0x22 Build/startup_stm32f407xx.o
+ .debug_info    0x0000000000033b2d     0x20ce micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
+ .debug_info    0x0000000000035bfb      0xdaf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
+ .debug_info    0x00000000000369aa     0x26cc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
+ .debug_info    0x0000000000039076     0x283e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
+ .debug_info    0x000000000003b8b4     0x3a11 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
+ .debug_info    0x000000000003f2c5     0x1601 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
+ .debug_info    0x00000000000408c6     0x149e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
+ .debug_info    0x0000000000041d64     0x137d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
+ .debug_info    0x00000000000430e1     0x1754 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
+ .debug_info    0x0000000000044835     0x14d8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
+ .debug_info    0x0000000000045d0d      0xe6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
+ .debug_info    0x0000000000046b7b      0x5ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
+ .debug_info    0x0000000000047165      0xe9f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
+ .debug_info    0x0000000000048004      0xc3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
+ .debug_info    0x0000000000048c3e      0xdff micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
+ .debug_info    0x0000000000049a3d      0xc0a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
+ .debug_info    0x000000000004a647      0xc98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
+ .debug_info    0x000000000004b2df     0x1f68 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
+ .debug_info    0x000000000004d247      0xc3f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
+ .debug_info    0x000000000004de86      0xb8b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
+ .debug_info    0x000000000004ea11      0xe4c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
+ .debug_info    0x000000000004f85d      0xd78 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
+ .debug_info    0x00000000000505d5      0xe0e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
+ .debug_info    0x00000000000513e3     0x2fc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
+ .debug_info    0x00000000000543a8     0x3471 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
+ .debug_info    0x0000000000057819     0x3236 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
+ .debug_info    0x000000000005aa4f     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
+ .debug_info    0x000000000005e099     0x3446 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
+ .debug_info    0x00000000000614df     0x364a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
+ .debug_info    0x0000000000064b29     0x3c8e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
+ .debug_info    0x00000000000687b7     0x4c64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
+ .debug_info    0x000000000006d41b      0xb44 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
+ .debug_info    0x000000000006df5f     0x15dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
+ .debug_info    0x000000000006f53c     0x2db6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
+ .debug_info    0x00000000000722f2      0x1a7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
+ .debug_info    0x0000000000072499     0x153e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
+ .debug_info    0x00000000000739d7     0x665a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
+ .debug_info    0x000000000007a031     0x1818 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
+ .debug_info    0x000000000007b849      0x1f7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
+ .debug_info    0x000000000007ba40      0xaad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
+ .debug_info    0x000000000007c4ed      0x40f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
+ .debug_info    0x000000000007c8fc      0xb4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
+ .debug_info    0x000000000007d44a     0x2368 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
+ .debug_info    0x000000000007f7b2      0x3f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
+ .debug_info    0x000000000007fbab      0x363 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
+ .debug_info    0x000000000007ff0e    0x17094 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
+ .debug_info    0x0000000000096fa2     0x20f9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
+ .debug_info    0x000000000009909b      0xb8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
+ .debug_info    0x0000000000099c28     0x1255 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
+ .debug_info    0x000000000009ae7d      0xcc7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
+ .debug_info    0x000000000009bb44     0x1226 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
+ .debug_info    0x000000000009cd6a     0x1995 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
+ .debug_info    0x000000000009e6ff     0x1319 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
+ .debug_info    0x000000000009fa18     0x12c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
+ .debug_info    0x00000000000a0cde      0xc66 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
+ .debug_info    0x00000000000a1944     0x13f1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
+ .debug_info    0x00000000000a2d35     0x2013 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
+ .debug_info    0x00000000000a4d48     0x2634 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
+ .debug_info    0x00000000000a737c     0x22e1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
+ .debug_info    0x00000000000a965d      0xdb3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
+ .debug_info    0x00000000000aa410      0xed3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
+ .debug_info    0x00000000000ab2e3     0x2f00 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
+ .debug_info    0x00000000000ae1e3      0xdbb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
+ .debug_info    0x00000000000aef9e      0xb40 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
+ .debug_info    0x00000000000afade      0x361 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
+ .debug_info    0x00000000000afe3f      0x315 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
+ .debug_info    0x00000000000b0154      0xd57 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
+ .debug_info    0x00000000000b0eab      0xc24 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
+ .debug_info    0x00000000000b1acf       0x6d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
+ .debug_info    0x00000000000b1b3c      0xcf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
+ .debug_info    0x00000000000b2832     0x3445 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
+ .debug_info    0x00000000000b5c77     0x2eae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
+ .debug_info    0x00000000000b8b25     0x2f9b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
+ .debug_info    0x00000000000bbac0     0x38dd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
+ .debug_info    0x00000000000bf39d     0x31b5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
+ .debug_info    0x00000000000c2552     0x32b8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
+ .debug_info    0x00000000000c580a     0x3305 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
+ .debug_info    0x00000000000c8b0f     0x3911 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
+ .debug_info    0x00000000000cc420     0x2f10 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
+ .debug_info    0x00000000000cf330     0x2f4e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
+ .debug_info    0x00000000000d227e     0x33c6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
+ .debug_info    0x00000000000d5644     0x2f98 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
+ .debug_info    0x00000000000d85dc     0x304f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
+ .debug_info    0x00000000000db62b     0x577a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
+ .debug_info    0x00000000000e0da5     0x4d52 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
+ .debug_info    0x00000000000e5af7     0x12fb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
+ .debug_info    0x00000000000e6df2     0x2aa6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
+ .debug_info    0x00000000000e9898      0xda4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
+ .debug_info    0x00000000000ea63c      0x83e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
+ .debug_info    0x00000000000eae7a      0x18c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
+ .debug_info    0x00000000000eb006     0x1b07 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
+ .debug_info    0x00000000000ecb0d      0x464 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
+ .debug_info    0x00000000000ecf71     0x1e8a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
+ .debug_info    0x00000000000eedfb      0x155 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
+ .debug_info    0x00000000000eef50     0x19e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
+ .debug_info    0x00000000000f0937     0x336f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
+ .debug_info    0x00000000000f3ca6      0x1b0 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
+ .debug_info    0x00000000000f3e56      0x71c hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
+ .debug_info    0x00000000000f4572      0x708 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
+ .debug_info    0x00000000000f4c7a      0x60f hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
 
-.debug_abbrev   0x0000000000000000    0x18850
+.debug_abbrev   0x0000000000000000    0x18512
  .debug_abbrev  0x0000000000000000      0x2ee Build/hyperdog_uros_app.o
  .debug_abbrev  0x00000000000002ee      0x2a5 Build/hyperdog_uros_node.o
  .debug_abbrev  0x0000000000000593      0x297 Build/error_indicator.o
@@ -7570,9 +7569,9 @@ LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3
  .debug_abbrev  0x000000000001774a      0x48f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
  .debug_abbrev  0x0000000000017bd9      0x307 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
  .debug_abbrev  0x0000000000017ee0      0x121 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
- .debug_abbrev  0x0000000000018001      0x2c3 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
- .debug_abbrev  0x00000000000182c4      0x2c6 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
- .debug_abbrev  0x000000000001858a      0x2c6 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
+ .debug_abbrev  0x0000000000018001      0x1c5 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
+ .debug_abbrev  0x00000000000181c6      0x1a6 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
+ .debug_abbrev  0x000000000001836c      0x1a6 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
 
 .debug_loc      0x0000000000000000    0x7d09a
  .debug_loc     0x0000000000000000       0xfd Build/hyperdog_uros_app.o
@@ -8135,434 +8134,434 @@ LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3
  .debug_ranges  0x000000000000b7e8       0x40 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
  .debug_ranges  0x000000000000b828       0x40 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
 
-.debug_line     0x0000000000000000    0x5f46b
+.debug_line     0x0000000000000000    0x5f0e6
  .debug_line    0x0000000000000000      0x7bd Build/hyperdog_uros_app.o
- .debug_line    0x00000000000007bd      0x724 Build/hyperdog_uros_node.o
- .debug_line    0x0000000000000ee1      0x8d6 Build/error_indicator.o
- .debug_line    0x00000000000017b7      0x860 Build/minicheetah_motor.o
- .debug_line    0x0000000000002017      0x3f8 Build/main.o
- .debug_line    0x000000000000240f      0x344 Build/gpio.o
- .debug_line    0x0000000000002753      0x464 Build/freertos.o
- .debug_line    0x0000000000002bb7      0x2cb Build/can.o
- .debug_line    0x0000000000002e82      0x173 Build/dma.o
- .debug_line    0x0000000000002ff5      0x2b4 Build/i2c.o
- .debug_line    0x00000000000032a9      0x2c7 Build/spi.o
- .debug_line    0x0000000000003570      0x399 Build/usart.o
- .debug_line    0x0000000000003909       0x47 Build/usb_otg.o
- .debug_line    0x0000000000003950      0x30d Build/stm32f4xx_it.o
- .debug_line    0x0000000000003c5d      0x184 Build/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000003de1      0x44c Build/syscalls.o
- .debug_line    0x000000000000422d     0x10d3 Build/stm32f4xx_hal_can.o
- .debug_line    0x0000000000005300      0xafe Build/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000005dfe      0x6cf Build/stm32f4xx_hal_gpio.o
- .debug_line    0x00000000000064cd      0xe13 Build/stm32f4xx_hal_dma.o
- .debug_line    0x00000000000072e0      0x766 Build/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000007a46      0x553 Build/stm32f4xx_hal.o
- .debug_line    0x0000000000007f99     0x5351 Build/stm32f4xx_hal_i2c.o
- .debug_line    0x000000000000d2ea     0x24d7 Build/stm32f4xx_hal_spi.o
- .debug_line    0x000000000000f7c1     0x4a90 Build/stm32f4xx_hal_tim.o
- .debug_line    0x0000000000014251     0x1cb4 Build/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000000000015f05     0x45dc Build/stm32f4xx_hal_uart.o
- .debug_line    0x000000000001a4e1      0x23e Build/system_stm32f4xx.o
- .debug_line    0x000000000001a71f      0x347 Build/list.o
- .debug_line    0x000000000001aa66     0x202f Build/queue.o
- .debug_line    0x000000000001ca95     0x2d76 Build/tasks.o
- .debug_line    0x000000000001f80b      0xf05 Build/timers.o
- .debug_line    0x0000000000020710     0x29e5 Build/cmsis_os2.o
- .debug_line    0x00000000000230f5      0x717 Build/heap_4.o
- .debug_line    0x000000000002380c      0x6f8 Build/port.o
- .debug_line    0x0000000000023f04      0x272 Build/stm32f4xx_hal_timebase_tim.o
- .debug_line    0x0000000000024176      0x71f Build/custom_memory_manager.o
- .debug_line    0x0000000000024895      0x19b Build/microros_allocators.o
- .debug_line    0x0000000000024a30      0x23e Build/microros_time.o
- .debug_line    0x0000000000024c6e      0x606 Build/dma_transport.o
- .debug_line    0x0000000000025274       0x76 Build/startup_stm32f407xx.o
- .debug_line    0x00000000000252ea      0xb6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
- .debug_line    0x0000000000025e54      0x35d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
- .debug_line    0x00000000000261b1      0xe20 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
- .debug_line    0x0000000000026fd1      0xe85 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
- .debug_line    0x0000000000027e56     0x2035 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
- .debug_line    0x0000000000029e8b      0x444 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
- .debug_line    0x000000000002a2cf      0x551 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
- .debug_line    0x000000000002a820      0x49d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
- .debug_line    0x000000000002acbd      0x47b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
- .debug_line    0x000000000002b138      0x323 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
- .debug_line    0x000000000002b45b      0x2eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
- .debug_line    0x000000000002b746      0x45c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
- .debug_line    0x000000000002bba2      0x413 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
- .debug_line    0x000000000002bfb5      0x212 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
- .debug_line    0x000000000002c1c7      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
- .debug_line    0x000000000002c4de      0x1cf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
- .debug_line    0x000000000002c6ad      0x1ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
- .debug_line    0x000000000002c897      0xfa1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
- .debug_line    0x000000000002d838      0x31a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
- .debug_line    0x000000000002db52      0x1b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
- .debug_line    0x000000000002dd02      0x564 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
- .debug_line    0x000000000002e266      0x340 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
- .debug_line    0x000000000002e5a6      0x431 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
- .debug_line    0x000000000002e9d7      0x84f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
- .debug_line    0x000000000002f226      0xad6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
- .debug_line    0x000000000002fcfc      0x8b1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
- .debug_line    0x00000000000305ad      0xadd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
- .debug_line    0x000000000003108a      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
- .debug_line    0x0000000000031a49      0xb03 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
- .debug_line    0x000000000003254c     0x111e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
- .debug_line    0x000000000003366a     0x109c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
- .debug_line    0x0000000000034706      0x1ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
- .debug_line    0x00000000000348b4      0x456 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
- .debug_line    0x0000000000034d0a      0x86c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
- .debug_line    0x0000000000035576      0x19b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
- .debug_line    0x0000000000035711      0x63f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
- .debug_line    0x0000000000035d50     0x1db2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
- .debug_line    0x0000000000037b02      0x662 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
- .debug_line    0x0000000000038164      0x1c5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
- .debug_line    0x0000000000038329      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
- .debug_line    0x00000000000388f3      0x242 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
- .debug_line    0x0000000000038b35      0x1c7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
- .debug_line    0x0000000000038cfc      0xa32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
- .debug_line    0x000000000003972e      0x184 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
- .debug_line    0x00000000000398b2      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
- .debug_line    0x0000000000039a13     0x8a2d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
- .debug_line    0x0000000000042440      0xae5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
- .debug_line    0x0000000000042f25      0x1f4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
- .debug_line    0x0000000000043119      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
- .debug_line    0x00000000000436e3      0x2c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
- .debug_line    0x00000000000439a5      0x612 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
- .debug_line    0x0000000000043fb7      0x7ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
- .debug_line    0x0000000000044764      0x6ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
- .debug_line    0x0000000000044e11      0x6f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
- .debug_line    0x0000000000045507      0x282 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
- .debug_line    0x0000000000045789      0x5d4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
- .debug_line    0x0000000000045d5d      0xa60 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
- .debug_line    0x00000000000467bd      0xe2f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
- .debug_line    0x00000000000475ec     0x1256 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
- .debug_line    0x0000000000048842      0x3f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
- .debug_line    0x0000000000048c38      0x7b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
- .debug_line    0x00000000000493e8     0x15a8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
- .debug_line    0x000000000004a990      0x21b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
- .debug_line    0x000000000004abab      0x192 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
- .debug_line    0x000000000004ad3d      0x176 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
- .debug_line    0x000000000004aeb3      0x17e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
- .debug_line    0x000000000004b031      0x397 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
- .debug_line    0x000000000004b3c8      0x1b6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
- .debug_line    0x000000000004b57e       0xe1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
- .debug_line    0x000000000004b65f      0x30e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
- .debug_line    0x000000000004b96d      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
- .debug_line    0x000000000004c32c      0x753 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
- .debug_line    0x000000000004ca7f      0x7ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
- .debug_line    0x000000000004d249      0xe09 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
- .debug_line    0x000000000004e052      0x8fa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
- .debug_line    0x000000000004e94c      0x95e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
- .debug_line    0x000000000004f2aa      0x987 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
- .debug_line    0x000000000004fc31      0xbf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
- .debug_line    0x0000000000050827      0x78f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
- .debug_line    0x0000000000050fb6      0x7ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
- .debug_line    0x0000000000051764      0xc1b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
- .debug_line    0x000000000005237f      0x7a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
- .debug_line    0x0000000000052b21      0x84d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
- .debug_line    0x000000000005336e     0x288f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
- .debug_line    0x0000000000055bfd     0x242b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
- .debug_line    0x0000000000058028      0x53e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
- .debug_line    0x0000000000058566      0xd7f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
- .debug_line    0x00000000000592e5      0x1da micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
- .debug_line    0x00000000000594bf      0x50c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
- .debug_line    0x00000000000599cb      0x1bd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
- .debug_line    0x0000000000059b88      0xaae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
- .debug_line    0x000000000005a636      0x352 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
- .debug_line    0x000000000005a988      0xf01 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
- .debug_line    0x000000000005b889      0x19e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
- .debug_line    0x000000000005ba27     0x12aa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
- .debug_line    0x000000000005ccd1      0x9a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
- .debug_line    0x000000000005d673      0x3bb hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
- .debug_line    0x000000000005da2e      0x9ae hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
- .debug_line    0x000000000005e3dc      0x8c5 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
- .debug_line    0x000000000005eca1      0x7ca hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
+ .debug_line    0x00000000000007bd      0x72c Build/hyperdog_uros_node.o
+ .debug_line    0x0000000000000ee9      0x8d6 Build/error_indicator.o
+ .debug_line    0x00000000000017bf      0x860 Build/minicheetah_motor.o
+ .debug_line    0x000000000000201f      0x3f8 Build/main.o
+ .debug_line    0x0000000000002417      0x344 Build/gpio.o
+ .debug_line    0x000000000000275b      0x464 Build/freertos.o
+ .debug_line    0x0000000000002bbf      0x2cb Build/can.o
+ .debug_line    0x0000000000002e8a      0x173 Build/dma.o
+ .debug_line    0x0000000000002ffd      0x2b4 Build/i2c.o
+ .debug_line    0x00000000000032b1      0x2c7 Build/spi.o
+ .debug_line    0x0000000000003578      0x399 Build/usart.o
+ .debug_line    0x0000000000003911       0x47 Build/usb_otg.o
+ .debug_line    0x0000000000003958      0x30d Build/stm32f4xx_it.o
+ .debug_line    0x0000000000003c65      0x184 Build/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000003de9      0x44c Build/syscalls.o
+ .debug_line    0x0000000000004235     0x10d3 Build/stm32f4xx_hal_can.o
+ .debug_line    0x0000000000005308      0xafe Build/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000005e06      0x6cf Build/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000064d5      0xe13 Build/stm32f4xx_hal_dma.o
+ .debug_line    0x00000000000072e8      0x766 Build/stm32f4xx_hal_cortex.o
+ .debug_line    0x0000000000007a4e      0x553 Build/stm32f4xx_hal.o
+ .debug_line    0x0000000000007fa1     0x5351 Build/stm32f4xx_hal_i2c.o
+ .debug_line    0x000000000000d2f2     0x24d7 Build/stm32f4xx_hal_spi.o
+ .debug_line    0x000000000000f7c9     0x4a90 Build/stm32f4xx_hal_tim.o
+ .debug_line    0x0000000000014259     0x1cb4 Build/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0000000000015f0d     0x45dc Build/stm32f4xx_hal_uart.o
+ .debug_line    0x000000000001a4e9      0x23e Build/system_stm32f4xx.o
+ .debug_line    0x000000000001a727      0x347 Build/list.o
+ .debug_line    0x000000000001aa6e     0x202f Build/queue.o
+ .debug_line    0x000000000001ca9d     0x2d76 Build/tasks.o
+ .debug_line    0x000000000001f813      0xf05 Build/timers.o
+ .debug_line    0x0000000000020718     0x29e5 Build/cmsis_os2.o
+ .debug_line    0x00000000000230fd      0x717 Build/heap_4.o
+ .debug_line    0x0000000000023814      0x6f8 Build/port.o
+ .debug_line    0x0000000000023f0c      0x272 Build/stm32f4xx_hal_timebase_tim.o
+ .debug_line    0x000000000002417e      0x71f Build/custom_memory_manager.o
+ .debug_line    0x000000000002489d      0x19b Build/microros_allocators.o
+ .debug_line    0x0000000000024a38      0x23e Build/microros_time.o
+ .debug_line    0x0000000000024c76      0x606 Build/dma_transport.o
+ .debug_line    0x000000000002527c       0x76 Build/startup_stm32f407xx.o
+ .debug_line    0x00000000000252f2      0xb6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
+ .debug_line    0x0000000000025e5c      0x35d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
+ .debug_line    0x00000000000261b9      0xe20 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
+ .debug_line    0x0000000000026fd9      0xe85 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
+ .debug_line    0x0000000000027e5e     0x2035 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
+ .debug_line    0x0000000000029e93      0x444 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
+ .debug_line    0x000000000002a2d7      0x551 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
+ .debug_line    0x000000000002a828      0x49d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
+ .debug_line    0x000000000002acc5      0x47b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
+ .debug_line    0x000000000002b140      0x323 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
+ .debug_line    0x000000000002b463      0x2eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
+ .debug_line    0x000000000002b74e      0x45c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
+ .debug_line    0x000000000002bbaa      0x413 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
+ .debug_line    0x000000000002bfbd      0x212 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
+ .debug_line    0x000000000002c1cf      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
+ .debug_line    0x000000000002c4e6      0x1cf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
+ .debug_line    0x000000000002c6b5      0x1ea micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
+ .debug_line    0x000000000002c89f      0xfa1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
+ .debug_line    0x000000000002d840      0x31a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
+ .debug_line    0x000000000002db5a      0x1b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
+ .debug_line    0x000000000002dd0a      0x564 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
+ .debug_line    0x000000000002e26e      0x340 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
+ .debug_line    0x000000000002e5ae      0x431 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
+ .debug_line    0x000000000002e9df      0x84f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
+ .debug_line    0x000000000002f22e      0xad6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
+ .debug_line    0x000000000002fd04      0x8b1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
+ .debug_line    0x00000000000305b5      0xadd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
+ .debug_line    0x0000000000031092      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
+ .debug_line    0x0000000000031a51      0xb03 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
+ .debug_line    0x0000000000032554     0x111e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
+ .debug_line    0x0000000000033672     0x109c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
+ .debug_line    0x000000000003470e      0x1ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
+ .debug_line    0x00000000000348bc      0x456 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
+ .debug_line    0x0000000000034d12      0x86c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
+ .debug_line    0x000000000003557e      0x19b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
+ .debug_line    0x0000000000035719      0x63f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
+ .debug_line    0x0000000000035d58     0x1db2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
+ .debug_line    0x0000000000037b0a      0x662 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
+ .debug_line    0x000000000003816c      0x1c5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
+ .debug_line    0x0000000000038331      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
+ .debug_line    0x00000000000388fb      0x242 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
+ .debug_line    0x0000000000038b3d      0x1c7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
+ .debug_line    0x0000000000038d04      0xa32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
+ .debug_line    0x0000000000039736      0x184 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
+ .debug_line    0x00000000000398ba      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
+ .debug_line    0x0000000000039a1b     0x8a2d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
+ .debug_line    0x0000000000042448      0xae5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
+ .debug_line    0x0000000000042f2d      0x1f4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
+ .debug_line    0x0000000000043121      0x5ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
+ .debug_line    0x00000000000436eb      0x2c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
+ .debug_line    0x00000000000439ad      0x612 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
+ .debug_line    0x0000000000043fbf      0x7ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
+ .debug_line    0x000000000004476c      0x6ad micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
+ .debug_line    0x0000000000044e19      0x6f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
+ .debug_line    0x000000000004550f      0x282 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
+ .debug_line    0x0000000000045791      0x5d4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
+ .debug_line    0x0000000000045d65      0xa60 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
+ .debug_line    0x00000000000467c5      0xe2f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
+ .debug_line    0x00000000000475f4     0x1256 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
+ .debug_line    0x000000000004884a      0x3f6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
+ .debug_line    0x0000000000048c40      0x7b0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
+ .debug_line    0x00000000000493f0     0x15a8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
+ .debug_line    0x000000000004a998      0x21b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
+ .debug_line    0x000000000004abb3      0x192 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
+ .debug_line    0x000000000004ad45      0x176 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
+ .debug_line    0x000000000004aebb      0x17e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
+ .debug_line    0x000000000004b039      0x397 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
+ .debug_line    0x000000000004b3d0      0x1b6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
+ .debug_line    0x000000000004b586       0xe1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
+ .debug_line    0x000000000004b667      0x30e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
+ .debug_line    0x000000000004b975      0x9bf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
+ .debug_line    0x000000000004c334      0x753 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
+ .debug_line    0x000000000004ca87      0x7ca micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
+ .debug_line    0x000000000004d251      0xe09 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
+ .debug_line    0x000000000004e05a      0x8fa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
+ .debug_line    0x000000000004e954      0x95e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
+ .debug_line    0x000000000004f2b2      0x987 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
+ .debug_line    0x000000000004fc39      0xbf6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
+ .debug_line    0x000000000005082f      0x78f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
+ .debug_line    0x0000000000050fbe      0x7ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
+ .debug_line    0x000000000005176c      0xc1b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
+ .debug_line    0x0000000000052387      0x7a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
+ .debug_line    0x0000000000052b29      0x84d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
+ .debug_line    0x0000000000053376     0x288f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
+ .debug_line    0x0000000000055c05     0x242b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
+ .debug_line    0x0000000000058030      0x53e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
+ .debug_line    0x000000000005856e      0xd7f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
+ .debug_line    0x00000000000592ed      0x1da micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
+ .debug_line    0x00000000000594c7      0x50c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
+ .debug_line    0x00000000000599d3      0x1bd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
+ .debug_line    0x0000000000059b90      0xaae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
+ .debug_line    0x000000000005a63e      0x352 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
+ .debug_line    0x000000000005a990      0xf01 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
+ .debug_line    0x000000000005b891      0x19e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
+ .debug_line    0x000000000005ba2f     0x12aa micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
+ .debug_line    0x000000000005ccd9      0x9a2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
+ .debug_line    0x000000000005d67b      0x382 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
+ .debug_line    0x000000000005d9fd      0x892 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
+ .debug_line    0x000000000005e28f      0x7a9 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
+ .debug_line    0x000000000005ea38      0x6ae hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
 
-.debug_str      0x0000000000000000    0x17d80
- .debug_str     0x0000000000000000     0x1611 Build/hyperdog_uros_app.o
-                                       0x191a (size before relaxing)
- .debug_str     0x0000000000001611      0x198 Build/hyperdog_uros_node.o
-                                       0x1560 (size before relaxing)
- .debug_str     0x00000000000017a9      0x546 Build/error_indicator.o
+.debug_str      0x0000000000000000    0x17d1c
+ .debug_str     0x0000000000000000     0x1634 Build/hyperdog_uros_app.o
+                                       0x193d (size before relaxing)
+ .debug_str     0x0000000000001634      0x198 Build/hyperdog_uros_node.o
+                                       0x1583 (size before relaxing)
+ .debug_str     0x00000000000017cc      0x546 Build/error_indicator.o
                                        0x1049 (size before relaxing)
- .debug_str     0x0000000000001cef      0x385 Build/minicheetah_motor.o
+ .debug_str     0x0000000000001d12      0x385 Build/minicheetah_motor.o
                                         0xab9 (size before relaxing)
- .debug_str     0x0000000000002074      0x5d5 Build/main.o
+ .debug_str     0x0000000000002097      0x5d5 Build/main.o
                                         0xcc8 (size before relaxing)
- .debug_str     0x0000000000002649       0x4e Build/gpio.o
+ .debug_str     0x000000000000266c       0x4e Build/gpio.o
                                         0x3a0 (size before relaxing)
- .debug_str     0x0000000000002697      0x64d Build/freertos.o
+ .debug_str     0x00000000000026ba      0x64d Build/freertos.o
                                        0x1479 (size before relaxing)
- .debug_str     0x0000000000002ce4       0x58 Build/can.o
+ .debug_str     0x0000000000002d07       0x58 Build/can.o
                                         0x64d (size before relaxing)
- .debug_str     0x0000000000002d3c      0x525 Build/dma.o
+ .debug_str     0x0000000000002d5f      0x525 Build/dma.o
                                         0x7e5 (size before relaxing)
- .debug_str     0x0000000000003261      0x2a0 Build/i2c.o
+ .debug_str     0x0000000000003284      0x2a0 Build/i2c.o
                                         0x8ba (size before relaxing)
- .debug_str     0x0000000000003501      0x1be Build/spi.o
+ .debug_str     0x0000000000003524      0x1be Build/spi.o
                                         0x817 (size before relaxing)
- .debug_str     0x00000000000036bf       0x9c Build/usart.o
+ .debug_str     0x00000000000036e2       0x9c Build/usart.o
                                         0xd82 (size before relaxing)
- .debug_str     0x000000000000375b       0x13 Build/usb_otg.o
+ .debug_str     0x000000000000377e       0x13 Build/usb_otg.o
                                         0x1c7 (size before relaxing)
- .debug_str     0x000000000000376e      0x13f Build/stm32f4xx_it.o
+ .debug_str     0x0000000000003791      0x13f Build/stm32f4xx_it.o
                                         0xca4 (size before relaxing)
- .debug_str     0x00000000000038ad       0x29 Build/stm32f4xx_hal_msp.o
+ .debug_str     0x00000000000038d0       0x29 Build/stm32f4xx_hal_msp.o
                                         0x7e0 (size before relaxing)
- .debug_str     0x00000000000038d6      0x21a Build/syscalls.o
+ .debug_str     0x00000000000038f9      0x21a Build/syscalls.o
                                         0x476 (size before relaxing)
- .debug_str     0x0000000000003af0      0x3f3 Build/stm32f4xx_hal_can.o
+ .debug_str     0x0000000000003b13      0x3f3 Build/stm32f4xx_hal_can.o
                                         0xa6d (size before relaxing)
- .debug_str     0x0000000000003ee3      0x20e Build/stm32f4xx_hal_rcc.o
+ .debug_str     0x0000000000003f06      0x20e Build/stm32f4xx_hal_rcc.o
                                         0x728 (size before relaxing)
- .debug_str     0x00000000000040f1      0x125 Build/stm32f4xx_hal_gpio.o
+ .debug_str     0x0000000000004114      0x125 Build/stm32f4xx_hal_gpio.o
                                         0x502 (size before relaxing)
- .debug_str     0x0000000000004216      0x2ca Build/stm32f4xx_hal_dma.o
+ .debug_str     0x0000000000004239      0x2ca Build/stm32f4xx_hal_dma.o
                                         0x798 (size before relaxing)
- .debug_str     0x00000000000044e0      0x4b6 Build/stm32f4xx_hal_cortex.o
+ .debug_str     0x0000000000004503      0x4b6 Build/stm32f4xx_hal_cortex.o
                                         0xc4e (size before relaxing)
- .debug_str     0x0000000000004996      0x29a Build/stm32f4xx_hal.o
+ .debug_str     0x00000000000049b9      0x29a Build/stm32f4xx_hal.o
                                         0xb7c (size before relaxing)
- .debug_str     0x0000000000004c30      0x879 Build/stm32f4xx_hal_i2c.o
+ .debug_str     0x0000000000004c53      0x879 Build/stm32f4xx_hal_i2c.o
                                        0x1052 (size before relaxing)
- .debug_str     0x00000000000054a9      0x50b Build/stm32f4xx_hal_spi.o
+ .debug_str     0x00000000000054cc      0x50b Build/stm32f4xx_hal_spi.o
                                         0xc1c (size before relaxing)
- .debug_str     0x00000000000059b4      0xec6 Build/stm32f4xx_hal_tim.o
+ .debug_str     0x00000000000059d7      0xec6 Build/stm32f4xx_hal_tim.o
                                        0x16db (size before relaxing)
- .debug_str     0x000000000000687a      0x591 Build/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x000000000000689d      0x591 Build/stm32f4xx_hal_tim_ex.o
                                         0xedc (size before relaxing)
- .debug_str     0x0000000000006e0b      0x5cb Build/stm32f4xx_hal_uart.o
+ .debug_str     0x0000000000006e2e      0x5cb Build/stm32f4xx_hal_uart.o
                                         0xd7b (size before relaxing)
- .debug_str     0x00000000000073d6       0x47 Build/system_stm32f4xx.o
+ .debug_str     0x00000000000073f9       0x47 Build/system_stm32f4xx.o
                                         0x397 (size before relaxing)
- .debug_str     0x000000000000741d      0x136 Build/list.o
+ .debug_str     0x0000000000007440      0x136 Build/list.o
                                         0x324 (size before relaxing)
- .debug_str     0x0000000000007553      0xa09 Build/queue.o
+ .debug_str     0x0000000000007576      0xa09 Build/queue.o
                                         0xd3a (size before relaxing)
- .debug_str     0x0000000000007f5c      0xbfc Build/tasks.o
+ .debug_str     0x0000000000007f7f      0xbfc Build/tasks.o
                                        0x1309 (size before relaxing)
- .debug_str     0x0000000000008b58      0x5cf Build/timers.o
+ .debug_str     0x0000000000008b7b      0x5cf Build/timers.o
                                         0xc6a (size before relaxing)
- .debug_str     0x0000000000009127      0xbe4 Build/cmsis_os2.o
+ .debug_str     0x000000000000914a      0xbe4 Build/cmsis_os2.o
                                        0x2176 (size before relaxing)
- .debug_str     0x0000000000009d0b      0x2bf Build/heap_4.o
+ .debug_str     0x0000000000009d2e      0x2bf Build/heap_4.o
                                         0x532 (size before relaxing)
- .debug_str     0x0000000000009fca      0x17d Build/port.o
+ .debug_str     0x0000000000009fed      0x17d Build/port.o
                                         0x4a4 (size before relaxing)
- .debug_str     0x000000000000a147       0x4c Build/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x000000000000a16a       0x4c Build/stm32f4xx_hal_timebase_tim.o
                                         0xe62 (size before relaxing)
- .debug_str     0x000000000000a193      0x113 Build/custom_memory_manager.o
+ .debug_str     0x000000000000a1b6      0x113 Build/custom_memory_manager.o
                                         0x49a (size before relaxing)
- .debug_str     0x000000000000a2a6       0xd2 Build/microros_allocators.o
+ .debug_str     0x000000000000a2c9       0xd2 Build/microros_allocators.o
                                         0x2ed (size before relaxing)
- .debug_str     0x000000000000a378       0xb8 Build/microros_time.o
+ .debug_str     0x000000000000a39b       0xb8 Build/microros_time.o
                                         0x321 (size before relaxing)
- .debug_str     0x000000000000a430      0x2e9 Build/dma_transport.o
+ .debug_str     0x000000000000a453      0x2e9 Build/dma_transport.o
                                         0x9df (size before relaxing)
- .debug_str     0x000000000000a719       0x24 Build/startup_stm32f407xx.o
+ .debug_str     0x000000000000a73c       0x24 Build/startup_stm32f407xx.o
                                          0x8c (size before relaxing)
- .debug_str     0x000000000000a73d      0xbf3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
+ .debug_str     0x000000000000a760      0xbf3 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node.c.obj)
                                        0x1437 (size before relaxing)
- .debug_str     0x000000000000b330       0x5f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
+ .debug_str     0x000000000000b353       0x5f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-node_options.c.obj)
                                         0x87f (size before relaxing)
- .debug_str     0x000000000000b38f      0x63e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
+ .debug_str     0x000000000000b3b2      0x63e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-publisher.c.obj)
                                        0x16bb (size before relaxing)
- .debug_str     0x000000000000b9cd      0x4f8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
+ .debug_str     0x000000000000b9f0      0x4f8 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-timer.c.obj)
                                        0x14de (size before relaxing)
- .debug_str     0x000000000000bec5      0x7ef micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
+ .debug_str     0x000000000000bee8      0x7ef micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor.c.obj)
                                        0x1ae8 (size before relaxing)
- .debug_str     0x000000000000c6b4       0x92 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
+ .debug_str     0x000000000000c6d7       0x92 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-executor_handle.c.obj)
                                        0x117c (size before relaxing)
- .debug_str     0x000000000000c746      0x125 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
+ .debug_str     0x000000000000c769      0x125 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-init.c.obj)
                                         0xb4f (size before relaxing)
- .debug_str     0x000000000000c86b       0x5d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
+ .debug_str     0x000000000000c88e       0x5d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-node.c.obj)
                                         0xb3f (size before relaxing)
- .debug_str     0x000000000000c8c8       0x79 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
+ .debug_str     0x000000000000c8eb       0x79 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-publisher.c.obj)
                                         0xef9 (size before relaxing)
- .debug_str     0x000000000000c941       0x39 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
+ .debug_str     0x000000000000c964       0x39 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librclc-timer.c.obj)
                                         0xf13 (size before relaxing)
- .debug_str     0x000000000000c97a       0xf2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
+ .debug_str     0x000000000000c99d       0xf2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-allocator.c.obj)
                                         0x774 (size before relaxing)
- .debug_str     0x000000000000ca6c       0x80 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
+ .debug_str     0x000000000000ca8f       0x80 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-atomic_64bits.c.obj)
                                         0x278 (size before relaxing)
- .debug_str     0x000000000000caec      0x271 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
+ .debug_str     0x000000000000cb0f      0x271 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-error_handling.c.obj)
                                         0x923 (size before relaxing)
- .debug_str     0x000000000000cd5d       0x88 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
+ .debug_str     0x000000000000cd80       0x88 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-format_string.c.obj)
                                         0x6bd (size before relaxing)
- .debug_str     0x000000000000cde5       0xdb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
+ .debug_str     0x000000000000ce08       0xdb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-repl_str.c.obj)
                                         0x6f7 (size before relaxing)
- .debug_str     0x000000000000cec0       0x5d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
+ .debug_str     0x000000000000cee3       0x5d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-snprintf.c.obj)
                                         0x647 (size before relaxing)
- .debug_str     0x000000000000cf1d       0x5c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
+ .debug_str     0x000000000000cf40       0x5c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-strdup.c.obj)
                                         0x666 (size before relaxing)
- .debug_str     0x000000000000cf79      0x2ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
+ .debug_str     0x000000000000cf9c      0x2ae micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-string_map.c.obj)
                                         0x9df (size before relaxing)
- .debug_str     0x000000000000d227       0xdf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
+ .debug_str     0x000000000000d24a       0xdf micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-time_unix.c.obj)
                                         0x715 (size before relaxing)
- .debug_str     0x000000000000d306      0x154 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
+ .debug_str     0x000000000000d329      0x154 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-publisher_options.c.obj)
                                         0x766 (size before relaxing)
- .debug_str     0x000000000000d45a       0xcd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
+ .debug_str     0x000000000000d47d       0xcd micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_full_topic_name.c.obj)
                                         0x7eb (size before relaxing)
- .debug_str     0x000000000000d527       0x94 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
+ .debug_str     0x000000000000d54a       0x94 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_namespace.c.obj)
                                         0x81a (size before relaxing)
- .debug_str     0x000000000000d5bb       0x71 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
+ .debug_str     0x000000000000d5de       0x71 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-validate_node_name.c.obj)
                                         0x7d1 (size before relaxing)
- .debug_str     0x000000000000d62c      0xe7c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
+ .debug_str     0x000000000000d64f      0xe7c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-custom_transport.c.obj)
                                        0x20be (size before relaxing)
- .debug_str     0x000000000000e4a8      0x22d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
+ .debug_str     0x000000000000e4cb      0x22d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_node.c.obj)
                                        0x22bb (size before relaxing)
- .debug_str     0x000000000000e6d5      0x178 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
+ .debug_str     0x000000000000e6f8      0x178 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publish.c.obj)
                                        0x2258 (size before relaxing)
- .debug_str     0x000000000000e84d      0x24a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
+ .debug_str     0x000000000000e870      0x24a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_publisher.c.obj)
                                        0x245f (size before relaxing)
- .debug_str     0x000000000000ea97      0x22a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
+ .debug_str     0x000000000000eaba      0x22a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_service.c.obj)
                                        0x2388 (size before relaxing)
- .debug_str     0x000000000000ecc1      0x1c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
+ .debug_str     0x000000000000ece4      0x1c2 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_subscription.c.obj)
                                        0x24b2 (size before relaxing)
- .debug_str     0x000000000000ee83      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
+ .debug_str     0x000000000000eea6      0x317 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-types.c.obj)
                                        0x24ac (size before relaxing)
- .debug_str     0x000000000000f19a      0x427 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
+ .debug_str     0x000000000000f1bd      0x427 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-utils.c.obj)
                                        0x25df (size before relaxing)
- .debug_str     0x000000000000f5c1       0xa9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
+ .debug_str     0x000000000000f5e4       0xa9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librosidl_runtime_c-message_type_support.c.obj)
                                         0x69e (size before relaxing)
- .debug_str     0x000000000000f66a      0x41e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
+ .debug_str     0x000000000000f68d      0x41e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-common_create_entities.c.obj)
                                         0xf66 (size before relaxing)
- .debug_str     0x000000000000fa88      0x44f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
+ .debug_str     0x000000000000faab      0x44f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-create_entities_bin.c.obj)
                                        0x1989 (size before relaxing)
- .debug_str     0x000000000000fed7       0x6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
+ .debug_str     0x000000000000fefa       0x6e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-object_id.c.obj)
                                         0x253 (size before relaxing)
- .debug_str     0x000000000000ff45      0x24f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
+ .debug_str     0x000000000000ff68      0x24f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-read_access.c.obj)
                                         0xd86 (size before relaxing)
- .debug_str     0x0000000000010194      0xf3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
+ .debug_str     0x00000000000101b7      0xf3a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session.c.obj)
                                        0x25a6 (size before relaxing)
- .debug_str     0x00000000000110ce      0x140 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
+ .debug_str     0x00000000000110f1      0x140 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-session_info.c.obj)
                                         0xd2b (size before relaxing)
- .debug_str     0x000000000001120e       0x5e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
+ .debug_str     0x0000000000011231       0x5e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_id.c.obj)
                                         0x2f8 (size before relaxing)
- .debug_str     0x000000000001126c      0x188 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
+ .debug_str     0x000000000001128f      0x188 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_storage.c.obj)
                                         0x7d7 (size before relaxing)
- .debug_str     0x00000000000113f4       0xc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
+ .debug_str     0x0000000000011417       0xc5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-submessage.c.obj)
                                         0x43f (size before relaxing)
- .debug_str     0x00000000000114b9       0x4a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
+ .debug_str     0x00000000000114dc       0x4a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-time.c.obj)
                                         0x650 (size before relaxing)
- .debug_str     0x0000000000011503      0x220 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
+ .debug_str     0x0000000000011526      0x220 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-write_access.c.obj)
                                        0x1254 (size before relaxing)
- .debug_str     0x0000000000011723       0xd5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
+ .debug_str     0x0000000000011746       0xd5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_header.c.obj)
                                         0x3c0 (size before relaxing)
- .debug_str     0x00000000000117f8       0x62 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
+ .debug_str     0x000000000001181b       0x62 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_subheader.c.obj)
                                         0x37d (size before relaxing)
- .debug_str     0x000000000001185a     0x1bcc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
+ .debug_str     0x000000000001187d     0x1bcc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-xrce_types.c.obj)
                                        0x37d3 (size before relaxing)
- .debug_str     0x0000000000013426      0x1e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
+ .debug_str     0x0000000000013449      0x1e7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-client.c.obj)
                                        0x14f6 (size before relaxing)
- .debug_str     0x000000000001360d       0x37 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
+ .debug_str     0x0000000000013630       0x37 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-common.c.obj)
                                         0x743 (size before relaxing)
- .debug_str     0x0000000000013644       0xd9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
+ .debug_str     0x0000000000013667       0xd9 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-context.c.obj)
                                         0xb4e (size before relaxing)
- .debug_str     0x000000000001371d       0x72 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
+ .debug_str     0x0000000000013740       0x72 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-domain_id.c.obj)
                                         0x86c (size before relaxing)
- .debug_str     0x000000000001378f      0x151 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
+ .debug_str     0x00000000000137b2      0x151 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-expand_topic_name.c.obj)
                                         0xa23 (size before relaxing)
- .debug_str     0x00000000000138e0      0x132 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
+ .debug_str     0x0000000000013903      0x132 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-guard_condition.c.obj)
                                        0x1101 (size before relaxing)
- .debug_str     0x0000000000013a12       0xe6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
+ .debug_str     0x0000000000013a35       0xe6 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init.c.obj)
                                         0xbbc (size before relaxing)
- .debug_str     0x0000000000013af8      0x13b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
+ .debug_str     0x0000000000013b1b      0x13b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-init_options.c.obj)
                                         0xb5f (size before relaxing)
- .debug_str     0x0000000000013c33       0x51 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
+ .debug_str     0x0000000000013c56       0x51 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-localhost.c.obj)
                                         0x8b0 (size before relaxing)
- .debug_str     0x0000000000013c84      0x164 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
+ .debug_str     0x0000000000013ca7      0x164 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-security.c.obj)
                                         0xa19 (size before relaxing)
- .debug_str     0x0000000000013de8      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
+ .debug_str     0x0000000000013e0b      0x161 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-service.c.obj)
                                        0x13e0 (size before relaxing)
- .debug_str     0x0000000000013f49      0x3af micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
+ .debug_str     0x0000000000013f6c      0x3af micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-subscription.c.obj)
                                        0x17d0 (size before relaxing)
- .debug_str     0x00000000000142f8      0x265 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
+ .debug_str     0x000000000001431b      0x265 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-time.c.obj)
                                         0xdd0 (size before relaxing)
- .debug_str     0x000000000001455d       0xcb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
+ .debug_str     0x0000000000014580       0xcb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_enclave_name.c.obj)
                                         0x862 (size before relaxing)
- .debug_str     0x0000000000014628       0xbc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
+ .debug_str     0x000000000001464b       0xbc micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-validate_topic_name.c.obj)
                                         0x81f (size before relaxing)
- .debug_str     0x00000000000146e4      0x3eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
+ .debug_str     0x0000000000014707      0x3eb micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcl-wait.c.obj)
                                        0x17e8 (size before relaxing)
- .debug_str     0x0000000000014acf      0x140 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
+ .debug_str     0x0000000000014af2      0x140 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-filesystem.c.obj)
                                         0x7b0 (size before relaxing)
- .debug_str     0x0000000000014c0f       0x6b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
+ .debug_str     0x0000000000014c32       0x6b micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librcutils-get_env.c.obj)
                                         0x5ff (size before relaxing)
- .debug_str     0x0000000000014c7a       0x31 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
+ .debug_str     0x0000000000014c9d       0x31 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init.c.obj)
                                         0x424 (size before relaxing)
- .debug_str     0x0000000000014cab       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
+ .debug_str     0x0000000000014cce       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-init_options.c.obj)
                                         0x429 (size before relaxing)
- .debug_str     0x0000000000014d05       0xe5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
+ .debug_str     0x0000000000014d28       0xe5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-security_options.c.obj)
                                         0x7e5 (size before relaxing)
- .debug_str     0x0000000000014dea       0x32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
+ .debug_str     0x0000000000014e0d       0x32 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw-types.c.obj)
                                         0x7d3 (size before relaxing)
- .debug_str     0x0000000000014e1c       0x54 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
+ .debug_str     0x0000000000014e3f       0x54 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-identifiers.c.obj)
                                         0x1b4 (size before relaxing)
- .debug_str     0x0000000000014e70       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
+ .debug_str     0x0000000000014e93       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-memory.c.obj)
                                         0x7ae (size before relaxing)
- .debug_str     0x0000000000014eca       0x6c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
+ .debug_str     0x0000000000014eed       0x6c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_client.c.obj)
                                        0x2382 (size before relaxing)
- .debug_str     0x0000000000014f36       0x6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
+ .debug_str     0x0000000000014f59       0x6a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_get_implementation_identifier.c.obj)
                                        0x20b3 (size before relaxing)
- .debug_str     0x0000000000014fa0       0x70 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
+ .debug_str     0x0000000000014fc3       0x70 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_guard_condition.c.obj)
                                        0x20e5 (size before relaxing)
- .debug_str     0x0000000000015010       0xf1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
+ .debug_str     0x0000000000015033       0xf1 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_init.c.obj)
                                        0x260f (size before relaxing)
- .debug_str     0x0000000000015101       0x8f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
+ .debug_str     0x0000000000015124       0x8f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_microxrcedds_topic.c.obj)
                                        0x21b0 (size before relaxing)
- .debug_str     0x0000000000015190       0x7d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
+ .debug_str     0x00000000000151b3       0x7d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_request.c.obj)
                                        0x2315 (size before relaxing)
- .debug_str     0x000000000001520d       0x65 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
+ .debug_str     0x0000000000015230       0x65 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_response.c.obj)
                                        0x232b (size before relaxing)
- .debug_str     0x0000000000015272       0xc0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
+ .debug_str     0x0000000000015295       0xc0 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_take.c.obj)
                                        0x241b (size before relaxing)
- .debug_str     0x0000000000015332       0x64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
+ .debug_str     0x0000000000015355       0x64 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_trigger_guard_condition.c.obj)
                                        0x20a7 (size before relaxing)
- .debug_str     0x0000000000015396       0x9c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
+ .debug_str     0x00000000000153b9       0x9c micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_uxrce_transports.c.obj)
                                        0x20db (size before relaxing)
- .debug_str     0x0000000000015432       0xa4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
+ .debug_str     0x0000000000015455       0xa4 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait.c.obj)
                                        0x2257 (size before relaxing)
- .debug_str     0x00000000000154d6       0x71 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
+ .debug_str     0x00000000000154f9       0x71 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-rmw_wait_set.c.obj)
                                        0x20af (size before relaxing)
- .debug_str     0x0000000000015547       0xa7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
+ .debug_str     0x000000000001556a       0xa7 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-time_sync.c.obj)
                                        0x20e3 (size before relaxing)
- .debug_str     0x00000000000155ee      0x989 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
+ .debug_str     0x0000000000015611      0x989 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-array.c.obj)
                                         0xfde (size before relaxing)
- .debug_str     0x0000000000015f77      0x267 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
+ .debug_str     0x0000000000015f9a      0x267 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-basic.c.obj)
                                         0xc92 (size before relaxing)
- .debug_str     0x00000000000161de      0x145 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
+ .debug_str     0x0000000000016201      0x145 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-common.c.obj)
                                         0x8e4 (size before relaxing)
- .debug_str     0x0000000000016323      0x6ed micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
+ .debug_str     0x0000000000016346      0x6ed micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-sequence.c.obj)
                                         0xd89 (size before relaxing)
- .debug_str     0x0000000000016a10       0x8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
+ .debug_str     0x0000000000016a33       0x8d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicrocdr-string.c.obj)
                                         0x791 (size before relaxing)
- .debug_str     0x0000000000016a9d      0x11e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
+ .debug_str     0x0000000000016ac0      0x11e micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-custom_transport.c.obj)
                                         0x590 (size before relaxing)
- .debug_str     0x0000000000016bbb       0x8f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
+ .debug_str     0x0000000000016bde       0x8f micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_best_effort_stream.c.obj)
                                         0x2d8 (size before relaxing)
- .debug_str     0x0000000000016c4a      0x1a5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
+ .debug_str     0x0000000000016c6d      0x1a5 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-input_reliable_stream.c.obj)
                                         0xb11 (size before relaxing)
- .debug_str     0x0000000000016def       0xac micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
+ .debug_str     0x0000000000016e12       0xac micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_best_effort_stream.c.obj)
                                         0x444 (size before relaxing)
- .debug_str     0x0000000000016e9b      0x143 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
+ .debug_str     0x0000000000016ebe      0x143 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-output_reliable_stream.c.obj)
                                         0xe19 (size before relaxing)
- .debug_str     0x0000000000016fde       0x84 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
+ .debug_str     0x0000000000017001       0x84 micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
                                         0x26c (size before relaxing)
- .debug_str     0x0000000000017062      0x13a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
+ .debug_str     0x0000000000017085      0x13a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
                                         0x8fc (size before relaxing)
- .debug_str     0x000000000001719c       0x7d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
+ .debug_str     0x00000000000171bf       0x7d micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
                                        0x2143 (size before relaxing)
- .debug_str     0x0000000000017219      0x26f hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
-                                        0x3e9 (size before relaxing)
- .debug_str     0x0000000000017488      0x39b hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
-                                        0xc72 (size before relaxing)
- .debug_str     0x0000000000017823      0x2b4 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
-                                        0xbde (size before relaxing)
- .debug_str     0x0000000000017ad7      0x2a9 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
-                                        0xb2d (size before relaxing)
+ .debug_str     0x000000000001723c      0x239 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
+                                        0x3b3 (size before relaxing)
+ .debug_str     0x0000000000017475      0x362 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
+                                        0x82f (size before relaxing)
+ .debug_str     0x00000000000177d7      0x2a8 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
+                                        0x79b (size before relaxing)
+ .debug_str     0x0000000000017a7f      0x29d hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
+                                        0x6ea (size before relaxing)
 
-.comment        0x0000000000000000      0x118
+.comment        0x0000000000000000       0xa2
  .comment       0x0000000000000000       0x49 Build/hyperdog_uros_app.o
                                          0x4a (size before relaxing)
  .comment       0x0000000000000049       0x4a Build/hyperdog_uros_node.o
@@ -8701,11 +8700,10 @@ LOAD /usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3
  .comment       0x00000000000000a2       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-seq_num.c.obj)
  .comment       0x00000000000000a2       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(libmicroxrcedds_client-stream_framing_protocol.c.obj)
  .comment       0x00000000000000a2       0x5a micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/libmicroros.a(librmw_microxrcedds-callbacks.c.obj)
- .comment       0x00000000000000a2       0x76 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
-                                         0x77 (size before relaxing)
- .comment       0x0000000000000118       0x77 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
- .comment       0x0000000000000118       0x77 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
- .comment       0x0000000000000118       0x77 hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
+ .comment       0x00000000000000a2       0x4a hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a(motors_states__type_support.cpp.obj)
+ .comment       0x00000000000000a2       0x4a hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motors_states__type_support_c.c.obj)
+ .comment       0x00000000000000a2       0x4a hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_states__type_support_c.c.obj)
+ .comment       0x00000000000000a2       0x4a hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a(motor_feedback__type_support_c.c.obj)
 
 .debug_frame    0x0000000000000000     0xe8f8
  .debug_frame   0x0000000000000000       0x7c Build/hyperdog_uros_app.o

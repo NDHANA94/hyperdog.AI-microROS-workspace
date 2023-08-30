@@ -38,6 +38,7 @@ BUILD_DIR = Build
 C_SOURCES =  \
 App/Src/hyperdog_uros_app.c \
 APP/hyperdog_uros_node.c \
+APP/leg_motors.c \
 App/Src/error_indicator.c \
 App/Src/minicheetah_motor.c \
 Core/Src/main.c \

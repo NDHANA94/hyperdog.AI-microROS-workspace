@@ -50,7 +50,13 @@
         "error_indicator.h": "c",
         "hyperdog_uros_node.h": "c",
         "rope": "c",
-        "motors_states.h": "c"
+        "motors_states.h": "c",
+        "init_motor.h": "c",
+        "init_leg_motors.h": "c",
+        "init_leg_motors__type_support.h": "c",
+        "init_leg_motors__struct.h": "c",
+        "init_leg_motors__functions.h": "c",
+        "leg_motors.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": true,

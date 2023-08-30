@@ -2,6 +2,7 @@
 #include "main.h"
 #include "hyperdog_uros_node.h"
 #include "motor_typedefs.h"
+#include "leg_motors.h"
 
 hyperdogUROS_Node_t hyperdog_node;
 hyperdog_uros_msgs__msg__MotorStates motor_states_;
@@ -42,6 +43,7 @@ void init_hyperdog_node()
 
 
             /* - init services --------------------------------*/
+            _init_legMotors_srv();
 
 
             /* - init timers ----------------------------------*/
@@ -64,6 +66,45 @@ void init_hyperdog_node()
         fail:
         restartMicroROS(); /// Assuming error ccured due to the agent is not connected
     }
+
+}
+
+/// TODO:
+/* ================================================================================== */
+/*                         INIT LEG MOTORS SERVICE                                    */
+/* ================================================================================== */
+
+/* ------------------------- INITIATE THE SERVICE ------------------------------- */
+void _init_legMotors_srv()
+{
+    hyperdog_node.initLegMotors_srv.srv_name = "/initlegmotors";
+
+    /// get msg type support
+    const rosidl_message_type_support_t * type_support = 
+        ROSIDL_GET_SRV_TYPE_SUPPORT(hyperdog_uros_msgs, srv, InitLegMotors);
+
+    /// Initiaalize server with default configuration
+    hyperdog_node.initLegMotors_srv.rcl_ret = 
+        rclc_service_init_default(&hyperdog_node.initLegMotors_srv.service,
+                                  &hyperdog_node.node,
+                                  &type_support, 
+                                  hyperdog_node.initLegMotors_srv.srv_name);
+    if(hyperdog_node.initLegMotors_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV1;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV1;
+    }
+
+    // add callback function to the service
+
+}
+
+void _initLegMotors_srv_callback(const void* req, void* res)
+{
+    hyperdog_node.initLegMotors_srv.req = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
+    hyperdog_node.initLegMotors_srv.res = (hyperdog_uros_msgs__srv__InitLegMotors_Response*) res;
 
 }
 
@@ -98,6 +139,9 @@ void _init_motors_states_publisher()
 
     /// initialize timer callback       
 
+    ///   * set callback function
+    hyperdog_node.motorsStates_pub.callback = _motors_states_timer_callback;
+
     ///   * set timer period           
     hyperdog_node.motorsStates_pub.timer_period = MOTORS_STATES_PUB_TIMER_PERIOD_NS;
 
@@ -107,7 +151,7 @@ void _init_motors_states_publisher()
             &hyperdog_node.motorsStates_pub.timer,
             &uros.support,
             hyperdog_node.motorsStates_pub.timer_period,
-            _motors_states_timer_callback);
+            hyperdog_node.motorsStates_pub.callback);
 
     ///   * Add to the executor        
     if(hyperdog_node.motorsStates_pub.rcl_ret == RCL_RET_OK){
@@ -131,7 +175,7 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 
     if(timer != NULL) {
         /// update msg
-        hyperdog_node.motorsStates_pub.msg.fr_hip_roll.feedback.id = 1;
+        hyperdog_node.motorsStates_pub.msg.fr_hip_roll.feedback.can_id = 1;
         hyperdog_node.motorsStates_pub.msg.fr_hip_roll.feedback.position = 1.22434232;
 
 

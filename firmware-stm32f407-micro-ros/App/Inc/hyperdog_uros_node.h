@@ -38,6 +38,7 @@ extern "C"{
 #include "hyperdog_uros_app.h"
 #include "hyperdog_uros_msgs/msg/motor_states.h"
 #include "hyperdog_uros_msgs/msg/motors_states.h"
+#include "hyperdog_uros_msgs/srv/init_leg_motors.h"
 
 #define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(10) /*!< 10ms */
 
@@ -81,26 +82,39 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_SRV7         0b1110000000000 /*!< 7st service                */
 
 enum State{
-    HYPERDOG_NODE_NOT_INITIALIZED = 0,
-    HYPERDOG_NODE_INITIALIZING    = 1,
-    HYPERDOG_NODE_RUNNING         = 2,
-    HYPERDOG_NODE_ERROR           = 3
+    HYPERDOG_NODE_NOT_INITIALIZED,
+    HYPERDOG_NODE_INITIALIZING,
+    HYPERDOG_NODE_INITIALIZED,    
+    HYPERDOG_NODE_RUNNING,
+    HYPERDOG_NODE_ERROR
 };
 
-
+typedef void(* motor_states_pub_callback_t)(rcl_timer_t*, int64_t);
 struct{
     rcl_publisher_t                         publisher;
     hyperdog_uros_msgs__msg__MotorsStates   msg; 
     rcl_timer_t                             timer; 
     unsigned int                            timer_period; /* Hz */
     rcl_ret_t                               rcl_ret;
+    motor_states_pub_callback_t             callback;
 }typedef motorStates_publisher_t;
+
+
+struct{
+    rcl_service_t                           service;
+    const char*                             srv_name;
+    rcl_ret_t                               rcl_ret;
+    rclc_service_callback_t                 callback;
+    hyperdog_uros_msgs__srv__InitLegMotors_Request* req;
+    hyperdog_uros_msgs__srv__InitLegMotors_Response* res;
+}typedef legMotorsInit_srv_t;
 
 
 struct
 {
     rcl_node_t                              node;
     rclc_executor_t                         executor;
+    legMotorsInit_srv_t                     initLegMotors_srv;
     motorStates_publisher_t                 motorsStates_pub;
     enum State                              state;
     uint16_t                                error_code;             /* 13-bits error-code*/
@@ -116,6 +130,8 @@ void init_hyperdog_node();
 
 void _init_motors_states_publisher();
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
+
+void _init_legMotors_srv();
 void _destroy_hyperdog_node();
 
 
