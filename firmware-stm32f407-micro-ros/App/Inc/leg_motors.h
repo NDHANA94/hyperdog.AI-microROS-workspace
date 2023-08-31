@@ -67,7 +67,9 @@ enum MOTOR_State{
     MOTOR_INITIALIZED,
     MOTOR_DISABLED, 
     MOTOR_ENABLED,
-    MOTOR_ERROR          
+    MOTOR_OFFLINE,
+    MOTOR_ERROR,
+    CAN_ERROR          
 };
 
 
@@ -137,6 +139,7 @@ struct{
     CANTxMessage_TypeDef                    canTx;
     uint8_t                                 init_status;
     enum MOTOR_State                        debug_state;
+    uint8_t                                 _noMotorResp_count;
 }typedef LegMotor_TypeDef;
 
 
@@ -144,14 +147,26 @@ struct{
 
 extern bool motor_objects_created;
 extern bool can_filter_created;
+extern uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS];
 
 
 extern LegMotor_TypeDef**           legMotor;
-extern CANRxMessage_TypeDef*        canRx;
+extern CANRxMessage_TypeDef         canRx;
 
 void init_legMotors(CAN_HandleTypeDef* hcan, 
                     hyperdog_uros_msgs__srv__InitLegMotors_Request* req, 
                     hyperdog_uros_msgs__srv__InitLegMotors_Response* res);
+
+bool enable_motor(LegMotor_TypeDef* m);
+bool enable_motor_id(uint8_t id);
+void enable_allMotors();
+bool disable_motor(LegMotor_TypeDef* m);
+bool disable_motor_id(uint8_t id);
+void disable_allMotors();
+
+void _unpack_canRx();
 
 void destroy_legMotors();
 

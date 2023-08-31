@@ -4,6 +4,7 @@
 // #include "motor_typedefs.h"
 #include "leg_motors.h"
 
+
 hyperdogUROS_Node_t hyperdog_node;
 hyperdog_uros_msgs__msg__MotorStates motor_states_;
 
@@ -114,6 +115,7 @@ void _init_legMotors_srv()
     }
 }
 
+/* ------------------ INIT LEG MOTORS SERVER CALLBACK ----------------------- */
 void _initLegMotors_srv_callback(const void* req, void* res)
 {
     hyperdog_uros_msgs__srv__InitLegMotors_Request* req_in = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
@@ -123,6 +125,7 @@ void _initLegMotors_srv_callback(const void* req, void* res)
         &hcan1, 
         req_in,
         res_in);
+    enable_allMotors();
 }
 
 

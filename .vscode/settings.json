@@ -62,10 +62,11 @@
         "sstream": "c",
         "regex": "c",
         "*.def": "c",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "freertosconfig.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
-    "cortex-debug.variableUseNaturalFormat": true,
+    "cortex-debug.variableUseNaturalFormat": false,
     "python.autoComplete.extraPaths": [
         "/home/nipun/ros2_ws/hyperdog_ros2/install/hyperdog_ctrl/lib/python3.8/site-packages",
         "/home/nipun/ros2_ws/hyperdog_ros2/install/hyperdog_msgs/lib/python3.8/site-packages",

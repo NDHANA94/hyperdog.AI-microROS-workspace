@@ -2,10 +2,14 @@
 #include <string.h>
 
 LegMotor_TypeDef** legMotor;
-CANRxMessage_TypeDef*  canRx;
+CANRxMessage_TypeDef  canRx;
 
 bool motor_objects_created;
 bool can_filter_created;
+
+uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_ENABLE_CMD;
+uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_DISABLE_CMD;
+uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_SETZERO_CMD;
 
 hyperdog_uros_msgs__srv__InitLegMotors_Response
 check_init_motor_valid(hyperdog_uros_msgs__msg__InitMotor* init_msg)
@@ -79,19 +83,19 @@ bool init_motorCAN(LegMotor_TypeDef* m, CAN_HandleTypeDef* hcan){
     /* copy hcan pointer to motor instance */
     m->hcan = hcan;
     /* point canRx of the motor to global canRx */
-    m->canRx = canRx;
+    m->canRx = &canRx;
     /* config global can rx filter */
     if(!can_filter_created){
-        canRx->filter.FilterMode = CAN_FILTERMODE_IDMASK;
-        canRx->filter.FilterScale = CAN_FILTERSCALE_32BIT;
-        canRx->filter.FilterIdHigh = 0 << 5; // motors sends can frame with Id number 0, 1st byte of data frame is the motor Id
-        canRx->filter.FilterIdLow  = 0x0;
-        canRx->filter.FilterMaskIdHigh = 0xFFF;
-        canRx->filter.FilterMaskIdLow = 0;
-        canRx->filter.FilterFIFOAssignment = CAN_FilterFIFO0;
-        canRx->filter.FilterActivation = ENABLE;
+        canRx.filter.FilterMode = CAN_FILTERMODE_IDMASK;
+        canRx.filter.FilterScale = CAN_FILTERSCALE_32BIT;
+        canRx.filter.FilterIdHigh = 0 << 5; // motors sends can frame with Id number 0, 1st byte of data frame is the motor Id
+        canRx.filter.FilterIdLow  = 0x0;
+        canRx.filter.FilterMaskIdHigh = 0xFFF;
+        canRx.filter.FilterMaskIdLow = 0;
+        canRx.filter.FilterFIFOAssignment = CAN_FilterFIFO0;
+        canRx.filter.FilterActivation = ENABLE;
         // motor[m].canRx.filter.FilterBank = filterbank;
-        if(HAL_CAN_ConfigFilter(hcan, &canRx->filter) == HAL_OK){
+        if(HAL_CAN_ConfigFilter(hcan, &canRx.filter) == HAL_OK){
             can_filter_created = true;
         }
     }
@@ -103,20 +107,22 @@ bool init_motorCAN(LegMotor_TypeDef* m, CAN_HandleTypeDef* hcan){
     m->canTx.header.RTR = CAN_RTR_DATA;
 
     /* If there is a CAN state error, update motor init_state, state and error_code */
-    if(m->hcan->ErrorCode == HAL_ERROR)
-    {
-        m->init_status &= ~MOTOR_INIT_STATUS_CAN_SET;
-        m->state.error_code |= MOTOR_ERROR_HAL_CAN;
-        m->state.is_error = 1;
-        m->debug_state = ERROR;
-        return 0;
-    }else{
-        m->init_status |= MOTOR_INIT_STATUS_CAN_SET;
-        m->state.error_code &= ~MOTOR_ERROR_HAL_CAN;
-        m->state.is_error = 0;
-        m->debug_state = MOTOR_INITIALIZED;
-        return 1;
-    }    
+    if(m->hcan->ErrorCode == HAL_ERROR){ goto can_error; }
+    else{ goto can_ok; }    
+
+    can_error:
+    m->init_status &= ~MOTOR_INIT_STATUS_CAN_SET;
+    m->state.error_code |= MOTOR_ERROR_HAL_CAN;
+    m->state.is_error = 1;
+    m->debug_state = ERROR;
+    return 0;
+
+    can_ok:
+    m->init_status |= MOTOR_INIT_STATUS_CAN_SET;
+    m->state.error_code &= ~MOTOR_ERROR_HAL_CAN;
+    m->state.is_error = 0;
+    m->debug_state = MOTOR_INITIALIZED;
+    return 1;
 }
 
 /* create 2D array of legMotor objects: `legMotor[leg][joint]` */
@@ -182,8 +188,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[0][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[0][0].state.is_error = 1;
+        legMotor[0][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[0][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -210,8 +217,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[0][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[0][1].state.is_error = 1;
+        legMotor[0][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[0][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -238,8 +246,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[0][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[0][2].state.is_error = 1;
+        legMotor[0][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[0][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -266,8 +275,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[1][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[1][0].state.is_error = 1;
+        legMotor[1][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[1][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -294,8 +304,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[1][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[1][1].state.is_error = 1;
+        legMotor[1][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[1][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -322,8 +333,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[1][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[1][2].state.is_error = 1;
+        legMotor[1][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[1][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -350,8 +362,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[2][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[2][0].state.is_error = 1;
+        legMotor[2][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[2][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -378,8 +391,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[2][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[2][1].state.is_error = 1;
+        legMotor[2][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[2][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -406,8 +420,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[2][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[2][2].state.is_error = 1;
+        legMotor[2][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[2][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -434,8 +449,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[3][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[3][0].state.is_error = 1;
+        legMotor[3][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[3][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -462,8 +478,9 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[3][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[3][1].state.is_error = 1;
+        legMotor[3][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[3][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
@@ -490,12 +507,141 @@ hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
         strcat(err_m, check_res.error_msg.data);
         res->error_msg.data = err_m;
         res->error_msg.size = strlen(err_m);
-        legMotor[3][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        /* update status, states and error */
         legMotor[3][2].state.is_error = 1;
+        legMotor[3][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
         legMotor[3][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
 }
+
+
+void _unpack_canRx(LegMotor_TypeDef* m)
+{
+
+}
+
+bool motor_sendTx_getRx(LegMotor_TypeDef* m){
+    /* Send CanTx message to the motor */
+    retry:
+    if(HAL_CAN_AddTxMessage(m->hcan, &m->canTx.header, m->canTx.data, &m->canTx.TxMailBox) != HAL_OK)   
+        goto can_fail;
+
+    /*  get CAN rx message and filter motor Id  */
+    uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
+    
+    if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK)   
+        goto can_fail;
+
+    /* If rx msg was sent by the correct motor, save rx data into canRx.data */
+    if(rx_data[0] == m->self.params.can_id){
+        memcpy(m->canRx->data, rx_data, NUM_OF_CAN_RX_BYTES);
+        /* unpack canRx data into motor feedback {position, velocity, currunt} */
+        _unpack_canRx(m);
+        /* reset motor _noMotorResp_count */
+        m->_noMotorResp_count = 0;
+        goto motor_ok; 
+    } 
+
+    /* If tx msg was sent and rx msg was received, but rx msg was received from another motor */
+    else if (m->hcan->ErrorCode != HAL_ERROR){
+        /* count failiers of motor response */
+        m->_noMotorResp_count ++;
+        /* if motor response was no recived more than MAX_MOTOR_NO_RESPONSE_COUNT, update motoe state and error_code */
+        if(m->_noMotorResp_count > MAX_MOTOR_NO_RESPONSE_COUNT)
+            goto motor_offline;
+        else goto retry;
+    }
+
+    motor_ok:
+    m->state.is_available = true;
+    m->state.error_code &= ~MOTOR_ERROR_OFFLINE;
+    m->state.error_code &= ~MOTOR_ERROR_HAL_CAN;
+    return 1;
+
+    motor_offline:
+    m->state.error_code |= MOTOR_ERROR_OFFLINE; /*!< Set motor offline error */
+    m->debug_state = MOTOR_OFFLINE;
+    return 0;
+    
+    can_fail:
+    m->state.error_code |= MOTOR_ERROR_HAL_CAN;
+    m->debug_state = CAN_ERROR;
+    return 0;
+}
+
+
+
+bool enable_motor(LegMotor_TypeDef* m){
+    memcpy(m->canTx.data, motor_enable_cmd, sizeof(motor_enable_cmd));
+    if(motor_sendTx_getRx(m)) goto ok;
+    else goto fail;
+
+    ok:
+    m->state.error_code &= ~MOTOR_ERROR_EN;
+    m->debug_state = MOTOR_ENABLED;
+    return 1;
+
+    fail:
+    m->state.error_code |= MOTOR_ERROR_EN;
+    return 0;
+}
+
+bool enable_motor_id(uint8_t id){
+    for(int i=0; i<NUM_OF_LEGS; i++){
+        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+            if(legMotor[i][j].self.params.can_id == id){
+                return enable_motor(&legMotor[i][j]);
+            }
+        }
+    }
+}
+
+void enable_allMotors(){
+    for(int i=0; i<NUM_OF_LEGS; i++){
+        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+            enable_motor(&legMotor[i][j]);
+            osDelay(2);
+        }
+    }
+}
+
+
+bool disable_motor(LegMotor_TypeDef* m){
+    memcpy(m->canTx.data, motor_disable_cmd, sizeof(motor_disable_cmd));
+    if(motor_sendTx_getRx(m)) goto ok;
+    else goto fail;
+
+    ok:
+    m->state.error_code &= ~MOTOR_ERROR_DIS;
+    m->debug_state = MOTOR_DISABLED;
+    return 1;
+
+    fail:
+    m->state.error_code |= MOTOR_ERROR_DIS;
+    return 0;
+}
+
+bool disable_motor_id(uint8_t id){
+    for(int i=0; i<NUM_OF_LEGS; i++){
+        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+            if(legMotor[i][j].self.params.can_id == id){
+                return disable_motor(&legMotor[i][j]);
+            }
+        }
+    }
+}
+
+
+void disable_allMotors(){
+    for(int i=0; i<NUM_OF_LEGS; i++){
+        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+            disable_motor(&legMotor[i][j]);
+        }
+    }
+}
+
+
 
 
 
