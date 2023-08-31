@@ -56,7 +56,9 @@
         "init_leg_motors__type_support.h": "c",
         "init_leg_motors__struct.h": "c",
         "init_leg_motors__functions.h": "c",
-        "leg_motors.h": "c"
+        "leg_motors.h": "c",
+        "cstdlib": "cpp",
+        "coroutine": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": true,

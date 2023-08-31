@@ -18,8 +18,9 @@
                 "/usr/lib/arm-none-eabi/include/c++/9.2.1",
                 "/usr/lib/arm-none-eabi/include/machine",
                 "/usr/lib/arm-none-eabi/include/sys",
-                "${workspaceFolder}/firmware-stm32f407-micro-ros/hyperdog_uros_msgs/include"
-
+                "${workspaceFolder}/firmware-stm32f407-micro-ros/hyperdog_uros_msgs/include",
+                "${workspaceFolder}/build/hyperdog_uros_msgs/rosidl_generator_cpp",
+                "/opt/ros/foxy/include"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

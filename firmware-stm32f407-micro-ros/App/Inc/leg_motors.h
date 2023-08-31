@@ -42,6 +42,8 @@ extern "C"{
 #define MOTOR_ERROR_NOT_READY       (0b10000000000U) /*!< `0x400U`   Motor is not ready to be operated             */
 #define MOTOR_ERROR_INITIAL         (0b00000000111U) /*!< `0x007U`   initial state of the error code               */
 
+
+
 /* motor initialization steps status; 2-bits */
 #define MOTOR_INIT_STATUS_NOT_INITIALIZED  (0b00U)   /* `0x000U` */   
 #define MOTOR_INIT_STATUS_PARAM_SET        (0b01U)   /* `0x001U` */
@@ -143,7 +145,7 @@ void init_legMotors(CAN_HandleTypeDef* hcan,
                     hyperdog_uros_msgs__srv__InitLegMotors_Request* req, 
                     hyperdog_uros_msgs__srv__InitLegMotors_Response* res);
 
-
+void destroy_legMotors();
 
 #ifdef __cplusplus
 }

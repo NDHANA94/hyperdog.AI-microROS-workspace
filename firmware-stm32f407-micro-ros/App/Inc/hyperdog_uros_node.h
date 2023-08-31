@@ -74,7 +74,7 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_TIM6         0b0001100000000 /*!< 6st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM7         0b0001110000000 /*!< 7st timer                  */
 
-#define NODE_HYPERDOG_ERROR_FAILED_SRV1         0b0010000000000 /*!< 1st service                */
+#define NODE_HYPERDOG_ERROR_FAILED_SRV1         0b0010000000000 /*!< initLegMotors service      */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV2         0b0100000000000 /*!< 2st service                */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV3         0b0110000000000 /*!< 3st service                */
 #define NODE_HYPERDOG_ERROR_FAILED_SRV4         0b1000000000000 /*!< 4st service                */
@@ -106,8 +106,8 @@ struct{
     const char*                             srv_name;
     rcl_ret_t                               rcl_ret;
     rclc_service_callback_t                 callback;
-    hyperdog_uros_msgs__srv__InitLegMotors_Request* req;
-    hyperdog_uros_msgs__srv__InitLegMotors_Response* res;
+    hyperdog_uros_msgs__srv__InitLegMotors_Request req_msg;
+    hyperdog_uros_msgs__srv__InitLegMotors_Response res_msg;
 }typedef legMotorsInit_srv_t;
 
 
@@ -133,6 +133,8 @@ void _init_motors_states_publisher();
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 
 void _init_legMotors_srv();
+void _initLegMotors_srv_callback(const void* req, void* res);
+
 void _destroy_hyperdog_node();
 
 

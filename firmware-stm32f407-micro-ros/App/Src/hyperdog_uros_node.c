@@ -29,7 +29,7 @@ void init_hyperdog_node()
         hyperdog_node.rcl_ret = rclc_executor_init(
                                 &hyperdog_node.executor,
                                 &uros.support.context,
-                                1,
+                                2,
                                 &uros.allocator);
         
         /* 3. If no error, init node entities -------------------------------*/
@@ -79,15 +79,15 @@ void _init_legMotors_srv()
 {
     hyperdog_node.initLegMotors_srv.srv_name = "/initlegmotors";
 
-    /// get msg type support
-    const rosidl_message_type_support_t * type_support = 
+    /// get srv type support
+    const rosidl_service_type_support_t * type_support = 
         ROSIDL_GET_SRV_TYPE_SUPPORT(hyperdog_uros_msgs, srv, InitLegMotors);
 
     /// Initiaalize server with default configuration
     hyperdog_node.initLegMotors_srv.rcl_ret = 
         rclc_service_init_default(&hyperdog_node.initLegMotors_srv.service,
                                   &hyperdog_node.node,
-                                  &type_support, 
+                                  type_support, 
                                   hyperdog_node.initLegMotors_srv.srv_name);
     if(hyperdog_node.initLegMotors_srv.rcl_ret != RCL_RET_OK){
         hyperdog_node.state = HYPERDOG_NODE_ERROR;
@@ -97,15 +97,31 @@ void _init_legMotors_srv()
         hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV1;
     }
 
-    // add callback function to the service
-
+    // add server callback to the executor
+    hyperdog_node.initLegMotors_srv.rcl_ret = 
+        rclc_executor_add_service(
+            &hyperdog_node.executor,
+            &hyperdog_node.initLegMotors_srv.service,
+            &hyperdog_node.initLegMotors_srv.req_msg,
+            &hyperdog_node.initLegMotors_srv.res_msg,
+            _initLegMotors_srv_callback);
+    if(hyperdog_node.initLegMotors_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV1;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV1;
+    }
 }
 
 void _initLegMotors_srv_callback(const void* req, void* res)
 {
-    hyperdog_node.initLegMotors_srv.req = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
-    hyperdog_node.initLegMotors_srv.res = (hyperdog_uros_msgs__srv__InitLegMotors_Response*) res;
-
+    hyperdog_uros_msgs__srv__InitLegMotors_Request* req_in = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
+    hyperdog_uros_msgs__srv__InitLegMotors_Response* res_in = (hyperdog_uros_msgs__srv__InitLegMotors_Response*) res;
+    init_legMotors(
+        &hcan1, 
+        req_in,
+        res_in);
 }
 
 
@@ -211,11 +227,18 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
  */
 void _destroy_hyperdog_node(){
     /// first, destroy all the node's entities 
+    //// * destroy executor
     hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.executor);
+    //// * destroy timer
     hyperdog_node.rcl_ret += rcl_timer_fini(&hyperdog_node.motorsStates_pub.timer);
+    //// * destroy motorsStates publisher
     hyperdog_node.rcl_ret += rcl_publisher_fini(
                              &hyperdog_node.motorsStates_pub.publisher,
                              &hyperdog_node.node);
+    //// * destroy initLegMotors service
+    hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.initLegMotors_srv.service, &hyperdog_node.node);
+    
+
     /// TODO: 
 
     /// then destroy the node itself

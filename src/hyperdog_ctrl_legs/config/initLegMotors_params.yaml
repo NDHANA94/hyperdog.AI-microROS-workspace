@@ -1,0 +1,179 @@
+/init_motors_client:
+  ros__parameters:
+  # --------------------FR Leg---------------------------
+  fr:
+    hip_roll:
+      params:
+        can_id: 1
+        position:
+          min: -12.5      # rad
+          max: 12.5       # rad
+        velocity:
+          min: -65.0      # rad/s
+          max: 65.0       # rad/s
+        kp:
+          min: 0.0        #
+          max: 500.0      #
+        kd:
+          min: 0.0        #
+          max: 5.0        #
+        iff:
+          min: -18.0      # A
+          max: 18.0       # A
+      ctrl_limits:
+        position:
+          min: -1.5708    # rad
+          max: 1.5708     # rad
+        velocity: 
+          min: -1.0       # rad/s
+          max: 1.0        # rad/s
+        current:
+          min: -7.0       # A
+          max: 7.0        # A
+
+    hip_pitch:
+        params:
+          can_id: 1
+          position:
+            min: -12.5      # rad
+            max: 12.5       # rad
+          velocity:
+            min: -65.0      # rad/s
+            max: 65.0       # rad/s
+          kp:
+            min: 0.0        #
+            max: 500.0      #
+          kd:
+            min: 0.0        #
+            max: 5.0        #
+          iff:
+            min: -18.0      # A
+            max: 18.0       # A
+        ctrl_limits:
+          position:
+            min: -3.14159    # rad
+            max: 3.14159    # rad
+          velocity: 
+            min: -1.0       # rad/s
+            max: 1.0        # rad/s
+          current:
+            min: -7.0       # A
+            max: 7.0        # A
+
+    knee:
+        params:
+          can_id: 1
+          position:
+            min: -12.5      # rad
+            max: 12.5       # rad
+          velocity:
+            min: -65.0      # rad/s
+            max: 65.0       # rad/s
+          kp:
+            min: 0.0        #
+            max: 500.0      #
+          kd:
+            min: 0.0        #
+            max: 5.0        #
+          iff:
+            min: -18.0      # A
+            max: 18.0       # A
+        ctrl_limits:
+          position:
+            min: 0.261799   # rad   # 15 deg
+            max: 2.96706    # rad   # 170 deg
+          velocity: 
+            min: -1.0       # rad/s
+            max: 1.0        # rad/s
+          current:
+            min: -7.0       # A
+            max: 7.0        # A
+
+  # --------------------FL Leg---------------------------
+  fl:
+    hip_roll:
+      params:
+        can_id: 1
+        position:
+          min: -12.5      # rad
+          max: 12.5       # rad
+        velocity:
+          min: -65.0      # rad/s
+          max: 65.0       # rad/s
+        kp:
+          min: 0.0        #
+          max: 500.0      #
+        kd:
+          min: 0.0        #
+          max: 5.0        #
+        iff:
+          min: -18.0      # A
+          max: 18.0       # A
+      ctrl_limits:
+        position:
+          min: -1.5708    # rad
+          max: 1.5708     # rad
+        velocity: 
+          min: -1.0       # rad/s
+          max: 1.0        # rad/s
+        current:
+          min: -7.0       # A
+          max: 7.0        # A
+
+    hip_pitch:
+        params:
+          can_id: 1
+          position:
+            min: -12.5      # rad
+            max: 12.5       # rad
+          velocity:
+            min: -65.0      # rad/s
+            max: 65.0       # rad/s
+          kp:
+            min: 0.0        #
+            max: 500.0      #
+          kd:
+            min: 0.0        #
+            max: 5.0        #
+          iff:
+            min: -18.0      # A
+            max: 18.0       # A
+        ctrl_limits:
+          position:
+            min: -3.14159    # rad
+            max: 3.14159    # rad
+          velocity: 
+            min: -1.0       # rad/s
+            max: 1.0        # rad/s
+          current:
+            min: -7.0       # A
+            max: 7.0        # A
+
+    knee:
+        params:
+          can_id: 1
+          position:
+            min: -12.5      # rad
+            max: 12.5       # rad
+          velocity:
+            min: -65.0      # rad/s
+            max: 65.0       # rad/s
+          kp:
+            min: 0.0        #
+            max: 500.0      #
+          kd:
+            min: 0.0        #
+            max: 5.0        #
+          iff:
+            min: -18.0      # A
+            max: 18.0       # A
+        ctrl_limits:
+          position:
+            min: 0.261799   # rad   # 15 deg
+            max: 2.96706    # rad   # 170 deg
+          velocity: 
+            min: -1.0       # rad/s
+            max: 1.0        # rad/s
+          current:
+            min: -7.0       # A
+            max: 7.0        # A
