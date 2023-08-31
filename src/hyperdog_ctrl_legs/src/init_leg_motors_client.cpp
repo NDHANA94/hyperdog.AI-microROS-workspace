@@ -3,6 +3,9 @@
 #include "initLegMotorsMsg_config.cpp"
 
 #include "example_interfaces/srv/add_two_ints.hpp"
+#include <string>
+#include <iostream>
+#include <cstdio>
 
 using namespace std::chrono_literals;
 
@@ -35,9 +38,11 @@ int main(int argc, char** argv)
         rclcpp::FutureReturnCode::SUCCESS)
     {
         if(response.get()->done){
-            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "All Leg motors are initialized.");
+            RCLCPP_INFO(rclcpp::get_logger("uros_legMotors"), "All Leg motors are initialized.");
         }else{
-            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Failed to initialize motors");
+            RCLCPP_ERROR(rclcpp::get_logger("uros_legMotors"), "Failed to initialize motors");
+            // const char* error_msg = response.get()->error_msg.data;
+            RCLCPP_ERROR(rclcpp::get_logger("uros_legMotors"), "%s", response.get()->error_msg.data());
         }
     }else{
         RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Failed to call service initlegmotors");

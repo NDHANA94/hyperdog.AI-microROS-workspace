@@ -129,7 +129,7 @@ struct{
     @param data[8]
     @param header 
     @param TxMailBox */
-    CANRxMessage_TypeDef                    canRx;
+    CANRxMessage_TypeDef*                   canRx;
     /* 
     @param data[7] 
     @param header 
@@ -139,7 +139,15 @@ struct{
     enum MOTOR_State                        debug_state;
 }typedef LegMotor_TypeDef;
 
-extern LegMotor_TypeDef** legMotor;
+
+
+
+extern bool motor_objects_created;
+extern bool can_filter_created;
+
+
+extern LegMotor_TypeDef**           legMotor;
+extern CANRxMessage_TypeDef*        canRx;
 
 void init_legMotors(CAN_HandleTypeDef* hcan, 
                     hyperdog_uros_msgs__srv__InitLegMotors_Request* req, 

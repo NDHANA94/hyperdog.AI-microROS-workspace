@@ -118,6 +118,7 @@ void _initLegMotors_srv_callback(const void* req, void* res)
 {
     hyperdog_uros_msgs__srv__InitLegMotors_Request* req_in = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
     hyperdog_uros_msgs__srv__InitLegMotors_Response* res_in = (hyperdog_uros_msgs__srv__InitLegMotors_Response*) res;
+    res_in->error_msg.capacity = 500;
     init_legMotors(
         &hcan1, 
         req_in,

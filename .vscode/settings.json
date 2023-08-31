@@ -58,7 +58,11 @@
         "init_leg_motors__functions.h": "c",
         "leg_motors.h": "c",
         "cstdlib": "cpp",
-        "coroutine": "cpp"
+        "coroutine": "cpp",
+        "sstream": "c",
+        "regex": "c",
+        "*.def": "c",
+        "ranges": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": true,
