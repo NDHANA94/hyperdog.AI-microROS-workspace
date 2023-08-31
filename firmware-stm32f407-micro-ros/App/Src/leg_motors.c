@@ -133,6 +133,25 @@ bool create_motor_objects(LegMotor_TypeDef** m)
     for (int i=0; i<NUM_OF_LEGS; i++){
         legMotor[i] = (LegMotor_TypeDef*)malloc(NUM_OF_JOINTS_PER_LEG * sizeof(LegMotor_TypeDef));
     }
+
+    /* initialize states of the motors, otherwise motorstates publisher goes to error state. */
+    for(int i=0; i<NUM_OF_LEGS; i++){
+        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+            legMotor[i][j].state.error_code = 0;
+            legMotor[i][j].state.is_available = 0;
+            legMotor[i][j].state.is_enabled = 0;
+            legMotor[i][j].state.is_error = 0;
+            legMotor[i][j].state.feedback.can_id = 0;
+            legMotor[i][j].state.feedback.position = 0;
+            legMotor[i][j].state.feedback.velocity = 0;
+            legMotor[i][j].state.feedback.torque = 0;
+            legMotor[i][j].state.feedback.vb = 0;
+            legMotor[i][j].state.status_msg.data = "";
+            legMotor[i][j].state.status_msg.capacity = 200;
+            legMotor[i][j].state.status_msg.size = 0;
+        }
+    }
+
     motor_objects_created = true;
     return 1;
 }
@@ -529,9 +548,10 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
 
     /*  get CAN rx message and filter motor Id  */
     uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
-    
-    if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK)   
+    osDelay(2);
+    if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK){   
         goto can_fail;
+    }
 
     /* If rx msg was sent by the correct motor, save rx data into canRx.data */
     if(rx_data[0] == m->self.params.can_id){
@@ -609,17 +629,23 @@ void enable_allMotors(){
 
 bool disable_motor(LegMotor_TypeDef* m){
     memcpy(m->canTx.data, motor_disable_cmd, sizeof(motor_disable_cmd));
-    if(motor_sendTx_getRx(m)) goto ok;
-    else goto fail;
+    if(motor_sendTx_getRx(m)){ 
+        osDelay(2); 
+        goto ok;}
+    else{
+        goto fail;
+    } 
 
     ok:
     m->state.error_code &= ~MOTOR_ERROR_DIS;
     m->debug_state = MOTOR_DISABLED;
     return 1;
+    
 
     fail:
     m->state.error_code |= MOTOR_ERROR_DIS;
     return 0;
+    
 }
 
 bool disable_motor_id(uint8_t id){
@@ -637,11 +663,24 @@ void disable_allMotors(){
     for(int i=0; i<NUM_OF_LEGS; i++){
         for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
             disable_motor(&legMotor[i][j]);
+            osDelay(2);
         }
     }
 }
 
+bool setzeros_motor_position(LegMotor_TypeDef* m){
+    memcpy(m->canTx.data, motor_setzero_cmd, sizeof(motor_setzero_cmd));
+    if(motor_sendTx_getRx(m)) goto ok;
+    else goto fail;
 
+    ok:
+    m->state.error_code &= ~MOTOR_ERROR_SZ;
+    return 1;
+
+    fail:
+    m->state.error_code |= MOTOR_ERROR_SZ;
+    return 0;
+}
 
 
 

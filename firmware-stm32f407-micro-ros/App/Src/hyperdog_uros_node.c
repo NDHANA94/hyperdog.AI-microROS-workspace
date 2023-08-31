@@ -125,7 +125,7 @@ void _initLegMotors_srv_callback(const void* req, void* res)
         &hcan1, 
         req_in,
         res_in);
-    enable_allMotors();
+    disable_allMotors();
 }
 
 
@@ -193,11 +193,35 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 {
     RCLC_UNUSED(last_call_time);
 
-    if(timer != NULL) {
+    if(timer != NULL && motor_objects_created) {
         /// update msg
-        hyperdog_node.motorsStates_pub.msg.fr_hip_roll.feedback.can_id = 1;
-        hyperdog_node.motorsStates_pub.msg.fr_hip_roll.feedback.position = 1.22434232;
+        if(legMotor[0][0].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fr_hip_roll  = legMotor[0][0].state;
+        if(legMotor[0][1].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fr_hip_pitch = legMotor[0][1].state;
+        if(legMotor[0][1].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fr_knee      = legMotor[0][2].state;
+        
+        if(legMotor[1][0].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fl_hip_roll  = legMotor[1][0].state;
+        if(legMotor[1][1].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fl_hip_pitch = legMotor[1][1].state;
+        if(legMotor[1][2].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.fl_knee      = legMotor[1][2].state;
 
+        if(legMotor[2][0].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rr_hip_roll  = legMotor[2][0].state;
+        if(legMotor[2][1].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rr_hip_pitch = legMotor[2][1].state;
+        if(legMotor[2][2].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rr_knee      = legMotor[2][2].state;
+
+        if(legMotor[3][0].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rl_hip_roll  = legMotor[3][0].state;
+        if(legMotor[3][1].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rl_hip_pitch = legMotor[3][1].state;
+        if(legMotor[3][2].debug_state != MOTOR_INITIALIZED)
+            hyperdog_node.motorsStates_pub.msg.rl_knee      = legMotor[3][2].state;
 
         /// publish msg 
         hyperdog_node.motorsStates_pub.rcl_ret 
