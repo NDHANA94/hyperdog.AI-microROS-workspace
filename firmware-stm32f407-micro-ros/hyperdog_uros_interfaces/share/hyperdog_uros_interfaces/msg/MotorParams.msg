@@ -1,0 +1,6 @@
+uint8 can_id
+hyperdog_uros_interfaces/Limit position
+hyperdog_uros_interfaces/Limit velocity
+hyperdog_uros_interfaces/Limit kp
+hyperdog_uros_interfaces/Limit kd
+hyperdog_uros_interfaces/Limit i_ff

@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_interfaces/msg/LegsCmd.msg
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_interfaces/msg/LegCmd.idl"
+
+module hyperdog_uros_interfaces {
+  module msg {
+    struct LegsCmd {
+      hyperdog_uros_interfaces::msg::LegCmd fr;
+
+      hyperdog_uros_interfaces::msg::LegCmd fl;
+
+      hyperdog_uros_interfaces::msg::LegCmd rr;
+
+      hyperdog_uros_interfaces::msg::LegCmd rl;
+    };
+  };
+};

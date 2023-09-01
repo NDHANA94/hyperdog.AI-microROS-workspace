@@ -1,0 +1,4 @@
+hyperdog_uros_interfaces/LegStates fr
+hyperdog_uros_interfaces/LegStates fl
+hyperdog_uros_interfaces/LegStates rr
+hyperdog_uros_interfaces/LegStates rl

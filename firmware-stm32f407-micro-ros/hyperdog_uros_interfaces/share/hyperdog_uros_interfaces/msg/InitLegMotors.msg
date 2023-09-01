@@ -1,0 +1,15 @@
+hyperdog_uros_interfaces/InitMotor fr_hip_roll
+hyperdog_uros_interfaces/InitMotor fr_hip_pitch
+hyperdog_uros_interfaces/InitMotor fr_knee
+
+hyperdog_uros_interfaces/InitMotor fl_hip_roll
+hyperdog_uros_interfaces/InitMotor fl_hip_pitch
+hyperdog_uros_interfaces/InitMotor fl_knee
+
+hyperdog_uros_interfaces/InitMotor rr_hip_roll
+hyperdog_uros_interfaces/InitMotor rr_hip_pitch
+hyperdog_uros_interfaces/InitMotor rr_knee
+
+hyperdog_uros_interfaces/InitMotor rl_hip_roll
+hyperdog_uros_interfaces/InitMotor rl_hip_pitch
+hyperdog_uros_interfaces/InitMotor rl_knee

@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_interfaces/srv/InitLegMotors.srv
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_interfaces/msg/InitLegMotors.idl"
+
+module hyperdog_uros_interfaces {
+  module srv {
+    struct InitLegMotors_Request {
+      hyperdog_uros_interfaces::msg::InitLegMotors data;
+    };
+    typedef int16 int16__12[12];
+    typedef int8 int8__12[12];
+    struct InitLegMotors_Response {
+      int16__12 error_code;
+
+      int8__12 init_status_code;
+    };
+  };
+};

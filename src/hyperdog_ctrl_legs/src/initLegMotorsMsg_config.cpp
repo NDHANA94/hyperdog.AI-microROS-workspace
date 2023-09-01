@@ -1,4 +1,4 @@
-#include "hyperdog_uros_msgs/msg/init_leg_motors.hpp"
+#include "hyperdog_uros_interfaces/msg/init_leg_motors.hpp"
 #include "rclcpp/rclcpp.hpp"
 
 #include <chrono>
@@ -8,7 +8,7 @@ using namespace std::chrono_literals;
 
 #define MAX_MOTOR_CURRENT       7.0
 
-auto msg = hyperdog_uros_msgs::msg::InitLegMotors();
+auto msg = hyperdog_uros_interfaces::msg::InitLegMotors();
 
 auto get_initLegMotors_reqMsg(){
     /* FR Leg joint motors */

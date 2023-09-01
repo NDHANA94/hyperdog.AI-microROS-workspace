@@ -1,4 +1,0 @@
-uint8 can_id
----
-bool is_set
-string error_msg

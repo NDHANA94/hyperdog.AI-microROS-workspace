@@ -1,4 +1,0 @@
-hyperdog_uros_msgs/LegCmd fr
-hyperdog_uros_msgs/LegCmd fl
-hyperdog_uros_msgs/LegCmd rr
-hyperdog_uros_msgs/LegCmd rl

@@ -37,10 +37,10 @@ extern "C"{
 
 #include "hyperdog_uros_app.h"
 
-#include "hyperdog_uros_msgs/msg/motor_states.h"
-#include "hyperdog_uros_msgs/msg/motors_states.h"
-#include "hyperdog_uros_msgs/srv/init_leg_motors.h"
-#include "hyperdog_uros_msgs/srv/enable_all_motors.h"
+#include "hyperdog_uros_interfaces/msg/motor_states.h"
+#include "hyperdog_uros_interfaces/msg/motors_states.h"
+#include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
+#include "hyperdog_uros_interfaces/srv/enable_all_motors.h"
 
 #define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(10) /*!< 10ms */
 
@@ -94,7 +94,7 @@ enum State{
 typedef void(* motor_states_pub_callback_t)(rcl_timer_t*, int64_t);
 struct{
     rcl_publisher_t                         publisher;
-    hyperdog_uros_msgs__msg__MotorsStates   msg; 
+    hyperdog_uros_interfaces__msg__MotorsStates   msg; 
     rcl_timer_t                             timer; 
     unsigned int                            timer_period; /* Hz */
     rcl_ret_t                               rcl_ret;
@@ -107,8 +107,8 @@ struct{
     const char*                             srv_name;
     rcl_ret_t                               rcl_ret;
     rclc_service_callback_t                 callback;
-    hyperdog_uros_msgs__srv__InitLegMotors_Request req_msg;
-    hyperdog_uros_msgs__srv__InitLegMotors_Response res_msg;
+    hyperdog_uros_interfaces__srv__InitLegMotors_Request req_msg;
+    hyperdog_uros_interfaces__srv__InitLegMotors_Response res_msg;
 }typedef legMotorsInit_srv_t;
 
 struct{
@@ -116,8 +116,8 @@ struct{
     const char*                             srv_name;
     rcl_ret_t                               rcl_ret;
     rclc_service_callback_t                 callback;
-    hyperdog_uros_msgs__srv__EnableAllMotors_Request req_msg;
-    hyperdog_uros_msgs__srv__EnableAllMotors_Response res_msg;
+    hyperdog_uros_interfaces__srv__EnableAllMotors_Request req_msg;
+    hyperdog_uros_interfaces__srv__EnableAllMotors_Response res_msg;
 }typedef enableAllMotors_srv_t;
 
 
@@ -134,7 +134,7 @@ struct
     rcl_ret_t                               rcl_ret;
 }typedef hyperdogUROS_Node_t;
 
-extern hyperdog_uros_msgs__msg__MotorStates motor_states_;
+extern hyperdog_uros_interfaces__msg__MotorStates motor_states_;
 extern hyperdogUROS_Node_t hyperdog_node;
 
 /* function decorators */
@@ -144,7 +144,7 @@ void init_hyperdog_node();
 void _init_motors_states_publisher();
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 
-void _init_legMotors_srv();
+void _init_initLegMotors_srv();
 void _initLegMotors_srv_callback(const void* req, void* res);
 
 void _init_enableAllMotors_srv();

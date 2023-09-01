@@ -209,11 +209,11 @@ C_SOURCES += micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_t
 #############################
 # uros hyperdog custom msg addons
 #############################
-C_INCLUDES += -Ihyperdog_uros_msgs/include 
-CPP_INCLUDES += -Ihyperdog_uros_msgs/include 
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_generator_c.a
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a
+C_INCLUDES += -Ihyperdog_uros_interfaces/include 
+CPP_INCLUDES += -Ihyperdog_uros_interfaces/include 
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_generator_c.a
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_typesupport_c.a
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_typesupport_microxrcedds_c.a
 
 print_cflags:
 	@echo $(CFLAGS)

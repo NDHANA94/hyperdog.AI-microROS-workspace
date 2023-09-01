@@ -11,56 +11,43 @@ uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_ENABLE_CMD;
 uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_DISABLE_CMD;
 uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_SETZERO_CMD;
 
-hyperdog_uros_msgs__srv__InitLegMotors_Response
-check_init_motor_valid(hyperdog_uros_msgs__msg__InitMotor* init_msg)
+uint16_t
+check_init_motor_valid(hyperdog_uros_interfaces__msg__InitMotor* init_msg)
 {
-    hyperdog_uros_msgs__srv__InitLegMotors_Response res;
-    char err_msg[500] = "";
-    res.done = true;
+    uint16_t error_code = 0;
+
     if(init_msg->params.can_id <1 && init_msg->params.can_id > 255){
-        res.done=false;
-        strcat(err_msg, "can_id must be in range of 1~225!\n");
+        error_code |= MOTOR_PARAM_ERROR_CAN_ID;
     }          
     if(init_msg->params.position.min != -init_msg->params.position.max){
-        res.done=false;
-        strcat(err_msg, "max/min position values are not valid!\n");
+        error_code |= MOTOR_PARAM_ERROR_P;
     }     
     if(init_msg->params.velocity.min != -init_msg->params.velocity.max){
-        res.done=false;
-        strcat(err_msg, " max/min velocity values are not valid!\n");
+        error_code |= MOTOR_PARAM_ERROR_V;
     }
     if(init_msg->params.kp.min != 0 && init_msg->params.kp.max != 500 ){
-        res.done=false;
-        strcat(err_msg, "max/min kp values are not valid\n");
+        error_code |= MOTOR_PARAM_ERROR_KP;
     }    
     if(init_msg->params.kd.min != 0 && init_msg->params.kd.max != 5){
-        res.done=false;
-        strcat(err_msg, "max/min kd values are not valid\n");
+        error_code |= MOTOR_PARAM_ERROR_KD;
     }       
     if(init_msg->params.i_ff.min != -init_msg->params.i_ff.max){
-        res.done=false;
-        strcat(err_msg, "max/min i_ff values are not valid\n");
+        error_code |= MOTOR_PARAM_ERROR_IFF;
     }             
 
     if(init_msg->ctrl_limits.position.min < init_msg->params.position.min 
     || init_msg->ctrl_limits.position.max > init_msg->params.position.max){
-        res.done=false;
-        strcat(err_msg, "position ctrl limits of should be within the motor position params!\n");
+        error_code |= MOTOR_PARAM_ERROR_CTRL_P;
     }    
     if(init_msg->ctrl_limits.velocity.min < init_msg->params.velocity.min 
     || init_msg->ctrl_limits.velocity.max > init_msg->params.velocity.max){
-        res.done=false;
-        strcat(err_msg, "velocity ctrl limits should be within the motor velocity params!\n");
+        error_code |= MOTOR_PARAM_ERROR_CTRL_V;
     }   
     if(init_msg->ctrl_limits.current.min < -MAX_MOTOR_CURRENT
     || init_msg->ctrl_limits.current.max > MAX_MOTOR_CURRENT){
-        res.done=false;
-        strcat(err_msg, "motor current ctrl limits should be within max motor current!\n");
-    }      
-    // strcat(err_msg, "NONE\n");
-    res.error_msg.size = strlen(err_msg);
-    res.error_msg.data = err_msg;          
-    return res;
+        error_code |= MOTOR_PARAM_ERROR_CTRL_I;
+    }               
+    return error_code;
 }
 
 
@@ -176,362 +163,239 @@ bool destroy_motor_objects()
  * if one of motors param or ctrl limit is wrong, service response will be an error
  */
 void init_legMotors(CAN_HandleTypeDef* hcan, 
-hyperdog_uros_msgs__srv__InitLegMotors_Request* req, 
-hyperdog_uros_msgs__srv__InitLegMotors_Response* res)
+hyperdog_uros_interfaces__srv__InitLegMotors_Request* req, 
+hyperdog_uros_interfaces__srv__InitLegMotors_Response* res)
 {
     /* create 2D array of legMotor object, [leg][joint] */
     if(!motor_objects_created){create_motor_objects(legMotor);}
-    
-    
-    hyperdog_uros_msgs__srv__InitLegMotors_Response check_res;
 
     /* FR Leg HIP_ROLL joint motor */
-    check_res = check_init_motor_valid(&req->data.fr_hip_roll);
-    if(check_res.done){
+    res->error_code[0] = check_init_motor_valid(&req->data.fr_hip_roll);
+    if(res->error_code[0] == 0){
         legMotor[0][0].self = req->data.fr_hip_roll;
         legMotor[0][0].state.is_error = 0;
         legMotor[0][0].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[0][0], hcan)){
-            legMotor[0][0].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[0][0].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[0][0].debug_state = MOTOR_INITIALIZED;
-            res->done = true;
-        }else{
-            res->done = false;
-            char err_m[500] = "fr_hip_roll:\n";    
-            strcat(err_m, "Failed to config CAN Filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fr_hip_roll:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
-        /* update status, states and error */
         legMotor[0][0].state.is_error = 1;
-        legMotor[0][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[0][0].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[0][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[0] = legMotor[0][0].debug_state;
 
     /* FR Leg HIP_PITCH joint motor */
-    check_res = check_init_motor_valid(&req->data.fr_hip_pitch);
-    if(check_res.done){
+    res->error_code[1] = check_init_motor_valid(&req->data.fr_hip_pitch);
+    if(res->error_code[1] == 0){
         legMotor[0][1].self = req->data.fr_hip_pitch;
         legMotor[0][1].state.is_error = 0;
         legMotor[0][1].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[0][1], hcan)){
-            legMotor[0][1].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[0][1].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[0][1].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "fr_hip_pitch:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fr_hip_pitch:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
-        /* update status, states and error */
         legMotor[0][1].state.is_error = 1;
-        legMotor[0][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[0][1].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[0][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[1] = legMotor[0][1].debug_state;
 
     /* FR Leg KNEE joint motor */
-    check_res = check_init_motor_valid(&req->data.fr_knee);
-    if(check_res.done){
+    res->error_code[2] = check_init_motor_valid(&req->data.fr_knee);
+    if(res->error_code[2] == 0){
         legMotor[0][2].self = req->data.fr_knee;
         legMotor[0][2].state.is_error = 0;
         legMotor[0][2].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[0][2], hcan)){
-            legMotor[0][2].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[0][2].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[0][2].debug_state = MOTOR_INITIALIZED;
-            res->done &= true;
-        }else{
-            res->done = false;
-            char err_m[500] = "fr_knee:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fr_knee:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[0][2].state.is_error = 1;
-        legMotor[0][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[0][2].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[0][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[0][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[2] = legMotor[0][2].debug_state;
 
     /* FL Leg HIP_ROLL joint motor */
-    check_res = check_init_motor_valid(&req->data.fl_hip_roll);
-    if(check_res.done){
+    res->error_code[3] = check_init_motor_valid(&req->data.fl_hip_roll);
+    if(res->error_code[3] == 0){
         legMotor[1][0].self = req->data.fl_hip_roll;
         legMotor[1][0].state.is_error = 0;
         legMotor[1][0].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[1][0], hcan)){
-            legMotor[1][0].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[1][0].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[1][0].debug_state = MOTOR_INITIALIZED;
-            res->done &= true;
-        }else{
-            res->done = false;
-            char err_m[500] = "fl_hip_roll:\n";    
-            strcat(err_m, "Failed to config CAN Filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fl_hip_roll:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[1][0].state.is_error = 1;
-        legMotor[1][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[1][0].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[1][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[3] = legMotor[1][0].debug_state;
 
     /* FL Leg HIP_PITCH joint motor */
-    check_res = check_init_motor_valid(&req->data.fl_hip_pitch);
-    if(check_res.done){
+    res->error_code[4] = check_init_motor_valid(&req->data.fl_hip_pitch);
+    if(res->error_code[4] == 0){
         legMotor[1][1].self = req->data.fl_hip_pitch;  
         legMotor[1][1].state.is_error = 0;
         legMotor[1][1].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[1][1], hcan)){
-            legMotor[1][1].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[1][1].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[1][1].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motors were initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "fl_hip_pitch:\n";    
-            strcat(err_m, "Failed to config CAN Filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fl_hip_pitch:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[1][1].state.is_error = 1;
-        legMotor[1][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[1][1].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[1][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[4] = legMotor[1][1].debug_state;
 
     /* FL Leg KNEE joint motor */
-    check_res = check_init_motor_valid(&req->data.fl_knee);
-    if(check_res.done){
+    res->error_code[5] = check_init_motor_valid(&req->data.fl_knee);
+    if(res->error_code[5] == 0){
         legMotor[1][2].self = req->data.fl_knee;    
         legMotor[1][2].state.is_error = 0;
         legMotor[1][2].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[1][2], hcan)){
-            legMotor[1][2].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[1][2].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[1][2].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "fl_knee:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "fl_knee:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[1][2].state.is_error = 1;
-        legMotor[1][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[1][2].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[1][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[1][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[5] = legMotor[1][2].debug_state;
     
     /* RR Leg HIP_ROLL joint motor */
-    check_res = check_init_motor_valid(&req->data.rr_hip_roll);
-    if(check_init_motor_valid(&req->data.rr_hip_roll).done)     {
+    res->error_code[6] = check_init_motor_valid(&req->data.rr_hip_roll);
+    if(res->error_code[6] == 0)     {
         legMotor[2][0].self = req->data.rr_hip_roll;
         legMotor[2][0].state.is_error = 0;
         legMotor[2][0].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[2][0], hcan)){
-            legMotor[2][0].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[2][0].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[2][0].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rr_hip_roll:\n";    
-            strcat(err_m, "Failed to config CAN Filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rr_hip_roll:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[2][0].state.is_error = 1;
-        legMotor[2][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[2][0].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[2][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[6] = legMotor[2][0].debug_state;
 
     /* RR Leg HIP_PITCH joint motor */
-    check_res = check_init_motor_valid(&req->data.rr_hip_pitch);
-    if(check_res.done){
+    res->error_code[7] = check_init_motor_valid(&req->data.rr_hip_pitch);
+    if(res->error_code[7] == 0){
         legMotor[2][1].self = req->data.rr_hip_pitch;
         legMotor[2][1].state.is_error = 0;
         legMotor[2][1].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[2][1], hcan)){
-            legMotor[2][1].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[2][1].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[2][1].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rr_hip_pitch:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rr_hip_pitch:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[2][1].state.is_error = 1;
-        legMotor[2][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[2][1].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[2][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[7] = legMotor[2][1].debug_state;
 
     /* RR Leg KNEE joint motor */
-    check_res = check_init_motor_valid(&req->data.rr_knee);
-    if(check_res.done){
+    res->error_code[8] = check_init_motor_valid(&req->data.rr_knee);
+    if(res->error_code[8] == 0){
         legMotor[2][2].self = req->data.rr_knee;
         legMotor[2][2].state.is_error = 0;
         legMotor[2][2].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[2][2], hcan)){
-            legMotor[2][2].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[2][2].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[2][2].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rr_knee:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rr_knee:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[2][2].state.is_error = 1;
-        legMotor[2][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[2][2].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[2][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[2][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[8] = legMotor[2][2].debug_state;
 
     /* RL Leg HIP_ROLL joint motor */
-    check_res = check_init_motor_valid(&req->data.rl_hip_roll);
-    if(check_res.done)     {
+    res->error_code[9] = check_init_motor_valid(&req->data.rl_hip_roll);
+    if(res->error_code[9] == 0){
         legMotor[3][0].self = req->data.rl_hip_roll;
         legMotor[3][0].state.is_error = 0;
         legMotor[3][0].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[3][0], hcan)){
-            legMotor[3][0].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[3][0].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[3][0].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rl_hip_roll:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rl_hip_roll:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[3][0].state.is_error = 1;
-        legMotor[3][0].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[3][0].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[3][0].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][0].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[9] = legMotor[3][0].debug_state;
 
     /* RL Leg HIP_PITCH joint motor */
-    check_res = check_init_motor_valid(&req->data.rl_hip_roll);
-    if(check_res.done){
+    res->error_code[10] = check_init_motor_valid(&req->data.rl_hip_roll);
+    if(res->error_code[10] == 0){
         legMotor[3][1].self = req->data.rl_hip_pitch;
         legMotor[3][1].state.is_error = 0;
         legMotor[3][1].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[3][1], hcan)){
-            legMotor[3][1].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[3][1].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[3][1].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rl_hip_pitch:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rl_hip_pitch:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[3][1].state.is_error = 1;
-        legMotor[3][1].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[3][1].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[3][1].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][1].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[10] = legMotor[3][1].debug_state;
+
 
     /* RL Leg KNEE joint motor */
-    check_res = check_init_motor_valid(&req->data.rl_hip_roll);
-    if(check_res.done){
+    res->error_code[11] = check_init_motor_valid(&req->data.rl_hip_roll);
+    if(res->error_code[11] == 0){
         legMotor[3][2].self = req->data.rl_knee;
         legMotor[3][2].state.is_error = 0;
         legMotor[3][2].init_status |= MOTOR_INIT_STATUS_PARAM_SET;
         if(init_motorCAN(&legMotor[3][2], hcan)){
-            legMotor[3][2].state.error_code &= ~ MOTOR_ERROR_NOT_INITIALIZED;
+            legMotor[3][2].state.error_code &= ~ MOTOR_ERROR_PARAM;
             legMotor[3][2].debug_state = MOTOR_INITIALIZED;
-            res->done &= true; /* true, only if the previous motor was initialized successfully */
-        }else{
-            res->done = false;
-            char err_m[500] = "rl_knee:\n";    
-            strcat(err_m, "Failed to config CAN filter");
-            res->error_msg.data = err_m;
         }
     }else{
-        res->done = false;
-        char err_m[500] = "rl_knee:\n";
-        strcat(err_m, check_res.error_msg.data);
-        res->error_msg.data = err_m;
-        res->error_msg.size = strlen(err_m);
         /* update status, states and error */
         legMotor[3][2].state.is_error = 1;
-        legMotor[3][2].state.error_code |= MOTOR_ERROR_NOT_INITIALIZED;
+        legMotor[3][2].state.error_code |= MOTOR_ERROR_PARAM;
         legMotor[3][2].init_status &= ~MOTOR_INIT_STATUS_PARAM_SET;
         legMotor[3][2].debug_state = MOTOR_NOT_INITIALIZED;
     }
+    res->init_status_code[11] = legMotor[3][2].debug_state;
+
 }
 
 
@@ -550,7 +414,7 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
     uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
     osDelay(2);
     if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK){   
-        goto can_fail;
+        goto motor_offline;
     }
 
     /* If rx msg was sent by the correct motor, save rx data into canRx.data */
@@ -617,15 +481,20 @@ bool enable_motor_id(uint8_t id){
     }
 }
 
-void enable_allMotors(){
-    
-    for(int i=0; i<NUM_OF_LEGS; i++){
-        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
-            enable_motor(&legMotor[i][j]);
-            osDelay(2);
+bool enable_allMotors(){
+    if(motor_objects_created){
+        for(int i=0; i<NUM_OF_LEGS; i++){
+            for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+                enable_motor(&legMotor[i][j]);
+                osDelay(2);
+            }
         }
+        return 1;
+    }else{
+        return 0;
     }
 }
+
 
 
 bool disable_motor(LegMotor_TypeDef* m){

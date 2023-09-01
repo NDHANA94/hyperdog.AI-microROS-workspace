@@ -7,11 +7,11 @@ extern "C"{
 
 #include "can.h"
 
-#include "hyperdog_uros_msgs/msg/init_motor.h"
-#include "hyperdog_uros_msgs/msg/init_leg_motors.h"
-#include "hyperdog_uros_msgs/msg/motor_states.h"
-#include "hyperdog_uros_msgs/srv/init_leg_motors.h"
-#include "hyperdog_uros_msgs/msg/motor_cmd.h"
+#include "hyperdog_uros_interfaces/msg/init_motor.h"
+#include "hyperdog_uros_interfaces/msg/init_leg_motors.h"
+#include "hyperdog_uros_interfaces/msg/motor_states.h"
+#include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
+#include "hyperdog_uros_interfaces/msg/motor_cmd.h"
 
 
 #define MAX_MOTOR_CURRENT                7 // A
@@ -29,20 +29,28 @@ extern "C"{
 
 /* Motor error codes; 11 bits*/
 #define MOTOR_ERROR_NONE            (0b00000000000U) /*!< `0x000U`   No error                                      */
-#define MOTOR_ERROR_NOT_INITIALIZED (0b00000000001U) /*!< `0x001U`   motor is not initialized                      */
-#define MOTOR_ERROR_PARAM           (0b00000000010U) /*!< `0x002U`   motor parameter error                         */
-#define MOTOR_ERROR_HAL_CAN         (0b00000000100U) /*!< `0x004U`   HAL_CAN Error                                 */
-#define MOTOR_ERROR_OFFLINE         (0b00000001000U) /*!< `0x008U`   motor is offline / not connected              */
-#define MOTOR_ERROR_OOR             (0b00000010000U) /*!< `0x010U`   Out Of Range error                            */
-#define MOTOR_ERROR_OH              (0b00000100000U) /*!< `0x020U`   Over-Heat error                               */
-#define MOTOR_ERROR_OC              (0b00001000000U) /*!< `0x040U`   Over-Current error                            */
-#define MOTOR_ERROR_EN              (0b00010000000U) /*!< `0x080U`   Failed to enable the motor                    */
-#define MOTOR_ERROR_DIS             (0b00100000000U) /*!< `0x100U`   Failed to diable the motor                    */
-#define MOTOR_ERROR_SZ              (0b01000000000U) /*!< `0x200U`   Failed to set motor zero position             */
-#define MOTOR_ERROR_NOT_READY       (0b10000000000U) /*!< `0x400U`   Motor is not ready to be operated             */
-#define MOTOR_ERROR_INITIAL         (0b00000000111U) /*!< `0x007U`   initial state of the error code               */
+#define MOTOR_ERROR_PARAM           (0b00000000001U) /*!< `0x002U`   motor parameter error                         */
+#define MOTOR_ERROR_HAL_CAN         (0b00000000010U) /*!< `0x004U`   HAL_CAN Error                                 */
+#define MOTOR_ERROR_OFFLINE         (0b00000000100U) /*!< `0x008U`   motor is offline / not connected              */
+#define MOTOR_ERROR_OOR             (0b00000001000U) /*!< `0x010U`   Out Of Range error                            */
+#define MOTOR_ERROR_OH              (0b00000010000U) /*!< `0x020U`   Over-Heat error                               */
+#define MOTOR_ERROR_OC              (0b00000100000U) /*!< `0x040U`   Over-Current error                            */
+#define MOTOR_ERROR_EN              (0b00001000000U) /*!< `0x080U`   Failed to enable the motor                    */
+#define MOTOR_ERROR_DIS             (0b00010000000U) /*!< `0x100U`   Failed to diable the motor                    */
+#define MOTOR_ERROR_SZ              (0b00100000000U) /*!< `0x200U`   Failed to set motor zero position             */
+#define MOTOR_ERROR_NOT_READY       (0b01000000000U) /*!< `0x400U`   Motor is not ready to be operated             */
+#define MOTOR_ERROR_INITIAL         (0b00000000011U) /*!< `0x007U`   initial state of the error code               */
 
-
+/* motor initialization parameter error */
+#define MOTOR_PARAM_ERROR_CAN_ID    (0b000000001U) /*!< can id must be in range of 1~225                            */
+#define MOTOR_PARAM_ERROR_P         (0b000000010U) /*!< Motor position parameters are not valid                     */
+#define MOTOR_PARAM_ERROR_V         (0b000000100U) /*!< Motor velocity parameters are not valid                     */
+#define MOTOR_PARAM_ERROR_KP        (0b000001000U) /*!< Motor kp parameters are not valid                           */
+#define MOTOR_PARAM_ERROR_KD        (0b000010000U) /*!< Motor kd parameters are not valid                           */
+#define MOTOR_PARAM_ERROR_IFF       (0b000100000U) /*!< Motor i_ff parameters are not valid */
+#define MOTOR_PARAM_ERROR_CTRL_P    (0b001000000U) /*!< position ctrl limits of should be within the motor position params */
+#define MOTOR_PARAM_ERROR_CTRL_V    (0b010000000U) /*!< position ctrl limits of should be within the motor position params */
+#define MOTOR_PARAM_ERROR_CTRL_I    (0b100000000U) /*!< position ctrl limits of should be within the motor position params */
 
 /* motor initialization steps status; 2-bits */
 #define MOTOR_INIT_STATUS_NOT_INITIALIZED  (0b00U)   /* `0x000U` */   
@@ -108,7 +116,7 @@ struct{
     @param joint Joint index (HIP_ROLL=0, HIP_PITCH=1, KNEE=2)
     @param params Parameters of the motor (position.min, position.max, velocity.min, velocity.max, kp.min, kp.max, kd.min, kd.max, iff.min, iff.max)
     @param ctrl_limits To set limits for joint position, joint velocity and motor current */
-    hyperdog_uros_msgs__msg__InitMotor      self;   
+    hyperdog_uros_interfaces__msg__InitMotor      self;   
     /*
     @param is_available 
     @param is_enabled
@@ -116,14 +124,14 @@ struct{
     @param error_code
     @param status_msg
     @param feedback id, position, velocity, torque and vb of th motor */
-    hyperdog_uros_msgs__msg__MotorStates    state; 
+    hyperdog_uros_interfaces__msg__MotorStates    state; 
     /* 
     @param p_des desire position
     @param v_des desire velocity
     @param kp stiffness
     @param kd damping
     @param i_ff feed forward current */
-    hyperdog_uros_msgs__msg__MotorCmd       cmd;
+    hyperdog_uros_interfaces__msg__MotorCmd       cmd;
     /* 
     Pointer to the  `CAN HandleTypeDef`*/
     CAN_HandleTypeDef*                      hcan; 
@@ -156,12 +164,12 @@ extern LegMotor_TypeDef**           legMotor;
 extern CANRxMessage_TypeDef         canRx;
 
 void init_legMotors(CAN_HandleTypeDef* hcan, 
-                    hyperdog_uros_msgs__srv__InitLegMotors_Request* req, 
-                    hyperdog_uros_msgs__srv__InitLegMotors_Response* res);
+                    hyperdog_uros_interfaces__srv__InitLegMotors_Request* req, 
+                    hyperdog_uros_interfaces__srv__InitLegMotors_Response* res);
 
 bool enable_motor(LegMotor_TypeDef* m);
 bool enable_motor_id(uint8_t id);
-void enable_allMotors();
+bool enable_allMotors();
 bool disable_motor(LegMotor_TypeDef* m);
 bool disable_motor_id(uint8_t id);
 void disable_allMotors();

@@ -18,7 +18,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(hyperdog_uros_msgs REQUIRED)
+find_package(hyperdog_uros_interfaces REQUIRED)
 
 install(DIRECTORY
   src
@@ -33,7 +33,7 @@ target_include_directories(initmotors_client PUBLIC
 ament_target_dependencies(
   initmotors_client 
   rclcpp 
-  hyperdog_uros_msgs
+  hyperdog_uros_interfaces
 )
 
 install(TARGETS initmotors_client
@@ -46,7 +46,7 @@ install(TARGETS initmotors_client
   ament_target_dependencies(
     enableAllMotors_client 
     rclcpp 
-    hyperdog_uros_msgs
+    hyperdog_uros_interfaces
   )
   
   install(TARGETS enableAllMotors_client
