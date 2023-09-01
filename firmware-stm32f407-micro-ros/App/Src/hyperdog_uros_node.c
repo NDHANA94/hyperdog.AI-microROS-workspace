@@ -90,6 +90,7 @@ void _init_legMotors_srv()
         ROSIDL_GET_SRV_TYPE_SUPPORT(hyperdog_uros_msgs, srv, InitLegMotors);
 
     /// Initiaalize server with default configuration
+    
     hyperdog_node.initLegMotors_srv.rcl_ret = 
         rclc_service_init_default(&hyperdog_node.initLegMotors_srv.service,
                                   &hyperdog_node.node,
@@ -180,56 +181,60 @@ void _init_enableAllMotors_srv()
 void _enableAllMotors_srv_callback(const void* req, void* res){
     hyperdog_uros_msgs__srv__EnableAllMotors_Request* req_in = (hyperdog_uros_msgs__srv__EnableAllMotors_Request*) req;
     hyperdog_uros_msgs__srv__EnableAllMotors_Response* res_in = (hyperdog_uros_msgs__srv__EnableAllMotors_Response*) res;
-    res_in->error_msg.capacity = 500;
+    res_in->error_msg.capacity = 200;
 
     if (req_in->enable == true)
+    {
         enable_allMotors();
-    
-    char err_m[500] = "";
+        char err_m[500] = "";
 
-    // for(int i=0; i<NUM_OF_LEGS; i++){
-    //     for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
-    //         if(legMotor[i][j].debug_state == MOTOR_ENABLED){
-    //             res_in->is_enabled = true;
-    //         }else{
-    //             res_in->is_enabled = false;
-    //             switch (i+j){
-    //             case 0:strcat(err_m, "fr_hip_roll:\n")  ;break;
-    //             case 1:strcat(err_m, "fr_hip_pitch:\n") ;break;
-    //             case 2:strcat(err_m, "fr_knee:\n")      ;break;
-    //             case 3:strcat(err_m, "fl_hip_roll:\n")  ;break;
-    //             case 4:strcat(err_m, "fl_hip_pitch:\n") ;break;
-    //             case 5:strcat(err_m, "fl_knee:\n")      ;break;
-    //             case 6:strcat(err_m, "rr_hip_roll:\n")  ;break;
-    //             case 7:strcat(err_m, "rr_hip_pitch:\n") ;break;
-    //             case 8:strcat(err_m, "rr_knee:\n")      ;break;
-    //             case 9:strcat(err_m, "rl_hip_roll:\n")  ;break;
-    //             case 10:strcat(err_m, "rl_hip_pitch:\n");break;
-    //             case 11:strcat(err_m, "rl_knee:\n")     ;break;
-    //             default:break;}
-                
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_NOT_INITIALIZED)==MOTOR_ERROR_NOT_INITIALIZED)
-    //                 strcat(err_m, "motor is not initialized.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_PARAM)==MOTOR_ERROR_PARAM)
-    //                 strcat(err_m, "motor params error.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_HAL_CAN)==MOTOR_ERROR_HAL_CAN)
-    //                 strcat(err_m, "HAL CAN error.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OFFLINE)==MOTOR_ERROR_OFFLINE)
-    //                 strcat(err_m, "Motor is not online.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OOR)==MOTOR_ERROR_OOR)
-    //                 strcat(err_m, "Motor position is out of range.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OH)==MOTOR_ERROR_OH)
-    //                 strcat(err_m, "Motor is over-heated.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OC)==MOTOR_ERROR_OC)
-    //                 strcat(err_m, "Motor is using over curent.\n");
-    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_EN)==MOTOR_ERROR_EN)
-    //                 strcat(err_m, "Failed to enable.\n");
-                
-    //         }
-    //     }
-    // }
-    res_in->error_msg.size = strlen(err_m);
-    res_in->error_msg.data = err_m;
+        for(int i=0; i<NUM_OF_LEGS; i++){
+            for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+                if(legMotor[i][j].debug_state == MOTOR_ENABLED){
+                    res_in->is_enabled = true;
+                }else{
+                    res_in->is_enabled = false;
+                    switch (i+j){
+                    case 0:strcat(err_m, "fr_hip_roll:\n")  ;break;
+                    case 1:strcat(err_m, "fr_hip_pitch:\n") ;break;
+                    case 2:strcat(err_m, "fr_knee:\n")      ;break;
+                    case 3:strcat(err_m, "fl_hip_roll:\n")  ;break;
+                    case 4:strcat(err_m, "fl_hip_pitch:\n") ;break;
+                    case 5:strcat(err_m, "fl_knee:\n")      ;break;
+                    case 6:strcat(err_m, "rr_hip_roll:\n")  ;break;
+                    case 7:strcat(err_m, "rr_hip_pitch:\n") ;break;
+                    case 8:strcat(err_m, "rr_knee:\n")      ;break;
+                    case 9:strcat(err_m, "rl_hip_roll:\n")  ;break;
+                    case 10:strcat(err_m, "rl_hip_pitch:\n");break;
+                    case 11:strcat(err_m, "rl_knee:\n")     ;break;
+                    default:break;}
+                    
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_NOT_INITIALIZED)==MOTOR_ERROR_NOT_INITIALIZED)
+                        strcat(err_m, "motor is not initialized.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_PARAM)==MOTOR_ERROR_PARAM)
+                        strcat(err_m, "motor params error.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_HAL_CAN)==MOTOR_ERROR_HAL_CAN)
+                        strcat(err_m, "HAL CAN error.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_OFFLINE)==MOTOR_ERROR_OFFLINE)
+                        strcat(err_m, "Motor is not online.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_OOR)==MOTOR_ERROR_OOR)
+                        strcat(err_m, "Motor position is out of range.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_OH)==MOTOR_ERROR_OH)
+                        strcat(err_m, "Motor is over-heated.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_OC)==MOTOR_ERROR_OC)
+                        strcat(err_m, "Motor is using over curent.\n");
+                    if((legMotor[i][j].state.error_code & MOTOR_ERROR_EN)==MOTOR_ERROR_EN)
+                        strcat(err_m, "Failed to enable.\n");
+                    
+                }
+            }
+        }
+        res_in->error_msg.size = strlen(err_m);
+        res_in->error_msg.data = err_m;
+    }
+        
+    
+    
 }
 
 

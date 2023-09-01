@@ -207,7 +207,7 @@ C_SOURCES += micro_ros_stm32cubemx_utils/extra_sources/microros_time.c
 C_SOURCES += micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_transport.c
 
 #############################
-# uros custom msg addons
+# uros hyperdog custom msg addons
 #############################
 C_INCLUDES += -Ihyperdog_uros_msgs/include 
 CPP_INCLUDES += -Ihyperdog_uros_msgs/include 

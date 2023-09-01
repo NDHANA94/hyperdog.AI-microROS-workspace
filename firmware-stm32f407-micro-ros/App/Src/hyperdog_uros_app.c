@@ -21,7 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,   
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE             |
 SOFTWARE.                                                                                 |
                                                                                           |
-==========================================================================================*/
+==========================================================================================
+
+
+libmicroros.a is built with following colcon.meta configurations;
+"-DRMW_UXRCE_MAX_NODES=1",
+"-DRMW_UXRCE_MAX_PUBLISHERS=10",
+"-DRMW_UXRCE_MAX_SUBSCRIPTIONS=5",
+"-DRMW_UXRCE_MAX_SERVICES=15",
+"-DRMW_UXRCE_MAX_CLIENTS=1",
+"-DRMW_UXRCE_MAX_HISTORY=4"
+
+*/
 
 #include "hyperdog_uros_app.h"
 #include "hyperdog_uros_node.h"
