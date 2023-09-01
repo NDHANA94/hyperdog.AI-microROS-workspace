@@ -23,14 +23,14 @@ std::string motor_name_[12] = {"fr_hip_roll ", "fr_hip_pitch", "fr_knee     ",
                                "rr_hip_roll ", "rr_hip_pitch", "rr_knee     ",
                                "rl_hip_roll ", "rl_hip_pitch", "rl_knee     "};
 
-std::string error_list[8] = {"motor parameter error",
-                             "HAL_CAN Error",
-                             "motor is offline / not connected",
-                             "Motor position is out of range",
-                             "Motor is over heated",
-                             "Motor has over-current error",
-                             "Failed to enable the motor",
-                             "Motor is NOT INITIALIZED, please initialize motors before enabling!"};
+std::string error_list[8] = {"motor parameter error !",
+                             "HAL_CAN Error !",
+                             "motor is offline / not connected !",
+                             "Motor position is out of range !",
+                             "Motor is over heated !",
+                             "Motor has over-current error !",
+                             "Failed to enable the motor !",
+                             "Motor is NOT INITIALIZED, please initialize motors before enabling !" };
 
 
 
@@ -82,7 +82,9 @@ int main(int argc, char** argv)
                         RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[4]);
                     if((res.get()->error_code[i] & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
                         RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[5]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_EN) == MOTOR_ERROR_EN)
+                    
+                    // if everything is ok, but not enabled:
+                    if((res.get()->error_code[i] & 0b1111111) == MOTOR_ERROR_EN)
                         RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[6]);
                 }
             }
