@@ -287,13 +287,10 @@ void _init_motors_states_publisher()
     }
 
     /// initialize timer callback       
-
     ///   * set callback function
     hyperdog_node.motorsStates_pub.callback = _motors_states_timer_callback;
-
     ///   * set timer period           
     hyperdog_node.motorsStates_pub.timer_period = MOTORS_STATES_PUB_TIMER_PERIOD_NS;
-
     ///   * initialize timer object    
     hyperdog_node.motorsStates_pub.rcl_ret 
         = rclc_timer_init_default(
@@ -301,7 +298,6 @@ void _init_motors_states_publisher()
             &uros.support,
             hyperdog_node.motorsStates_pub.timer_period,
             hyperdog_node.motorsStates_pub.callback);
-
     ///   * Add to the executor        
     if(hyperdog_node.motorsStates_pub.rcl_ret == RCL_RET_OK){
         hyperdog_node.motorsStates_pub.rcl_ret 
