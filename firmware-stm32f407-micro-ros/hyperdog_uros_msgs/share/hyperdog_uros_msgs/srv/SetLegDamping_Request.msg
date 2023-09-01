@@ -1,2 +1,0 @@
-string[<=2] leg # FR, FL, RR, RL
-float64[3] damping# 0-500 | [x, y, z]

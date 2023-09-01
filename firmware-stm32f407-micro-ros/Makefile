@@ -29,16 +29,17 @@ OPT = -Og
 # paths
 #######################################
 # Build path
-BUILD_DIR = build_firmware
+BUILD_DIR = Build
 
 ######################################
 # source
 ######################################
 # C sources
 C_SOURCES =  \
-App/Src/uros_tasks.c \
+App/Src/hyperdog_uros_app.c \
+APP/hyperdog_uros_node.c \
+APP/leg_motors.c \
 App/Src/error_indicator.c \
-App/Src/minicheetah_motor.c \
 Core/Src/main.c \
 Core/Src/gpio.c \
 Core/Src/freertos.c \
@@ -206,13 +207,13 @@ C_SOURCES += micro_ros_stm32cubemx_utils/extra_sources/microros_time.c
 C_SOURCES += micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_transport.c
 
 #############################
-# uros custom msg addons
+# uros hyperdog custom msg addons
 #############################
-C_INCLUDES += -Ihyperdog_uros_msgs/include 
-CPP_INCLUDES += -Ihyperdog_uros_msgs/include 
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_generator_c.a
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_c.a
-LDFLAGS += hyperdog_uros_msgs/lib/libhyperdog_uros_msgs__rosidl_typesupport_microxrcedds_c.a
+C_INCLUDES += -Ihyperdog_uros_interfaces/include 
+CPP_INCLUDES += -Ihyperdog_uros_interfaces/include 
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_generator_c.a
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_typesupport_c.a
+LDFLAGS += hyperdog_uros_interfaces/lib/libhyperdog_uros_interfaces__rosidl_typesupport_microxrcedds_c.a
 
 print_cflags:
 	@echo $(CFLAGS)

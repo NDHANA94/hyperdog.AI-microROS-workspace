@@ -8,7 +8,7 @@
         {
             "name": "JLink launch",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -39,7 +39,7 @@
         {
             "name": "JLink attach",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -70,7 +70,7 @@
         {
             "name": "STlink launch",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "stutil",
@@ -85,7 +85,7 @@
         {
             "name": "STlink attach",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "stutil",

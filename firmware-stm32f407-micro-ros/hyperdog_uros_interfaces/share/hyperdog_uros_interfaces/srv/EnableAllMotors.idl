@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_interfaces/srv/EnableAllMotors.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_interfaces {
+  module srv {
+    struct EnableAllMotors_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    typedef int16 int16__12[12];
+    struct EnableAllMotors_Response {
+      int16__12 error_code;
+    };
+  };
+};

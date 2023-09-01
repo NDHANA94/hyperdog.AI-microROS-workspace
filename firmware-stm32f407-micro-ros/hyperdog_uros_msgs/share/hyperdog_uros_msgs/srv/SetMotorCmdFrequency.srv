@@ -1,4 +1,0 @@
-float64 frequency
----
-bool is_set
-string error_msg

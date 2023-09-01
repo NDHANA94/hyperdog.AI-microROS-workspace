@@ -1,0 +1,15 @@
+hyperdog_uros_interfaces/MotorStates fr_hip_roll
+hyperdog_uros_interfaces/MotorStates fr_hip_pitch
+hyperdog_uros_interfaces/MotorStates fr_knee
+
+hyperdog_uros_interfaces/MotorStates fl_hip_roll
+hyperdog_uros_interfaces/MotorStates fl_hip_pitch
+hyperdog_uros_interfaces/MotorStates fl_knee
+
+hyperdog_uros_interfaces/MotorStates rr_hip_roll
+hyperdog_uros_interfaces/MotorStates rr_hip_pitch
+hyperdog_uros_interfaces/MotorStates rr_knee
+
+hyperdog_uros_interfaces/MotorStates rl_hip_roll
+hyperdog_uros_interfaces/MotorStates rl_hip_pitch
+hyperdog_uros_interfaces/MotorStates rl_knee

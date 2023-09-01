@@ -8,7 +8,7 @@
         {
             "name": "JLink launch",
             "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
-            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build_firmware/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -39,7 +39,7 @@
         {
             "name": "JLink attach",
             "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
-            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build_firmware/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "jlink",
@@ -70,7 +70,7 @@
         {
             "name": "STlink launch",
             "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros/",
-            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build_firmware/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "stutil",
@@ -85,7 +85,7 @@
         {
             "name": "STlink attach",
             "cwd": "${workspaceRoot}/firmware-stm32f407-micro-ros",
-            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/build_firmware/hyperdog_ai-uros-controller-stm32f4.elf",
+            "executable": "${workspaceRoot}/firmware-stm32f407-micro-ros/Build/hyperdog_ai-uros-controller-stm32f4.elf",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "stutil",

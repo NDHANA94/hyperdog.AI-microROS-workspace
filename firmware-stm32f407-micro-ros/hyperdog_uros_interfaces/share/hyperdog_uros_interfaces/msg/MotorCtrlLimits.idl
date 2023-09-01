@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_interfaces/msg/MotorCtrlLimits.msg
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_interfaces/msg/Limit.idl"
+
+module hyperdog_uros_interfaces {
+  module msg {
+    struct MotorCtrlLimits {
+      @verbatim (language="comment", text=
+        "[min, max]")
+      hyperdog_uros_interfaces::msg::Limit position;
+
+      @verbatim (language="comment", text=
+        "[min, max]")
+      hyperdog_uros_interfaces::msg::Limit velocity;
+
+      @verbatim (language="comment", text=
+        "[min, max]")
+      hyperdog_uros_interfaces::msg::Limit current;
+    };
+  };
+};

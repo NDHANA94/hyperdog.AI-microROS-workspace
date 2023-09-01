@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from hyperdog_uros_interfaces/srv/DisableMotor2.srv
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_interfaces {
+  module srv {
+    struct DisableMotor2_Request {
+      uint8 can_id;
+    };
+    struct DisableMotor2_Response {
+      int16 error_code;
+    };
+  };
+};

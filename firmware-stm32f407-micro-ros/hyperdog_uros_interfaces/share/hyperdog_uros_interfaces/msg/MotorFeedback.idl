@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_interfaces/msg/MotorFeedback.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_interfaces {
+  module msg {
+    struct MotorFeedback {
+      uint8 can_id;
+
+      double position;
+
+      double velocity;
+
+      double torque;
+
+      double vb;
+    };
+  };
+};
