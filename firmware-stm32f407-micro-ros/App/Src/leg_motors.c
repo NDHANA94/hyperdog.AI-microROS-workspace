@@ -439,16 +439,20 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
 
     motor_ok:
     m->state.is_available = true;
+    m->state.is_error = false;
     m->state.error_code &= ~MOTOR_ERROR_OFFLINE;
     m->state.error_code &= ~MOTOR_ERROR_HAL_CAN;
     return 1;
 
     motor_offline:
+    m->state.is_available = false;
+    m->state.is_error = true;
     m->state.error_code |= MOTOR_ERROR_OFFLINE; /*!< Set motor offline error */
     m->debug_state = MOTOR_OFFLINE;
     return 0;
     
     can_fail:
+    m->state.is_error = true;
     m->state.error_code |= MOTOR_ERROR_HAL_CAN;
     m->debug_state = CAN_ERROR;
     return 0;
@@ -462,11 +466,13 @@ bool enable_motor(LegMotor_TypeDef* m){
     else goto fail;
 
     ok:
+    if(m->state.is_available) m->state.is_enabled = true;
     m->state.error_code &= ~MOTOR_ERROR_EN;
     m->debug_state = MOTOR_ENABLED;
     return 1;
 
     fail:
+    if(m->state.is_available) m->state.is_enabled = false;
     m->state.error_code |= MOTOR_ERROR_EN;
     return 0;
 }
@@ -507,12 +513,14 @@ bool disable_motor(LegMotor_TypeDef* m){
     } 
 
     ok:
+    if(m->state.is_available) m->state.is_enabled = false;
     m->state.error_code &= ~MOTOR_ERROR_DIS;
     m->debug_state = MOTOR_DISABLED;
     return 1;
     
 
     fail:
+    if(m->state.is_available) m->state.is_enabled = true;
     m->state.error_code |= MOTOR_ERROR_DIS;
     return 0;
     

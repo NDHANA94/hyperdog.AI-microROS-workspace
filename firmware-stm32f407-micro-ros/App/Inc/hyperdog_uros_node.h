@@ -41,6 +41,7 @@ extern "C"{
 #include "hyperdog_uros_interfaces/msg/motors_states.h"
 #include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
 #include "hyperdog_uros_interfaces/srv/enable_all_motors.h"
+#include "hyperdog_uros_interfaces/srv/disable_all_motors.h"
 
 #define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(10) /*!< 10ms */
 
@@ -120,6 +121,14 @@ struct{
     hyperdog_uros_interfaces__srv__EnableAllMotors_Response res_msg;
 }typedef enableAllMotors_srv_t;
 
+struct{
+    rcl_service_t                           service;
+    const char*                             srv_name;
+    rcl_ret_t                               rcl_ret;
+    rclc_service_callback_t                 callback;
+    hyperdog_uros_interfaces__srv__DisableAllMotors_Request req_msg;
+    hyperdog_uros_interfaces__srv__DisableAllMotors_Response res_msg;
+}typedef disableAllMotors_srv_t;
 
 
 struct
@@ -128,6 +137,7 @@ struct
     rclc_executor_t                         executor;
     legMotorsInit_srv_t                     initLegMotors_srv;
     enableAllMotors_srv_t                   enableAllMotors_srv;
+    disableAllMotors_srv_t                  disableAllMotors_srv;
     motorStates_publisher_t                 motorsStates_pub;
     enum State                              state;
     uint16_t                                error_code;             /* 13-bits error-code*/
@@ -149,6 +159,9 @@ void _initLegMotors_srv_callback(const void* req, void* res);
 
 void _init_enableAllMotors_srv();
 void _enableAllMotors_srv_callback(const void* req, void* res);
+
+void _init_disableAllMotors_srv();
+void _disableAllMotors_srv_callback(const void* req, void* res);
 
 void _destroy_hyperdog_node();
 
