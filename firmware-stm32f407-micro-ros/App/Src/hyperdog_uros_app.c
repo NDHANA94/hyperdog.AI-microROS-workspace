@@ -41,8 +41,7 @@ int start_HyperDog_UROS_APP(UART_HandleTypeDef* huart)
     if(initMicroROS(huart)){
         /* Initialize node 1 ----------------------------------------*/
         init_hyperdog_node();
-        rclc_executor_spin(&hyperdog_node.executor);
-
+        rcl_ret_t ret = rclc_executor_spin(&hyperdog_node.executor);
         /* clean ---------------------------------------------------*/
         _destroy_hyperdog_node();
         return 0;

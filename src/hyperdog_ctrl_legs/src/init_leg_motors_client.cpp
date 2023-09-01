@@ -2,7 +2,6 @@
 #include "hyperdog_uros_msgs/srv/init_leg_motors.hpp"
 #include "initLegMotorsMsg_config.cpp"
 
-#include "example_interfaces/srv/add_two_ints.hpp"
 #include <string>
 #include <iostream>
 #include <cstdio>

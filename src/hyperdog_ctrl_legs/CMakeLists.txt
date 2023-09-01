@@ -39,6 +39,19 @@ ament_target_dependencies(
 install(TARGETS initmotors_client
   DESTINATION lib/${PROJECT_NAME})
 
+  add_executable(enableAllMotors_client src/enable_all_motors_client.cpp)
+  target_include_directories(enableAllMotors_client PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+  ament_target_dependencies(
+    enableAllMotors_client 
+    rclcpp 
+    hyperdog_uros_msgs
+  )
+  
+  install(TARGETS enableAllMotors_client
+    DESTINATION lib/${PROJECT_NAME})
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

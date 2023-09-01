@@ -27,11 +27,14 @@ void init_hyperdog_node()
     {
         hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_INIT; //update error code
 
+        hyperdog_node.executor = rclc_executor_get_zero_initialized_executor();
         hyperdog_node.rcl_ret = rclc_executor_init(
                                 &hyperdog_node.executor,
                                 &uros.support.context,
-                                2,
+                                3,
                                 &uros.allocator);
+        
+
         
         /* 3. If no error, init node entities -------------------------------*/
         if(hyperdog_node.rcl_ret == RCL_RET_OK)
@@ -44,7 +47,9 @@ void init_hyperdog_node()
 
 
             /* - init services --------------------------------*/
-            _init_legMotors_srv();
+             _init_legMotors_srv();
+            _init_enableAllMotors_srv();
+           
 
 
             /* - init timers ----------------------------------*/
@@ -72,7 +77,7 @@ void init_hyperdog_node()
 
 
 /* ================================================================================== */
-/*                         INIT LEG MOTORS SERVICE                                    */
+/*                         INIT LEG MOTORS SERVER                                     */
 /* ================================================================================== */
 
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
@@ -99,6 +104,7 @@ void _init_legMotors_srv()
     }
 
     // add server callback to the executor
+    hyperdog_node.initLegMotors_srv.res_msg.error_msg.capacity = 100;
     hyperdog_node.initLegMotors_srv.rcl_ret = 
         rclc_executor_add_service(
             &hyperdog_node.executor,
@@ -120,12 +126,110 @@ void _initLegMotors_srv_callback(const void* req, void* res)
 {
     hyperdog_uros_msgs__srv__InitLegMotors_Request* req_in = (hyperdog_uros_msgs__srv__InitLegMotors_Request*) req;
     hyperdog_uros_msgs__srv__InitLegMotors_Response* res_in = (hyperdog_uros_msgs__srv__InitLegMotors_Response*) res;
-    res_in->error_msg.capacity = 500;
+    res_in->error_msg.capacity = 100;
     init_legMotors(
         &hcan1, 
         req_in,
         res_in);
-    disable_allMotors();
+    // disable_allMotors();
+}
+
+
+/* ================================================================================== */
+/*                         ENABLE_ALL_MOTORS SERVER                                   */
+/* ================================================================================== */
+
+/* ------------------------- INITIATE THE SERVICE ------------------------------- */
+void _init_enableAllMotors_srv()
+{
+    hyperdog_node.enableAllMotors_srv.srv_name = "/enableallmotors";
+
+    /// Initiaalize server with default configuration
+    hyperdog_node.enableAllMotors_srv.rcl_ret = 
+        rclc_service_init_default(&hyperdog_node.enableAllMotors_srv.service,
+                          &hyperdog_node.node,
+                          ROSIDL_GET_SRV_TYPE_SUPPORT(hyperdog_uros_msgs, srv, EnableAllMotors), 
+                          hyperdog_node.enableAllMotors_srv.srv_name);
+    if(hyperdog_node.enableAllMotors_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV2;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV2;
+    }
+
+    // add server callback to the executor
+    hyperdog_node.enableAllMotors_srv.res_msg.error_msg.capacity = 100;
+    hyperdog_node.enableAllMotors_srv.rcl_ret = 
+        rclc_executor_add_service(
+            &hyperdog_node.executor,
+            &hyperdog_node.enableAllMotors_srv.service,
+            &hyperdog_node.enableAllMotors_srv.req_msg,
+            &hyperdog_node.enableAllMotors_srv.res_msg,
+            _enableAllMotors_srv_callback);
+    if(hyperdog_node.enableAllMotors_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV2;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV2;
+    }
+}
+
+/* ------------------ ENABLE ALL MOTORS SERVER CALLBACK ----------------------- */
+void _enableAllMotors_srv_callback(const void* req, void* res){
+    hyperdog_uros_msgs__srv__EnableAllMotors_Request* req_in = (hyperdog_uros_msgs__srv__EnableAllMotors_Request*) req;
+    hyperdog_uros_msgs__srv__EnableAllMotors_Response* res_in = (hyperdog_uros_msgs__srv__EnableAllMotors_Response*) res;
+    res_in->error_msg.capacity = 500;
+
+    if (req_in->enable == true)
+        enable_allMotors();
+    
+    char err_m[500] = "";
+
+    // for(int i=0; i<NUM_OF_LEGS; i++){
+    //     for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+    //         if(legMotor[i][j].debug_state == MOTOR_ENABLED){
+    //             res_in->is_enabled = true;
+    //         }else{
+    //             res_in->is_enabled = false;
+    //             switch (i+j){
+    //             case 0:strcat(err_m, "fr_hip_roll:\n")  ;break;
+    //             case 1:strcat(err_m, "fr_hip_pitch:\n") ;break;
+    //             case 2:strcat(err_m, "fr_knee:\n")      ;break;
+    //             case 3:strcat(err_m, "fl_hip_roll:\n")  ;break;
+    //             case 4:strcat(err_m, "fl_hip_pitch:\n") ;break;
+    //             case 5:strcat(err_m, "fl_knee:\n")      ;break;
+    //             case 6:strcat(err_m, "rr_hip_roll:\n")  ;break;
+    //             case 7:strcat(err_m, "rr_hip_pitch:\n") ;break;
+    //             case 8:strcat(err_m, "rr_knee:\n")      ;break;
+    //             case 9:strcat(err_m, "rl_hip_roll:\n")  ;break;
+    //             case 10:strcat(err_m, "rl_hip_pitch:\n");break;
+    //             case 11:strcat(err_m, "rl_knee:\n")     ;break;
+    //             default:break;}
+                
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_NOT_INITIALIZED)==MOTOR_ERROR_NOT_INITIALIZED)
+    //                 strcat(err_m, "motor is not initialized.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_PARAM)==MOTOR_ERROR_PARAM)
+    //                 strcat(err_m, "motor params error.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_HAL_CAN)==MOTOR_ERROR_HAL_CAN)
+    //                 strcat(err_m, "HAL CAN error.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OFFLINE)==MOTOR_ERROR_OFFLINE)
+    //                 strcat(err_m, "Motor is not online.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OOR)==MOTOR_ERROR_OOR)
+    //                 strcat(err_m, "Motor position is out of range.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OH)==MOTOR_ERROR_OH)
+    //                 strcat(err_m, "Motor is over-heated.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_OC)==MOTOR_ERROR_OC)
+    //                 strcat(err_m, "Motor is using over curent.\n");
+    //             if((legMotor[i][j].state.error_code & MOTOR_ERROR_EN)==MOTOR_ERROR_EN)
+    //                 strcat(err_m, "Failed to enable.\n");
+                
+    //         }
+    //     }
+    // }
+    res_in->error_msg.size = strlen(err_m);
+    res_in->error_msg.data = err_m;
 }
 
 
@@ -265,6 +369,8 @@ void _destroy_hyperdog_node(){
                              &hyperdog_node.node);
     //// * destroy initLegMotors service
     hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.initLegMotors_srv.service, &hyperdog_node.node);
+    //// * destroy enableALlMotors service
+    hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.enableAllMotors_srv.service, &hyperdog_node.node);
     
 
     /// TODO: 
