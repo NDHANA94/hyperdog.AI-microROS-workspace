@@ -175,6 +175,10 @@ bool disable_motor_id(uint8_t id);
 void disable_allMotors();
 bool setzeros_motor_position(LegMotor_TypeDef* m);
 
+/// TODO: pack_motor_cmd
+/// TODO: unpack_motor_feedback
+/// TODO: 
+
 void _unpack_canRx();
 
 void destroy_legMotors();
