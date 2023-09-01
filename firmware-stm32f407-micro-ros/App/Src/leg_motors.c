@@ -134,7 +134,7 @@ bool create_motor_objects(LegMotor_TypeDef** m)
             legMotor[i][j].state.feedback.torque = 0;
             legMotor[i][j].state.feedback.vb = 0;
             legMotor[i][j].state.status_msg.data = "";
-            legMotor[i][j].state.status_msg.capacity = 200;
+            legMotor[i][j].state.status_msg.capacity = 100;
             legMotor[i][j].state.status_msg.size = 0;
         }
     }

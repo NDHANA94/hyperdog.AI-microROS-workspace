@@ -323,33 +323,60 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     RCLC_UNUSED(last_call_time);
 
     if(timer != NULL && motor_objects_created) {
+        /// update motor state.status_msg
+        for(int i=0; i<NUM_OF_LEGS; i++){
+            for (int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+                switch (legMotor[i][j].debug_state)
+                {
+                case MOTOR_NOT_INITIALIZED:
+                    legMotor[i][j].state.status_msg.data = "NOT_INITIALIZED";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case MOTOR_INITIALIZED:
+                    legMotor[i][j].state.status_msg.data = "INITIALIZED";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case MOTOR_DISABLED:
+                    legMotor[i][j].state.status_msg.data = "DISABLED";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case MOTOR_ENABLED:
+                    legMotor[i][j].state.status_msg.data = "ENABLED";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case MOTOR_OFFLINE:
+                    legMotor[i][j].state.status_msg.data = "OFFLINE";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case MOTOR_ERROR:
+                    legMotor[i][j].state.status_msg.data = "ERROR";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                case CAN_ERROR:
+                    legMotor[i][j].state.status_msg.data = "CAN_ERROR";
+                    legMotor[i][j].state.status_msg.size = strlen(legMotor[i][j].state.status_msg.data);
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+
         /// update msg
-        if(legMotor[0][0].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fr_hip_roll  = legMotor[0][0].state;
-        if(legMotor[0][1].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fr_hip_pitch = legMotor[0][1].state;
-        if(legMotor[0][1].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fr_knee      = legMotor[0][2].state;
         
-        if(legMotor[1][0].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fl_hip_roll  = legMotor[1][0].state;
-        if(legMotor[1][1].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fl_hip_pitch = legMotor[1][1].state;
-        if(legMotor[1][2].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.fl_knee      = legMotor[1][2].state;
 
-        if(legMotor[2][0].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rr_hip_roll  = legMotor[2][0].state;
-        if(legMotor[2][1].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rr_hip_pitch = legMotor[2][1].state;
-        if(legMotor[2][2].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rr_knee      = legMotor[2][2].state;
 
-        if(legMotor[3][0].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rl_hip_roll  = legMotor[3][0].state;
-        if(legMotor[3][1].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rl_hip_pitch = legMotor[3][1].state;
-        if(legMotor[3][2].debug_state != MOTOR_INITIALIZED)
             hyperdog_node.motorsStates_pub.msg.rl_knee      = legMotor[3][2].state;
 
         /// publish msg 
