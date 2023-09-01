@@ -41,15 +41,25 @@ void init_hyperdog_node()
         {
             /* - init publishers ------------------------------*/
             _init_motors_states_publisher();
+            /// TODO: legsStates_publisher
 
 
             /* - init subscribers -----------------------------*/
-
+            /// TODO: motorCmd_subscriber
+            /// TODO: legsCmd_subscriber
+            
+            
 
             /* - init services --------------------------------*/
             _init_initLegMotors_srv();
             _init_enableAllMotors_srv();
             _init_disableAllMotors_srv();
+            /// TODO: setZeroPosition_srv
+            /// TODO: setWatchdogFrequency_srv
+            /// TODO: setMotorCmdFrequency_srv
+            /// TODO: setLegStiffness_srv
+            /// TODO: setLegDamping_srv
+            /// TODO: setMotorIff_srv
            
 
 
