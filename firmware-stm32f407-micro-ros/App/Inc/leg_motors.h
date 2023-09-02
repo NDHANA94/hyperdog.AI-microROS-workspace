@@ -198,13 +198,18 @@ bool disable_motor_id(uint8_t id);
 void disable_allMotors();
 bool set_motor_zero_position(LegMotor_TypeDef* m);
 
-/// TODO: pack_motor_cmd
-/// TODO: unpack_motor_feedback
-/// TODO: 
+void destroy_legMotors();
 
 void _unpack_canRx();
+void _pack_cmd(LegMotor_TypeDef* m);
 
-void destroy_legMotors();
+float __fminf(float x, float y);
+float __fmaxf(float x, float y);
+int   __float2uint(float x, float x_min, float x_max, int bits);
+float __uint2float(int x_int, float x_min, float x_max, int bits);
+
+
+
 
 #ifdef __cplusplus
 }

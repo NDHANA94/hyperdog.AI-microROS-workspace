@@ -179,6 +179,11 @@ void _setMotorZeroPosition_srv_callback(const void* req, void* res);
 void _destroy_hyperdog_node();
 
 
+float __fminf(float x, float y);
+float __fmaxf(float x, float y);
+int   __float2uint(float x, float x_min, float x_max, int bits);
+float __uint2float(int x_int, float x_min, float x_max, int bits);
+
 #ifdef __cplusplus
 }
 #endif

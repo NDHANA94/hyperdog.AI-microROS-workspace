@@ -425,22 +425,99 @@ hyperdog_uros_interfaces__srv__InitLegMotors_Response* res)
 
 /** =====================================================================================================
  * To unpack `m->canRx->data` into `m->state.feedback`
- * CAN Reply Packet Structure
- * 16 bit position
- * 12 bit velocity
- * 12 bit current
+ * CAN Reply Packet Structure:
+ * `16 bit position`
+ * `12 bit velocity`
+ * `12 bit current`
  * CAN Packet is 5 words 0f 8-bits
  * Formatted as follows. For each quantity, bit 0 is LSB
- * 0: [id]
- * 1: [position[15-8]]
- * 2: [position[7-0]]
- * 3: [velocity[11-4]]
- * 4: [velocity[3-0] , current[11-8]]
- * 5: [current[7-0]]
+ * `0`: [`id`]
+ * `1`: [`position[15-8]`]
+ * `2`: [`position[7-0]`]
+ * `3`: [`velocity[11-4]`]
+ * `4`: [`velocity[3-0]` , `current[11-8]`]
+ * `5`: [`current[7-0]`]
  ====================================================================================================*/
 void _unpack_canRx(LegMotor_TypeDef* m)
 {
+    int p_int = (m->canRx->data[1] << 8) | (m->canRx->data[2]);
+    int v_int = (m->canRx->data[3] << 4) | (m->canRx->data[4] >> 4);
+    int i_int = ((m->canRx->data[4] & 0xF) << 8) | (m->canRx->data[5]);
 
+    m->state.feedback.can_id = m->canRx->data[0];
+
+    m->state.feedback.position = __uint2float(
+                                p_int, 
+                                m->self.params.position.min, 
+                                m->self.params.position.max, 
+                                16);
+    m->state.feedback.velocity = __uint2float(
+                                v_int,
+                                m->self.params.velocity.min,
+                                m->self.params.velocity.max,
+                                12);
+    m->state.feedback.torque = __uint2float(
+                                i_int,
+                                -40.0f, /// TODO: Add this to initMotors parameters 
+                                40.0f,  /// TODO: Add this to initMotors parameters 
+                                12);
+    if(NUM_OF_CAN_RX_BYTES == 7){
+        m->state.feedback.vb = __uint2float(
+                               m->canRx->data[6],
+                               0.0f,
+                               40.0f,
+                               8);
+    }
+
+}
+
+
+/**======================================================================================================
+* To pack variables from `m->cmd` to  `m->canRx->data`.
+*
+* CAN Command Packet Structure 
+* `16 bit position` command, between -4*pi and 4*pi
+* `12 bit velocity` command, between -30 and + 30 rad/s
+* `12 bit kp`, between 0 and 500 N-m/rad
+* `12 bit kd`, between 0 and 100 N-m*s/rad
+* `12 bit feed forward torque`, between -18 and 18 N-m
+*
+* CAN Packet is 8 8-bit words.
+* Formatted as follows.  For each quantity, bit 0 is LSB
+* `0`: [`position[15-8]`]
+* `1`: [`position[7-0]`]
+* `2`: [`velocity[11-4]`]
+* `3`: [`velocity[3-0]` , `kp[11-8]`]
+* `4`: [`kp[7-0]`]
+* `5`: [`kd[11-4]`]
+* `6`: [`kd[3-0]`, `torque[11-8]`]
+* `7`: [`torque[7-0]`] 
+=========================================================================================================*/
+void _pack_cmd(LegMotor_TypeDef* m)
+{
+    /* limit data to be within bounds */
+    float p_des = __fminf(__fmaxf(m->self.params.position.min, m->cmd.desire_position), m->self.params.position.max);
+    float v_des = __fminf(__fmaxf(m->self.params.velocity.min, m->cmd.desire_velocity), m->self.params.velocity.max);
+    float kp    = __fminf(__fmaxf(m->self.params.kp.min,       m->cmd.kp),              m->self.params.kp.max);
+    float kd    = __fminf(__fmaxf(m->self.params.kd.min,       m->cmd.kd),              m->self.params.kd.max);
+    float iff   = __fminf(__fmaxf(m->self.params.i_ff.min,     m->cmd.i_ff),            m->self.params.i_ff.max);
+
+    /* convert floats to uints */
+    int p_int   = __float2uint(p_des, m->self.params.position.min, m->self.params.position.max, 16);
+    int v_int   = __float2uint(v_des, m->self.params.velocity.min, m->self.params.velocity.max, 12);
+    int kp_int  = __float2uint(kp,    m->self.params.kp.min,       m->self.params.kp.max,       12);
+    int kd_int  = __float2uint(kd,    m->self.params.kd.min,       m->self.params.kd.max,       12);
+    int iff_int = __float2uint(iff,   m->self.params.i_ff.min,     m->self.params.i_ff.max,     12);
+
+    /* pack */
+    m->canTx.data[0] = p_int >> 8;
+    m->canTx.data[1] = p_int & 0xFF;
+    m->canTx.data[2] = v_int >> 4;
+    m->canTx.data[3] = ((v_int & 0xF) << 4) | (kp_int >> 8);
+    m->canTx.data[4] = kp_int & 0xFF;
+    m->canTx.data[5] = kd_int >> 4;
+    m->canTx.data[6] = ((kd_int & 0xF) << 4) | (iff_int >> 8);
+    m->canTx.data[7] = iff_int & 0xFF;
 }
 
 
@@ -617,4 +694,30 @@ void destroy_legMotors(){
         free(legMotor[i]);
     }
     free(legMotor);
+}
+
+
+/* ======================================================================== */
+float __fminf(float x, float y)
+{
+    return (((x) < (y)) ? (x) : (y));
+}
+
+float __fmaxf(float x, float y)
+{
+    return (((x) > (y)) ? (x) : (y));
+}
+
+int __float2uint(float x, float x_min, float x_max, int bits)
+{
+    float span = x_max - x_min;
+    float offset = x_min;
+    return (int) ((x - offset) * ((float)((1<<bits)-1))/span);
+}
+
+float __uint2float(int x_int, float x_min, float x_max, int bits)
+{
+    float span = x_max = x_min;
+    float offset = x_min;
+    return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
 }
