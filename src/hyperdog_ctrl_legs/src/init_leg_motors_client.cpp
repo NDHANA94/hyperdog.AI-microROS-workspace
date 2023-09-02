@@ -33,7 +33,20 @@ std::string error_list[9] = {"can id must be in range of 1~225",
                              "position ctrl limits should be within the motor position params",
                              "velocity ctrl limits should be within the motor velocity params",
                              "current ctrl limits should be within the motor max current param (7A)"};
+void print_motorError(int motor, int error){
+    if(motor == -1)
+        RCLCPP_ERROR(rclcpp::get_logger("InitLegMotors"), error_list[error]); 
 
+    else if(motor<12 && error < 9){
+        RCLCPP_ERROR(rclcpp::get_logger("InitLegMotors"), 
+            "[%s] %s", motor_name_[motor].c_str(), error_list[error].c_str());
+    }
+}
+
+/* ==================================================================================================================
+                                    INIT LEG MOTORS CLIENT
+                                            MAIN
+=================================================================================================================== */
 
 int main(int argc, char** argv)
 {
@@ -42,7 +55,7 @@ int main(int argc, char** argv)
 
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("initlegmotors_client");
     rclcpp::Client<hyperdog_uros_interfaces::srv::InitLegMotors>::SharedPtr client = 
-        node->create_client<hyperdog_uros_interfaces::srv::InitLegMotors>("initlegmotors");
+        node->create_client<hyperdog_uros_interfaces::srv::InitLegMotors>("initLegMotors");
 
     auto request = std::make_shared<hyperdog_uros_interfaces::srv::InitLegMotors::Request>();
     auto req_msg = get_initLegMotors_reqMsg();
@@ -50,10 +63,10 @@ int main(int argc, char** argv)
     
     while (!client->wait_for_service(1s)){
         if(!rclcpp::ok()){
-            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Interupted while waiting for the service. Exiting.");
+            RCLCPP_ERROR(rclcpp::get_logger("InitLegMotors"), "Interupted while waiting for the service. Exiting.");
             return 0;
         }
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "service not available, waiting again...");
+        RCLCPP_INFO(rclcpp::get_logger("InitLegMotors"), "service not available, waiting again...");
     }
 
     // hyperdog_uros_interfaces__srv__InitLegMotors_Response res;
@@ -63,32 +76,33 @@ int main(int argc, char** argv)
     if(rclcpp::spin_until_future_complete(node, res) == rclcpp::FutureReturnCode::SUCCESS)
     {
         for (int i=0; i<12; i++){
-            if(res.get()->error_code[i]==0){
+            uint16_t error_code = res.get()->error_code[i];
+            if(error_code==0){
                 RCLCPP_INFO(rclcpp::get_logger(motor_name_[i]), "Motor is sucessfully initialized.");
             }else{
                 RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), "Failed to initialize motor.");
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_CAN_ID) == MOTOR_PARAM_ERROR_CAN_ID)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[0]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_P) == MOTOR_PARAM_ERROR_P)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[1]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_V) == MOTOR_PARAM_ERROR_V)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[2]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_KP) == MOTOR_PARAM_ERROR_KP)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[3]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_KD) == MOTOR_PARAM_ERROR_KD)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[4]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_IFF) == MOTOR_PARAM_ERROR_IFF)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[5]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_CTRL_P) == MOTOR_PARAM_ERROR_CTRL_P)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[6]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_CTRL_V) == MOTOR_PARAM_ERROR_CTRL_V)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[7]);
-                if((res.get()->error_code[i] & MOTOR_PARAM_ERROR_CTRL_I) == MOTOR_PARAM_ERROR_CTRL_I)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[8]);
+                if((error_code & MOTOR_PARAM_ERROR_CAN_ID) == MOTOR_PARAM_ERROR_CAN_ID)
+                    print_motorError(i, 0);
+                if((error_code & MOTOR_PARAM_ERROR_P) == MOTOR_PARAM_ERROR_P)
+                    print_motorError(i, 1);
+                if((error_code & MOTOR_PARAM_ERROR_V) == MOTOR_PARAM_ERROR_V)
+                    print_motorError(i, 2);
+                if((error_code & MOTOR_PARAM_ERROR_KP) == MOTOR_PARAM_ERROR_KP)
+                    print_motorError(i, 3);
+                if((error_code & MOTOR_PARAM_ERROR_KD) == MOTOR_PARAM_ERROR_KD)
+                    print_motorError(i, 4);
+                if((error_code & MOTOR_PARAM_ERROR_IFF) == MOTOR_PARAM_ERROR_IFF)
+                    print_motorError(i, 5);
+                if((error_code & MOTOR_PARAM_ERROR_CTRL_P) == MOTOR_PARAM_ERROR_CTRL_P)
+                    print_motorError(i, 6);
+                if((error_code & MOTOR_PARAM_ERROR_CTRL_V) == MOTOR_PARAM_ERROR_CTRL_V)
+                    print_motorError(i, 7);
+                if((error_code & MOTOR_PARAM_ERROR_CTRL_I) == MOTOR_PARAM_ERROR_CTRL_I)
+                    print_motorError(i, 8);
             }
         }
     }else{
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Failed to call service initlegmotors");
+        RCLCPP_INFO(rclcpp::get_logger("InitLegMotors"), "Failed to call service initlegmotors");
     }
 
     rclcpp::shutdown();

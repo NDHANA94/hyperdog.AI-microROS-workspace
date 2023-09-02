@@ -18,20 +18,33 @@
 #define MOTOR_ERROR_DIS             (0b00010000000U) /*!< `0x100U`   Failed to diable the motor                    */
 #define MOTOR_ERROR_NOT_INITIALIZED (0xFFFFU)
 
+
 using namespace std::chrono_literals;
 std::string motor_name_[12] = {"fr_hip_roll ", "fr_hip_pitch", "fr_knee     ", 
                                "fl_hip_roll ", "fl_hip_pitch", "fl_knee     ",
                                "rr_hip_roll ", "rr_hip_pitch", "rr_knee     ",
                                "rl_hip_roll ", "rl_hip_pitch", "rl_knee     "};
 
-std::string error_list[4] = {"HAL_CAN Error !",
-                             "motor is offline / not connected !",
-                             "Failed to disable the motor !",
-                             "Motor is NOT INITIALIZED, please initialize motors before enabling !" };
+std::string error_list[4] = {"Failed to disable the motor (HAL_CAN Error)",
+                             "Failed to disable the motor (motor is offline / not connected)",
+                             "Failed to disable the motor (Unknown Error)",
+                             "Motors are NOT INITIALIZED, please initialize motors first!" };
+
+void print_motorError(int motor, int error){
+    if(motor == -1)
+        RCLCPP_ERROR(rclcpp::get_logger("DisableAllMotors"), error_list[error]); 
+    else if(motor<12 && error<4){
+        RCLCPP_ERROR(rclcpp::get_logger("DisableAllMotors"), 
+            "[%s] %s", motor_name_[motor].c_str(), error_list[error].c_str());
+    }
+}
 
 
 
-
+/* ==================================================================================================================
+                                    DISABLE ALL MOTOR CLIENT
+                                            MAIN
+=================================================================================================================== */
 int main(int argc, char** argv)
 {
 
@@ -39,16 +52,16 @@ int main(int argc, char** argv)
 
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("disableallmotors_client");
     rclcpp::Client<hyperdog_uros_interfaces::srv::DisableAllMotors>::SharedPtr client = 
-        node->create_client<hyperdog_uros_interfaces::srv::DisableAllMotors>("disableallmotors");
+        node->create_client<hyperdog_uros_interfaces::srv::DisableAllMotors>("disableAllMotors");
 
     auto request = std::make_shared<hyperdog_uros_interfaces::srv::DisableAllMotors::Request>();
     
     while (!client->wait_for_service(1s)){
         if(!rclcpp::ok()){
-            RCLCPP_ERROR(rclcpp::get_logger("EnableAllMotors_client"), "Interupted while waiting for the service. Exiting.");
+            RCLCPP_ERROR(rclcpp::get_logger("DisableAllMotors"), "Interupted while waiting for the service. Exiting.");
             return 0;
         }
-        RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors_client"), "service not available, waiting again...");
+        RCLCPP_INFO(rclcpp::get_logger("DisableAllMotors"), "service not available, waiting again...");
     }
 
     // hyperdog_uros_interfaces__srv__EnableAllMotors_Response res;
@@ -58,26 +71,33 @@ int main(int argc, char** argv)
     if(rclcpp::spin_until_future_complete(node, res) == rclcpp::FutureReturnCode::SUCCESS)
     {
         for(int i=0; i<12; i++){
-            if(res.get()->error_code[i] == 0){
-                RCLCPP_INFO(rclcpp::get_logger(motor_name_[i]), "motor is disabled.");
+            uint16_t error_code = res.get()->error_code[i];
+            /*  motor is disabled ----------------------------------------------*/
+            if((error_code & MOTOR_ERROR_DIS) != MOTOR_ERROR_DIS){
+                RCLCPP_INFO(rclcpp::get_logger("DisableAllMotors"), 
+                    "[%s] motor is disabled.", motor_name_[i].c_str());
             }
+            /* failed  --------------------------------------------------------*/
             else{
-                RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), "Failed to disable motor.");
-                if((res.get()->error_code[i] & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[3]);
+                /* motors are not initialized --------------*/
+                if((error_code & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED){
+                    print_motorError(-1, 3);
+                    break;
+                }
+                /* other errors ----------------------------*/
                 else{
-                    if((res.get()->error_code[i] & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[0]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[1]);
+                    if((error_code & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
+                        print_motorError(i, 0);
+                    if((error_code & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
+                        print_motorError(i, 1);
                     // if can ok and motor is online, but not disabled.
-                    if(((res.get()->error_code[i] & (MOTOR_ERROR_DIS|MOTOR_ERROR_HAL_CAN|MOTOR_ERROR_OFFLINE)) == MOTOR_ERROR_DIS))
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[2]);                        
+                    if(((error_code & 0b00010000110) == MOTOR_ERROR_DIS))
+                        print_motorError(i, 2);
                 }
             }
         }
     }else{
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Failed to call service enableAllMotors");
+        RCLCPP_INFO(rclcpp::get_logger("DisableAllMotors"), "Failed to call service enableAllMotors");
     }
 
     rclcpp::shutdown();

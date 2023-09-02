@@ -23,16 +23,24 @@ std::string motor_name_[12] = {"fr_hip_roll ", "fr_hip_pitch", "fr_knee     ",
                                "rr_hip_roll ", "rr_hip_pitch", "rr_knee     ",
                                "rl_hip_roll ", "rl_hip_pitch", "rl_knee     "};
 
-std::string error_list[8] = {"motor parameter error !",
-                             "HAL_CAN Error !",
-                             "motor is offline / not connected !",
-                             "Motor position is out of range !",
-                             "Motor is over heated !",
-                             "Motor has over-current error !",
-                             "Failed to enable the motor !",
-                             "Motor is NOT INITIALIZED, please initialize motors before enabling !" };
+std::string error_list[8] = {"Failed to enable the motor (motor parameter error!)",
+                             "Failed to enable the motor (HAL_CAN Error!)",
+                             "Failed to enable the motor (motor is offline / not connected!)",
+                             "Failed to enable the motor (Motor position is out of range!)",
+                             "Failed to enable the motor (Motor is over heated!)",
+                             "Failed to enable the motor (Motor has over-current error!)",
+                             "Failed to enable the motor (Unknown Error!)",
+                             "Motor is NOT INITIALIZED, please initialize motors before enabling!" };
 
+void print_motorError(int motor, int error){
+    if(motor == -1)
+        RCLCPP_ERROR(rclcpp::get_logger("EnableAllMotors"), error_list[error]); 
 
+    else if(motor<12 && error < 8){
+        RCLCPP_ERROR(rclcpp::get_logger("EnableAllMotors"), 
+            "[%s] %s", motor_name_[motor].c_str(), error_list[error].c_str());
+    }
+}
 
 
 int main(int argc, char** argv)
@@ -42,16 +50,16 @@ int main(int argc, char** argv)
 
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("enableallmotors_client");
     rclcpp::Client<hyperdog_uros_interfaces::srv::EnableAllMotors>::SharedPtr client = 
-        node->create_client<hyperdog_uros_interfaces::srv::EnableAllMotors>("enableallmotors");
+        node->create_client<hyperdog_uros_interfaces::srv::EnableAllMotors>("enableAllMotors");
 
     auto request = std::make_shared<hyperdog_uros_interfaces::srv::EnableAllMotors::Request>();
     
     while (!client->wait_for_service(1s)){
         if(!rclcpp::ok()){
-            RCLCPP_ERROR(rclcpp::get_logger("EnableAllMotors_client"), "Interupted while waiting for the service. Exiting.");
+            RCLCPP_ERROR(rclcpp::get_logger("EnableAllMotors"), "Interupted while waiting for the service. Exiting.");
             return 0;
         }
-        RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors_client"), "service not available, waiting again...");
+        RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors"), "service not available, waiting again...");
     }
 
     // hyperdog_uros_interfaces__srv__EnableAllMotors_Response res;
@@ -61,38 +69,43 @@ int main(int argc, char** argv)
     if(rclcpp::spin_until_future_complete(node, res) == rclcpp::FutureReturnCode::SUCCESS)
     {
         for(int i=0; i<12; i++){
-            if(res.get()->error_code[i] == 0){
-                RCLCPP_INFO(rclcpp::get_logger(motor_name_[i]), "motor is enabled.");
+            uint16_t error_code = res.get()->error_code[i];
+            /* motor is enabled -----------------------------------------------------------------*/
+            if((error_code & MOTOR_ERROR_EN) != MOTOR_ERROR_EN){
+                RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors"), 
+                    "[%s] motor is enabled.", motor_name_[i].c_str());
             }
+            /* failed ---------------------------------------------------------------------------*/
             else{
-                RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), "Failed to enable motor.");
-                if((res.get()->error_code[i] & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[7]);
+                /* motors are not initialized ----------------------------*/
+                if((error_code & MOTOR_ERROR_NOT_INITIALIZED) == MOTOR_ERROR_NOT_INITIALIZED){
+                    print_motorError(-1, 7);
+                    break;
+                }
+                /* other errors ------------------------------------------*/
                 else{
-                    if((res.get()->error_code[i] & MOTOR_ERROR_PARAM) == MOTOR_ERROR_PARAM)
-                    RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[0]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[1]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[2]);
-                    
-                    if((res.get()->error_code[i] & MOTOR_ERROR_OOR) == MOTOR_ERROR_OOR)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[3]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_OH) == MOTOR_ERROR_OH)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[4]);
-                    if((res.get()->error_code[i] & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[5]);
-                    
+                    if((error_code & MOTOR_ERROR_PARAM) == MOTOR_ERROR_PARAM)
+                        print_motorError(i, 0);
+                    if((error_code & MOTOR_ERROR_HAL_CAN) == MOTOR_ERROR_HAL_CAN)
+                        print_motorError(i, 1);
+                    if((error_code & MOTOR_ERROR_OFFLINE) == MOTOR_ERROR_OFFLINE)
+                        print_motorError(i, 2);
+                    if((error_code & MOTOR_ERROR_OOR) == MOTOR_ERROR_OOR)
+                        print_motorError(i, 3);
+                    if((error_code & MOTOR_ERROR_OH) == MOTOR_ERROR_OH)
+                        print_motorError(i, 4);
+                    if((error_code & MOTOR_ERROR_OC) == MOTOR_ERROR_OC)
+                        print_motorError(i, 5); 
                     // if everything is ok, but not enabled:
-                    if((res.get()->error_code[i] & 0b1111111) == MOTOR_ERROR_EN)
-                        RCLCPP_ERROR(rclcpp::get_logger(motor_name_[i]), error_list[6]);
+                    if((error_code & 0b1111111) == MOTOR_ERROR_EN)
+                        print_motorError(i, 6);
                 }
             }
         }
     }else{
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Failed to call service enableAllMotors");
+        RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors"), "Failed to call service enableAllMotors");
     }
-
+    // RCLCPP_INFO(rclcpp::get_logger("EnableAllMotors"), "%i", res.get()->error_code[0]);
     rclcpp::shutdown();
     return 0;
 }

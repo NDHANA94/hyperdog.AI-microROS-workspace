@@ -27,44 +27,59 @@ install(DIRECTORY
 )
 
 # initLegMotors client
-add_executable(initmotors_client src/init_leg_motors_client.cpp)
-target_include_directories(initmotors_client PUBLIC
+add_executable(initMotors src/init_leg_motors_client.cpp)
+target_include_directories(initMotors PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(
-  initmotors_client 
+  initMotors 
   rclcpp 
   hyperdog_uros_interfaces
 )
-install(TARGETS initmotors_client
+install(TARGETS initMotors
   DESTINATION lib/${PROJECT_NAME})
 
 # enableAllMotors client
-add_executable(enableAllMotors_client src/enable_all_motors_client.cpp)
-target_include_directories(enableAllMotors_client PUBLIC
+add_executable(enableAllMotors src/enable_all_motors_client.cpp)
+target_include_directories(enableAllMotors PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(
-  enableAllMotors_client 
+  enableAllMotors 
   rclcpp 
   hyperdog_uros_interfaces
 )
-install(TARGETS enableAllMotors_client
+install(TARGETS enableAllMotors
   DESTINATION lib/${PROJECT_NAME})
 
 # disableAllMotors client
-add_executable(disableAllMotors_client src/disable_all_motors_client.cpp)
-target_include_directories(disableAllMotors_client PUBLIC
+add_executable(disableAllMotors src/disable_all_motors_client.cpp)
+target_include_directories(disableAllMotors PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(
-  disableAllMotors_client 
+  disableAllMotors 
   rclcpp 
   hyperdog_uros_interfaces
 )
-install(TARGETS disableAllMotors_client
+install(TARGETS disableAllMotors
   DESTINATION lib/${PROJECT_NAME})
 
+# disableAllMotors client
+add_executable(setMotorZeroPosition src/set_motor_zero_position_client.cpp)
+target_include_directories(setMotorZeroPosition PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(
+  setMotorZeroPosition 
+  rclcpp 
+  hyperdog_uros_interfaces
+)
+install(TARGETS setMotorZeroPosition
+  DESTINATION lib/${PROJECT_NAME})
+
+
+  
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
