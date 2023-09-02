@@ -1,4 +1,27 @@
-
+/* ========================================================================================
+MIT License                                                                               |
+                                                                                          |
+Copyright (c) 2023 Nipun Dhananjaya Weerakkodi                                            |
+                                                                                          |
+Permission is hereby granted, free of charge, to any person obtaining a copy              |
+of this software and associated documentation files (the "Software"), to deal             |
+in the Software without restriction, including without limitation the rights              |
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                 |
+copies of the Software, and to permit persons to whom the Software is                     |
+furnished to do so, subject to the following conditions:                                  |
+                                                                                          |
+The above copyright notice and this permission notice shall be included in all            |
+copies or substantial portions of the Software.                                           |
+                                                                                          |
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                |
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                  |
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE               |
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                    |
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,             |
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE             |
+SOFTWARE.                                                                                 |
+                                                                                          |
+==========================================================================================*/
 #include "main.h"
 #include "hyperdog_uros_node.h"
 // #include "motor_typedefs.h"
@@ -31,7 +54,7 @@ void init_hyperdog_node()
         hyperdog_node.rcl_ret = rclc_executor_init(
                                 &hyperdog_node.executor,
                                 &uros.support.context,
-                                4,
+                                5,
                                 &uros.allocator);
         
 
@@ -42,6 +65,7 @@ void init_hyperdog_node()
             /* - init publishers ------------------------------*/
             _init_motors_states_publisher();
             /// TODO: legsStates_publisher
+            /// accelrometer/gyroscope data publisher
 
 
             /* - init subscribers -----------------------------*/
@@ -54,7 +78,7 @@ void init_hyperdog_node()
             _init_initLegMotors_srv();
             _init_enableAllMotors_srv();
             _init_disableAllMotors_srv();
-            /// TODO: setZeroPosition_srv
+            _init_setMotorZeroPosition_srv();
             /// TODO: setWatchdogFrequency_srv
             /// TODO: setMotorCmdFrequency_srv
             /// TODO: setLegStiffness_srv
@@ -65,8 +89,6 @@ void init_hyperdog_node()
 
             /* - init timers ----------------------------------*/
             /// TODO: motor_watchdog 
-            
-
 
         }
         else
@@ -96,7 +118,7 @@ void init_hyperdog_node()
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
 void _init_initLegMotors_srv()
 {
-    hyperdog_node.initLegMotors_srv.srv_name = "/initlegmotors";
+    hyperdog_node.initLegMotors_srv.srv_name = "/initLegMotors";
 
     /// get srv type support
     const rosidl_service_type_support_t * type_support = 
@@ -156,7 +178,7 @@ void _initLegMotors_srv_callback(const void* req, void* res)
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
 void _init_enableAllMotors_srv()
 {
-    hyperdog_node.enableAllMotors_srv.srv_name = "/enableallmotors";
+    hyperdog_node.enableAllMotors_srv.srv_name = "/enableAllMotors";
 
     /// Initiaalize server with default configuration
     hyperdog_node.enableAllMotors_srv.rcl_ret = 
@@ -215,7 +237,7 @@ void _enableAllMotors_srv_callback(const void* req, void* res){
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
 void _init_disableAllMotors_srv()
 {
-    hyperdog_node.disableAllMotors_srv.srv_name = "/disableallmotors";
+    hyperdog_node.disableAllMotors_srv.srv_name = "/disableAllMotors";
 
     /// Initiaalize server with default configuration
     hyperdog_node.disableAllMotors_srv.rcl_ret = 
@@ -225,10 +247,10 @@ void _init_disableAllMotors_srv()
                           hyperdog_node.disableAllMotors_srv.srv_name);
     if(hyperdog_node.disableAllMotors_srv.rcl_ret != RCL_RET_OK){
         hyperdog_node.state = HYPERDOG_NODE_ERROR;
-        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV2;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV3;
     }else{
         hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
-        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV2;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV3;
     }
 
     // add server callback to the executor
@@ -241,10 +263,10 @@ void _init_disableAllMotors_srv()
             _disableAllMotors_srv_callback);
     if(hyperdog_node.disableAllMotors_srv.rcl_ret != RCL_RET_OK){
         hyperdog_node.state = HYPERDOG_NODE_ERROR;
-        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV2;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV3;
     }else{
         hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
-        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV2;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV3;
     }
 }
 
@@ -267,6 +289,65 @@ void _disableAllMotors_srv_callback(const void* req, void* res){
     }
 }
 
+
+/* ================================================================================== */
+/*                         SET_MOTOR_ZERO_POSITON SERVER                                */
+/* ================================================================================== */
+
+/* ------------------------- INITIATE THE SERVICE ------------------------------- */
+void _init_setMotorZeroPosition_srv()
+{
+    hyperdog_node.setMotorZeroPosition_srv.srv_name = "/setMotorZeroPosition";
+
+    /// Initiaalize server with default configuration
+    hyperdog_node.setMotorZeroPosition_srv.rcl_ret = 
+        rclc_service_init_default(&hyperdog_node.setMotorZeroPosition_srv.service,
+                          &hyperdog_node.node,
+                          ROSIDL_GET_SRV_TYPE_SUPPORT(hyperdog_uros_interfaces, srv, SetZeroPosition), 
+                          hyperdog_node.setMotorZeroPosition_srv.srv_name);
+    if(hyperdog_node.setMotorZeroPosition_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV4;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV4;
+    }
+
+    // add server callback to the executor
+    hyperdog_node.setMotorZeroPosition_srv.rcl_ret = 
+        rclc_executor_add_service(
+            &hyperdog_node.executor,
+            &hyperdog_node.setMotorZeroPosition_srv.service,
+            &hyperdog_node.setMotorZeroPosition_srv.req_msg,
+            &hyperdog_node.setMotorZeroPosition_srv.res_msg,
+            _setMotorZeroPosition_srv_callback);
+    if(hyperdog_node.setMotorZeroPosition_srv.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SRV4;
+    }else{
+        hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SRV4;
+    }
+}
+
+/* ------------------ ENABLE ALL MOTORS SERVER CALLBACK ----------------------- */
+void _setMotorZeroPosition_srv_callback(const void* req, void* res){
+    hyperdog_uros_interfaces__srv__SetZeroPosition_Request* req_in 
+        = (hyperdog_uros_interfaces__srv__SetZeroPosition_Request*) req;
+    hyperdog_uros_interfaces__srv__SetZeroPosition_Response* res_in 
+        = (hyperdog_uros_interfaces__srv__SetZeroPosition_Response*) res;
+
+    /// TODO: Find the condition to set motor zero position (enbled or disanled)
+    ///       Only the condition is valid, do set_zero_position, otherwise response error
+    if(motor_objects_created){
+        set_motor_zero_position(&legMotor[req_in->leg][req_in->joint]);
+        res_in->error_code = legMotor[req_in->leg][req_in->joint].state.error_code;
+    }else{
+        res_in->error_code = 0xFFFF;
+    }
+
+    
+}
 
 
 
@@ -431,14 +512,18 @@ void _destroy_hyperdog_node(){
     hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.initLegMotors_srv.service, &hyperdog_node.node);
     //// * destroy enableALlMotors service
     hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.enableAllMotors_srv.service, &hyperdog_node.node);
-    //// * destroy disableALlMotors service
+    //// * destroy disableAllMotors service
     hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.disableAllMotors_srv.service, &hyperdog_node.node);
+    //// * destroy setMotorZeroPosition service
+    hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.setMotorZeroPosition_srv.service, &hyperdog_node.node);
     
 
     /// TODO: 
 
     /// then destroy the node itself
     hyperdog_node.rcl_ret = rcl_node_fini(&hyperdog_node.node);
+
+
 
 }
 

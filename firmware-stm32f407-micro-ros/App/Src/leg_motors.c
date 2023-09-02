@@ -1,4 +1,29 @@
+/* ========================================================================================
+MIT License                                                                               |
+                                                                                          |
+Copyright (c) 2023 Nipun Dhananjaya Weerakkodi                                            |
+                                                                                          |
+Permission is hereby granted, free of charge, to any person obtaining a copy              |
+of this software and associated documentation files (the "Software"), to deal             |
+in the Software without restriction, including without limitation the rights              |
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell                 |
+copies of the Software, and to permit persons to whom the Software is                     |
+furnished to do so, subject to the following conditions:                                  |
+                                                                                          |
+The above copyright notice and this permission notice shall be included in all            |
+copies or substantial portions of the Software.                                           |
+                                                                                          |
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR                |
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,                  |
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE               |
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER                    |
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,             |
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE             |
+SOFTWARE.                                                                                 |
+                                                                                          |
+==========================================================================================*/
 #include "leg_motors.h"
+#include "cmsis_os.h"
 #include <string.h>
 
 LegMotor_TypeDef** legMotor;
@@ -398,12 +423,33 @@ hyperdog_uros_interfaces__srv__InitLegMotors_Response* res)
 
 }
 
-
+/** =====================================================================================================
+ * To unpack `m->canRx->data` into `m->state.feedback`
+ * CAN Reply Packet Structure
+ * 16 bit position
+ * 12 bit velocity
+ * 12 bit current
+ * CAN Packet is 5 words 0f 8-bits
+ * Formatted as follows. For each quantity, bit 0 is LSB
+ * 0: [id]
+ * 1: [position[15-8]]
+ * 2: [position[7-0]]
+ * 3: [velocity[11-4]]
+ * 4: [velocity[3-0] , current[11-8]]
+ * 5: [current[7-0]]
+ ====================================================================================================*/
 void _unpack_canRx(LegMotor_TypeDef* m)
 {
 
 }
 
+
+/** =====================================================================================================
+ * CAN communication with the motors.
+ * \param m motor object with Tx data packet.
+ * \return `1` if Tx and Rx were succeeded. 
+ * \return `0` if CAN_ERROR or didn't receive a response from the motor.
+ ====================================================================================================*/
 bool motor_sendTx_getRx(LegMotor_TypeDef* m){
     /* Send CanTx message to the motor */
     retry:
@@ -478,13 +524,15 @@ bool enable_motor(LegMotor_TypeDef* m){
 }
 
 bool enable_motor_id(uint8_t id){
-    for(int i=0; i<NUM_OF_LEGS; i++){
-        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+    int i =0, j=0;
+    for(i=0; i<NUM_OF_LEGS; i++){
+        for(j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
             if(legMotor[i][j].self.params.can_id == id){
-                return enable_motor(&legMotor[i][j]);
+                break;
             }
         }
     }
+    return enable_motor(&legMotor[i][j]);
 }
 
 bool enable_allMotors(){
@@ -527,13 +575,15 @@ bool disable_motor(LegMotor_TypeDef* m){
 }
 
 bool disable_motor_id(uint8_t id){
-    for(int i=0; i<NUM_OF_LEGS; i++){
-        for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
+    int i = 0, j = 0;
+    for(i=0; i<NUM_OF_LEGS; i++){
+        for(j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
             if(legMotor[i][j].self.params.can_id == id){
-                return disable_motor(&legMotor[i][j]);
+                break;
             }
         }
     }
+    return disable_motor(&legMotor[i][j]);
 }
 
 
@@ -546,7 +596,7 @@ void disable_allMotors(){
     }
 }
 
-bool setzeros_motor_position(LegMotor_TypeDef* m){
+bool set_motor_zero_position(LegMotor_TypeDef* m){
     memcpy(m->canTx.data, motor_setzero_cmd, sizeof(motor_setzero_cmd));
     if(motor_sendTx_getRx(m)) goto ok;
     else goto fail;
