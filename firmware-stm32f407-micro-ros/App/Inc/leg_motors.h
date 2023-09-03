@@ -190,6 +190,8 @@ void init_legMotors(CAN_HandleTypeDef* hcan,
                     hyperdog_uros_interfaces__srv__InitLegMotors_Request* req, 
                     hyperdog_uros_interfaces__srv__InitLegMotors_Response* res);
 
+bool motor_sendTx_getRx(LegMotor_TypeDef* m);
+
 bool enable_motor(LegMotor_TypeDef* m);
 bool enable_motor_id(uint8_t id);
 bool enable_allMotors();
@@ -200,7 +202,7 @@ bool set_motor_zero_position(LegMotor_TypeDef* m);
 
 void destroy_legMotors();
 
-void _unpack_canRx();
+void _unpack_canRx(LegMotor_TypeDef* m);
 void _pack_cmd(LegMotor_TypeDef* m);
 
 float __fminf(float x, float y);

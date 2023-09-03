@@ -63,13 +63,13 @@ void init_hyperdog_node()
         if(hyperdog_node.rcl_ret == RCL_RET_OK)
         {
             /* - init publishers ------------------------------*/
-            _init_motors_states_publisher();
+            // _init_motors_states_publisher(); /* @bug Can't publish data with best_effort subscriber.  */
             /// TODO: legsStates_publisher
             /// accelrometer/gyroscope data publisher
 
 
             /* - init subscribers -----------------------------*/
-            /// TODO: motorCmd_subscriber
+            _init_motorCmdSubscription();
             /// TODO: legsCmd_subscriber
             
             
@@ -357,17 +357,19 @@ void _setMotorZeroPosition_srv_callback(const void* req, void* res){
 /* ================================================================================== */
 
 /* ------------------------- INITIATE THE PUBLISHER ------------------------------ */
+
 void _init_motors_states_publisher()
 {
     /// TODO: best effort publisher gives rcl_ret 1 error no matter what.
     ///       Find a solution for it and implement the rclc_publisher_init_best_effort!
     ///       otherwise, withe the default publisher we get around 47 publishing rate.
     hyperdog_node.motorsStates_pub.rcl_ret
-        = rclc_publisher_init_default(
+        = rclc_publisher_init(
             &hyperdog_node.motorsStates_pub.publisher,
             &hyperdog_node.node,
             ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorsStates),
-            "motors_states"
+            "motors_states",
+            &rmw_qos_profile_default
             );
 
     if(hyperdog_node.motorsStates_pub.rcl_ret != RCL_RET_OK){
@@ -489,6 +491,73 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
    
 }
 
+/* ================================================================================== */
+/*                         MOTORS CMD SUBSCRIPTION                                    */
+/* ================================================================================== */
+
+/* ------------------------- INITIATE THE SUBSCRIBER -------------------------------- */
+void _init_motorCmdSubscription()
+{
+    const char* topic_name = "/motor_cmd";
+    const rosidl_message_type_support_t* type_support = 
+        ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorCmd);
+    /* initialize the subscription------------------------------------- */
+    hyperdog_node.motorCmd_sub.rcl_ret = 
+        rclc_subscription_init_default(
+            &hyperdog_node.motorCmd_sub.subscriber,
+            &hyperdog_node.node,
+            type_support,
+            topic_name);
+
+    /* add subscription to the executor  */
+    hyperdog_node.motorCmd_sub.rcl_ret += 
+        rclc_executor_add_subscription(
+            &hyperdog_node.executor, &hyperdog_node.motorCmd_sub.subscriber, 
+            &hyperdog_node.motorCmd_sub.msg, 
+            &_motor_cmd_sub_callback, ON_NEW_DATA);
+
+    /* check error */
+    if(hyperdog_node.motorCmd_sub.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_SUB1;
+    }else{
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_SUB1;
+    }
+
+
+
+}
+
+/* -------------------------- SUBSCRIPTION CALLBACK --------------------------------- */
+void _motor_cmd_sub_callback(const void* msg)
+{
+    const hyperdog_uros_interfaces__msg__MotorCmd* cmd =
+        (const hyperdog_uros_interfaces__msg__MotorCmd*) msg;
+
+    LegMotor_TypeDef* m;
+    m = &legMotor[cmd->leg][cmd->joint];
+
+    if(motor_objects_created){
+        /* check for special cmds */
+        if(cmd->disable == true) disable_motor(m);
+        else if(cmd->enable == true) enable_motor(m);
+        else if(cmd->set_zero == true) set_motor_zero_position(m);
+        else{
+            m->cmd.desire_position = cmd->desire_position;
+            m->cmd.desire_velocity = cmd->desire_velocity;
+            m->cmd.kp = cmd->kp;
+            m->cmd.kd = cmd->kd;
+            m->cmd.i_ff = cmd->i_ff;
+            _pack_cmd(m);
+            motor_sendTx_getRx(m);
+        }
+        
+        
+        
+    }
+}
+
+
 
 
 /* ================================================================================== */
@@ -502,11 +571,15 @@ void _destroy_hyperdog_node(){
     /// first, destroy all the node's entities 
     //// * destroy executor
     hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.executor);
-    //// * destroy timer
+    //// * destroy motor_states_pub's timer
     hyperdog_node.rcl_ret += rcl_timer_fini(&hyperdog_node.motorsStates_pub.timer);
     //// * destroy motorsStates publisher
     hyperdog_node.rcl_ret += rcl_publisher_fini(
                              &hyperdog_node.motorsStates_pub.publisher,
+                             &hyperdog_node.node);
+    //// * destroy motorCmd subscriber
+    hyperdog_node.rcl_ret += rcl_subscription_fini(
+                             &hyperdog_node.motorCmd_sub.subscriber,
                              &hyperdog_node.node);
     //// * destroy initLegMotors service
     hyperdog_node.rcl_ret += rcl_service_fini(&hyperdog_node.initLegMotors_srv.service, &hyperdog_node.node);

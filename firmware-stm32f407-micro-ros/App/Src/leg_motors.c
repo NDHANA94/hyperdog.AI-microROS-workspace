@@ -617,7 +617,7 @@ bool enable_allMotors(){
         for(int i=0; i<NUM_OF_LEGS; i++){
             for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
                 enable_motor(&legMotor[i][j]);
-                osDelay(2);
+                osDelay(1);
             }
         }
         return 1;
@@ -668,7 +668,7 @@ void disable_allMotors(){
     for(int i=0; i<NUM_OF_LEGS; i++){
         for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
             disable_motor(&legMotor[i][j]);
-            osDelay(2);
+            osDelay(1);
         }
     }
 }
