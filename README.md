@@ -54,3 +54,23 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
     cd firmware-stm32f407-micro-ros/
     make all
     ```
+
+
+<!-- 
+
+BUGS:
+
+    1. best_effort publisher doesn't publish the larger msgs. 
+        - micro_ros_stm32cubemx_utils's default MTU value is 512 (microros_include/uxr/client/config.h). 
+        The msg i wanted to send is 768 bytes large.
+        - micro_ros_stm32cubemx_util's provides with a dma_transport.c which assigns 2048 bytes DMA_BUFFER_SIZE.
+        - I tried to increase UXR_CONFIG_CUSTOM_TRANSPORT_MTU value to 800, 1024, ect.. then error occered at 
+        at the line 56 in dma_transport.c file. after this line the program goes to HardFault_Handler() and stops freertos. 
+        - I tried to set DMA_BUFFER_SIZE and UXR_CONFIG_CUSTOM_TRANSPORT_MTU value as following;
+                                DMA_BUFFER_SIZE = UXR_CONFIG_CUSTOM_TRANSPORT_MTU * 4
+            This way also i get the same error as before.
+
+         
+
+
+ -->
