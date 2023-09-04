@@ -115,7 +115,8 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "compare": "cpp",
-        "concepts": "cpp"
+        "concepts": "cpp",
+        "output_best_effort_stream.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": true,

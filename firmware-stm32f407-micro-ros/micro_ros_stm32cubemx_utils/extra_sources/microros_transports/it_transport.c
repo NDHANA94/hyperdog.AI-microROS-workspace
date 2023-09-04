@@ -13,7 +13,7 @@
 #ifdef RMW_UXRCE_TRANSPORT_CUSTOM
 
 // --- micro-ROS Transports ---
-#define UART_IT_BUFFER_SIZE 2048
+#define UART_IT_BUFFER_SIZE 2048 //4000 //
 
 static uint8_t it_buffer[UART_IT_BUFFER_SIZE];
 static uint8_t it_data;

@@ -61,7 +61,7 @@ HAL_StatusTypeDef can_status;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
-uint32_t defaultTaskBuffer[ 5000 ];
+uint32_t defaultTaskBuffer[4000];
 osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
@@ -83,12 +83,12 @@ const osThreadAttr_t errorIndicatorTask_attributes = {
 
 
 /* Definitions for CAN */
-// osThreadId_t CANTaskHandle;
-// const osThreadAttr_t CANTask_attributes = {
-//   .name = "canTask",
-//   .stack_size = 128 * 4,
-//   .priority = (osPriority_t) osPriorityHigh1,
-// };
+osThreadId_t CANTaskHandle;
+const osThreadAttr_t CANTask_attributes = {
+  .name = "canTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh1,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -174,19 +174,20 @@ void StartErrorIndicatorTask(void *argument)
 // void StartCANTask(void* argument)
 // {
 
-//   MOTOR_initId(FR_HIP, 1);
-//   MOTOR_initParams(FR_HIP, 12.5, 60, 500, 5, 18, 40);
-//   MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
-//   MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
-//   // MOTOR_sendHeatbeat(FR_HIP);
-//   // can_rx_init();
-//   // can_tx_init();
+// //   MOTOR_initId(FR_HIP, 1);
+// //   MOTOR_initParams(FR_HIP, 12.5, 60, 500, 5, 18, 40);
+// //   MOTOR_initCtrlLimits(FR_HIP, 1.2, -1.0, 3.0, 15);
+// //   MOTOR_initCANConfig(FR_HIP, &hcan1, 0);
+// //   // MOTOR_sendHeatbeat(FR_HIP);
+// //   // can_rx_init();
+// //   // can_tx_init();
   
 //   while(1){
 //       // send_can_test();
 //       // MOTOR_sendHeatbeat(FR_HIP);
-//       MOTOR_enable(FR_HIP);
-//       osDelay(10);
+//       // MOTOR_enable(FR_HIP);
+//       _motors_states_timer_callback();
+//       osDelay(2);
 //       // MOTOR_setZero(FR_HIP);
 //   }
 // }

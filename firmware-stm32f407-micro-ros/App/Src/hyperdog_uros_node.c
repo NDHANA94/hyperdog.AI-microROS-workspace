@@ -26,7 +26,13 @@ SOFTWARE.                                                                       
 #include "hyperdog_uros_node.h"
 // #include "motor_typedefs.h"
 #include "leg_motors.h"
+#include "time.h"
+#include <stdio.h>
 
+#include "std_msgs/msg/int32.h"
+
+uint32_t dt;
+uint32_t t_prev;
 
 hyperdogUROS_Node_t hyperdog_node;
 hyperdog_uros_interfaces__msg__MotorStates motor_states_;
@@ -35,7 +41,7 @@ hyperdog_uros_interfaces__msg__MotorStates motor_states_;
 /*                             NODE INITIALIZATION                                    */
 /* ================================================================================== */
 void init_hyperdog_node()
-{
+{   
     hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
 
     /*  1. initialize the node --------------------------------------------------------*/
@@ -54,7 +60,7 @@ void init_hyperdog_node()
         hyperdog_node.rcl_ret = rclc_executor_init(
                                 &hyperdog_node.executor,
                                 &uros.support.context,
-                                5,
+                                7,
                                 &uros.allocator);
         
 
@@ -63,16 +69,16 @@ void init_hyperdog_node()
         if(hyperdog_node.rcl_ret == RCL_RET_OK)
         {
             /* - init publishers ------------------------------*/
-            // _init_motors_states_publisher(); /* @bug Can't publish data with best_effort subscriber.  */
+            _init_motors_states_publisher(); /* @bug Can't publish data with best_effort subscriber.  */
             /// TODO: legsStates_publisher
             /// accelrometer/gyroscope data publisher
 
 
             /* - init subscribers -----------------------------*/
             _init_motorCmdSubscription();
-            /// TODO: legsCmd_subscriber
+            // / TODO: legsCmd_subscriber
             
-            
+
 
             /* - init services --------------------------------*/
             _init_initLegMotors_srv();
@@ -346,7 +352,6 @@ void _setMotorZeroPosition_srv_callback(const void* req, void* res){
         res_in->error_code = 0xFFFF;
     }
 
-    
 }
 
 
@@ -364,12 +369,12 @@ void _init_motors_states_publisher()
     ///       Find a solution for it and implement the rclc_publisher_init_best_effort!
     ///       otherwise, withe the default publisher we get around 47 publishing rate.
     hyperdog_node.motorsStates_pub.rcl_ret
-        = rclc_publisher_init(
+        = rclc_publisher_init_default(
             &hyperdog_node.motorsStates_pub.publisher,
             &hyperdog_node.node,
             ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorsStates),
-            "motors_states",
-            &rmw_qos_profile_default
+            // ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32), // for frequency test
+            "motors_states"
             );
 
     if(hyperdog_node.motorsStates_pub.rcl_ret != RCL_RET_OK){
@@ -412,8 +417,8 @@ void _init_motors_states_publisher()
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 {
     RCLC_UNUSED(last_call_time);
-
-    if(timer != NULL && motor_objects_created) {
+    // timer != NULL && 
+    if(motor_objects_created) {
         /// update motor state.status_msg
         for(int i=0; i<NUM_OF_LEGS; i++){
             for (int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){
@@ -470,16 +475,28 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
             hyperdog_node.motorsStates_pub.msg.rl_hip_pitch = legMotor[3][1].state;
             hyperdog_node.motorsStates_pub.msg.rl_knee      = legMotor[3][2].state;
 
+        int msg_size = sizeof(hyperdog_node.motorsStates_pub.msg); 
+        //  msg size is 768bytes, the default CLIENT_UDP_TRANSPORT_MTU=512,
+        // When using best effort, msg is sent only using allocated MTU memory.
+        // Bcz of msg size is greater than the MTU memory size, best effort can't
+        // send the msg. That's why the error happens.
+        // To solve this issue, increase the CLIENT_UDP_TRANSPORT_MTU value more 
+        // than the msg size and rebuild the libmicroros
+        
+        std_msgs__msg__Int32 msg; // for frequency test
+        msg.data = dt;            // for frequency test
+        t_prev = HAL_GetTick();
         /// publish msg 
         hyperdog_node.motorsStates_pub.rcl_ret 
             = rcl_publish(
                 &hyperdog_node.motorsStates_pub.publisher, 
                 &hyperdog_node.motorsStates_pub.msg, 
+                // &msg,         // for frequency test
                 NULL);
-
+        dt = HAL_GetTick() - t_prev;
         if(hyperdog_node.motorsStates_pub.rcl_ret  != RCL_RET_OK){
             hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_PUB1;
-            restartMicroROS(); /// Assuming error ccured due to the connectiorn lost with the agent
+            // restartMicroROS(); /// Assuming error ccured due to the connectiorn lost with the agent
         }
         else{
             hyperdog_node.error_code &= ~ NODE_HYPERDOG_ERROR_FAILED_PUB1;
@@ -488,7 +505,7 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     else{
         printf("timer is NULL");
     }
-   
+    
 }
 
 /* ================================================================================== */

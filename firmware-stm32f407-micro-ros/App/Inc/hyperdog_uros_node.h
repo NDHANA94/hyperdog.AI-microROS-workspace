@@ -45,7 +45,7 @@ extern "C"{
 #include "hyperdog_uros_interfaces/srv/disable_all_motors.h"
 #include "hyperdog_uros_interfaces/srv/set_zero_position.h"
 
-#define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(10) /*!< 10ms */
+#define MOTORS_STATES_PUB_TIMER_PERIOD_NS       RCL_MS_TO_NS(2) /*!< 10ms */
 
 /**
  * |          |   12~10  |     9~7    |   6~4    |    3~1   |  0   |  
@@ -165,6 +165,9 @@ struct
 
 extern hyperdog_uros_interfaces__msg__MotorStates motor_states_;
 extern hyperdogUROS_Node_t hyperdog_node;
+
+extern uint32_t dt;
+extern uint32_t t_prev;
 
 /* function decorators */
 

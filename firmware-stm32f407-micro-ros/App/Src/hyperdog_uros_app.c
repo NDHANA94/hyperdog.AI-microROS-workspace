@@ -25,17 +25,24 @@ SOFTWARE.                                                                       
 
 
 libmicroros.a is built with following colcon.meta configurations;
-"-DRMW_UXRCE_MAX_NODES=1",
-"-DRMW_UXRCE_MAX_PUBLISHERS=10",
-"-DRMW_UXRCE_MAX_SUBSCRIPTIONS=5",
-"-DRMW_UXRCE_MAX_SERVICES=15",
-"-DRMW_UXRCE_MAX_CLIENTS=1",
-"-DRMW_UXRCE_MAX_HISTORY=4"
+
+"rmw_microxrcedds":
+    "-DRMW_UXRCE_MAX_NODES=1",
+    "-DRMW_UXRCE_MAX_PUBLISHERS=5",
+    "-DRMW_UXRCE_MAX_SUBSCRIPTIONS=5",
+    "-DRMW_UXRCE_MAX_SERVICES=15",
+    "-DRMW_UXRCE_MAX_CLIENTS=1",
+    "-DRMW_UXRCE_MAX_HISTORY=10"
+
+"microxrcedds_client":
+    "-DUCLIENT_UDP_TRANSPORT_MTU=1024"
 
 */
 
 #include "hyperdog_uros_app.h"
 #include "hyperdog_uros_node.h"
+#include "cmsis_os.h"
+
 
 
 uros_app_t uros;
