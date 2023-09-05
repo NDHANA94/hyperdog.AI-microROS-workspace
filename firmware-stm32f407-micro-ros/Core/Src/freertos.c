@@ -63,6 +63,7 @@ HAL_StatusTypeDef can_status;
 osThreadId_t defaultTaskHandle;
 uint32_t defaultTaskBuffer[4000];
 osStaticThreadDef_t defaultTaskControlBlock;
+
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .cb_mem = &defaultTaskControlBlock,
@@ -83,12 +84,12 @@ const osThreadAttr_t errorIndicatorTask_attributes = {
 
 
 /* Definitions for CAN */
-osThreadId_t CANTaskHandle;
-const osThreadAttr_t CANTask_attributes = {
-  .name = "canTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityHigh1,
-};
+// osThreadId_t CANTaskHandle;
+// const osThreadAttr_t CANTask_attributes = {
+//   .name = "canTask",
+//   .stack_size = 128 * 4,
+//   .priority = (osPriority_t) osPriorityHigh1,
+// };
 
 /* Private function prototypes -----------------------------------------------*/
 

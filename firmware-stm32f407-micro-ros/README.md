@@ -7,133 +7,85 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 ### DONE:
 
+- Tested `micro-ROS app` and `error indicator` on 2 seperate `FreeRTOS` tasks.
 - MicroROS is established.
 - Motor struct was developed;
+- Developed micro-ROS custom msgs and srv for controlling motors
+- Following server were developed in stm32 firmware;
+    - `initLegMotors` 
+    - `enableAllMotors`
+    - `desableAllMotors`
+    - `setMotorZeroPostion`
+- Following Publishers were developed in stm32 firmware;
+    - `motorsStates`
+- Following Subscriptions were developed in stm32 firmware;
+    - `motorCmd`
 
-        - TypeDef struct Motor:
-                            - id (uint8_t)
-                            - params:
-                                    - p:
-                                        - min (float)
-                                        - max (float)
-                                    - v:
-                                        - min (float)
-                                        - max (float)
-                                    - kp: 
-                                        - min (float)
-                                        - max (float)
-                                    - kd: 
-                                        - min (float)
-                                        - max (float)
-                                    - i_ff: 
-                                        - min (float)
-                                        - max (float)
-                                    - vb: 
-                                        - min (float)
-                                        - max (float)
-                            - limit:
-                                    - position:
-                                        - min (float)
-                                        - max (float)
-                                    - velocity:
-                                        - min (float)
-                                        - max (float)
-                                    - current: 
-                                        - min (float)
-                                        - max (float)
-                            - cmd:
-                                    - p_des:
-                                        - min (float)
-                                        - max (float)
-                                    - v_des:
-                                        - min (float)
-                                        - max (float)
-                                    - kp: 
-                                        - min (float)
-                                        - max (float)
-                            - feedback:
-                                    - position (float)
-                                    - velocity (float)
-                                    - current  (float)
-                            - init_state: 4-bits value
-                                    - 0b0000: nothing initialized
-                                    - 0b0001: motor id is set
-                                    - 0b0010: motor params are set
-                                    - 0b0100: motor limits are set
-                                    - 0b1000: CAN comunication is configured 
-                            - state: enum MOTOR_State
-                                    - MOTOR_READY        = 0b00
-                                    - MOTOR_INITIALIZING = 0b01
-                                    - MOTOR_ENABLED      = 0b10
-                                    - MOTOR_ERROR        = 0b11
-                            - error_code: 11-bits
-                                    - 0b00000000000: No error
-                                    - 0b00000000001: motor is not initialized
-                                    - 0b00000000010: motor parameter error
-                                    - 0b00000000100: HAL_CAN error
-                                    - 0b00000001000: motor is offline
-                                    - 0b00000010000: current motor position is out of range
-                                    - 0b00000100000: motor is over-heated
-                                    - 0b00001000000: motor takes over-currunt
-                                    - 0b00010000000: failed to enable the motor
-                                    - 0b00100000000: failed to disable the motor
-                                    - 0b01000000000: failed to set motor zero position
-                                    - 0b10000000000: motor is not ready to be operated
-                                    - 0b00000000111: initial state of the motor error_code
-                            - hcan_ptr (CAN_HandleTypeDef*): pointer to hcan1 
-                            - canTX: CAN tx message
-                                    - data[8]   (uint8_t)
-                                    - header    (CAN_TxHeaderTypeDef)
-                                    - TxMailBox (uint32_t)
-                            - canRx: CAN rx message
-                                    - data[7]   (uint8_t)
-                                    - header    (CAN_TxHeaderTypeDef)
-                                    - filter    (CAN_FilterTypeDef)
-                            - noResp_counter: to count times of no response from the motor
-                                            if more than 5 times a motor response is not received:
-                                                - state -> ERROR
-                                                - error_code -> motor offline
-        
-- Following method were created for controlling the motor:
+- Following clients were developed in ROS2 `hyperdog_ctrl_legs` pkg;
+    - `initMotors`
+    - `anableAllMotors`
+    - `disableAllMotors`
+    - `setMotorZeroPosition`
 
-```c
-    void MOTOR_initId(enum MOTORS m, uint8_t id);
-    void MOTOR_initParams(enum MOTORS m, float pMax, float vMax, float kpMax, float kdMax, float iffMax, float vbMax);
-    void MOTOR_initCtrlLimits(enum MOTORS m, float pDesMax, float pDesMin, float vMax, float iMax);
-    void MOTOR_initCANConfig(enum MOTORS m, CAN_HandleTypeDef* hcan, uint8_t filterbank);
-    void MOTOR_enable(enum MOTORS m);
-    void MOTOR_disable(enum MOTORS m);
-    void MOTOR_setZero(enum MOTORS m);
-    void MOTOR_sendTxGetRx(enum MOTORS m);
-    void MOTOR_sendHeatbeat(enum MOTORS m);
-    void MOTOR_startWatchdog(); // @todo
-
-    void _pack_cmd(enum MOTORS m); 
-    void _unpack_canRx(enum MOTORS m); 
-    bool _is_motor_error(enum MOTORS m, uint8_t error_word);
-
-    float fminf(float x, float y);
-    float fmaxf(float x, float y);
-    int float2uint(float x, float x_min, float x_max, int bits);
-    float uint2float(int x_int, float x_min, float x_max, int bits);
-```
-
-- Tested `micro-ROS node`, `CAN communication` and `error indicator` on 3 seperate `FreeRTOS` tasks.
-- tested micro-ROS topics over 200 Hz frequency.
 - Developed a mechanism to re-establish the connection with micro-ros agent.
 - Created LED error code indicator for showing micro-ROS (LD3), CAN(LD5), Motor(LD6) errors.
         
 
-
 ### TODO:
-- Develope micro-ROS custom msgs and srv for controlling motors
+- Increse the frequency of motorsState publish msg
 - Implement Inverse kinematics and control the leg using coordinate commands
 - calculate force vector within the microcontroller using motor current feedback
 - Implement impedence control for the legs within the microcontroller.
 - And MANY MORE............. XD
 
+### fixed issues;
+1. Could't add a 2nd server:
+    * Reason: libmicroros.a of micro_ros_stm32cubemx_utils is built with following `rmw_microxrcedds` configuration in `colcon.meta` file:
+        ```
+        "rmw_microxrcedds": {
+            "cmake-args": [
+                "-DRMW_UXRCE_MAX_NODES=1",
+                "-DRMW_UXRCE_MAX_PUBLISHERS=10",
+                "-DRMW_UXRCE_MAX_SUBSCRIPTIONS=5",
+                "-DRMW_UXRCE_MAX_SERVICES=1",
+                "-DRMW_UXRCE_MAX_CLIENTS=1",
+                "-DRMW_UXRCE_MAX_HISTORY=4",
+                "-DRMW_UXRCE_TRANSPORT=custom"
+            ]
+        }
+        ```
+        as it's configured to have maximum 1 server, I could't add a 2nd server.
+    * Solution:
+        -  configured `rmw_microxrcedds` of `colcon.meta` as following;
+        ```
+        "rmw_microxrcedds": {
+            "cmake-args": [
+                "-DRMW_UXRCE_MAX_NODES=2",
+                "-DRMW_UXRCE_MAX_PUBLISHERS=5",
+                "-DRMW_UXRCE_MAX_SUBSCRIPTIONS=5",
+                "-DRMW_UXRCE_MAX_SERVICES=15",
+                "-DRMW_UXRCE_MAX_CLIENTS=0",
+                "-DRMW_UXRCE_MAX_HISTORY=4",
+            ]
+        }
+        ```
+
+2. Could't publish `motorsStates` msg with best_efford qos-reliability mode:
+    * Reason: `microxrcedds_clients` of `libmicroros.a` is built with 512 Bytes default size of `CLIENT_CUSTOM_TRANSPORT_MTU`,
+                and my `motorsStates` msg size is 768 Bytes.
+    * Sollution;
+        - add `"-DUCLIENT_CUSTOM_TRANSPORT_MTU=1024"` into `colcon.meta`->`"microxrcedds_client"`->`"cmake-args"`
+        - configure_firmware
+        - build_firmware
+        - use newly built `libmicroros.a` 
 
 
+### Known Isues
+1. Can't increase `motorsStates` publish rate with best_effort QOS-realiability mode.
+    It takes around 19ms to be published one msg.
+    This can be due to the size of the msg (768 B).
+
+<!--
 ### ERROR CODE:
 
 #### Micro-ROS Error-code: (LD3 - Orange LED)
@@ -182,8 +134,10 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
      `8`: Failed to enable the motor 
      `9`: Failed to diable the motor    
     `10`: Failed to set motor zero position
-    `11`: Motor is not ready to be operated
+    `11`: Motor is not ready to be operated 
+-->
 
+<!-- 
 ### How I created CubeMX project:
 
 1. Create a new CubeMX project for stm32f407
@@ -206,19 +160,20 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 
 ### Pinouts:
  - USART2: microROS agent must be connected via 
-    - `USART2_TX ---> PA2`
-    - `USART2_RX ---> PA3`
+    - `USART2_TX -> PA2`
+    - `USART2_RX -> PA3`
 
 - CAN Interface: 
-    - `CAN1_TX ---> PD1`
-    - `CAN1_RX ---> PD0`
+    - `CAN1_TX -> PD1`
+    - `CAN1_RX -> PD0`
 
 
 
 
 ### Fixed HAL bugs:
-- stm32f4xx_hal_can.h --> HAL_CAN_GetRxMessage(----) : Not updating error code, if HAL_OK:
-    fixed: add `hcan->ErrorCode &= ~ HAL_CAN_ERROR_PARAM;` to line 1587 (before `return HAL_OK;`)
+- stm32f4xx_hal_can.h -> HAL_CAN_GetRxMessage(----) : Not updating error code, if HAL_OK:
+    fixed: add `hcan->ErrorCode &= ~ HAL_CAN_ERROR_PARAM;` to line 1587 (before `return HAL_OK;`) 
+-->
 
 <!-- 
 

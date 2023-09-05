@@ -362,14 +362,20 @@ void _setMotorZeroPosition_srv_callback(const void* req, void* res){
 /* ================================================================================== */
 
 /* ------------------------- INITIATE THE PUBLISHER ------------------------------ */
-
+/**
+ * \bug
+ * This publisher publishes msgs in a rate of 40 Hz with reliable QOS mode.
+ * In order to get a higher frequency data, best_effort QOS must be implemented.
+ * Since this publisher's msg size is 768 Bytes, MTU is set to 1024 Bytes. 
+ * Now the publish rate is 50Hz. Still not improved well.
+*/
 void _init_motors_states_publisher()
 {
     /// TODO: best effort publisher gives rcl_ret 1 error no matter what.
     ///       Find a solution for it and implement the rclc_publisher_init_best_effort!
     ///       otherwise, withe the default publisher we get around 47 publishing rate.
     hyperdog_node.motorsStates_pub.rcl_ret
-        = rclc_publisher_init_default(
+        = rclc_publisher_init_best_effort(
             &hyperdog_node.motorsStates_pub.publisher,
             &hyperdog_node.node,
             ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorsStates),
@@ -390,7 +396,7 @@ void _init_motors_states_publisher()
     ///   * set callback function
     hyperdog_node.motorsStates_pub.callback = _motors_states_timer_callback;
     ///   * set timer period           
-    hyperdog_node.motorsStates_pub.timer_period = MOTORS_STATES_PUB_TIMER_PERIOD_NS;
+    hyperdog_node.motorsStates_pub.timer_period = 10000;//MOTORS_STATES_PUB_TIMER_PERIOD_NS;
     ///   * initialize timer object    
     hyperdog_node.motorsStates_pub.rcl_ret 
         = rclc_timer_init_default(
@@ -414,6 +420,8 @@ void _init_motors_states_publisher()
 }
 
 /* ------------------------ PUBLISHER CALLBACK -------------------------------------- */
+/*
+ */
 void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 {
     RCLC_UNUSED(last_call_time);
@@ -475,7 +483,7 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
             hyperdog_node.motorsStates_pub.msg.rl_hip_pitch = legMotor[3][1].state;
             hyperdog_node.motorsStates_pub.msg.rl_knee      = legMotor[3][2].state;
 
-        int msg_size = sizeof(hyperdog_node.motorsStates_pub.msg); 
+        int msg_size = sizeof(hyperdog_node.motorsStates_pub.msg); // 768 Bytes
         //  msg size is 768bytes, the default CLIENT_UDP_TRANSPORT_MTU=512,
         // When using best effort, msg is sent only using allocated MTU memory.
         // Bcz of msg size is greater than the MTU memory size, best effort can't
