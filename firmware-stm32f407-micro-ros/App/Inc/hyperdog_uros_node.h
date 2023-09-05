@@ -40,6 +40,7 @@ extern "C"{
 #include "hyperdog_uros_interfaces/msg/motor_states.h"
 #include "hyperdog_uros_interfaces/msg/motor_cmd.h"
 #include "hyperdog_uros_interfaces/msg/motors_states.h"
+#include "hyperdog_uros_interfaces/msg/motors_states_encoded.h"
 #include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
 #include "hyperdog_uros_interfaces/srv/enable_all_motors.h"
 #include "hyperdog_uros_interfaces/srv/disable_all_motors.h"
@@ -97,12 +98,12 @@ enum State{
 typedef void(* motor_states_pub_callback_t)(rcl_timer_t*, int64_t);
 
 struct{
-    rcl_publisher_t                            publisher;
-    hyperdog_uros_interfaces__msg__MotorsStates      msg; 
-    rcl_timer_t                                    timer; 
-    unsigned int                            timer_period; /* Hz */
-    rcl_ret_t                                    rcl_ret;
-    motor_states_pub_callback_t                 callback;
+    rcl_publisher_t                                   publisher;
+    hyperdog_uros_interfaces__msg__MotorsStatesEncoded      msg; 
+    rcl_timer_t                                           timer; 
+    unsigned int                                   timer_period; /* Hz */
+    rcl_ret_t                                           rcl_ret;
+    motor_states_pub_callback_t                        callback;
 }typedef motorStates_publisher_t;
 
 struct{

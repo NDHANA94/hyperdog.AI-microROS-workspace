@@ -1,0 +1,35 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_interfaces/msg/MotorsCmdEncoded.msg
+// generated code does not contain a copyright notice
+
+#include "hyperdog_uros_interfaces/msg/MotorCmdEncoded.idl"
+
+module hyperdog_uros_interfaces {
+  module msg {
+    struct MotorsCmdEncoded {
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fr_hip_roll;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fr_hip_pitch;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fr_knee;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fl_hip_roll;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fl_hip_pitch;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded fl_knee;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rr_hip_roll;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rr_hip_pitch;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rr_knee;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rl_hip_roll;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rl_hip_pitch;
+
+      hyperdog_uros_interfaces::msg::MotorCmdEncoded rl_knee;
+    };
+  };
+};

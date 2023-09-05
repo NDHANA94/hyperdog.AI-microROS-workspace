@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hyperdog_uros_interfaces/msg/MotorFeedbackEncoded.msg
+// generated code does not contain a copyright notice
+
+
+module hyperdog_uros_interfaces {
+  module msg {
+    typedef uint8 uint8__6[6];
+    @verbatim (language="comment", text=
+      " Encoded msg for motor feedback to reduce memory consumption")
+    struct MotorFeedbackEncoded {
+      uint8__6 data;
+    };
+  };
+};

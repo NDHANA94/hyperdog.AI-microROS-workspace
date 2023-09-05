@@ -153,14 +153,10 @@ bool create_motor_objects(LegMotor_TypeDef** m)
             legMotor[i][j].state.is_available = 0;
             legMotor[i][j].state.is_enabled = 0;
             legMotor[i][j].state.is_error = 0;
-            legMotor[i][j].state.feedback.can_id = 0;
-            legMotor[i][j].state.feedback.position = 0;
-            legMotor[i][j].state.feedback.velocity = 0;
-            legMotor[i][j].state.feedback.torque = 0;
-            legMotor[i][j].state.feedback.vb = 0;
             legMotor[i][j].state.status_msg.data = "";
-            legMotor[i][j].state.status_msg.capacity = 100;
+            legMotor[i][j].state.status_msg.capacity = 20;
             legMotor[i][j].state.status_msg.size = 0;
+            // legMotor[i][j].state.feedback  is updated in `motor_sendTx_getRx` function.
         }
     }
 
@@ -444,25 +440,25 @@ void _unpack_canRx(LegMotor_TypeDef* m)
     int v_int = (m->canRx->data[3] << 4) | (m->canRx->data[4] >> 4);
     int i_int = ((m->canRx->data[4] & 0xF) << 8) | (m->canRx->data[5]);
 
-    m->state.feedback.can_id = m->canRx->data[0];
+    m->feedback.can_id = m->canRx->data[0];
 
-    m->state.feedback.position = __uint2float(
+    m->feedback.position = __uint2float(
                                 p_int, 
                                 m->self.params.position.min, 
                                 m->self.params.position.max, 
                                 16);
-    m->state.feedback.velocity = __uint2float(
+    m->feedback.velocity = __uint2float(
                                 v_int,
                                 m->self.params.velocity.min,
                                 m->self.params.velocity.max,
                                 12);
-    m->state.feedback.torque = __uint2float(
+    m->feedback.torque = __uint2float(
                                 i_int,
                                 -40.0f, /// TODO: Add this to initMotors parameters 
                                 40.0f,  /// TODO: Add this to initMotors parameters 
                                 12);
     if(NUM_OF_CAN_RX_BYTES == 7){
-        m->state.feedback.vb = __uint2float(
+        m->feedback.vb = __uint2float(
                                m->canRx->data[6],
                                0.0f,
                                40.0f,
@@ -535,14 +531,15 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
 
     /*  get CAN rx message and filter motor Id  */
     uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
-    osDelay(2);
+    osDelay(4);
     if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK){   
-        goto motor_offline;
+        goto no_res;
     }
 
     /* If rx msg was sent by the correct motor, save rx data into canRx.data */
     if(rx_data[0] == m->self.params.can_id){
         memcpy(m->canRx->data, rx_data, NUM_OF_CAN_RX_BYTES);
+        memcpy(m->state.feedback.data, rx_data, sizeof(m->state.feedback.data)/sizeof(m->state.feedback.data[0]));
         /* unpack canRx data into motor feedback {position, velocity, currunt} */
         _unpack_canRx(m);
         /* reset motor _noMotorResp_count */
@@ -550,9 +547,11 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
         goto motor_ok; 
     } 
 
-    /* If tx msg was sent and rx msg was received, but rx msg was received from another motor */
+    /* If tx msg was sent and rx msg was received, but rx msg was received from another motor
+       OR if motor didn't sent a feedback msg */
     else if (m->hcan->ErrorCode != HAL_ERROR){
         /* count failiers of motor response */
+        no_res:
         m->_noMotorResp_count ++;
         /* if motor response was no recived more than MAX_MOTOR_NO_RESPONSE_COUNT, update motoe state and error_code */
         if(m->_noMotorResp_count > MAX_MOTOR_NO_RESPONSE_COUNT)

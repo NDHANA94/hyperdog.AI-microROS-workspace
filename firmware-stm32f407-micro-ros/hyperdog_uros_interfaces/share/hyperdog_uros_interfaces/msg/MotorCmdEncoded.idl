@@ -1,13 +1,14 @@
 // generated from rosidl_adapter/resource/msg.idl.em
-// with input from hyperdog_uros_interfaces/msg/MotorCmd2.msg
+// with input from hyperdog_uros_interfaces/msg/MotorCmdEncoded.msg
 // generated code does not contain a copyright notice
 
 
 module hyperdog_uros_interfaces {
   module msg {
+    typedef uint8 uint8__8[8];
     @verbatim (language="comment", text=
       " Id of the motor")
-    struct MotorCmd2 {
+    struct MotorCmdEncoded {
       uint8 can_id;
 
       @verbatim (language="comment", text=
@@ -19,16 +20,8 @@ module hyperdog_uros_interfaces {
       boolean set_zero;
 
       @verbatim (language="comment", text=
-        " control commands")
-      double desire_position;
-
-      double desire_velocity;
-
-      double kp;
-
-      double kd;
-
-      double i_ff;
+        " encoded control commands to reduce memory consumption")
+      uint8__8 cmd;
     };
   };
 };

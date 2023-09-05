@@ -32,6 +32,7 @@ extern "C"{
 
 #include "hyperdog_uros_interfaces/msg/init_motor.h"
 #include "hyperdog_uros_interfaces/msg/init_leg_motors.h"
+#include "hyperdog_uros_interfaces/msg/motor_states_encoded.h"
 #include "hyperdog_uros_interfaces/msg/motor_states.h"
 #include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
 #include "hyperdog_uros_interfaces/msg/motor_cmd.h"
@@ -146,8 +147,15 @@ struct{
     @param is_error
     @param error_code
     @param status_msg
-    @param feedback id, position, velocity, torque and vb of th motor */
-    hyperdog_uros_interfaces__msg__MotorStates    state; 
+    @param feedback  id, position, velocity, torque and vb of the motor encoded into 6bytes array;*/
+    hyperdog_uros_interfaces__msg__MotorStatesEncoded    state; 
+    /* 
+    @param  can_id
+    @param position
+    @param velocity
+    @param torque
+    @param vb */
+    hyperdog_uros_interfaces__msg__MotorFeedback        feedback;
     /* 
     @param p_des desire position
     @param v_des desire velocity

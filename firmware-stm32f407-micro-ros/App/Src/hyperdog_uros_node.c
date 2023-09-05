@@ -378,7 +378,7 @@ void _init_motors_states_publisher()
         = rclc_publisher_init_best_effort(
             &hyperdog_node.motorsStates_pub.publisher,
             &hyperdog_node.node,
-            ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorsStates),
+            ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorsStatesEncoded),
             // ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32), // for frequency test
             "motors_states"
             );
@@ -483,13 +483,7 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
             hyperdog_node.motorsStates_pub.msg.rl_hip_pitch = legMotor[3][1].state;
             hyperdog_node.motorsStates_pub.msg.rl_knee      = legMotor[3][2].state;
 
-        int msg_size = sizeof(hyperdog_node.motorsStates_pub.msg); // 768 Bytes
-        //  msg size is 768bytes, the default CLIENT_UDP_TRANSPORT_MTU=512,
-        // When using best effort, msg is sent only using allocated MTU memory.
-        // Bcz of msg size is greater than the MTU memory size, best effort can't
-        // send the msg. That's why the error happens.
-        // To solve this issue, increase the CLIENT_UDP_TRANSPORT_MTU value more 
-        // than the msg size and rebuild the libmicroros
+        int msg_size = sizeof(hyperdog_node.motorsStates_pub.msg); // 336 Bytes
         
         std_msgs__msg__Int32 msg; // for frequency test
         msg.data = dt;            // for frequency test
@@ -556,6 +550,7 @@ void _init_motorCmdSubscription()
 /* -------------------------- SUBSCRIPTION CALLBACK --------------------------------- */
 void _motor_cmd_sub_callback(const void* msg)
 {
+    dt = HAL_GetTick();
     const hyperdog_uros_interfaces__msg__MotorCmd* cmd =
         (const hyperdog_uros_interfaces__msg__MotorCmd*) msg;
 

@@ -1,9 +1,9 @@
 // generated from rosidl_generator_c/resource/idl__type_support.h.em
-// with input from hyperdog_uros_interfaces:msg/MotorCmd2.idl
+// with input from hyperdog_uros_interfaces:msg/MotorsStatesEncoded.idl
 // generated code does not contain a copyright notice
 
-#ifndef HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTOR_CMD2__TYPE_SUPPORT_H_
-#define HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTOR_CMD2__TYPE_SUPPORT_H_
+#ifndef HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTORS_STATES_ENCODED__TYPE_SUPPORT_H_
+#define HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTORS_STATES_ENCODED__TYPE_SUPPORT_H_
 
 #include "rosidl_typesupport_interface/macros.h"
 
@@ -23,11 +23,11 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
   rosidl_typesupport_c,
   hyperdog_uros_interfaces,
   msg,
-  MotorCmd2
+  MotorsStatesEncoded
 )();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTOR_CMD2__TYPE_SUPPORT_H_
+#endif  // HYPERDOG_UROS_INTERFACES__MSG__DETAIL__MOTORS_STATES_ENCODED__TYPE_SUPPORT_H_
