@@ -11,7 +11,7 @@ Micro-ROS  STM32F407 firmware for MiniCheetah BLDC motor controller for the Next
 - MicroROS is established.
 - Motor struct was developed;
 - Developed micro-ROS custom msgs and srv for controlling motors
-- Following server were developed in stm32 firmware;
+- Following servers were developed in stm32 firmware;
     - `initLegMotors` 
     - `enableAllMotors`
     - `desableAllMotors`
