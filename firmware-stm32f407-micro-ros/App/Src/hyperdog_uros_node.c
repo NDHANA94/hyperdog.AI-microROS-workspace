@@ -576,7 +576,7 @@ void _motor_cmd_sub_callback(const void* msg)
         /* check for special cmds */
         if(cmd->disable == true) disable_motor(m);
         else if(cmd->enable == true) enable_motor(m);
-        else if(cmd->set_zero == true) set_motor_zero_position(m);cd .
+        else if(cmd->set_zero == true) set_motor_zero_position(m);
         else if(m->debug_state == MOTOR_ENABLED){
             m->cmd.desire_position = cmd->desire_position;
             m->cmd.desire_velocity = cmd->desire_velocity;
