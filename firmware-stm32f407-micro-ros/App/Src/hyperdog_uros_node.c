@@ -56,11 +56,26 @@ void init_hyperdog_node()
     {
         hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_INIT; //update error code
 
-        hyperdog_node.executor = rclc_executor_get_zero_initialized_executor();
+        hyperdog_node.exe_servers = rclc_executor_get_zero_initialized_executor();
+        hyperdog_node.exe_timers  = rclc_executor_get_zero_initialized_executor();
+        hyperdog_node.exe_subs    = rclc_executor_get_zero_initialized_executor();
+
         hyperdog_node.rcl_ret = rclc_executor_init(
-                                &hyperdog_node.executor,
+                                &hyperdog_node.exe_servers,
                                 &uros.support.context,
-                                7,
+                                4,
+                                &uros.allocator);
+        
+        hyperdog_node.rcl_ret += rclc_executor_init(
+                                &hyperdog_node.exe_timers,
+                                &uros.support.context,
+                                2,
+                                &uros.allocator);
+        
+        hyperdog_node.rcl_ret += rclc_executor_init(
+                                &hyperdog_node.exe_subs,
+                                &uros.support.context,
+                                1,
                                 &uros.allocator);
         
 
@@ -94,7 +109,7 @@ void init_hyperdog_node()
 
 
             /* - init timers ----------------------------------*/
-            /// TODO: motor_watchdog 
+            _init_motorWatchDog_timer();
 
         }
         else
@@ -148,7 +163,7 @@ void _init_initLegMotors_srv()
     // add server callback to the executor
     hyperdog_node.initLegMotors_srv.rcl_ret = 
         rclc_executor_add_service(
-            &hyperdog_node.executor,
+            &hyperdog_node.exe_servers,
             &hyperdog_node.initLegMotors_srv.service,
             &hyperdog_node.initLegMotors_srv.req_msg,
             &hyperdog_node.initLegMotors_srv.res_msg,
@@ -203,7 +218,7 @@ void _init_enableAllMotors_srv()
     // add server callback to the executor
     hyperdog_node.enableAllMotors_srv.rcl_ret = 
         rclc_executor_add_service(
-            &hyperdog_node.executor,
+            &hyperdog_node.exe_servers,
             &hyperdog_node.enableAllMotors_srv.service,
             &hyperdog_node.enableAllMotors_srv.req_msg,
             &hyperdog_node.enableAllMotors_srv.res_msg,
@@ -262,7 +277,7 @@ void _init_disableAllMotors_srv()
     // add server callback to the executor
     hyperdog_node.disableAllMotors_srv.rcl_ret = 
         rclc_executor_add_service(
-            &hyperdog_node.executor,
+            &hyperdog_node.exe_servers,
             &hyperdog_node.disableAllMotors_srv.service,
             &hyperdog_node.disableAllMotors_srv.req_msg,
             &hyperdog_node.disableAllMotors_srv.res_msg,
@@ -322,7 +337,7 @@ void _init_setMotorZeroPosition_srv()
     // add server callback to the executor
     hyperdog_node.setMotorZeroPosition_srv.rcl_ret = 
         rclc_executor_add_service(
-            &hyperdog_node.executor,
+            &hyperdog_node.exe_servers,
             &hyperdog_node.setMotorZeroPosition_srv.service,
             &hyperdog_node.setMotorZeroPosition_srv.req_msg,
             &hyperdog_node.setMotorZeroPosition_srv.res_msg,
@@ -396,7 +411,7 @@ void _init_motors_states_publisher()
     ///   * set callback function
     hyperdog_node.motorsStates_pub.callback = _motors_states_timer_callback;
     ///   * set timer period           
-    hyperdog_node.motorsStates_pub.timer_period = 10000;//MOTORS_STATES_PUB_TIMER_PERIOD_NS;
+    hyperdog_node.motorsStates_pub.timer_period = RCL_MS_TO_NS(MOTORS_STATES_PUB_TIMER_PERIOD_NS);
     ///   * initialize timer object    
     hyperdog_node.motorsStates_pub.rcl_ret 
         = rclc_timer_init_default(
@@ -408,7 +423,7 @@ void _init_motors_states_publisher()
     if(hyperdog_node.motorsStates_pub.rcl_ret == RCL_RET_OK){
         hyperdog_node.motorsStates_pub.rcl_ret 
             = rclc_executor_add_timer(
-                &hyperdog_node.executor, 
+                &hyperdog_node.exe_timers, 
                 &hyperdog_node.motorsStates_pub.timer);
 
         if(hyperdog_node.motorsStates_pub.rcl_ret != RCL_RET_OK){
@@ -522,7 +537,7 @@ void _init_motorCmdSubscription()
         ROSIDL_GET_MSG_TYPE_SUPPORT(hyperdog_uros_interfaces, msg, MotorCmd);
     /* initialize the subscription------------------------------------- */
     hyperdog_node.motorCmd_sub.rcl_ret = 
-        rclc_subscription_init_default(
+        rclc_subscription_init_best_effort(
             &hyperdog_node.motorCmd_sub.subscriber,
             &hyperdog_node.node,
             type_support,
@@ -531,7 +546,7 @@ void _init_motorCmdSubscription()
     /* add subscription to the executor  */
     hyperdog_node.motorCmd_sub.rcl_ret += 
         rclc_executor_add_subscription(
-            &hyperdog_node.executor, &hyperdog_node.motorCmd_sub.subscriber, 
+            &hyperdog_node.exe_subs, &hyperdog_node.motorCmd_sub.subscriber, 
             &hyperdog_node.motorCmd_sub.msg, 
             &_motor_cmd_sub_callback, ON_NEW_DATA);
 
@@ -561,8 +576,8 @@ void _motor_cmd_sub_callback(const void* msg)
         /* check for special cmds */
         if(cmd->disable == true) disable_motor(m);
         else if(cmd->enable == true) enable_motor(m);
-        else if(cmd->set_zero == true) set_motor_zero_position(m);
-        else{
+        else if(cmd->set_zero == true) set_motor_zero_position(m);cd .
+        else if(m->debug_state == MOTOR_ENABLED){
             m->cmd.desire_position = cmd->desire_position;
             m->cmd.desire_velocity = cmd->desire_velocity;
             m->cmd.kp = cmd->kp;
@@ -577,7 +592,48 @@ void _motor_cmd_sub_callback(const void* msg)
     }
 }
 
+/* ================================================================================== */
+/*                               MOTOR WATCHDOG                                       */
+/* ================================================================================== */
+void _init_motorWatchDog_timer()
+{
+    hyperdog_node.motorWatchdog_timer.callback = _motor_watchdog_timer_callback;
+    hyperdog_node.motorWatchdog_timer.timer_period = RCL_MS_TO_NS(MOTOR_WATCHDOG_TIMER_PERIOD);
+    hyperdog_node.motorWatchdog_timer.rcl_ret = 
+        rclc_timer_init_default(
+            &hyperdog_node.motorWatchdog_timer.timer,
+            &uros.support,
+            hyperdog_node.motorWatchdog_timer.timer_period,
+            hyperdog_node.motorWatchdog_timer.callback);
 
+    hyperdog_node.motorWatchdog_timer.rcl_ret +=
+         rclc_executor_add_timer(
+            &hyperdog_node.exe_timers,
+            &hyperdog_node.motorWatchdog_timer.timer);
+
+    if(hyperdog_node.motorWatchdog_timer.rcl_ret != RCL_RET_OK){
+        hyperdog_node.state = HYPERDOG_NODE_ERROR;
+        hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_TIM2;
+    }else{
+        hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_TIM2;
+    }
+}
+/* --------------------- MOTOR WATCHDOG TIMER CALLBACK ----------------------------- */
+void _motor_watchdog_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+{
+    if(motor_objects_created){
+        for(int i=0; i<NUM_OF_LEGS; i++){
+            for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){         
+                if(legMotor[i][j].debug_state != MOTOR_ENABLED){
+                    disable_motor(&legMotor[i][j]);
+                }else if(legMotor[i][j].debug_state == MOTOR_ENABLED &&
+                HAL_GetTick() - legMotor[i][j].last_update_time > MAX_NO_UPDATE_TIME){
+                    motor_sendTx_getRx(&legMotor[i][j]);
+                }
+            }
+        }
+    }
+}
 
 
 /* ================================================================================== */
@@ -590,7 +646,9 @@ void _motor_cmd_sub_callback(const void* msg)
 void _destroy_hyperdog_node(){
     /// first, destroy all the node's entities 
     //// * destroy executor
-    hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.executor);
+    hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.exe_servers);
+    hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.exe_timers);
+    hyperdog_node.rcl_ret = rclc_executor_fini(&hyperdog_node.exe_subs);
     //// * destroy motor_states_pub's timer
     hyperdog_node.rcl_ret += rcl_timer_fini(&hyperdog_node.motorsStates_pub.timer);
     //// * destroy motorsStates publisher

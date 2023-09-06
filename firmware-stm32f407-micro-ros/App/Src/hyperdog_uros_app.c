@@ -48,6 +48,15 @@ libmicroros.a is built with following colcon.meta configurations;
 uros_app_t uros;
 
 
+void _spin_executors()
+{
+    while(true){
+        rclc_executor_spin_some(&hyperdog_node.exe_servers, RCL_MS_TO_NS(5));
+        rclc_executor_spin_some(&hyperdog_node.exe_timers, RCL_MS_TO_NS(10));
+        rclc_executor_spin_some(&hyperdog_node.exe_subs, RCL_MS_TO_NS(10));
+    }
+}
+
 /**========================================================================================
  * To start the micro-ROS
  * 
@@ -59,7 +68,8 @@ int start_HyperDog_UROS_APP(UART_HandleTypeDef* huart)
     if(initMicroROS(huart)){
         /* Initialize node 1 ----------------------------------------*/
         init_hyperdog_node();
-        rcl_ret_t ret = rclc_executor_spin(&hyperdog_node.executor);
+        // rcl_ret_t ret = rclc_executor_spin(&hyperdog_node.executor);
+        _spin_executors();
         /* clean ---------------------------------------------------*/
         _destroy_hyperdog_node();
         return 0;
@@ -184,7 +194,8 @@ void restartMicroROS()
 
 
     /* spin the executors  --------------------------------------------*/
-    rclc_executor_spin(&hyperdog_node.executor);
+    // rclc_executor_spin(&hyperdog_node.executor);
+    _spin_executors();
     // rclc_executor_spin(& node_x.executor)
     // rclc_executor_spin(& node_y.executor)
 

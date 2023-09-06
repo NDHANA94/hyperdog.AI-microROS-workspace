@@ -47,6 +47,9 @@ extern "C"{
 #define NUM_OF_CAN_TX_BYETS             8
 #define NUM_OF_CAN_RX_BYTES             6 // 7
 #define MAX_MOTOR_NO_RESPONSE_COUNT     5 /*!< after this number of times motor doesn't response repeatedly, motor status will be updated as MOTOR_OFFLINE  */
+#define MAX_NO_UPDATE_TIME              500 // ms
+#define MOTOR_WATCHDOG_TIMER_PERIOD     1000 //ms
+
 
 #define NUM_OF_LEGS                     4
 #define NUM_OF_JOINTS_PER_LEG           3
@@ -179,6 +182,7 @@ struct{
     uint8_t                                 init_status;
     enum MOTOR_State                        debug_state;
     uint8_t                                 _noMotorResp_count;
+    int32_t                                 last_update_time;
 }typedef LegMotor_TypeDef;
 
 

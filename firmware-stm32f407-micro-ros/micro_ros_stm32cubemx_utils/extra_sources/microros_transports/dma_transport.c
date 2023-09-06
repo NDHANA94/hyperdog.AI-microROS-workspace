@@ -13,7 +13,7 @@
 #ifdef RMW_UXRCE_TRANSPORT_CUSTOM
 
 // --- micro-ROS Transports ---
-#define UART_DMA_BUFFER_SIZE 2048 //4000 //
+#define UART_DMA_BUFFER_SIZE 4096 //4000 //
 
 static uint8_t dma_buffer[UART_DMA_BUFFER_SIZE];
 static size_t dma_head = 0, dma_tail = 0;

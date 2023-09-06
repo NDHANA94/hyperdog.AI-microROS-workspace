@@ -542,6 +542,8 @@ bool motor_sendTx_getRx(LegMotor_TypeDef* m){
         memcpy(m->state.feedback.data, rx_data, sizeof(m->state.feedback.data)/sizeof(m->state.feedback.data[0]));
         /* unpack canRx data into motor feedback {position, velocity, currunt} */
         _unpack_canRx(m);
+        /* update las_update_time */
+        m->last_update_time = HAL_GetTick();
         /* reset motor _noMotorResp_count */
         m->_noMotorResp_count = 0;
         goto motor_ok; 

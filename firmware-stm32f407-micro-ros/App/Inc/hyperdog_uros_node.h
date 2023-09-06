@@ -33,7 +33,6 @@ extern "C"{
 #include "float.h"
 #include "math.h"
 #include <stdbool.h>
-#include <stdbool.h>
 
 #include "hyperdog_uros_app.h"
 
@@ -71,8 +70,8 @@ extern "C"{
 #define NODE_HYPERDOG_ERROR_FAILED_SUB6         0b0000001100000 /*!< 6th subscriber             */
 #define NODE_HYPERDOG_ERROR_FAILED_SUB7         0b0000001110000 /*!< 7th subscriber             */
 
-#define NODE_HYPERDOG_ERROR_FAILED_TIM1         0b0000010000000 /*!< 1st timer                  */
-#define NODE_HYPERDOG_ERROR_FAILED_TIM2         0b0000100000000 /*!< 2st timer                  */
+#define NODE_HYPERDOG_ERROR_FAILED_TIM1         0b0000010000000 /*!< motor states publisher callback  */
+#define NODE_HYPERDOG_ERROR_FAILED_TIM2         0b0000100000000 /*!< motorWatchdog timer callback     */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM3         0b0000110000000 /*!< 3st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM4         0b0001000000000 /*!< 4st timer                  */
 #define NODE_HYPERDOG_ERROR_FAILED_TIM5         0b0001010000000 /*!< 5st timer                  */
@@ -96,39 +95,41 @@ enum State{
 };
 
 typedef void(* motor_states_pub_callback_t)(rcl_timer_t*, int64_t);
+typedef void(* motor_cmd_sub_callback_t)(const void*);
+typedef void(* motor_watchdog_callback_t)(rcl_timer_t*, int64_t);
 
 struct{
-    rcl_publisher_t                                   publisher;
-    hyperdog_uros_interfaces__msg__MotorsStatesEncoded      msg; 
-    rcl_timer_t                                           timer; 
-    unsigned int                                   timer_period; /* Hz */
-    rcl_ret_t                                           rcl_ret;
-    motor_states_pub_callback_t                        callback;
+    rcl_publisher_t                                        publisher;
+    hyperdog_uros_interfaces__msg__MotorsStatesEncoded           msg; 
+    rcl_timer_t                                                timer; 
+    unsigned int                                        timer_period; /* Hz */
+    rcl_ret_t                                                rcl_ret;
+    motor_states_pub_callback_t                             callback;
 }typedef motorStates_publisher_t;
 
 struct{
-    rcl_subscription_t                        subscriber;
-    hyperdog_uros_interfaces__msg__MotorCmd          msg; 
-    rcl_ret_t                                    rcl_ret;
-    motor_states_pub_callback_t                 callback;
+    rcl_subscription_t                                    subscriber;
+    hyperdog_uros_interfaces__msg__MotorCmd                      msg; 
+    rcl_ret_t                                                rcl_ret;
+    motor_cmd_sub_callback_t                                callback;
 }typedef motorCmd_subscription_t;
 
 struct{
-    rcl_service_t                                         service;
-    const char*                                          srv_name;
-    rcl_ret_t                                             rcl_ret;
-    rclc_service_callback_t                              callback;
-    hyperdog_uros_interfaces__srv__InitLegMotors_Request  req_msg;
-    hyperdog_uros_interfaces__srv__InitLegMotors_Response res_msg;
+    rcl_service_t                                            service;
+    const char*                                             srv_name;
+    rcl_ret_t                                                rcl_ret;
+    rclc_service_callback_t                                 callback;
+    hyperdog_uros_interfaces__srv__InitLegMotors_Request     req_msg;
+    hyperdog_uros_interfaces__srv__InitLegMotors_Response    res_msg;
 }typedef legMotorsInit_srv_t;
 
 struct{
-    rcl_service_t                                           service;
-    const char*                                            srv_name;
-    rcl_ret_t                                               rcl_ret;
-    rclc_service_callback_t                                callback;
-    hyperdog_uros_interfaces__srv__EnableAllMotors_Request  req_msg;
-    hyperdog_uros_interfaces__srv__EnableAllMotors_Response res_msg;
+    rcl_service_t                                            service;
+    const char*                                             srv_name;
+    rcl_ret_t                                                rcl_ret;
+    rclc_service_callback_t                                 callback;
+    hyperdog_uros_interfaces__srv__EnableAllMotors_Request   req_msg;
+    hyperdog_uros_interfaces__srv__EnableAllMotors_Response  res_msg;
 }typedef enableAllMotors_srv_t;
 
 struct{
@@ -149,16 +150,27 @@ struct{
     hyperdog_uros_interfaces__srv__SetZeroPosition_Response  res_msg;
 }typedef setMotorZeroPosition_srv_t;
 
+struct{
+    rcl_timer_t                                                timer;
+    motor_watchdog_callback_t                               callback;
+    int32_t                                             timer_period;
+    rcl_ret_t                                                rcl_ret;
+}typedef motorWatchdogTimer_t;
+
 struct
 {
     rcl_node_t                                          node;
-    rclc_executor_t                                 executor;
+    // rclc_executor_t                                 executor;
+    rclc_executor_t                              exe_servers;
+    rclc_executor_t                               exe_timers;
+    rclc_executor_t                                 exe_subs;
     legMotorsInit_srv_t                    initLegMotors_srv;   /* SRV1 */
     enableAllMotors_srv_t                enableAllMotors_srv;   /* SRV2 */
     disableAllMotors_srv_t              disableAllMotors_srv;   /* SRV3 */
     setMotorZeroPosition_srv_t      setMotorZeroPosition_srv;   /* SRV4 */
     motorStates_publisher_t                 motorsStates_pub;   /* PUB1 */
     motorCmd_subscription_t                     motorCmd_sub;   /* SUB1 */
+    motorWatchdogTimer_t                 motorWatchdog_timer;   /* TIM2 */
     enum State                                         state;
     uint16_t                                      error_code;   /* 13-bits error-code*/
     rcl_ret_t                                        rcl_ret;
@@ -191,6 +203,9 @@ void _disableAllMotors_srv_callback(const void* req, void* res);
 
 void _init_setMotorZeroPosition_srv();
 void _setMotorZeroPosition_srv_callback(const void* req, void* res);
+
+void _init_motorWatchDog_timer();
+void _motor_watchdog_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 
 void _destroy_hyperdog_node();
 
