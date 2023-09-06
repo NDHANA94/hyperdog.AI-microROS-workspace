@@ -187,7 +187,9 @@ extern uint32_t t_prev;
 void init_hyperdog_node();
 
 void _init_motors_states_publisher();
-void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
+// void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time);
+void publish_motors_states();
+
 
 void _init_motorCmdSubscription();
 void _motor_cmd_sub_callback(const void* msg);

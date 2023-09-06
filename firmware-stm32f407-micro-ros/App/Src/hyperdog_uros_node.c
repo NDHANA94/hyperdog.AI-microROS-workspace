@@ -69,7 +69,7 @@ void init_hyperdog_node()
         hyperdog_node.rcl_ret += rclc_executor_init(
                                 &hyperdog_node.exe_timers,
                                 &uros.support.context,
-                                2,
+                                1,
                                 &uros.allocator);
         
         hyperdog_node.rcl_ret += rclc_executor_init(
@@ -406,7 +406,7 @@ void _init_motors_states_publisher()
     else{
         hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_PUB1;
     }
-
+    /* // to publish msg using a timer
     /// initialize timer callback       
     ///   * set callback function
     hyperdog_node.motorsStates_pub.callback = _motors_states_timer_callback;
@@ -431,15 +431,17 @@ void _init_motors_states_publisher()
             hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_PUB1;
         }
         else{hyperdog_node.error_code &= ~NODE_HYPERDOG_ERROR_FAILED_PUB1;}
-    }
+    } 
+    */
 }
 
 /* ------------------------ PUBLISHER CALLBACK -------------------------------------- */
 /*
  */
-void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+// void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+void publish_motors_states()
 {
-    RCLC_UNUSED(last_call_time);
+    // RCLC_UNUSED(last_call_time);
     // timer != NULL && 
     if(motor_objects_created) {
         /// update motor state.status_msg
@@ -513,7 +515,7 @@ void _motors_states_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
         dt = HAL_GetTick() - t_prev;
         if(hyperdog_node.motorsStates_pub.rcl_ret  != RCL_RET_OK){
             hyperdog_node.error_code |= NODE_HYPERDOG_ERROR_FAILED_PUB1;
-            // restartMicroROS(); /// Assuming error ccured due to the connectiorn lost with the agent
+            // restartMicroROS(); /// Assuming error occured due to the connectiorn lost with the agent
         }
         else{
             hyperdog_node.error_code &= ~ NODE_HYPERDOG_ERROR_FAILED_PUB1;
@@ -585,11 +587,11 @@ void _motor_cmd_sub_callback(const void* msg)
             m->cmd.i_ff = cmd->i_ff;
             _pack_cmd(m);
             motor_sendTx_getRx(m);
+            publish_motors_states();
         }
         
-        
-        
     }
+    
 }
 
 /* ================================================================================== */
@@ -623,12 +625,16 @@ void _motor_watchdog_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 {
     if(motor_objects_created){
         for(int i=0; i<NUM_OF_LEGS; i++){
-            for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){         
+            for(int j=0; j<NUM_OF_JOINTS_PER_LEG; j++){       
+                int32_t t = HAL_GetTick();
+                int32_t dt_ = t - legMotor[i][j].last_update_time;
                 if(legMotor[i][j].debug_state != MOTOR_ENABLED){
                     disable_motor(&legMotor[i][j]);
-                }else if(legMotor[i][j].debug_state == MOTOR_ENABLED &&
-                HAL_GetTick() - legMotor[i][j].last_update_time > MAX_NO_UPDATE_TIME){
+                    publish_motors_states();
+                }else if(legMotor[i][j].debug_state == MOTOR_ENABLED 
+                && dt_ > MAX_NO_UPDATE_TIME){
                     motor_sendTx_getRx(&legMotor[i][j]);
+                    publish_motors_states();
                 }
             }
         }

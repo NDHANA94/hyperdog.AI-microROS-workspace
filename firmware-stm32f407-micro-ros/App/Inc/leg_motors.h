@@ -44,10 +44,10 @@ extern "C"{
 #define CAN_H                           hcan1
 #define CAN_CMD_FREQUENCY               100 // Hz
 #define CAN_HEARTBEAT_FREQUENCY         1 // Hz
-#define NUM_OF_CAN_TX_BYETS             8
+#define NUM_OF_CAN_TX_BYTES             8
 #define NUM_OF_CAN_RX_BYTES             6 // 7
-#define MAX_MOTOR_NO_RESPONSE_COUNT     5 /*!< after this number of times motor doesn't response repeatedly, motor status will be updated as MOTOR_OFFLINE  */
-#define MAX_NO_UPDATE_TIME              500 // ms
+#define MAX_MOTOR_NO_RESPONSE_COUNT     2 /*!< after this number of times motor doesn't response repeatedly, motor status will be updated as MOTOR_OFFLINE  */
+#define MAX_NO_UPDATE_TIME              2000 // ms
 #define MOTOR_WATCHDOG_TIMER_PERIOD     1000 //ms
 
 
@@ -190,9 +190,9 @@ struct{
 
 extern bool motor_objects_created;
 extern bool can_filter_created;
-extern uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS];
-extern uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS];
-extern uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS];
+extern uint8_t  motor_enable_cmd[NUM_OF_CAN_TX_BYTES];
+extern uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYTES];
+extern uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYTES];
 
 
 extern LegMotor_TypeDef**           legMotor;

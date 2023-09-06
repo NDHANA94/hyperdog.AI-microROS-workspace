@@ -32,9 +32,9 @@ CANRxMessage_TypeDef  canRx;
 bool motor_objects_created;
 bool can_filter_created;
 
-uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_ENABLE_CMD;
-uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_DISABLE_CMD;
-uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYETS] = MOTOR_SETZERO_CMD;
+uint8_t motor_enable_cmd[NUM_OF_CAN_TX_BYTES] = MOTOR_ENABLE_CMD;
+uint8_t motor_disable_cmd[NUM_OF_CAN_TX_BYTES] = MOTOR_DISABLE_CMD;
+uint8_t motor_setzero_cmd[NUM_OF_CAN_TX_BYTES] = MOTOR_SETZERO_CMD;
 
 uint16_t
 check_init_motor_valid(hyperdog_uros_interfaces__msg__InitMotor* init_msg)
@@ -115,7 +115,7 @@ bool init_motorCAN(LegMotor_TypeDef* m, CAN_HandleTypeDef* hcan){
     /* config can tx header */
     m->canTx.header.StdId = m->self.params.can_id;
     m->canTx.header.IDE = CAN_ID_STD;
-    m->canTx.header.DLC = NUM_OF_CAN_TX_BYETS;
+    m->canTx.header.DLC = NUM_OF_CAN_TX_BYTES;
     m->canTx.header.RTR = CAN_RTR_DATA;
 
     /* If there is a CAN state error, update motor init_state, state and error_code */
@@ -157,6 +157,13 @@ bool create_motor_objects(LegMotor_TypeDef** m)
             legMotor[i][j].state.status_msg.capacity = 20;
             legMotor[i][j].state.status_msg.size = 0;
             // legMotor[i][j].state.feedback  is updated in `motor_sendTx_getRx` function.
+            for(int d=0; d<NUM_OF_CAN_TX_BYTES; d++){
+                legMotor[i][j].canTx.data[d] = 0;
+                if(d<NUM_OF_CAN_RX_BYTES){
+                    canRx.data[d] = 0;
+                }
+            }
+            
         }
     }
 
