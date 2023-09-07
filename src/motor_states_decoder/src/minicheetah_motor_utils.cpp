@@ -37,7 +37,7 @@ int _float2uint(float x, float x_min, float x_max, int bits)
 
 float _uint2float(int x_int, float x_min, float x_max, int bits)
 {
-    float span = x_max = x_min;
+    float span = x_max - x_min;
     float offset = x_min;
     return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
 }
