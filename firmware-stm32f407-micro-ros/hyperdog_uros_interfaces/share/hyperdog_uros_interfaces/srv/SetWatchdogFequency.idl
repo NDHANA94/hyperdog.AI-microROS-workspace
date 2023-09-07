@@ -6,7 +6,7 @@
 module hyperdog_uros_interfaces {
   module srv {
     struct SetWatchdogFequency_Request {
-      double data;
+      float data;
     };
     struct SetWatchdogFequency_Response {
       int16 error_code;

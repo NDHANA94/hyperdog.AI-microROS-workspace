@@ -20,8 +20,8 @@ extern "C"
 // Struct defined in msg/Limit in the package hyperdog_uros_interfaces.
 typedef struct hyperdog_uros_interfaces__msg__Limit
 {
-  double min;
-  double max;
+  float min;
+  float max;
 } hyperdog_uros_interfaces__msg__Limit;
 
 // Struct for a sequence of hyperdog_uros_interfaces__msg__Limit.

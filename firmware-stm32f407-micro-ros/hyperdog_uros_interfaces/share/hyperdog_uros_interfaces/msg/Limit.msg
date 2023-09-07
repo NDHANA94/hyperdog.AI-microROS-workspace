@@ -1,2 +1,2 @@
-float64 min
-float64 max
+float32 min
+float32 max

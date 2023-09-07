@@ -6,9 +6,9 @@
 module hyperdog_uros_interfaces {
   module msg {
     struct Limit {
-      double min;
+      float min;
 
-      double max;
+      float max;
     };
   };
 };

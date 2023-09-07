@@ -6,11 +6,11 @@
 module hyperdog_uros_interfaces {
   module msg {
     struct Vector3 {
-      double x;
+      float x;
 
-      double y;
+      float y;
 
-      double z;
+      float z;
     };
   };
 };

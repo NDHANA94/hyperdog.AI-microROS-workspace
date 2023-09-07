@@ -21,10 +21,10 @@ extern "C"
 typedef struct hyperdog_uros_interfaces__msg__MotorFeedback
 {
   uint8_t can_id;
-  double position;
-  double velocity;
-  double torque;
-  double vb;
+  float position;
+  float velocity;
+  float torque;
+  float vb;
 } hyperdog_uros_interfaces__msg__MotorFeedback;
 
 // Struct for a sequence of hyperdog_uros_interfaces__msg__MotorFeedback.

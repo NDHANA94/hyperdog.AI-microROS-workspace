@@ -25,11 +25,11 @@ typedef struct hyperdog_uros_interfaces__msg__MotorCmd
   bool enable;
   bool disable;
   bool set_zero;
-  double desire_position;
-  double desire_velocity;
-  double kp;
-  double kd;
-  double i_ff;
+  float desire_position;
+  float desire_velocity;
+  float kp;
+  float kd;
+  float i_ff;
 } hyperdog_uros_interfaces__msg__MotorCmd;
 
 // Struct for a sequence of hyperdog_uros_interfaces__msg__MotorCmd.

@@ -6,7 +6,7 @@
 module hyperdog_uros_interfaces {
   module srv {
     struct SetMotorCmdFrequency_Request {
-      double data;
+      float data;
     };
     struct SetMotorCmdFrequency_Response {
       int16 error_code;

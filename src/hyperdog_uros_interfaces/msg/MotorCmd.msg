@@ -8,8 +8,8 @@ bool disable
 bool set_zero
 
 # control commands
-float64 desire_position
-float64 desire_velocity
-float64 kp
-float64 kd
-float64 i_ff
+float32 desire_position
+float32 desire_velocity
+float32 kp
+float32 kd
+float32 i_ff

@@ -26,15 +26,15 @@ module hyperdog_uros_interfaces {
 
       @verbatim (language="comment", text=
         " control commands")
-      double desire_position;
+      float desire_position;
 
-      double desire_velocity;
+      float desire_velocity;
 
-      double kp;
+      float kp;
 
-      double kd;
+      float kd;
 
-      double i_ff;
+      float i_ff;
     };
   };
 };

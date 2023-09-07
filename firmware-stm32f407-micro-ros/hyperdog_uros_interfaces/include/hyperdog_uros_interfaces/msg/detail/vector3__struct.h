@@ -20,9 +20,9 @@ extern "C"
 // Struct defined in msg/Vector3 in the package hyperdog_uros_interfaces.
 typedef struct hyperdog_uros_interfaces__msg__Vector3
 {
-  double x;
-  double y;
-  double z;
+  float x;
+  float y;
+  float z;
 } hyperdog_uros_interfaces__msg__Vector3;
 
 // Struct for a sequence of hyperdog_uros_interfaces__msg__Vector3.

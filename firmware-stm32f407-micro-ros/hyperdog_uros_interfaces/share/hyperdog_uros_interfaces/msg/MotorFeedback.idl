@@ -8,13 +8,13 @@ module hyperdog_uros_interfaces {
     struct MotorFeedback {
       uint8 can_id;
 
-      double position;
+      float position;
 
-      double velocity;
+      float velocity;
 
-      double torque;
+      float torque;
 
-      double vb;
+      float vb;
     };
   };
 };
