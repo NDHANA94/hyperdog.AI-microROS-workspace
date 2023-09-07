@@ -22,7 +22,10 @@
                 "${workspaceFolder}/build/hyperdog_uros_interfaces/rosidl_generator_cpp",
                 "${workspaceFolder}/install/hyperdog_uros_interfaces/include",
                 "/opt/ros/foxy/include",
-                "${workspaceFolder}/build/hyperdog_uros_msgs/rosidl_generator_c"
+                "${workspaceFolder}/build/hyperdog_uros_msgs/rosidl_generator_c",
+                "${workspaceFolder}/src/motor_states_decoder/include",
+                "${workspaceFolder}/install/hyperdog_ctrl_legs/share",
+                "${workspaceFolder}/src/hyperdog_ctrl_legs/include"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

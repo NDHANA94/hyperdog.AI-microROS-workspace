@@ -27,9 +27,18 @@ SOFTWARE.                                                                       
                                                                                           |
 ==========================================================================================*/
 
-#include "hyperdog_ctrl_legs/initLegMotorsMsg_config.hpp"
+#include "hyperdog_uros_interfaces/msg/init_leg_motors.hpp"
+#include "rclcpp/rclcpp.hpp"
+
+#include <chrono>
+#include <cstdlib>
+#include <memory>
+using namespace std::chrono_literals;
+
+#define MAX_MOTOR_CURRENT       7.0
 
 auto msg = hyperdog_uros_interfaces::msg::InitLegMotors();
+
 hyperdog_uros_interfaces::msg::InitLegMotors get_initLegMotors_reqMsg(){
     /* FR Leg joint motors */
     msg.fr_hip_roll.params.can_id           =  1;

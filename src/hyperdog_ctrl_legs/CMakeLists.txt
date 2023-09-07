@@ -20,14 +20,42 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(hyperdog_uros_interfaces REQUIRED)
 
+
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
+ament_export_include_directories(include)
+
 install(DIRECTORY
   src
   config
+  include
   DESTINATION share/${PROJECT_NAME}
 )
 
+# initLegMotorsMsg_config library as libmotor_config
+add_library(motor_config src/initLegMotorsMsg_config.cpp)
+target_include_directories(motor_config PUBLIC
+$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>)
+ament_target_dependencies(
+  motor_config 
+  rclcpp 
+  hyperdog_uros_interfaces
+)
+ament_export_interfaces(export_motor_config HAS_LIBRARY_TARGET)
+install(
+  TARGETS motor_config
+  EXPORT export_motor_config
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
+
 # initLegMotors client
-add_executable(initMotors src/init_leg_motors_client.cpp)
+add_executable(initMotors src/init_leg_motors_client.cpp src/initLegMotorsMsg_config.cpp)
 target_include_directories(initMotors PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -78,8 +106,6 @@ ament_target_dependencies(
 install(TARGETS setMotorZeroPosition
   DESTINATION lib/${PROJECT_NAME})
 
-
-  
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

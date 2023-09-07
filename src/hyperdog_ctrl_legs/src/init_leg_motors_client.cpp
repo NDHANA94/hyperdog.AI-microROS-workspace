@@ -29,8 +29,10 @@ SOFTWARE.                                                                       
 
 #include "rclcpp/rclcpp.hpp"
 #include "hyperdog_uros_interfaces/srv/init_leg_motors.hpp"
-#include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
-#include "initLegMotorsMsg_config.cpp"
+// #include "hyperdog_uros_interfaces/srv/init_leg_motors.h"
+// #include "initLegMotorsMsg_config.cpp"
+#include "hyperdog_ctrl_legs/initLegMotorsMsg_config.hpp"
+
 
 #include <string>
 #include <iostream>
