@@ -260,7 +260,7 @@ void _enableAllMotors_srv_callback(const void* req, void* res){
 
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
 void _init_disableAllMotors_srv()
-{fir    fir
+{
     hyperdog_node.disableAllMotors_srv.srv_name = "/disableAllMotors";
 
     /// Initiaalize server with default configuration
