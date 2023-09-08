@@ -122,7 +122,8 @@
         "motors_states_encoded__struct.h": "c",
         "motors_states_encoded__functions.h": "c",
         "motors_states_encoded__type_support.h": "c",
-        "vector3__struct.h": "c"
+        "vector3__struct.h": "c",
+        "leg_states__struct.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "cortex-debug.variableUseNaturalFormat": true,

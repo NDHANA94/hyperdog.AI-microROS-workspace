@@ -37,6 +37,7 @@ typedef struct hyperdog_uros_interfaces__msg__LegStates
   hyperdog_uros_interfaces__msg__Vector3 reaction_force;
   hyperdog_uros_interfaces__msg__Vector3 stiffness_ratio;
   hyperdog_uros_interfaces__msg__Vector3 damping_ratio;
+  float joint_ang[3];
 } hyperdog_uros_interfaces__msg__LegStates;
 
 // Struct for a sequence of hyperdog_uros_interfaces__msg__LegStates.

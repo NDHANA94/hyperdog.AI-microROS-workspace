@@ -6,6 +6,7 @@
 
 module hyperdog_uros_interfaces {
   module msg {
+    typedef float float__3[3];
     struct LegStates {
       boolean is_contacted;
 
@@ -22,6 +23,8 @@ module hyperdog_uros_interfaces {
       hyperdog_uros_interfaces::msg::Vector3 stiffness_ratio;
 
       hyperdog_uros_interfaces::msg::Vector3 damping_ratio;
+
+      float__3 joint_ang;
     };
   };
 };

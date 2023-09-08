@@ -37,8 +37,9 @@ BUILD_DIR = Build
 # C sources
 C_SOURCES =  \
 App/Src/hyperdog_uros_app.c \
-APP/hyperdog_uros_node.c \
-APP/leg_motors.c \
+App/Src/hyperdog_uros_node.c \
+App/Src/leg_motors.c \
+App/Src/leg_ctrl.c \
 App/Src/error_indicator.c \
 Core/Src/main.c \
 Core/Src/gpio.c \
