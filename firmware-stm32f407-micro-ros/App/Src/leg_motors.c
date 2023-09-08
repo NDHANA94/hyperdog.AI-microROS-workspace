@@ -525,7 +525,7 @@ void _pack_cmd(LegMotor_TypeDef* m)
 
 
 /** =====================================================================================================
- * CAN communication with the motors.
+ * CAN communication with the motors (polling mode operation)
  * \param m motor object with Tx data packet.
  * \return `1` if Tx and Rx were succeeded. 
  * \return `0` if CAN_ERROR or didn't receive a response from the motor.
@@ -533,12 +533,14 @@ void _pack_cmd(LegMotor_TypeDef* m)
 bool motor_sendTx_getRx(LegMotor_TypeDef* m){
     /* Send CanTx message to the motor */
     retry:
+    while (HAL_CAN_GetTxMailboxesFreeLevel(m->hcan)<1){}
     if(HAL_CAN_AddTxMessage(m->hcan, &m->canTx.header, m->canTx.data, &m->canTx.TxMailBox) != HAL_OK)   
         goto can_fail;
 
     /*  get CAN rx message and filter motor Id  */
     uint8_t rx_data[NUM_OF_CAN_RX_BYTES];
-    osDelay(4);
+    // osDelay(4);
+    while (HAL_CAN_GetRxFifoFillLevel(m->hcan, CAN_RX_FIFO0)<1){}
     if(HAL_CAN_GetRxMessage(m->hcan, CAN_RX_FIFO0, &m->canRx->header, rx_data) != HAL_OK){   
         goto no_res;
     }

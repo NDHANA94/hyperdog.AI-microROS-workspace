@@ -634,14 +634,15 @@ void _motor_watchdog_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
                 int32_t dt_ = t - legMotor[i][j].last_update_time;
                 if(legMotor[i][j].debug_state != MOTOR_ENABLED){
                     disable_motor(&legMotor[i][j]);
-                    publish_motors_states();
+                    // publish_motors_states();
                 }else if(legMotor[i][j].debug_state == MOTOR_ENABLED 
                 && dt_ > MAX_NO_UPDATE_TIME){
                     motor_sendTx_getRx(&legMotor[i][j]);
-                    publish_motors_states();
+                    // publish_motors_states();
                 }
             }
         }
+        publish_motors_states();
     }
 }
 
