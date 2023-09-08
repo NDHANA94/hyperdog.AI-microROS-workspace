@@ -58,6 +58,7 @@ hyperdog_uros_interfaces__msg__LegStates__init(hyperdog_uros_interfaces__msg__Le
     hyperdog_uros_interfaces__msg__LegStates__fini(msg);
     return false;
   }
+  // joint_ang
   return true;
 }
 
@@ -81,6 +82,7 @@ hyperdog_uros_interfaces__msg__LegStates__fini(hyperdog_uros_interfaces__msg__Le
   hyperdog_uros_interfaces__msg__Vector3__fini(&msg->stiffness_ratio);
   // damping_ratio
   hyperdog_uros_interfaces__msg__Vector3__fini(&msg->damping_ratio);
+  // joint_ang
 }
 
 bool
@@ -133,6 +135,12 @@ hyperdog_uros_interfaces__msg__LegStates__are_equal(const hyperdog_uros_interfac
   {
     return false;
   }
+  // joint_ang
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->joint_ang[i] != rhs->joint_ang[i]) {
+      return false;
+    }
+  }
   return true;
 }
 
@@ -183,6 +191,10 @@ hyperdog_uros_interfaces__msg__LegStates__copy(
       &(input->damping_ratio), &(output->damping_ratio)))
   {
     return false;
+  }
+  // joint_ang
+  for (size_t i = 0; i < 3; ++i) {
+    output->joint_ang[i] = input->joint_ang[i];
   }
   return true;
 }
