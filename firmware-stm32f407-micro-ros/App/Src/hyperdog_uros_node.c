@@ -43,7 +43,7 @@ hyperdog_uros_interfaces__msg__MotorStates motor_states_;
 /*                             NODE INITIALIZATION                                    */
 /* ================================================================================== */
 void init_hyperdog_node()
-{
+{   
     hyperdog_node.state = HYPERDOG_NODE_INITIALIZING;
 
     /*  1. initialize the node --------------------------------------------------------*/
@@ -253,14 +253,13 @@ void _enableAllMotors_srv_callback(const void* req, void* res){
     }
 }
 
-
 /* ================================================================================== */
-/*                         DISABLE_ALL_MOTORS SERVER                                  */
+/*                         DISABLE_ALL_MOTORS SERVER                                   */
 /* ================================================================================== */
 
 /* ------------------------- INITIATE THE SERVICE ------------------------------- */
 void _init_disableAllMotors_srv()
-{fir    fir
+{
     hyperdog_node.disableAllMotors_srv.srv_name = "/disableAllMotors";
 
     /// Initiaalize server with default configuration
