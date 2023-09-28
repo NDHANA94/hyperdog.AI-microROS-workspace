@@ -88,10 +88,10 @@ In order to communicate with mentioned servers, following ROS 2 client nodes are
 
 | Node | Execute cmd | options |
 |---|---|---|
-| `initMotors` | ros2 run hyperdog_ctrl_legs initMotors | N/A |
-| `enableAllMotors` | ros2 run hyperdog_ctrl_legs enableAllMotors | N/A |
-| `disableAllMotors` | ros2 run hyperdog_ctrl_legs disableAllMotors | N/A |
-| `setMotorZeroPosition` | ros2 run hyperdog_ctrl_legs setMotorZeroPosition | fr_hip_roll, fr_hip_pitch, fr_knee, fl_hip_roll, fl_hip_pitch, fl_knee, rr_hip_roll, rr_hip_pitch, rr_knee, rl_hip_roll, rl_hip_pitch, rl_knee|
+| `initMotors` | ```ros2 run hyperdog_ctrl_legs initMotors``` | N/A |
+| `enableAllMotors` | ```ros2 run hyperdog_ctrl_legs enableAllMotors``` | N/A |
+| `disableAllMotors` | ```ros2 run hyperdog_ctrl_legs disableAllMotors``` | N/A |
+| `setMotorZeroPosition` | ```ros2 run hyperdog_ctrl_legs setMotorZeroPosition``` | `fr_hip_roll`, `fr_hip_pitch`, `fr_knee`, `fl_hip_roll`, `fl_hip_pitch`, `fl_knee`, `rr_hip_roll`, `rr_hip_pitch`, `rr_knee`, `rl_hip_roll`, `rl_hip_pitch`, `rl_knee`|
 
 
 <!-- 
