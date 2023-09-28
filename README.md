@@ -55,14 +55,44 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
     make all
     ```
 ## flash:
-- flash the generated `hyperdog_ai-uros-controller-stm32f4.bin` file in the directory of `firmware-stm32f407-microros/Build/` to stm32 microcontroller.
-    using `st-utils`: 
+- flash the generated `hyperdog_ai-uros-controller-stm32f4.bin` file in the directory of `firmware-stm32f407-microros/Build/` to stm32 microcontroller using `st-utils`: 
     ```bash
     st-flash write hyperdog_ai-uros-controller-stm32f4.bin 0x8000000
     ```
 
 ## Hardware setup:
+- microROS communicates with microROS agent via UART serial interface. 
+- STM32F407 has no CAN controller. Hence, use can controller to get CAN-H/CAN-L interface from CAN-RX/CAN-TX interface.
+
 ![Diagram](imgs/diagram_.png)
+
+## Connect microROS agent with stm32F407 microcontroller
+To connect microROS agent with the stm32 micro-ros application, install micro-ros-agent pkg and run following command;
+```bash
+ros2 run micro_ros_agent micro_ros_agent serial -b 921600 --dev /dev/ttyUSB0
+```
+
+## Micro-ROS Commands and feedback:
+STM32 Firmware is developed with a microROS node which consists following servers, subscribers and publishes;
+
+|   Name  |    Type     | Purpose | 
+|---|---|---|
+| `initLegMotors` | Server | To initialize motor instatances |  
+| `enableAllMotors` | Server | To enable motors |
+| `disableAllMotors` | Server | To disable motors |
+| `setMotorZeroPosition` | Server | To set zero position of desired motor |
+| `motors_states` | Publisher | Publish states of the motors |
+| `motor_cmd` | Subscriber | To get motor commands |
+
+In order to communicate with mentioned servers, following ROS 2 client nodes are developed in the `hyperdog_ctrl_legs` pkg;
+
+| Node | Execute cmd | options |
+|---|---|---|
+| `initMotors` | ros2 run hyperdog_ctrl_legs initMotors | N/A |
+| `enableAllMotors` | ros2 run hyperdog_ctrl_legs enableAllMotors | N/A |
+| `disableAllMotors` | ros2 run hyperdog_ctrl_legs disableAllMotors | N/A |
+| `setMotorZeroPosition` | ros2 run hyperdog_ctrl_legs setMotorZeroPosition | fr_hip_roll, fr_hip_pitch, fr_knee, fl_hip_roll, fl_hip_pitch, fl_knee, rr_hip_roll, rr_hip_pitch, rr_knee, rl_hip_roll, rl_hip_pitch, rl_knee|
+
 
 <!-- 
 
