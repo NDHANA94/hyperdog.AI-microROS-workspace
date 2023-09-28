@@ -86,7 +86,7 @@ STM32 Firmware is developed with a microROS node which consists following server
 
 In order to communicate with mentioned servers, following ROS 2 client nodes are developed in the `hyperdog_ctrl_legs` pkg;
 
-| Node | Execute cmd | options |
+| Client Node | Execute cmd | options |
 |---|---|---|
 | `initMotors` | ```ros2 run hyperdog_ctrl_legs initMotors``` | N/A |
 | `enableAllMotors` | ```ros2 run hyperdog_ctrl_legs enableAllMotors``` | N/A |
