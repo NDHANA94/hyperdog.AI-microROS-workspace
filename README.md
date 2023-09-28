@@ -62,7 +62,7 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
     ```
 
 ## Hardware setup:
-![Diagram](imgs/diagram.png)
+![Diagram](imgs/diagram_.png)
 
 <!-- 
 
