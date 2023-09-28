@@ -54,7 +54,15 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
     cd firmware-stm32f407-micro-ros/
     make all
     ```
+## flash:
+- flash the generated `hyperdog_ai-uros-controller-stm32f4.bin` file in the directory of `firmware-stm32f407-microros/Build/` to stm32 microcontroller.
+    using `st-utils`: 
+    ```bash
+    st-flash write hyperdog_ai-uros-controller-stm32f4.bin 0x8000000
+    ```
 
+## Hardware setup:
+    ![Diagram](./imgs/photo_2023-09-28_12-03-25.jpg)
 
 <!-- 
 
