@@ -55,6 +55,78 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
     make all
     ```
 
+## flash:
+- flash the generated `hyperdog_ai-uros-controller-stm32f4.bin` file in the directory of `firmware-stm32f407-microros/Build/` to stm32 microcontroller using `st-utils`: 
+    ```bash
+    st-flash write hyperdog_ai-uros-controller-stm32f4.bin 0x8000000
+    ```
+
+## Hardware setup:
+- microROS communicates with microROS agent via UART serial interface. 
+- STM32F407 has no CAN controller. Hence, use can controller to get CAN-H/CAN-L interface from CAN-RX/CAN-TX interface.
+
+![Diagram](imgs/diagram_.png)
+
+## Connect microROS agent with stm32F407 microcontroller
+To connect microROS agent with the stm32 micro-ros application, install micro-ros-agent pkg and run following command;
+```bash
+ros2 run micro_ros_agent micro_ros_agent serial -b 921600 --dev /dev/ttyUSB0
+```
+
+## hyperdog_uros_node
+STM32 Firmware is developed with `hyperdog_uros_node` which consists following servers, subscribers and publishes;
+
+|   Name  |    Type     | Purpose | 
+|---|---|---|
+| `initLegMotors` | Server | To initialize motor instatances |  
+| `enableAllMotors` | Server | To enable motors |
+| `disableAllMotors` | Server | To disable motors |
+| `setMotorZeroPosition` | Server | To set zero position of desired motor |
+| `motors_states` | Publisher | Publish states of the motors |
+| `motor_cmd` | Subscriber | To get motor commands |
+
+#### `initLegMotors` Server
+In order to communicate with the motors, one should firstly initiate the motor instaces.
+In the firmware there are 12 motor instaces are allocated for the following motors;
+-   `fr_hip_roll` : hip roll joint actuator of front-right leg
+-   `fr_hip_pitch` : hip pitch joint actuator of front-right leg
+-   `fr_knee` : knee joint actuator of front-right leg
+-   `fl_hip_roll` : hip roll joint actuator of front-left leg
+-   `fl_hip_pitch` : hip pitch joint actuator of front-left leg
+-   `fl_knee` : knee joint actuator of front-left leg
+-   `rr_hip_roll` : hip roll joint actuator of rear-right leg
+-   `rr_hip_pitch` : hip pitch joint actuator of rear-right leg
+-   `rr_knee` : knee joint actuator of rear-right leg
+-   `rl_hip_roll` : hip roll joint actuator of rear-left leg
+-   `rl_hip_pitch` : hip pitch joint actuator of rear-left leg
+-   `rl_knee` : knee joint actuator of rear-left leg
+
+When the motors are initialized, the client passes motor parameters for each 12 motors to the server. then server initialized all the motors if parameters have no errors.
+If at-least one of the parameters has an error, server sends none zero `error_code`. If everything is allright, then the server sends zero `error_code`. 
+
+#### `enableAllMotors` Server
+Once the motor instances are initialized, one can start controlling motors.
+
+
+## Micro-ROS Commands and feedback:
+
+In order to communicate with mentioned servers, following ROS 2 client nodes are developed in the `hyperdog_ctrl_legs` pkg;
+
+| Client Node | Execute cmd | options |
+|---|---|---|
+| `initMotors` | ```ros2 run hyperdog_ctrl_legs initMotors``` | N/A |
+| `enableAllMotors` | ```ros2 run hyperdog_ctrl_legs enableAllMotors``` | N/A |
+| `disableAllMotors` | ```ros2 run hyperdog_ctrl_legs disableAllMotors``` | N/A |
+| `setMotorZeroPosition` | ```ros2 run hyperdog_ctrl_legs setMotorZeroPosition``` | `fr_hip_roll`, `fr_hip_pitch`, `fr_knee`, `fl_hip_roll`, `fl_hip_pitch`, `fl_knee`, `rr_hip_roll`, `rr_hip_pitch`, `rr_knee`, `rl_hip_roll`, `rl_hip_pitch`, `rl_knee`|
+
+`motors_states` topic which is published by the `hyperdog_uros_node` consists of following data for each motors;
+| data | data type | Description |
+|---|---|---|
+| `is_available` | bool | `true` if motor is available in the CAN bus, else `false` | 
+| `is_enables` | bool | `true` if the motor is enabled, else `false` |
+| `is_error` | bool| `true` if there is an error in the motor, else `false` |
+| `status_msg` | string | current status of the motor: `NOT_INITIALIZED`, `INITIALIZED`, `DISABLED`, `ENABLED`, `OFFLINE`, `ERROR`, `CAN_ERROR` |
+|`feedback` | uint8[6] | 
 
 <!-- 
 
