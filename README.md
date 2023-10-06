@@ -75,6 +75,8 @@ To connect microROS agent with the stm32 micro-ros application, install micro-ro
 ros2 run micro_ros_agent micro_ros_agent serial -b 921600 --dev /dev/ttyUSB0
 ```
 
+IMPORTANT: Choose a UART-USB converter which is compatible with 921600 baudrate (ex: CP2102).
+
 ## 5. `hyperdog_uros_node`
 STM32 Firmware is developed with `hyperdog_uros_node` which consists following server, subscriber and publisher entities;
 
