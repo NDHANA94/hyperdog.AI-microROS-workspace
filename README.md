@@ -167,7 +167,7 @@ Server will response to this client request with information such as; whether th
 By running this client you can disable all the motors connected to the CAN bus at once.
 To run this client and disable all the motors, use following terminal command:
 ```bash
-ros2 run hyperdog_ctrl_legs enableAllMotors
+ros2 run hyperdog_ctrl_legs disableAllMotors
 ```
 Server will response to this client request with information such as; whether the motors were disabled or not and if a motor was not disabled what was the reason (error).
 
