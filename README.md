@@ -3,8 +3,8 @@
 micro-ROS powered embedded low-level firmware of HyperDog-AI quadruped robot, and necessary ROS2 (foxy) packages.
 
 
-## Build ROS 2 packages
-In the `src` consists f `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
+## 1. Build ROS 2 packages
+In the `src` consists of `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
 Create a ROS 2 workspace and build these packages:
 ```
 # source 
@@ -21,11 +21,11 @@ colcon build
 source instal/local_setup.bash
 ```
 
-## Build the firmware:
+## 2. Build and flash the firmware:
 
 To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensions.
 
-### Install ARM compiler for building and debuging the firmware:
+### 2.1 Install ARM compiler for building and debuging the firmware:
 
 - If there is already installed `gcc-arm-none-eabi` package, remove it using following command:
     ```
@@ -48,46 +48,49 @@ To build the firmware, use VS-Code with `c/c++`, `CMake`, `Cortex-Debug` extensi
 
     ```
 
-### Build:
+### 2.2 Build:
 -   Build the firmware using fllowing command: 
     ```
     cd firmware-stm32f407-micro-ros/
     make all
     ```
 
-## flash:
+### 2.3 flash:
 - flash the generated `hyperdog_ai-uros-controller-stm32f4.bin` file in the directory of `firmware-stm32f407-microros/Build/` to stm32 microcontroller using `st-utils`: 
     ```bash
     st-flash write hyperdog_ai-uros-controller-stm32f4.bin 0x8000000
     ```
 
-## Hardware setup:
+## 3. Hardware setup:
 - microROS communicates with microROS agent via UART serial interface. 
 - STM32F407 has no CAN controller. Hence, use can controller to get CAN-H/CAN-L interface from CAN-RX/CAN-TX interface.
 
 ![Diagram](imgs/diagram_.png)
 
-## Connect microROS agent with stm32F407 microcontroller
+## 4. Connect microROS agent with stm32F407 microcontroller
+In order to communicate with micro-ROS node via ROS 2 ecosystem, We have to run the `micro-ros-agent` first.
+Micro-ros-agent acts as a bridge between the ROS 2 and Micro-ROS nodes running on microcontroller.
 To connect microROS agent with the stm32 micro-ros application, install micro-ros-agent pkg and run following command;
 ```bash
 ros2 run micro_ros_agent micro_ros_agent serial -b 921600 --dev /dev/ttyUSB0
 ```
 
-## hyperdog_uros_node
-STM32 Firmware is developed with `hyperdog_uros_node` which consists following servers, subscribers and publishes;
+## 5. `hyperdog_uros_node`
+STM32 Firmware is developed with `hyperdog_uros_node` which consists following server, subscriber and publisher entities;
 
-|   Name  |    Type     | Purpose | 
+|   Name of Entity |    Type     | Purpose | 
 |---|---|---|
-| `initLegMotors` | Server | To initialize motor instatances |  
+| `initLegMotors` | Server | To initialize motor instances |  
 | `enableAllMotors` | Server | To enable motors |
 | `disableAllMotors` | Server | To disable motors |
 | `setMotorZeroPosition` | Server | To set zero position of desired motor |
 | `motors_states` | Publisher | Publish states of the motors |
 | `motor_cmd` | Subscriber | To get motor commands |
 
-#### `initLegMotors` Server
-In order to communicate with the motors, one should firstly initiate the motor instaces.
-In the firmware there are 12 motor instaces are allocated for the following motors;
+### 5.1 `initLegMotors` Server:
+This server allocates memory for 12 motor instances and initializes motor parameters of each motors which are provided by the [`initMotors` client](#61-initmotors-client).
+In order to communicate with the motors, one should firstly call this server with proper motor parameters.
+12 motor instances are named as following;
 -   `fr_hip_roll` : hip roll joint actuator of front-right leg
 -   `fr_hip_pitch` : hip pitch joint actuator of front-right leg
 -   `fr_knee` : knee joint actuator of front-right leg
@@ -101,33 +104,103 @@ In the firmware there are 12 motor instaces are allocated for the following moto
 -   `rl_hip_pitch` : hip pitch joint actuator of rear-left leg
 -   `rl_knee` : knee joint actuator of rear-left leg
 
-When the motors are initialized, the client passes motor parameters for each 12 motors to the server. then server initialized all the motors if parameters have no errors.
-If at-least one of the parameters has an error, server sends none zero `error_code`. If everything is allright, then the server sends zero `error_code`. 
+If at-least one of the motor parameters which client passes has an error, server responses with a none zero `error_code`. If everything is allright, then the server responses with a zero `error_code`.  See [Error Codes](#error-codes) section for more details about error codes. </br>
+Once the `initLegMotors` server is called by the client with proper motor parameters, you can start communicating with motors.
 
-#### `enableAllMotors` Server
-Once the motor instances are initialized, one can start controlling motors.
+### 5.2 `enableAllMotors` Server:
+In order to control the motors, you should firstly enable the motors. Once you call the `enableAllMotors` service by running [`enableAllMotors` client](#62-enableallmotors-client).
 
+### 5.3 `disableAllMotors` Server:
+To disable all the motors at once, you can call `disableAllMotors` service by running [`disableAllMotors` client](#63-disableallmotors-client).
 
-## Micro-ROS Commands and feedback:
+### 5.4 `setMotorZeroPosition` Server:
+To set current position as the motor's zero position, you can this server by running [`setMotorZeroPosition` client](#64-setmotorzeroposition-client).
 
-In order to communicate with mentioned servers, following ROS 2 client nodes are developed in the `hyperdog_ctrl_legs` pkg;
-
-| Client Node | Execute cmd | options |
+### 5.5 `motors_states` Publisher:
+This publisher publishes current states of each 12 motors via `motors_states` topic by using `MotorsStates.msg` interface. Following data variables are consisted for each 12 motors in this topic:
+| Variable | Data Type | Description |
 |---|---|---|
-| `initMotors` | ```ros2 run hyperdog_ctrl_legs initMotors``` | N/A |
-| `enableAllMotors` | ```ros2 run hyperdog_ctrl_legs enableAllMotors``` | N/A |
-| `disableAllMotors` | ```ros2 run hyperdog_ctrl_legs disableAllMotors``` | N/A |
-| `setMotorZeroPosition` | ```ros2 run hyperdog_ctrl_legs setMotorZeroPosition``` | `fr_hip_roll`, `fr_hip_pitch`, `fr_knee`, `fl_hip_roll`, `fl_hip_pitch`, `fl_knee`, `rr_hip_roll`, `rr_hip_pitch`, `rr_knee`, `rl_hip_roll`, `rl_hip_pitch`, `rl_knee`|
+| is_available | bool | 1 if motor is available in the CAN bus, else 0. |
+| is_enabled | bool | 1 if motor is enabled, else 0. |
+| is_error | bool | 1 if an error exists, else 0 |
+| error_code | uint16 | Error code which describes the error |
+| status msg | string | Curent status of the motor: `NOT_INITIALIZED`, `INITIALIZED`, `DISABLED`, `ENABLED`, `OFFLINE`, `ERROR`, `CAN_ERROR` |
+| feedback | uint8[6] | Encoded motor feedback data (position, velocity, torque) |
 
-`motors_states` topic which is published by the `hyperdog_uros_node` consists of following data for each motors;
-| data | data type | Description |
-|---|---|---|
-| `is_available` | bool | `true` if motor is available in the CAN bus, else `false` | 
-| `is_enables` | bool | `true` if the motor is enabled, else `false` |
-| `is_error` | bool| `true` if there is an error in the motor, else `false` |
-| `status_msg` | string | current status of the motor: `NOT_INITIALIZED`, `INITIALIZED`, `DISABLED`, `ENABLED`, `OFFLINE`, `ERROR`, `CAN_ERROR` |
-|`feedback` | uint8[6] | 
+### 5.6 `motor_cmd` Subscriber:
+To send a command to desire motor `motor_cmd` topic can be used. This topic uses `MotorCmd.msg` interface which has following data;
+|Data|Data Type|Options|Description|
+|---|---|---|---|
+|leg|uint8| `0`:Front Right leg.  `1`:Front Left Leg. `2`:Rear Right Leg. `3`:Rear Left Leg | Select the desire leg to send the command|
+|joint|uint8| `0`:Hip Roll Joint. `1`:Hip Pitch Joint. `2`:Knee Joint.| Select the desire joint motor to send the command |
+|enable|bool|`true` or `false` | if `true` sends enable command to the selected motor |
+|disable|bool|`true` or `false` | if `true` sends disable command to the selected motor |
+|set_zero|bool|`true` or `false` | if `true` sends zero position command to the selected motor |
+|desire_position| float32 | -|To set motor position to desired position|
+|desire_velocity| float32 | -|To set motor velocity to desired velocity |
+|kp | float32 |-| To set motor stiffness (Kp value) |
+|kd | float32 |-| To set motor damping (Kd value) |
+|i_ff|float32|-| To set feed forward current |
 
+
+
+
+## 6. `hyperdog_ctrl_legs` Node
+`hyperdog_ctrl_legs` node has following clients to communicate with the microros servers, subscribers and publishers;
+
+### 6.1 `initMotors` client:
+By running this client you can initialize the motor controlling process. When you run this client, it sends the motor parameters of each 12 motors which are configured in the `src/hyperdog_ctrl_legs/config/initLegMotors_param.yaml` file. You can run this client using following terminal command:
+```bash
+ros2 run hyperdog_ctrl_legs initMotors
+```
+[Server](#51-initlegmotors-server) will response to this client requent with the information whether the initialization of motors was succeed or if not what was the error.
+
+### 6.2 `enableAllMotors` client:
+By running this client you can enable all the motors connected to the CAN bus at once.
+To run this client and enable all the motors, use following terminal command:
+```bash
+ros2 run hyperdog_ctrl_legs enableAllMotors
+```
+Server will response to this client request with information such as; whether the motors were enbled or not and if a motor was not enabled what was the reason (error).
+
+### 6.3 `disableAllMotors` client:
+By running this client you can disable all the motors connected to the CAN bus at once.
+To run this client and enable all the motors, use following terminal command:
+```bash
+ros2 run hyperdog_ctrl_legs enableAllMotors
+```
+Server will response to this client request with information such as; whether the motors were disabled or not and if a motor was not disabled what was the reason (error).
+
+### 6.4 `setMotorZeroPosition` client:
+By running this client you can set the current motor position as zero position for a selected motor.
+To select which motor you want to set zero position use following option words with the command;
+| Motor | Option Word |
+|---|---|
+| Hip Roll motor of the Front Right Leg | fr_hip_roll |
+| Hip Pitch motor of the Front Right Leg | fr_hip_pitch |
+| Knee motor of the Front Right Leg | fr_knee |
+| Hip Roll motor of the Front Left Leg | fl_hip_roll |
+| Hip Pitch motor of the Front Left Leg | fl_hip_pitch |
+| Knee motor of the Front Left Leg | fl_knee |
+| Hip Roll motor of the Rear Right Leg | rr_hip_roll |
+| Hip Pitch motor of the Rear Right Leg | rr_hip_pitch |
+| Knee motor of the Rear Right Leg | rr_knee |
+| Hip Roll motor of the Rear Left Leg | rl_hip_roll |
+| Hip Pitch motor of the Rear Left Leg | rl_hip_pitch |
+| Knee motor of the Rear Left Leg | rl_knee |
+
+Example: To set knee motor of the Front Left motor, run following terminal command
+```bash
+ros2 run hyperdog_ctrl_legs setMotorZeroPosition fl_knee
+```
+Server will reply to this request with an aproximate 2 seconds delay whether the motor received the command or not.
+
+IMPORTANT: Make sure to set the motor into disable mode befor setting zero position and after setting zero position do a power cycling.
+
+
+### Error Codes
+
+TODO
 <!-- 
 
 BUGS:
