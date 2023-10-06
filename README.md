@@ -22,7 +22,7 @@ micro-ROS powered embedded low-level firmware of HyperDog-AI quadruped robot, an
     - [6.3 disableAllMotors client](#63-disableallmotors-client)
     - [6.4 setMotorZeroPosition client](#64-setmotorzeroposition-client)
 
-    
+
 ## 1. Build ROS 2 packages
 In the `src` consists of `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
 Create a ROS 2 workspace and build these packages:
@@ -230,6 +230,13 @@ IMPORTANT: Make sure to set the motor into disable mode befor setting zero posit
 ### Error Codes
 
 TODO
+
+
+### YET TODO
+[x] Implement Inverse Kinematics within the stm firmware.
+[x] Dynamic Control of legs using `LegsCmd.msg` interface.
+[x] Error Indicator
+
 <!-- 
 
 BUGS:
