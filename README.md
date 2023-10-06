@@ -231,6 +231,12 @@ IMPORTANT: Make sure to set the motor into disable mode befor setting zero posit
 ### Error Codes
 
 TODO
+
+
+### YET TODO
+[x] Implement Inverse Kinematics within the stm firmware.
+[x] Dynamic Control of legs using `LegsCmd.msg` interface.
+[x] Error Indicator
 <!-- 
 
 BUGS:
