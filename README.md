@@ -2,7 +2,27 @@
 
 micro-ROS powered embedded low-level firmware of HyperDog-AI quadruped robot, and necessary ROS2 (foxy) packages.
 
+- [1. Build ROS 2 packages](#1-build-ros-2-packages)
+- [2. Build and flash the firmware](#2-build-and-flash-the-firmware)
+    - [2.1 Install ARM compiler for building and debuging the firmware](#21-install-arm-compiler-for-building-and-debuging-the-firmware)
+    - [2.2 Build](#22-build)
+    - [2.3 flash](#23-flash)
+- [3. Hardware setup](#3-hardware-setup)
+- [4. Connect microROS agent with stm32F407 microcontroller](#4-connect-microros-agent-with-stm32f407-microcontroller)
+- [5. hyperdog_uros_node](#5-hyperdog_uros_node)
+    - [5.1 initLegMotors Server](#51-initlegmotors-server)
+    - [5.2 enableAllMotors Server](#52-enableallmotors-server)
+    - [5.3 disableAllMotors Server](#53-disableallmotors-server)
+    - [5.4 setMotorZeroPosition Server](#54-setmotorzeroposition-server)
+    - [5.5 motors_states Publisher](#55-motors_states-publisher)
+    - [5.6 motor_cmd Subscriber](#56-motor_cmd-subscriber)
+- [6. hyperdog_ctrl_legs Node](#6-hyperdog_ctrl_legs-node)
+    - [6.1 initMotors client](#61-initmotors-client)
+    - [6.2 enableAllMotors client](#62-enableallmotors-client)
+    - [6.3 disableAllMotors client](#63-disableallmotors-client)
+    - [6.4 setMotorZeroPosition client](#64-setmotorzeroposition-client)
 
+    
 ## 1. Build ROS 2 packages
 In the `src` consists of `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
 Create a ROS 2 workspace and build these packages:
