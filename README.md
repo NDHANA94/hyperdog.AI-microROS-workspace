@@ -127,6 +127,11 @@ This publisher publishes current states of each 12 motors via `motors_states` to
 | status msg | string | Curent status of the motor: `NOT_INITIALIZED`, `INITIALIZED`, `DISABLED`, `ENABLED`, `OFFLINE`, `ERROR`, `CAN_ERROR` |
 | feedback | uint8[6] | Encoded motor feedback data (position, velocity, torque) |
 
+To get the decoded motors feedback, the `motor_states_decoder` package can be used by running following terminal command.
+```bash
+ros2 run motor_states_decoder motor_states_decoder_node
+```
+ 
 ### 5.6 `motor_cmd` Subscriber:
 To send a command to desire motor `motor_cmd` topic can be used. This topic uses `MotorCmd.msg` interface which has following data;
 |Data|Data Type|Options|Description|
@@ -141,6 +146,8 @@ To send a command to desire motor `motor_cmd` topic can be used. This topic uses
 |kp | float32 |-| To set motor stiffness (Kp value) |
 |kd | float32 |-| To set motor damping (Kd value) |
 |i_ff|float32|-| To set feed forward current |
+
+
 
 
 
