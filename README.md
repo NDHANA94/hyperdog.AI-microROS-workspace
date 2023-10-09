@@ -219,7 +219,7 @@ To select which motor you want to set zero position use following option words w
 | Hip Pitch motor of the Rear Left Leg | rl_hip_pitch |
 | Knee motor of the Rear Left Leg | rl_knee |
 
-Example: To set knee motor of the Front Left motor, run following terminal command
+Example: To set knee motor of the Front Left leg, run following terminal command
 ```bash
 ros2 run hyperdog_ctrl_legs setMotorZeroPosition fl_knee
 ```
