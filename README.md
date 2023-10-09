@@ -25,7 +25,7 @@ micro-ROS powered embedded low-level firmware of HyperDog-AI quadruped robot, an
 
 
 ## 1. Build ROS 2 packages
-In the `src` consists of `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
+`src` directory consists of `hyperdog_uros_msgs`, `micro-ros-setup` and `micro-ROS-Agent` packages. 
 Create a ROS 2 workspace and build these packages:
 ```
 # source 
